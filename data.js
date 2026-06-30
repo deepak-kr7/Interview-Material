@@ -1535,6 +1535,470 @@ const qaData = [
     "answer": "Worked on:\n\t•\tVirtual Machines \n\t•\tVNets \n\t•\tNSGs \n\t•\tLoad Balancers \n\t•\tStorage Accounts \n\t•\tAKS \n\t•\tAzure Key Vault \n\t•\tAzure Monitor",
     "difficulty": "Easy",
     "source": "DevOps Real Scenario Q&A"
+  },
+  {
+    "id": 193,
+    "category": "Terraform (IaC)",
+    "question": "What is the difference between count and for_each in Terraform, and when should you use which?",
+    "answer": "• 'count' uses a list and indexes resources numerically (0, 1, 2...). If you remove an item from the middle of the list, Terraform will recreate all subsequent resources because their index shifts.\n• 'for_each' uses a map or set of strings and identifies resources by their keys. Removing an item only deletes that specific resource without affecting others.\n• Best Practice: Use 'for_each' for almost all resource collections, especially when resources are independent. Use 'count' for simple toggle switches (e.g., creating a resource if a condition is true: count = var.create_resource ? 1 : 0).",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 194,
+    "category": "Terraform (IaC)",
+    "question": "What are Dynamic Blocks in Terraform and when should you use them?",
+    "answer": "• Dynamic Blocks allow you to construct nested configuration blocks dynamically based on a list or map variable.\n• Example: Creating multiple security rules inside an 'azurerm_network_security_group' resource based on a list of port numbers.\n• Syntax:\n  dynamic \"security_rule\" {\n    for_each = var.rules\n    content {\n      name = security_rule.value.name\n      port = security_rule.value.port\n      # ... other attributes\n    }\n  }\n• Best Practice: Use them to keep your code DRY (Don't Repeat Yourself) when dealing with repeatable nested blocks, but avoid overusing them as they can make code harder to read.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 195,
+    "category": "Terraform (IaC)",
+    "question": "How do you handle infrastructure drift in Terraform?",
+    "answer": "• Infrastructure drift occurs when the actual state of cloud resources deviates from the Terraform configuration (e.g., someone manually modifies a resource via the Azure Portal).\n• Detection: Run 'terraform plan'. Terraform refreshes the state against the cloud and highlights differences.\n• Remediation:\n  1. Align Code: Update your Terraform code to match the manual changes if they are intended.\n  2. Revert Changes: Run 'terraform apply' to overwrite manual changes and restore the state defined in your code.\n• Best Practice: Implement automated drift detection cron jobs in your pipelines and restrict write permissions to the cloud portal to prevent manual changes.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 196,
+    "category": "Terraform (IaC)",
+    "question": "How do you securely manage secrets in Terraform configurations?",
+    "answer": "• Never hardcode secrets in .tf files.\n• Best Practices:\n  1. Use Variables: Declare variables and pass values using environment variables (TF_VAR_variable_name) or secure .tfvars files (added to .gitignore).\n  2. Key Vault Integration: Reference secrets stored in Azure Key Vault using data sources:\n     data \"azurerm_key_vault_secret\" \"db_password\" {\n       name         = \"db-pass\"\n       key_vault_id = data.azurerm_key_vault.main.id\n     }\n  3. Secure Remote Backend: Always store state files in a secure remote backend (like Azure Blob Storage) with encryption at rest and access control, as Terraform state contains secrets in plain text.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 197,
+    "category": "Terraform (IaC)",
+    "question": "What is the purpose of 'terraform import' and the newer 'import' block?",
+    "answer": "• 'terraform import' is used to bring existing cloud resources (created manually or via other tools) under Terraform management.\n• Legacy Command: 'terraform import azurerm_resource_group.rg /subscriptions/123/resourceGroups/my-rg'. This updates the state file, but you still have to write the resource block in your code manually.\n• Modern Import Block (Terraform 1.5+): Write an 'import' block in your code:\n  import {\n    to = azurerm_resource_group.rg\n    id = \"/subscriptions/123/resourceGroups/my-rg\"\n  }\n  Then run 'terraform plan -generate-config-out=generated.tf' to automatically generate the resource code.\n• Best Practice: Use the modern 'import' block for a safer, code-first import workflow.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 198,
+    "category": "Terraform (IaC)",
+    "question": "What are Terraform Workspaces and when should you use them?",
+    "answer": "• Workspaces allow you to manage multiple distinct state files from a single configuration directory. This is useful for deploying parallel copies of the same infrastructure.\n• Commands: 'terraform workspace new dev', 'terraform workspace select dev'.\n• Best Practice: Use workspaces for temporary, identical environments (e.g., testing branch deployments). For long-lived environments like Dev, QA, and Prod, use separate directories/folders with distinct backend configurations instead, as workspaces share the same code version and can lead to accidental deployments.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 199,
+    "category": "Terraform (IaC)",
+    "question": "What is Policy as Code in IaC, and what tools are used for it?",
+    "answer": "• Policy as Code (PaC) involves writing rules to enforce security, compliance, and cost-control standards on your infrastructure code before it is provisioned.\n• Common Tools:\n  1. tfsec / Trivy: Scans Terraform code for security misconfigurations (e.g., open SSH ports, unencrypted disks).\n  2. Open Policy Agent (OPA) / Rego: A general-purpose policy engine to write custom compliance rules.\n  3. Sentinel: HashiCorp's proprietary policy-as-code framework.\n• Best Practice: Integrate PaC tools directly into the Pull Request validation stage of your CI/CD pipelines to block non-compliant changes before they reach the plan/apply stage.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 200,
+    "category": "Docker & Kubernetes",
+    "question": "Explain the difference between Liveness, Readiness, and Startup Probes in Kubernetes.",
+    "answer": "• Liveness Probe: Checks if the container is alive. If it fails, Kubernetes kills the container and restarts it according to the restartPolicy.\n• Readiness Probe: Checks if the container is ready to accept network traffic. If it fails, the Pod is removed from the Service's endpoint list, so no traffic is sent to it.\n• Startup Probe: Checks if the application inside the container has started up. Disables liveness and readiness checks until it succeeds, preventing slow-starting apps from being killed prematurely.\n• Best Practice: Always define readiness probes to prevent traffic from hitting uninitialized pods, and liveness probes to recover from deadlocks.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 201,
+    "category": "Docker & Kubernetes",
+    "question": "How does the Horizontal Pod Autoscaler (HPA) work in Kubernetes?",
+    "answer": "• HPA automatically scales the number of Pod replicas in a deployment or statefulset based on observed CPU utilization, memory usage, or custom metrics.\n• Workflow:\n  1. The HPA controller queries the Metrics Server at a regular interval (default is 15 seconds).\n  2. It calculates the required number of replicas using the formula: Replicas = ceil[Current Replicas * (Current Metric Value / Target Metric Value)].\n  3. It updates the replica count in the Deployment/ReplicaSet, causing Kubernetes to launch or terminate Pods.\n• Requirement: You must define CPU/Memory 'resources.requests' in your Pod spec for HPA to calculate utilization percentages.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 202,
+    "category": "Docker & Kubernetes",
+    "question": "What is the difference between ConfigMaps and Secrets in Kubernetes?",
+    "answer": "• ConfigMaps: Used to store non-confidential configuration data in key-value pairs (e.g., application properties, environment names).\n• Secrets: Used to store sensitive data like passwords, API tokens, and SSH keys. Secrets are stored in base64-encoded format.\n• Best Practice: Do not rely solely on Kubernetes Secrets for security, as base64 encoding is not encryption. Integrate with external KMS (Key Management Service) or Azure Key Vault using Secrets Store CSI Driver so secrets are fetched dynamically and never stored in plain text on disk.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 203,
+    "category": "Docker & Kubernetes",
+    "question": "Explain Node Affinity, Pod Affinity, and Pod Anti-Affinity.",
+    "answer": "• Node Affinity: Directs Pods to be scheduled on specific Nodes based on labels (e.g., schedule this Pod only on nodes with SSDs).\n• Pod Affinity: Schedules Pods close to other Pods (e.g., schedule the web client Pod on the same node/zone as the cache Pod to reduce latency).\n• Pod Anti-Affinity: Prevents Pods from being scheduled close to each other (e.g., do not schedule two replicas of the same web app on the same node to ensure high availability during node failures).\n• Types: 'requiredDuringSchedulingIgnoredDuringExecution' (hard requirement) and 'preferredDuringSchedulingIgnoredDuringExecution' (soft preference).",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 204,
+    "category": "Docker & Kubernetes",
+    "question": "What are Taints and Tolerations in Kubernetes?",
+    "answer": "• Taints: Applied to Nodes. They allow a node to repel a set of pods. Syntax: 'kubectl taint nodes node1 key1=value1:NoSchedule'.\n• Tolerations: Applied to Pods. They allow the scheduler to schedule pods with matching tolerations onto tainted nodes.\n• Difference from Affinity: Node Affinity attracts pods to nodes, while Taints allow nodes to repel pods unless the pod explicitly tolerates the taint.\n• Use Case: Dedicating specific nodes for GPU workloads, or marking control plane nodes so application pods aren't scheduled on them.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 205,
+    "category": "Docker & Kubernetes",
+    "question": "What is Helm in Kubernetes and why do we use it?",
+    "answer": "• Helm is the package manager for Kubernetes. It allows you to define, install, upgrade, and share complex Kubernetes applications.\n• Key Components:\n  1. Chart: A bundle of YAML templates that describe a set of Kubernetes resources.\n  2. Values.yaml: A file containing configuration variables to customize the templates for different environments (Dev, QA, Prod).\n  3. Release: A running instance of a chart in a Kubernetes cluster.\n• Benefits: Simplifies deployment, supports versioning and easy rollbacks ('helm rollback'), and avoids writing duplicate YAML files.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 206,
+    "category": "Docker & Kubernetes",
+    "question": "What is the Sidecar Pattern in Kubernetes?",
+    "answer": "• The Sidecar Pattern involves running an extra helper container inside the same Pod alongside the main application container.\n• Features: Since containers in the same Pod share the same network namespace, storage volumes, and loopback interface (localhost), they can communicate efficiently.\n• Common Use Cases:\n  1. Log Shipping: A sidecar container (like Fluentd) reads application logs from a shared volume and ships them to Elasticsearch.\n  2. Service Mesh: A proxy sidecar (like Envoy in Istio) intercepts and manages incoming/outgoing network traffic for security and telemetry.\n  3. Secret Syncing: A sidecar that pulls secrets from Vault and writes them to a local volume.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 207,
+    "category": "Docker & Kubernetes",
+    "question": "How do you troubleshoot a Pod that is stuck in 'CrashLoopBackOff' status?",
+    "answer": "• 'CrashLoopBackOff' means the pod starts, crashes, and Kubernetes tries to restart it repeatedly with an increasing delay.\n• Troubleshooting Steps:\n  1. Check Logs: Run 'kubectl logs <pod-name>' (add '--previous' to see logs from the crashed instance). This is the most common way to find application errors (e.g., database connection failed, missing env variables).\n  2. Describe Pod: Run 'kubectl describe pod <pod-name>' to check events, exit codes, and resource limits.\n  3. Check Exit Code: Exit code 137 means Out of Memory (OOMKilled), exit code 1 means application error.\n  4. Validate Configurations: Check ConfigMaps, Secrets, and database availability.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 208,
+    "category": "Docker & Kubernetes",
+    "question": "How do you troubleshoot a Pod that is stuck in 'Pending' status?",
+    "answer": "• 'Pending' means the Pod could not be scheduled onto any worker node in the cluster.\n• Troubleshooting Steps:\n  1. Describe Pod: Run 'kubectl describe pod <pod-name>' and look at the 'Events' section at the bottom.\n  2. Common Causes:\n     • Insufficient Resources: No node has enough CPU or Memory requests free to fit the Pod.\n     • Taints and Tolerations: The Pod does not tolerate the taints on available nodes.\n     • Node Selector / Affinity: The Pod's node selector labels do not match any available nodes.\n     • Unattached Volumes: The Pod is waiting for a PersistentVolume (PV) to be created or bound.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 209,
+    "category": "Docker & Kubernetes",
+    "question": "What is a NetworkPolicy in Kubernetes?",
+    "answer": "• By default, all pods in a Kubernetes cluster can communicate with each other freely. A NetworkPolicy allows you to restrict network traffic to and from Pods.\n• Features: Works like a firewall at the Pod level using labels and selectors.\n• Configuration: You can define Ingress (incoming) and Egress (outgoing) rules based on namespaces, pods, and IP blocks.\n• Requirement: You must use a network plugin (CNI) that supports NetworkPolicies, such as Calico, Cilium, or Azure CNI with network policies enabled. Default flannel does not enforce them.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 210,
+    "category": "Docker & Kubernetes",
+    "question": "What are Multi-stage Docker builds and why should you use them?",
+    "answer": "• Multi-stage builds allow you to use multiple 'FROM' statements in a single Dockerfile. You can compile your code in an initial stage and copy only the compiled artifact into a final, lightweight stage.\n• Benefits: Reduces image size drastically (e.g., removing JDK, build tools, and source code, leaving only the JRE and the jar file). This improves security (fewer packages means smaller attack surface) and deployment speed.\n• Example:\n  FROM maven:3.8-openjdk-17 AS builder\n  RUN mvn package\n  \n  FROM openjdk:17-slim\n  COPY --from=builder /app/target/app.jar /app.jar\n  CMD [\"java\", \"-jar\", \"/app.jar\"]",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 211,
+    "category": "Docker & Kubernetes",
+    "question": "What is the difference between COPY and ADD instructions in a Dockerfile?",
+    "answer": "• COPY: Simply copies files and directories from the local host build context into the container. It is preferred for its simplicity and predictability.\n• ADD: Does everything COPY does, but also has two extra features:\n  1. It can extract local tar archives automatically into the container.\n  2. It can download files from remote URLs.\n• Best Practice: Use COPY for standard file transfers. Only use ADD when you explicitly need to auto-extract local tar files.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 212,
+    "category": "Docker & Kubernetes",
+    "question": "What is the difference between Docker Volumes and Bind Mounts?",
+    "answer": "• Docker Volumes: Managed entirely by Docker and stored in a directory managed by Docker on the host machine (/var/lib/docker/volumes/). They are isolated from the host OS and are the preferred way to persist container data.\n• Bind Mounts: Map any arbitrary file or directory on the host machine directly into the container. They rely on the host's directory structure and permissions.\n• Best Practice: Use Volumes for database persistence and production data. Use Bind Mounts for local development (e.g., mounting source code so changes reflect in the container instantly without rebuilding).",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 213,
+    "category": "Docker & Kubernetes",
+    "question": "What are Distroless and Alpine images, and why are they used?",
+    "answer": "• Alpine: A lightweight Linux distribution based on musl libc and busybox, resulting in very small base images (~5MB).\n• Distroless: Images created by Google that contain only your application and its runtime dependencies. They do not contain package managers, shells (bash/sh), or standard Linux utilities.\n• Why use them: Both reduce the image size and, more importantly, minimize the security vulnerability footprint. Distroless is highly secure because an attacker who exploits the application cannot spawn a shell or install malicious tools.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 214,
+    "category": "Docker & Kubernetes",
+    "question": "How do you minimize the size of a Docker image?",
+    "answer": "• Best Practices:\n  1. Use Multi-stage Builds: Compile in one stage, copy only artifacts to the runner stage.\n  2. Use Small Base Images: Use alpine, slim, or distroless base images instead of full OS images (like ubuntu or centos).\n  3. Minimize Layers: Combine multiple RUN commands using '&&' and line continuations ('\\') to reduce the number of image layers.\n  4. Clean Up: Delete package manager caches and temporary files in the same RUN layer they were created (e.g., 'apt-get clean && rm -rf /var/lib/apt/lists/*').\n  5. Use .dockerignore: Exclude node_modules, logs, and local build artifacts from the build context.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 215,
+    "category": "Azure & Azure DevOps",
+    "question": "Explain Blue-Green Deployment and Canary Deployment strategies.",
+    "answer": "• Blue-Green: You maintain two identical production environments. 'Blue' is active (serving traffic), and 'Green' is idle. You deploy the new version to Green, run tests, and then switch the router/load balancer to point to Green. If issues arise, you switch back to Blue instantly.\n• Canary: You deploy the new version to a small subset of servers or pods (e.g., 5% of traffic). You monitor performance, error rates, and user feedback. If stable, you gradually roll out the new version to the remaining 95%. If it fails, only a tiny fraction of users are affected.\n• Comparison: Blue-Green requires double the resources; Canary is cost-effective and safer but requires sophisticated routing (e.g., Service Mesh).",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 216,
+    "category": "Azure & Azure DevOps",
+    "question": "How do you implement caching in CI/CD pipelines, and why is it important?",
+    "answer": "• Pipeline Caching: Saves dependencies (like npm node_modules, Maven .m2, NuGet packages) after the first build and restores them in subsequent runs.\n• Why: It significantly reduces build times by avoiding downloading gigabytes of dependencies over the internet for every single commit.\n• Azure Pipelines Syntax: Use the 'Cache@2' task, defining a key based on the package lock file (e.g., package-lock.json) so the cache is invalidated and rebuilt only when dependencies change.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 217,
+    "category": "Azure & Azure DevOps",
+    "question": "What is the difference between Microsoft-hosted agents and Self-hosted agents in Azure DevOps?",
+    "answer": "• Microsoft-hosted Agents: Managed entirely by Microsoft. A fresh virtual machine is created for every job and discarded afterward. Zero maintenance, but limited in CPU/Memory, cannot access private networks, and has execution time limits.\n• Self-hosted Agents: Installed and managed on your own infrastructure (VMs, physical servers, Kubernetes). They persist between builds, allowing faster caching. They can access resources inside your private VNet and have no execution time limits, but you are responsible for maintenance and updates.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 218,
+    "category": "Azure & Azure DevOps",
+    "question": "What are Multi-stage YAML pipelines and why are they preferred over Classic release pipelines?",
+    "answer": "• Multi-stage YAML pipelines allow you to define both your Build (CI) and Release (CD) stages in a single YAML file (pipeline-as-code).\n• Why Preferred:\n  1. Version Control: The pipeline definition is stored in Git alongside the application code, allowing you to track changes, review via PRs, and roll back easily.\n  2. Reusability: You can use templates to share stages, jobs, and tasks across different pipelines.\n  3. Multi-stage: Clearly defines dependencies between stages (e.g., Dev -> QA -> Prod) with approvals and checks configured on environments.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 219,
+    "category": "Azure & Azure DevOps",
+    "question": "How do you handle secrets leakage prevention in CI/CD?",
+    "answer": "• Best Practices:\n  1. Mask Secrets: Ensure all secret variables in Azure DevOps are marked as 'secret'. The pipeline will automatically mask their values (showing '***') in the console logs.\n  2. GitGuardian / Trufflehog: Integrate secret-scanning tools in the pre-commit stage or as a pipeline task to scan the codebase for exposed passwords, keys, or certificates.\n  3. Short-lived Credentials: Use Azure Service Connections with Workload Identity Federation (OIDC) instead of storing long-lived service principal client secrets.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 220,
+    "category": "Linux & Git",
+    "question": "How do you ensure a Bash script is robust and handles errors safely?",
+    "answer": "• Add 'set' options at the beginning of the script:\n  1. 'set -e': Instructs the script to exit immediately if any command exits with a non-zero status.\n  2. 'set -u': Exits the script if it tries to use an uninitialized/unbound variable.\n  3. 'set -o pipefail': Ensures that if any command in a pipeline fails (e.g., cmd1 | cmd2), the exit status of the entire pipeline is that of the failed command, not the last one.\n• Best Practice: Use double quotes around variables to prevent word splitting, and implement a cleanup trap ('trap cleanup EXIT') to clean up temporary files.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 221,
+    "category": "Linux & Git",
+    "question": "Which Linux commands do you use to troubleshoot network connectivity issues?",
+    "answer": "• ping: Check basic network reachability and latency to a host.\n• curl / wget: Test HTTP/HTTPS connections and fetch headers.\n• telnet / nc (netcat): Check if a specific port is open on a remote server (e.g., 'nc -zv 10.0.0.4 3306').\n• nslookup / dig: Query DNS records to troubleshoot hostname resolution.\n• netstat / ss: View active network connections and listening ports on the local machine (e.g., 'ss -tulpn').\n• traceroute / tracepath: Track the route packets take to reach a host, identifying where they are getting dropped.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 222,
+    "category": "Linux & Git",
+    "question": "What is systemd and how do you manage services with it?",
+    "answer": "• systemd is the system and service manager for Linux operating systems, acting as the parent process (PID 1).\n• Service Management Commands:\n  • 'sudo systemctl start <service>' - Start a service.\n  • 'sudo systemctl stop <service>' - Stop a service.\n  • 'sudo systemctl restart <service>' - Restart a service.\n  • 'sudo systemctl enable <service>' - Configure the service to start automatically on boot.\n  • 'sudo systemctl status <service>' - View the current status and recent logs.\n• Logs: Use 'journalctl -u <service> -n 100 -f' to view and follow the service logs.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 223,
+    "category": "Linux & Git",
+    "question": "What is logrotate and why is it important in production Linux servers?",
+    "answer": "• logrotate is a system utility that automatically rotates, compresses, and removes log files to prevent them from consuming all available disk space.\n• Features: It can be configured to run daily, weekly, or monthly, compress old logs into .gz files, and keep a specified number of old logs before deleting them.\n• Why: Without logrotate, application logs (like Nginx, Tomcat) would grow infinitely, eventually filling up the disk and causing services to crash.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 224,
+    "category": "Linux & Git",
+    "question": "Explain the syntax of a Linux cron job.",
+    "answer": "• A cron job is a scheduled task that runs automatically at specified intervals.\n• Syntax: * * * * * /path/to/command\n  • Minute (0 - 59)\n  • Hour (0 - 23)\n  • Day of Month (1 - 31)\n  • Month (1 - 12)\n  • Day of Week (0 - 6, where 0 is Sunday)\n• Examples:\n  • '0 0 * * *' - Runs every day at midnight.\n  • '*/5 * * * *' - Runs every 5 minutes.\n  • '0 8 * * 1-5' - Runs at 8:00 AM, Monday through Friday.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 225,
+    "category": "Azure & Azure DevOps",
+    "question": "What is the difference between Azure Service Endpoints and Private Endpoints?",
+    "answer": "• Service Endpoints: Keep traffic to Azure services (like SQL, Storage) within the Microsoft backbone network. The service still uses its public IP address, but firewalls restrict access only to traffic originating from your specific subnet.\n• Private Endpoints: Allocate a private IP address from your VNet to the Azure service using a network interface (NIC). The service is accessed via this private IP, making it completely private and removing it from the public internet.\n• Best Practice: Use Private Endpoints for enterprise-grade security, as they completely isolate the service and protect against data exfiltration.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 226,
+    "category": "Azure & Azure DevOps",
+    "question": "Explain VNet Peering in Azure and its types.",
+    "answer": "• VNet Peering connects two Azure Virtual Networks seamlessly, allowing resources in either VNet to communicate with each other directly using private IP addresses with low latency.\n• Types:\n  1. Regional VNet Peering: Connects VNets within the same Azure region.\n  2. Global VNet Peering: Connects VNets across different Azure regions.\n• Features: Peered traffic remains on Microsoft's private backbone network, not the public internet. Bandwidth is not restricted, but you are charged for ingress and egress data transfer.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 227,
+    "category": "Azure & Azure DevOps",
+    "question": "Explain the Hub-and-Spoke network topology in Azure.",
+    "answer": "• Hub-and-Spoke is a network design where a central 'Hub' VNet acts as the single point of connectivity to on-premises networks and hosts shared services (like Azure Firewall, Bastion, VPN Gateway).\n• 'Spoke' VNets peer with the Hub and host individual application workloads (like AKS clusters, VMs).\n• Routing: Traffic between spokes, or between spokes and the internet, is routed through the Hub VNet where it can be inspected and filtered by a firewall.\n• Benefits: Centralized security management, reduced cost by sharing common resources, and prevents spokes from communicating directly with each other.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 228,
+    "category": "Azure & Azure DevOps",
+    "question": "What is the difference between Azure Application Gateway and Azure Load Balancer?",
+    "answer": "• Azure Load Balancer: Operates at Layer 4 (Transport layer). It routes TCP/UDP traffic based on IP address and port. It is extremely fast and suitable for simple VM load balancing.\n• Azure Application Gateway: Operates at Layer 7 (Application layer). It understands HTTP/HTTPS traffic, allowing routing based on URL paths (e.g., /images goes to one pool, /api goes to another). It supports SSL termination, cookie-based session affinity, and includes a Web Application Firewall (WAF).\n• Use Case: Use Application Gateway for web applications and microservices, and Load Balancer for non-HTTP workloads.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 229,
+    "category": "Azure & Azure DevOps",
+    "question": "How do Azure Monitor, Log Analytics, and Application Insights work together?",
+    "answer": "• Azure Monitor: The overarching monitoring service that collects, analyzes, and acts on telemetry data from your Azure and on-premises environments.\n• Log Analytics: A tool within Azure Monitor used to write queries (using Kusto Query Language - KQL) and analyze log data collected from resources.\n• Application Insights: A sub-service of Azure Monitor designed for Application Performance Management (APM). It monitors live web applications, tracking response times, exception rates, dependencies, and user sessions.\n• Integration: Application Insights and Azure resources send their logs to a Log Analytics Workspace, where Azure Monitor uses them to trigger alerts and build dashboards.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 230,
+    "category": "DevOps General",
+    "question": "Explain SLA, SLO, and SLI in Site Reliability Engineering (SRE).",
+    "answer": "• SLI (Service Level Indicator): A quantitative measure of a service's performance in real-time (e.g., HTTP request latency, error rate, uptime percentage).\n• SLO (Service Level Objective): A target reliability level for the service, agreed upon by the team (e.g., 99.9% of HTTP requests must have a latency under 200ms over a 30-day window).\n• SLA (Service Level Agreement): A legal agreement with users specifying the service reliability, including financial penalties or refunds if the SLO is not met (e.g., if uptime falls below 99.5%, users get a 10% refund).\n• Relationship: SLI measures -> SLO targets -> SLA promises.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 231,
+    "category": "DevOps General",
+    "question": "What is an Error Budget in SRE and how is it used?",
+    "answer": "• Error Budget: The maximum allowable unreliability of a service, calculated as 100% - SLO (e.g., if your uptime SLO is 99.9%, your error budget is 0.1% of downtime).\n• Usage: It acts as a balance between feature velocity and service reliability:\n  • If the error budget is full, the development team can push new features rapidly.\n  • If the error budget is exhausted (spent due to outages or bugs), deployments are frozen, and the team must focus solely on stability, bug fixes, and reliability improvements.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 232,
+    "category": "DevOps General",
+    "question": "What is the difference between Monitoring and Observability?",
+    "answer": "• Monitoring: Tells you *when* something is wrong by collecting predefined metrics (e.g., CPU is at 95%, database is down). It answers the question: 'Is the system working?'\n• Observability: Allows you to understand *why* something is wrong by analyzing the internal state of the system using three pillars: Metrics, Logs, and Traces (MelT). It answers the question: 'Why is this specific request failing?'\n• Summary: Monitoring is reactive and focuses on known failure modes. Observability is proactive and helps debug complex, distributed systems with unknown failure modes.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 233,
+    "category": "DevOps General",
+    "question": "What is a Blameless Post-Mortem?",
+    "answer": "• A Blameless Post-Mortem is a meeting and document created after a production incident to analyze what happened, why it happened, and how to prevent it in the future, without pointing fingers or blaming individuals.\n• Key Mindset: Assume that everyone acted with good intentions based on the information they had. Focus on system failures (e.g., lack of guardrails, poor testing, missing alerts) rather than human error.\n• Outcome: Actionable tasks to improve the system, sharing the learnings with the wider organization.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 234,
+    "category": "DevOps General",
+    "question": "What is Chaos Engineering?",
+    "answer": "• Chaos Engineering is the practice of deliberately introducing failures into a production or staging system to test its resilience and verify that it can handle unexpected outages gracefully.\n• Examples: Randomly killing Kubernetes Pods (using Chaos Mesh or Chaos Monkey), injecting network latency, blocking access to databases.\n• Goal: To identify weaknesses (e.g., failing failover mechanisms, missing alerts, cascading failures) before they cause real customer-facing outages.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 235,
+    "category": "DevOps General",
+    "question": "What is GitOps and how does it work?",
+    "answer": "• GitOps is an operational framework where Git is used as the single source of truth for declarative infrastructure and application deployments.\n• Workflow:\n  1. The desired state of the system is defined in Git repositories (YAML manifests, Helm charts).\n  2. An operator/agent (like ArgoCD or Flux) runs inside the Kubernetes cluster.\n  3. The operator continuously compares the desired state in Git with the actual state in the cluster.\n  4. If a drift is detected, the operator automatically reconciles the cluster to match Git.\n• Benefits: Improved security (pipelines don't need cluster admin access; they just commit to Git), audit trail of all changes, and instant disaster recovery.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 236,
+    "category": "DevOps General",
+    "question": "What does 'Shift Left' mean in DevSecOps?",
+    "answer": "• 'Shift Left' means integrating security testing and compliance validation as early as possible in the software development lifecycle (SDLC), rather than waiting until the deployment or production stage.\n• Implementation:\n  • Code Stage: IDE plugins that highlight insecure code, SAST (Static Application Security Testing) tools.\n  • Commit Stage: Automated secret scanning (checking for committed passwords) and SCA (Software Composition Analysis) to scan third-party dependencies for vulnerabilities.\n  • Build Stage: DAST (Dynamic Application Security Testing) and container image scanning.\n• Benefit: Finding and fixing security bugs early is significantly cheaper, faster, and safer than fixing them in production.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 237,
+    "category": "Linux & Git",
+    "question": "What is a git squash commit, and why is it useful?",
+    "answer": "• Squashing involves combining multiple commits from a feature branch into a single, clean commit before merging it into the main branch.\n• Command: 'git rebase -i' or using the 'Squash and Merge' option in GitHub/Azure DevOps PRs.\n• Benefits: Keeps the commit history of the main branch clean and readable. Instead of showing intermediate commits like 'fixed typo', 'temp commit', 'testing again', it shows a single meaningful commit explaining the entire feature.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 238,
+    "category": "DevOps General",
+    "question": "What is the difference between SAST and DAST?",
+    "answer": "• SAST (Static Application Security Testing): Analyzes the application's source code, byte code, or binaries for security vulnerabilities *without* running the application. It is a 'white-box' testing method.\n• DAST (Dynamic Application Security Testing): Analyzes a running application by simulating external attacks (like SQL injection, XSS) from the outside. It is a 'black-box' testing method.\n• Best Practice: Use both in your pipelines (SAST during the build stage, DAST during the staging/deployment stage) to cover both code-level and runtime vulnerabilities.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 239,
+    "category": "DevOps General",
+    "question": "What is Software Composition Analysis (SCA) and why is it critical?",
+    "answer": "• SCA is the practice of scanning your application's open-source and third-party dependencies (e.g., npm packages, NuGet, Maven libraries) to identify known security vulnerabilities and license compliance issues.\n• Common Tools: Snyk, OWASP Dependency-Check, Black Duck, SonarQube.\n• Why Critical: Modern applications are made up of 80% open-source libraries. If a library you import has a critical vulnerability (like the Log4j vulnerability), your application becomes vulnerable even if your own code is secure.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 240,
+    "category": "DevOps General",
+    "question": "What is the difference between Immutable Infrastructure and Mutable Infrastructure?",
+    "answer": "• Mutable Infrastructure: Servers are modified and updated in-place (e.g., SSHing into a VM to upgrade Nginx, apply patches, or change configs). This leads to 'configuration drift' where servers that should be identical become different over time.\n• Immutable Infrastructure: Servers are never updated in-place. If a configuration change or patch is needed, you build a new server image (AMI, VM image) and deploy new instances, destroying the old ones.\n• Best Practice: Use Immutable Infrastructure (using tools like Packer, Terraform, Docker) to ensure consistency, eliminate configuration drift, and make rollbacks trivial.",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 241,
+    "category": "Azure & Azure DevOps",
+    "question": "What is Workload Identity Federation (OIDC) in Azure DevOps and why should you use it?",
+    "answer": "• Workload Identity Federation allows Azure DevOps pipelines to authenticate with Azure securely without storing any long-lived credentials (like Service Principal client secrets) in Azure DevOps.\n• How it works: It uses OpenID Connect (OIDC) to exchange a short-lived federated token issued by Azure DevOps for an Azure AD access token at runtime.\n• Benefit: Eliminates the risk of secret leakage (since there are no secrets stored to leak) and removes the administrative overhead of rotating service principal secrets every year.",
+    "difficulty": "Hard",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 242,
+    "category": "DevOps General",
+    "question": "Explain the concept of 'GitOps' vs 'ClickOps'.",
+    "answer": "• ClickOps: A slang term for managing infrastructure by manually clicking buttons in a cloud provider's web console. It is error-prone, undocumented, and cannot be easily reproduced or rolled back.\n• GitOps / IaC: Managing infrastructure programmatically using code stored in Git. All changes are peer-reviewed via Pull Requests, automatically tested in pipelines, and fully documented by the commit history.\n• Summary: Shift from ClickOps to GitOps to achieve speed, scalability, consistency, and auditable governance.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 243,
+    "category": "Docker & Kubernetes",
+    "question": "What is the difference between a Pod and a Container in Kubernetes?",
+    "answer": "• Container: A single, isolated runtime environment wrapping an application and its dependencies (e.g., a Docker container).\n• Pod: The smallest deployable unit in Kubernetes. A Pod can host one or more containers (tightly coupled) that share the same network namespace, storage volumes, and IP address.\n• Analogy: Think of a container as a single person, and a Pod as a room. A room can hold one person or a group of people who need to work closely together.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 244,
+    "category": "Linux & Git",
+    "question": "What is 'git stash' and when should you use it?",
+    "answer": "• 'git stash' temporarily shelves (saves) changes you've made to your working copy so you can work on something else, and then come back and re-apply them later.\n• Use Cases: You are in the middle of a feature, and a critical production bug comes up. You don't want to make half-baked commits. You run 'git stash', switch to main, fix the bug, switch back, and run 'git stash pop' to resume your work.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 245,
+    "category": "Terraform (IaC)",
+    "question": "What is a Local Value (local) in Terraform and how does it differ from an Input Variable?",
+    "answer": "• Input Variables (var): Act like function arguments. They allow users to customize the configuration by passing values at runtime.\n• Local Values (local): Act like local temporary variables in programming. They are defined internally within the module and cannot be set from outside.\n• Best Practice: Use local values to simplify complex expressions, avoid repeating the same values, or construct dynamic values (e.g., combining environment names and resource types for naming conventions).",
+    "difficulty": "Medium",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 246,
+    "category": "Azure & Azure DevOps",
+    "question": "What is Azure Resource Manager (ARM) and what are its benefits?",
+    "answer": "• ARM is the deployment and management service for Azure. It provides a management layer that enables you to create, update, and delete resources in your Azure account.\n• Benefits:\n  1. Declarative Templates: Use ARM templates (JSON) or Bicep to deploy infrastructure.\n  2. Resource Groups: Manage resources as a group rather than individually.\n  3. Access Control: Apply RBAC (Role-Based Access Control) to secure resources.\n  4. Tagging: Organize resources using tags for billing and management.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 247,
+    "category": "DevOps General",
+    "question": "What is the difference between Continuous Delivery and Continuous Deployment?",
+    "answer": "• Continuous Delivery: Code changes are automatically built, tested, and prepared for a release to production. However, the actual trigger to deploy to production requires manual approval (a human clicks a button).\n• Continuous Deployment: Every change that passes all stages of the automated pipeline is deployed directly to production automatically, without any human intervention.\n• Summary: Continuous Delivery has a manual gate before production; Continuous Deployment is fully automated.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 248,
+    "category": "DevOps General",
+    "question": "What is the difference between Monolithic and Microservices architecture?",
+    "answer": "• Monolithic: The entire application is built as a single, unified codebase and deployed as a single unit. It is simple to develop and deploy initially, but hard to scale, slow to build, and a single bug can bring down the whole system.\n• Microservices: The application is split into small, independent services that communicate via APIs (REST, gRPC). Each service has its own database and can be developed, deployed, and scaled independently. However, it increases operational complexity.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 249,
+    "category": "Docker & Kubernetes",
+    "question": "How do you run a Docker container in the background (detached mode) and how do you view its logs?",
+    "answer": "• Run in Background: Use the '-d' flag. Example: 'docker run -d -p 80:80 nginx'. This starts the container and prints its ID, returning control to your terminal.\n• View Logs: Use 'docker logs <container_id_or_name>'. To follow the logs in real-time, add the '-f' flag (e.g., 'docker logs -f my-nginx').",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
+  },
+  {
+    "id": 250,
+    "category": "Linux & Git",
+    "question": "Which Linux commands do you use to check IP address and verify internet connectivity?",
+    "answer": "• Check IP Address:\n  • 'ip addr show' (or 'ip a') - The modern and preferred command.\n  • 'ifconfig' - The legacy command (may require net-tools package).\n• Verify Internet Connectivity:\n  • 'ping 8.8.8.8' - Tests network reachability to Google's public DNS.\n  • 'curl -I https://www.google.com' - Tests DNS resolution and HTTP connectivity.",
+    "difficulty": "Easy",
+    "source": "Best DevOps Practices"
   }
 ];
 
