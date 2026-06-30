@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial Render
     filterAndRenderQuestions();
     updateProgressWidgets();
+    initUserProfileAndEngagement(); // Initialize new profile and comments logic
 });
 
 /* ==========================================================================
@@ -1340,4 +1341,209 @@ function showQuestionModal(id) {
 
 function hideQuestionModal() {
     document.getElementById('q-detail-modal').style.display = 'none';
+}
+
+/* ==========================================================================
+   USER PROFILE, LIKES & COMMENTS (ENGAGEMENT)
+   ========================================================================== */
+let pageLikesCount = 142;
+let isPageLiked = false;
+let communityComments = [];
+
+const defaultComments = [
+    { name: "Aman Sharma", text: "This is an amazing website! The MCQ practice exam with 10/20 questions option is very challenging. Helped me prepare for my Azure DevOps interview.", date: "2 days ago" },
+    { name: "Priya Patel", text: "Thank you Deepak! The detailed explanations in the mock exam are extremely helpful. I love the dark mode design.", date: "1 day ago" },
+    { name: "Rohan Gupta", text: "Very clean UI. Shuffling the questions keeps the practice fresh. Highly recommended.", date: "5 hours ago" }
+];
+
+function initUserProfileAndEngagement() {
+    const avatarBtn = document.getElementById('user-avatar-btn');
+    const dropdown = document.getElementById('user-dropdown');
+    const shareBtn = document.getElementById('share-website-btn');
+    const likeBtn = document.getElementById('like-page-btn');
+    const openCommentsBtn = document.getElementById('open-comments-btn');
+    const closeCommentsBtn = document.getElementById('close-comments-btn');
+    const commentsModal = document.getElementById('comments-modal');
+    const commentsBackdrop = document.getElementById('comments-backdrop');
+    const commentForm = document.getElementById('comment-form');
+
+    // 1. Dropdown Toggle
+    if (avatarBtn && dropdown) {
+        avatarBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isVisible = dropdown.style.display === 'block';
+            dropdown.style.display = isVisible ? 'none' : 'block';
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target) && e.target !== avatarBtn) {
+                dropdown.style.display = 'none';
+            }
+        });
+    }
+
+    // 2. Share Button
+    if (shareBtn) {
+        shareBtn.addEventListener('click', () => {
+            const shareData = {
+                title: 'DevOps & Azure DevOps Interview Hub',
+                text: 'Prepare for your DevOps interviews with 270 Q&As, 3D Flashcards, and customizable MCQ Practice Exams!',
+                url: window.location.origin + window.location.pathname
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback: Copy to Clipboard
+                navigator.clipboard.writeText(shareData.url)
+                    .then(() => {
+                        alert("Website link copied to clipboard! Share it with your friends.");
+                    })
+                    .catch(err => {
+                        console.error("Failed to copy link:", err);
+                    });
+            }
+        });
+    }
+
+    // 3. Likes Logic
+    if (likeBtn) {
+        // Load Likes State
+        const savedLiked = localStorage.getItem('devops_hub_liked');
+        const savedLikesCount = localStorage.getItem('devops_hub_likes_count');
+
+        if (savedLikesCount) {
+            pageLikesCount = parseInt(savedLikesCount, 10);
+        } else {
+            pageLikesCount = 142;
+        }
+
+        if (savedLiked === 'true') {
+            isPageLiked = true;
+            likeBtn.classList.add('liked');
+            likeBtn.querySelector('i').className = 'fa-solid fa-heart';
+        }
+
+        updateLikesDisplay();
+
+        likeBtn.addEventListener('click', () => {
+            isPageLiked = !isPageLiked;
+            if (isPageLiked) {
+                pageLikesCount += 1;
+                likeBtn.classList.add('liked');
+                likeBtn.querySelector('i').className = 'fa-solid fa-heart';
+            } else {
+                pageLikesCount -= 1;
+                likeBtn.classList.remove('liked');
+                likeBtn.querySelector('i').className = 'fa-regular fa-heart';
+            }
+
+            localStorage.setItem('devops_hub_liked', isPageLiked.toString());
+            localStorage.setItem('devops_hub_likes_count', pageLikesCount.toString());
+            updateLikesDisplay();
+        });
+    }
+
+    // 4. Comments Logic
+    // Load Comments from LocalStorage
+    const savedComments = localStorage.getItem('devops_hub_comments');
+    if (savedComments) {
+        communityComments = JSON.parse(savedComments);
+    } else {
+        communityComments = [...defaultComments];
+        localStorage.setItem('devops_hub_comments', JSON.stringify(communityComments));
+    }
+
+    updateCommentsCountDisplay();
+
+    // Modal Events
+    if (openCommentsBtn && commentsModal) {
+        openCommentsBtn.addEventListener('click', () => {
+            commentsModal.style.display = 'flex';
+            renderCommentsList();
+            // Close dropdown
+            if (dropdown) dropdown.style.display = 'none';
+        });
+    }
+
+    const hideCommentsModal = () => {
+        if (commentsModal) commentsModal.style.display = 'none';
+    };
+
+    if (closeCommentsBtn) closeCommentsBtn.addEventListener('click', hideCommentsModal);
+    if (commentsBackdrop) commentsBackdrop.addEventListener('click', hideCommentsModal);
+
+    // Comment Form Submission
+    if (commentForm) {
+        commentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameInput = document.getElementById('comment-name');
+            const textInput = document.getElementById('comment-text');
+
+            if (nameInput && textInput) {
+                const newComment = {
+                    name: nameInput.value.trim(),
+                    text: textInput.value.trim(),
+                    date: 'Just now'
+                };
+
+                communityComments.unshift(newComment); // Add new comment at the top
+                localStorage.setItem('devops_hub_comments', JSON.stringify(communityComments));
+
+                // Clear form & re-render
+                textInput.value = '';
+                // Keep name filled for convenience
+                
+                renderCommentsList();
+                updateCommentsCountDisplay();
+            }
+        });
+    }
+}
+
+function updateLikesDisplay() {
+    const textEl = document.getElementById('like-count-text');
+    if (textEl) {
+        textEl.innerText = `${pageLikesCount} Likes`;
+    }
+}
+
+function updateCommentsCountDisplay() {
+    const textEl = document.getElementById('comment-count-text');
+    if (textEl) {
+        textEl.innerText = `${communityComments.length} Comments`;
+    }
+}
+
+function renderCommentsList() {
+    const listEl = document.getElementById('comments-list');
+    if (!listEl) return;
+
+    listEl.innerHTML = '';
+    communityComments.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'comment-card';
+        card.innerHTML = `
+            <div class="comment-card-header">
+                <span class="comment-author">${escapeHTML(c.name)}</span>
+                <span class="comment-date">${c.date}</span>
+            </div>
+            <div class="comment-body">${escapeHTML(c.text)}</div>
+        `;
+        listEl.appendChild(card);
+    });
+}
+
+function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, 
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag] || tag)
+    );
 }
