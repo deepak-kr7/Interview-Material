@@ -563,14 +563,45 @@ function resetAllFilters() {
 function filterAndRenderQuestions() {
     let filtered = [...questions];
     
-    // 1. Search Filter
+    // 1. Search Filter (Strict Question & Category Matching with Smart Aliases)
     if (filters.search.trim() !== '') {
         const query = filters.search.toLowerCase().trim();
-        filtered = filtered.filter(q => 
-            q.question.toLowerCase().includes(query) || 
-            q.answer.toLowerCase().includes(query) ||
-            q.category.toLowerCase().includes(query)
-        );
+        
+        // Define smart keyword groups
+        let searchTerms = [query];
+        
+        // Kubernetes / AKS / K8s
+        if (['aks', 'k8s', 'kubernetes', 'kube'].some(term => query.includes(term))) {
+            searchTerms.push('kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster');
+        }
+        // Terraform / IaC / TF
+        else if (['terraform', 'tf', 'iac'].some(term => query.includes(term))) {
+            searchTerms.push('terraform', 'tf', 'iac', 'infrastructure as code');
+        }
+        // CI/CD / Pipelines
+        else if (['cicd', 'ci/cd', 'pipeline', 'pipelines', 'build', 'deploy'].some(term => query.includes(term))) {
+            searchTerms.push('pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment');
+        }
+        // Docker / Container
+        else if (['docker', 'container', 'image', 'dockerfile'].some(term => query.includes(term))) {
+            searchTerms.push('docker', 'container', 'image', 'dockerfile');
+        }
+        // Linux / Bash
+        else if (['linux', 'bash', 'shell', 'command', 'commands'].some(term => query.includes(term))) {
+            searchTerms.push('linux', 'bash', 'shell', 'command', 'commands');
+        }
+        // Git / GitHub
+        else if (['git', 'github', 'gitlab', 'repo', 'branch', 'commit'].some(term => query.includes(term))) {
+            searchTerms.push('git', 'github', 'gitlab', 'repo', 'branch', 'commit', 'version control');
+        }
+        
+        filtered = filtered.filter(q => {
+            const qText = q.question.toLowerCase();
+            const catText = q.category.toLowerCase();
+            
+            // Match search terms against question text or category name only (not the long answer body)
+            return searchTerms.some(term => qText.includes(term) || catText.includes(term));
+        });
     }
     
     // 2. Category Filter
