@@ -24,16 +24,31 @@ Example: Assigning the Contributor role to a user at the Resource Group scope al
 	•	Click Review + Assign. 
 
 3. How can I give user permission to files in Linux?
-Change ownership
-sudo chown username filename
-Change permissions
-chmod 755 filename
-Add user to group
-sudo usermod -aG groupname username
-Using ACL
-setfacl -m u:username:rwx filename
-Check permissions:
-ls -l
+“In Linux, file permissions and ownership can be managed using a variety of commands to control access:
+
+	1. Changing File Ownership (`chown`):
+		•   To change the owner of a file: `sudo chown username filename`
+		•   To change both the owner and the group: `sudo chown username:groupname filename`
+		•   To apply ownership changes recursively to all files in a directory: `sudo chown -R username:groupname /path/to/directory`
+
+	2. Changing File Permissions (`chmod`):
+		•   Using Octal (Numeric) Mode:
+			•   `chmod 755 filename` -> Read, write, execute (7) for Owner; read and execute (5) for Group and Others.
+			•   `chmod 644 filename` -> Read and write (6) for Owner; read-only (4) for Group and Others.
+		•   Using Symbolic Mode:
+			•   `chmod u+x filename` -> Adds execute (+x) permission for the owner (u).
+			•   `chmod g-w filename` -> Removes write (-w) permission for the group (g).
+
+	3. Managing Group Membership:
+		•   Add a user to a supplementary group to grant them the group's permissions:
+		    `sudo usermod -aG groupname username`
+
+	4. Advanced Access Control Lists (ACLs):
+		•   For fine-grained permissions (e.g., granting a specific user access without changing the owner or group):
+		    `setfacl -m u:username:rwx filename`
+		•   To view the ACL permissions: `getfacl filename`
+
+To verify the permissions, run `ls -l filename`, which displays the owner, group, and the read (r), write (w), and execute (x) flags.”
 
 4. What is Docker? Tell about Dockerfile
 Docker is a containerization platform that packages applications along with their dependencies so they run consistently across different environments.
@@ -53,17 +68,23 @@ Common instructions:
 	•	ENTRYPOINT 
 
 5. How can I give Owner permission to a user?
-	•	Azure Portal 
-	•	Go to Resource Group/Subscription 
-	•	Open Access Control (IAM) 
-	•	Add Role Assignment 
-	•	Choose Owner 
-	•	Select User 
-	•	Review + Assign 
-Owner can:
-	•	Create resources 
-	•	Delete resources 
-	•	Manage RBAC permissions 
+“To grant 'Owner' permissions to a user in Microsoft Azure, you use Role-Based Access Control (RBAC) via the Azure Portal, Azure CLI, or Terraform:
+
+	1. Via the Azure Portal:
+		•   Navigate to the target Scope (e.g., a Subscription, Resource Group, or individual Resource).
+		•   Click on the **Access Control (IAM)** tab in the left-hand menu.
+		•   Click **+ Add** and select **Add role assignment**.
+		•   Under the **Role** tab, search for and select the **Owner** role, then click Next.
+		•   Under the **Members** tab, click **+ Select members**, search for the user's name or email, select them, and click Select.
+		•   Click **Review + assign** to complete the process.
+
+	2. Via the Azure CLI:
+		•   Run the following command:
+		    `az role assignment create --assignee "user@example.com" --role "Owner" --scope "/subscriptions/<subscription-id>/resourceGroups/<rg-name>"`
+
+What the Owner Role Can Do:
+	•   **Full Control**: Create, read, update, and delete all resources within the assigned scope.
+	•   **Access Management**: Delegate permissions to other users by creating new RBAC role assignments (this distinguishes the 'Owner' role from the 'Contributor' role, which cannot manage access control).”
 
 6. Tell steps to build a VM
 	•	Azure Portal 
@@ -81,8 +102,19 @@ After deployment:
 	•	Install required software 
 
 7. Which type of VM have you built?
-Example answer:
-"I have created Ubuntu Linux VMs such as Ubuntu 20.04 and Ubuntu 22.04 for hosting applications, Jenkins, Docker, and Kubernetes. I have also worked with Windows Server VMs for administration and testing."
+“As a DevOps and Cloud Engineer, I have provisioned and configured various types of Virtual Machines in Azure and AWS, tailored to specific workload demands:
+
+	1. Linux Virtual Machines:
+		•   **Ubuntu Server (20.04 LTS / 22.04 LTS)**: Primarily used for hosting our core application workloads, Jenkins build agents, Docker hosts, and Kubernetes worker nodes.
+		•   **Red Hat Enterprise Linux (RHEL) / CentOS**: Used for hosting enterprise database workloads (PostgreSQL) and legacy applications that require enterprise-grade stability and support.
+
+	2. Windows Server Virtual Machines:
+		•   **Windows Server 2019 / 2022**: Used for running Active Directory (Azure AD DS), testing application compatibility, and hosting IIS-based web applications.
+
+	3. Standard VM Sizes Used (Azure Examples):
+		•   **B-Series (Burstable)**: E.g., `Standard_B2s` for low-traffic development and testing environments to minimize costs.
+		•   **D-Series (General Purpose)**: E.g., `Standard_D4s_v5` for production Jenkins controllers, application servers, and Kubernetes nodes requiring a balance of CPU and memory.
+		•   **E-Series (Memory Optimized)**: E.g., `Standard_E8s_v5` for running memory-intensive database engines and caching servers like Redis.”
 
 8. Tell about Kubernetes and Kubernetes Cluster
 Kubernetes (K8s) is an orchestration platform used to deploy, manage, scale, and monitor containerized applications.
@@ -146,26 +178,28 @@ terraform refresh
 Refresh state (older command; newer workflows refresh during plan/apply).
 
 12. Share 10 Linux commands
-pwd
-Current directory
-ls
-List files
-cd
-Change directory
-mkdir
-Create directory
-rm
-Remove files
-cp
-Copy files
-mv
-Move files
-cat
-View file
-chmod
-Change permissions
-chown
-Change ownership
+“Here are 10 essential Linux commands that I use daily for system administration, directory navigation, and troubleshooting:
+
+	1. `pwd` (Print Working Directory): Displays the absolute path of the directory you are currently in.
+	   *Example*: `pwd`
+	2. `ls` (List): Lists the files and directories in the current folder.
+	   *Example*: `ls -lah` (lists all files, including hidden ones, in long format with human-readable file sizes).
+	3. `cd` (Change Directory): Navigates between directories in the filesystem.
+	   *Example*: `cd /var/log`
+	4. `mkdir` (Make Directory): Creates a new folder.
+	   *Example*: `mkdir -p /app/config` (the `-p` flag creates parent directories if they don't exist).
+	5. `rm` (Remove): Deletes files or directories.
+	   *Example*: `rm -rf /tmp/cache` (recursively and forcefully deletes the directory).
+	6. `cp` (Copy): Copies files or directories from one location to another.
+	   *Example*: `cp -r /src /dest`
+	7. `mv` (Move / Rename): Moves files or renames them.
+	   *Example*: `mv oldname.txt newname.txt`
+	8. `cat` (Concatenate): Outputs the contents of a file to the terminal.
+	   *Example*: `cat /etc/resolv.conf`
+	9. `chmod` (Change Mode): Modifies file and directory access permissions.
+	   *Example*: `chmod 755 script.sh`
+	10. `chown` (Change Owner): Modifies the owner and group of a file or directory.
+	    *Example*: `chown -R admin:webgroup /var/www`”
 
 13. Do we use terraform apply on pipelines?
 Yes.
@@ -180,22 +214,25 @@ Sample answer:
 "I have learned a lot in my current organization and gained hands-on experience in Azure, Terraform, Docker, Kubernetes, Linux, and CI/CD. Now I'm looking for a role with more challenging projects, greater responsibility, and opportunities to enhance my DevOps and cloud skills while contributing to business growth."
 
 15. If error occurs in Linux without hardware or service issues, what will you check?
-Check:
-	•	System logs
-journalctl
-	•	Messages
-dmesg
-	•	Disk space
-df -h
-	•	Memory
-free -h
-	•	CPU
-top
-	•	File permissions 
-	•	Network connectivity 
-	•	DNS resolution 
-	•	Recent configuration changes 
-	•	Running processes 
+“If an error occurs on a Linux server but the hardware is healthy and the service daemon is running, the issue is likely due to OS-level resource exhaustion, configuration drift, or permission blocks. I check the following:
+
+	1. System and Kernel Logs:
+		•   **System Log**: Run `journalctl -xe` or inspect `/var/log/syslog` (or `/var/log/messages` on RHEL) to check for system-level errors.
+		•   **Kernel Ring Buffer**: Run `dmesg -T` to check for kernel-level alerts, such as the Out-Of-Memory (OOM) killer terminating processes.
+
+	2. Resource Utilization:
+		•   **Disk Space**: Run `df -h` to verify if any mount point is 100% full, which prevents writing logs or temp files.
+		•   **Inodes**: Run `df -i` to check if the filesystem has run out of inodes (preventing new file creation even if disk space is free).
+		•   **Memory & Swap**: Run `free -m` or `top` / `htop` to check if physical memory is exhausted and the system is swapping heavily.
+		•   **CPU & Load Average**: Run `uptime` and `top` to check the CPU load average and identify high-CPU processes.
+
+	3. Permissions and File Handles:
+		•   **Permissions**: Verify file/directory ownership and read/write/execute permissions using `ls -la`.
+		•   **Open Files**: Run `ulimit -n` and check `/proc/sys/fs/file-max` to see if the process has reached the maximum open file descriptors limit.
+
+	4. Network and DNS:
+		•   **DNS Resolution**: Run `nslookup google.com` or `dig` to verify if DNS resolution is working.
+		•   **Network Ports**: Run `netstat -tuln` or `ss -tuln` to verify if the application is listening on the expected ports.” 
 
 16. Suppose error occurs in Docker, what will you check?
 I would check:
@@ -446,24 +483,24 @@ python test.py
 4. Difference between Ingress Controller and API Gateway
 “While both Ingress Controllers and API Gateways manage incoming traffic (North-South traffic) in a microservices architecture, they serve different purposes and operate at different levels:
 
-1. Ingress Controller:
-	•	What it is: A Kubernetes-native resource that manages external access to services within a cluster. It acts as a smart reverse proxy.
-	•	Scope: Operates primarily at the entry point of a Kubernetes cluster.
-	•	Core Functions:
-		•	Layer 7 HTTP/HTTPS routing based on hostnames (e.g., api.example.com) or paths (e.g., /users).
-		•	SSL/TLS termination.
-		•	Basic path-based load balancing.
-	•	Examples: NGINX Ingress Controller, Traefik, HAProxy, Azure AGIC.
+	1. Ingress Controller:
+		•	What it is: A Kubernetes-native resource that manages external access to services within a cluster. It acts as a smart reverse proxy.
+		•	Scope: Operates primarily at the entry point of a Kubernetes cluster.
+		•	Core Functions:
+			•	Layer 7 HTTP/HTTPS routing based on hostnames (e.g., api.example.com) or paths (e.g., /users).
+			•	SSL/TLS termination.
+			•	Basic path-based load balancing.
+		•	Examples: NGINX Ingress Controller, Traefik, HAProxy, Azure AGIC.
 
-2. API Gateway:
-	•	What it is: A comprehensive API management layer that acts as a single entry point for all clients. It is application-aware and designed to manage APIs as products.
-	•	Scope: Can operate inside or outside Kubernetes, managing traffic across multiple clusters, VMs, or legacy systems.
-	•	Core Functions:
-		•	Advanced Security: Authentication (JWT, OAuth2, API Keys) and Authorization.
-		•	Traffic Control: Rate limiting, throttling, request/response transformation.
-		•	API Lifecycle Management: Caching, request retries, circuit breaking, telemetry, and API analytics.
-		•	Developer Portal: API documentation and usage tracking.
-	•	Examples: Kong, Apigee, Azure API Management (APIM), AWS API Gateway.
+	2. API Gateway:
+		•	What it is: A comprehensive API management layer that acts as a single entry point for all clients. It is application-aware and designed to manage APIs as products.
+		•	Scope: Can operate inside or outside Kubernetes, managing traffic across multiple clusters, VMs, or legacy systems.
+		•	Core Functions:
+			•	Advanced Security: Authentication (JWT, OAuth2, API Keys) and Authorization.
+			•	Traffic Control: Rate limiting, throttling, request/response transformation.
+			•	API Lifecycle Management: Caching, request retries, circuit breaking, telemetry, and API analytics.
+			•	Developer Portal: API documentation and usage tracking.
+		•	Examples: Kong, Apigee, Azure API Management (APIM), AWS API Gateway.
 
 Summary of Differences:
 | Feature | Ingress Controller | API Gateway |
@@ -689,35 +726,60 @@ Sample Answer:
 "I have primarily worked with Azure DevOps YAML pipelines because they are version-controlled, reusable, and support Infrastructure as Code. I have basic knowledge of Classic pipelines but prefer YAML for modern CI/CD implementations."
 
 17. What is a Template in a YAML pipeline?
-A template is a reusable YAML file that avoids repeating common pipeline logic.
-Example:
-build-template.yml
-Used by multiple pipelines:
-- template: build-template.yml
-Benefits:
-	•	Reusability 
-	•	Easier maintenance 
-	•	Standardization 
+“A Template in an Azure DevOps YAML pipeline is a reusable file that allows you to define common pipeline logic once and share it across multiple pipelines. This follows the DRY (Don't Repeat Yourself) principle.
+
+Key Types of Templates:
+	1. Stage Templates: Define a complete deployment stage (e.g., a Dev deployment stage).
+	2. Job Templates: Define a set of jobs (e.g., a build job that runs on multiple OS platforms).
+	3. Step Templates: Define a sequence of tasks (e.g., a step to install Node.js, run npm build, and publish artifacts).
+
+Benefits of Using Templates:
+	•   Reusability: Avoids duplicate YAML code across different repositories or pipelines.
+	•   Security & Governance: Centralizes security scans or compliance tasks in a single template that all teams must reference.
+	•   Maintainability: If a task version changes, you only need to update it in the template file rather than in hundreds of individual pipelines.”
 
 18. Difference between Parameters and Variables in a pipeline
-Parameters
-Variables
-Evaluated before the pipeline starts
-Can change during execution
-Used for pipeline structure
-Used for runtime values
-Immutable
-Mutable
-Compile time
-Runtime
+“In Azure DevOps YAML pipelines, both parameters and variables are used to store and pass values, but they differ significantly in their evaluation time, mutability, and security:
+
+	1. Parameters (Compile-Time):
+		•   What they are: Strongly-typed inputs defined at the top of the YAML file. They are evaluated at compile-time (before the pipeline starts running).
+		•   Mutability: Immutable. Once the pipeline starts, their values cannot be changed.
+		•   Use Case: Used to control the structure of the pipeline (e.g., passing a boolean to decide whether to run a deployment stage, or choosing a target environment from a dropdown list).
+
+	2. Variables (Runtime):
+		•   What they are: Dynamic values that can be defined in the YAML, in variable groups, or via the UI. They are evaluated at runtime.
+		•   Mutability: Mutable. Their values can be updated dynamically during pipeline execution using logging commands (e.g., `##vso[task.setvariable]`).
+		•   Use Case: Used to store secrets, build numbers, or dynamic outputs from one task to be used in a later task.
+
+Summary of Differences:
+| Feature | Parameters | Variables |
+| :--- | :--- | :--- |
+| Evaluation Time | Compile-Time (before execution). | Runtime (during execution). |
+| Mutability | Immutable (read-only). | Mutable (can be changed). |
+| Data Types | Strongly typed (string, number, boolean, object). | Only strings. |
+| Security | Highly secure (cannot be injected at runtime). | Vulnerable to runtime injection if not handled carefully. |
+| UI Prompting | Can prompt the user for input before running. | Cannot prompt the user with dropdowns. |”
 
 19. How do you change a username using a Git command?
-For the current repository:
-git config user.name "John Doe"
-For all repositories:
-git config --global user.name "John Doe"
-To verify:
-git config --global --list
+“To change the author name associated with your Git commits, you use the `git config` command. You can set it at different scopes depending on your needs:
+
+	1. For the Current Repository Only:
+		•   Run the command inside the specific repository folder:
+		    `git config user.name "John Doe"`
+		•   This writes the configuration to the `.git/config` file of that repository.
+
+	2. Globally (For All Repositories on Your Machine):
+		•   Run the command with the `--global` flag:
+		    `git config --global user.name "John Doe"`
+		•   This writes the configuration to the global Git config file (typically `~/.gitconfig` on Linux/Mac).
+
+	3. To Change the Associated Email Address:
+		•   You should also update your email, as Git commits track both name and email:
+		    `git config --global user.email "john.doe@example.com"`
+
+	4. To Verify the Configuration:
+		•   List all active configurations to confirm the changes:
+		    `git config --list` or `git config user.name`”
 
 20. In a microservices architecture, how does a request reach a specific Pod?
 Request flow:
