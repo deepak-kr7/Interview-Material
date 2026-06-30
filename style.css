@@ -2147,7 +2147,7 @@ body {
 /* User Profile & Dropdown Widget */
 .user-profile-container {
     position: relative;
-    z-index: 100;
+    z-index: 999;
 }
 
 .user-avatar {
@@ -2162,6 +2162,8 @@ body {
     cursor: pointer;
     color: var(--text-secondary);
     transition: all var(--transition-fast);
+    position: relative;
+    z-index: 1000;
 }
 
 .user-avatar:hover {

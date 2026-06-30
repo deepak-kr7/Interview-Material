@@ -1371,13 +1371,13 @@ function initUserProfileAndEngagement() {
     if (avatarBtn && dropdown) {
         avatarBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isVisible = dropdown.style.display === 'block';
-            dropdown.style.display = isVisible ? 'none' : 'block';
+            const isHidden = dropdown.style.display === 'none' || dropdown.style.display === '';
+            dropdown.style.display = isHidden ? 'flex' : 'none';
         });
 
         // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target) && e.target !== avatarBtn) {
+            if (!dropdown.contains(e.target) && !avatarBtn.contains(e.target)) {
                 dropdown.style.display = 'none';
             }
         });
