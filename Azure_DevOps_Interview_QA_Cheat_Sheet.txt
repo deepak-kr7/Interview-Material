@@ -1,0 +1,805 @@
+Azure DevOps Interview Q&A Cheat Sheet
+
+1. Explain Azure Role-Based Access Control (RBAC)
+Azure RBAC is an authorization system that controls who can access Azure resources and what actions they can perform.
+RBAC consists of three components:
+	•	Security Principal – User, Group, Service Principal, or Managed Identity. 
+	•	Role Definition – Collection of permissions (Owner, Contributor, Reader, etc.). 
+	•	Scope – Where the role is assigned. 
+	•	Management Group 
+	•	Subscription 
+	•	Resource Group 
+	•	Resource 
+Example: Assigning the Contributor role to a user at the Resource Group scope allows them to manage resources in that Resource Group but not grant permissions to others.
+
+2. Basic steps to give Contributor and Reader role
+	•	Sign in to Azure Portal. 
+	•	Go to the Subscription/Resource Group/Resource. 
+	•	Select Access Control (IAM). 
+	•	Click Add > Add Role Assignment. 
+	•	Select the role: 
+	•	Contributor 
+	•	Reader 
+	•	Select the User, Group, or Service Principal. 
+	•	Click Review + Assign. 
+
+3. How can I give user permission to files in Linux?
+Change ownership
+sudo chown username filename
+Change permissions
+chmod 755 filename
+Add user to group
+sudo usermod -aG groupname username
+Using ACL
+setfacl -m u:username:rwx filename
+Check permissions:
+ls -l
+
+4. What is Docker? Tell about Dockerfile
+Docker is a containerization platform that packages applications along with their dependencies so they run consistently across different environments.
+Dockerfile
+A Dockerfile is a text file containing instructions to build a Docker image.
+Example:
+FROM ubuntu:22.04  RUN apt update  COPY . /app  WORKDIR /app  RUN apt install -y python3  CMD ["python3","app.py"]
+Common instructions:
+	•	FROM 
+	•	RUN 
+	•	COPY 
+	•	ADD 
+	•	WORKDIR 
+	•	ENV 
+	•	EXPOSE 
+	•	CMD 
+	•	ENTRYPOINT 
+
+5. How can I give Owner permission to a user?
+	•	Azure Portal 
+	•	Go to Resource Group/Subscription 
+	•	Open Access Control (IAM) 
+	•	Add Role Assignment 
+	•	Choose Owner 
+	•	Select User 
+	•	Review + Assign 
+Owner can:
+	•	Create resources 
+	•	Delete resources 
+	•	Manage RBAC permissions 
+
+6. Tell steps to build a VM
+	•	Azure Portal 
+	•	Create Resource Group 
+	•	Create Virtual Machine 
+	•	Select Image (Ubuntu/Windows) 
+	•	Choose VM Size 
+	•	Configure Username & Password/SSH Key 
+	•	Configure Networking (VNet, NSG) 
+	•	Configure Disk 
+	•	Review 
+	•	Create 
+After deployment:
+	•	Connect using SSH/RDP 
+	•	Install required software 
+
+7. Which type of VM have you built?
+Example answer:
+"I have created Ubuntu Linux VMs such as Ubuntu 20.04 and Ubuntu 22.04 for hosting applications, Jenkins, Docker, and Kubernetes. I have also worked with Windows Server VMs for administration and testing."
+
+8. Tell about Kubernetes and Kubernetes Cluster
+Kubernetes (K8s) is an orchestration platform used to deploy, manage, scale, and monitor containerized applications.
+Kubernetes Cluster
+A cluster consists of:
+Control Plane
+	•	API Server 
+	•	Scheduler 
+	•	Controller Manager 
+	•	etcd 
+Worker Nodes
+	•	kubelet 
+	•	kube-proxy 
+	•	Container Runtime 
+Benefits:
+	•	Auto Scaling 
+	•	Self Healing 
+	•	Load Balancing 
+	•	Rolling Updates 
+	•	High Availability 
+
+9. Explain Azure Pipelines and process
+Azure Pipelines is a CI/CD service used to automate build, test, and deployment.
+Flow:
+Developer      ↓ Push code to Git      ↓ Pipeline Trigger      ↓ Build      ↓ Run Tests      ↓ Create Artifact      ↓ Deploy to Dev      ↓ Approval      ↓ Deploy to QA      ↓ Deploy to Production
+Pipeline is usually defined using YAML.
+
+10. Explain Terraform Lock
+Terraform Lock prevents multiple users from modifying the same infrastructure simultaneously.
+During:
+terraform apply
+Terraform creates a lock.
+Backend examples:
+	•	Azure Storage 
+	•	AWS S3 + DynamoDB 
+	•	Terraform Cloud 
+Benefits:
+	•	Prevents corruption 
+	•	Prevents concurrent updates 
+
+11. Explain Terraform commands
+terraform init
+Initialize Terraform.
+terraform fmt
+Format configuration.
+terraform validate
+Validate syntax.
+terraform plan
+Show execution plan.
+terraform apply
+Create or update infrastructure.
+terraform destroy
+Delete infrastructure.
+terraform show
+Display state.
+terraform output
+Show outputs.
+terraform state list
+List resources.
+terraform refresh
+Refresh state (older command; newer workflows refresh during plan/apply).
+
+12. Share 10 Linux commands
+pwd
+Current directory
+ls
+List files
+cd
+Change directory
+mkdir
+Create directory
+rm
+Remove files
+cp
+Copy files
+mv
+Move files
+cat
+View file
+chmod
+Change permissions
+chown
+Change ownership
+
+13. Do we use terraform apply on pipelines?
+Yes.
+Typical CI/CD process:
+Git Push       ↓ Terraform Init       ↓ Terraform Validate       ↓ Terraform Plan       ↓ Approval       ↓ Terraform Apply
+Usually:
+	•	terraform plan runs automatically. 
+	•	terraform apply runs after approval for production. 
+
+14. Why need to change company?
+Sample answer:
+"I have learned a lot in my current organization and gained hands-on experience in Azure, Terraform, Docker, Kubernetes, Linux, and CI/CD. Now I'm looking for a role with more challenging projects, greater responsibility, and opportunities to enhance my DevOps and cloud skills while contributing to business growth."
+
+15. If error occurs in Linux without hardware or service issues, what will you check?
+Check:
+	•	System logs
+journalctl
+	•	Messages
+dmesg
+	•	Disk space
+df -h
+	•	Memory
+free -h
+	•	CPU
+top
+	•	File permissions 
+	•	Network connectivity 
+	•	DNS resolution 
+	•	Recent configuration changes 
+	•	Running processes 
+
+16. Suppose error occurs in Docker, what will you check?
+I would check:
+	•	Container status 
+docker ps -a
+	•	Container logs 
+docker logs <container>
+	•	Docker service 
+systemctl status docker
+	•	Image availability 
+docker images
+	•	Port conflicts 
+docker port <container>
+	•	Volume mounts 
+	•	Network configuration 
+	•	Disk space 
+df -h
+	•	Restart container if required 
+
+17. Before DevOps what was the gap?
+Before DevOps:
+	•	Development and Operations worked separately. 
+	•	Manual deployments. 
+	•	Slow software releases. 
+	•	Poor communication. 
+	•	Frequent deployment failures. 
+	•	Longer recovery times. 
+	•	Environment inconsistencies ("works on my machine" problem). 
+
+18. How were things running before DevOps?
+Traditional software delivery process:
+	•	Developers wrote code. 
+	•	QA tested manually. 
+	•	Operations deployed manually. 
+	•	Releases took weeks or months. 
+	•	Many manual approvals. 
+	•	Higher chances of human error. 
+	•	Limited automation and slower feedback. 
+DevOps introduced automation, CI/CD, Infrastructure as Code, monitoring, and collaboration, enabling faster and more reliable releases.
+
+19. Why need to change company?
+A good interview response is:
+"I'm grateful for the opportunities in my current organization, where I've built strong experience with Azure, Terraform, Docker, Kubernetes, Linux, and CI/CD. I'm now looking for a role that offers larger-scale cloud projects, more learning opportunities, and a clear path for professional growth. I also want to contribute to a collaborative team where I can expand my DevOps expertise while delivering business value."
+These answers are suitable for Azure DevOps Engineer interviews with 2–4 years of experience and cover common technical and HR questions.
+
+
+Here are interview-ready answers with a practical DevOps/Azure perspective.
+
+1. What deployment strategy are you following in your organization?
+Sample Answer:
+"In my organization, we primarily follow a Rolling Deployment strategy for production workloads running on Kubernetes (AKS). This allows us to update pods gradually without downtime. Before production deployment, the application is deployed to Dev, QA, and UAT environments through Azure DevOps multi-stage YAML pipelines. We also use health checks and monitor the deployment through Grafana and Prometheus. If any issue is detected, we either perform a rollback using Kubernetes deployment history or redeploy the previous stable version."
+Other deployment strategies you can mention:
+	•	Rolling Deployment (most common) 
+	•	Blue-Green Deployment 
+	•	Canary Deployment 
+	•	Recreate Deployment 
+
+2. Frontend team deployed code to production, found an issue. How would you handle it as an Infrastructure Engineer?
+Sample Answer:
+"As an Infrastructure Engineer, my first responsibility is to determine whether the issue is infrastructure-related or application-related."
+Steps:
+	•	Check Azure DevOps pipeline status. 
+	•	Verify deployment completed successfully. 
+	•	Check Kubernetes pod status:
+kubectl get pods kubectl describe pod <pod-name>
+	•	Review application logs:
+kubectl logs <pod-name>
+	•	Check ingress/load balancer configuration. 
+	•	Verify backend API connectivity. 
+	•	Monitor Grafana dashboards for CPU, memory, latency, and errors. 
+	•	If the issue is caused by the latest deployment, coordinate with the development team and perform a rollback:
+kubectl rollout undo deployment <deployment-name>
+	•	Document the root cause and actions taken. 
+
+3. How would you migrate a 3-tier application from on-premises to Azure with minimal downtime?
+A typical approach:
+Step 1: Assessment
+	•	Inventory servers and applications. 
+	•	Identify dependencies. 
+	•	Assess databases and storage. 
+Step 2: Azure Landing Zone
+	•	Create Resource Groups. 
+	•	Configure VNets and Subnets. 
+	•	Configure NSGs. 
+	•	Set up Azure Load Balancer or Application Gateway. 
+Step 3: Migrate Each Tier
+	•	Web Tier → Azure VM or AKS. 
+	•	Application Tier → Azure VM Scale Set or AKS. 
+	•	Database Tier → Azure SQL Database or Azure Database for PostgreSQL/MySQL (or SQL VM if required). 
+Step 4: Data Synchronization
+	•	Use Azure Database Migration Service. 
+	•	Synchronize data until cutover. 
+Step 5: Validation
+	•	Test application functionality. 
+	•	Validate network connectivity. 
+	•	Perform performance testing. 
+Step 6: Cutover
+	•	Schedule a maintenance window. 
+	•	Update DNS. 
+	•	Switch production traffic. 
+	•	Monitor application health. 
+This phased approach minimizes downtime and reduces migration risk.
+
+4. What is Azure Blob Storage? How does it work?
+Azure Blob Storage is Microsoft's object storage service used for storing unstructured data.
+Examples:
+	•	Images 
+	•	Videos 
+	•	Documents 
+	•	Backups 
+	•	Logs 
+Hierarchy
+Storage Account       ↓ Container       ↓ Blob
+Blob Types
+	•	Block Blob 
+	•	Append Blob 
+	•	Page Blob 
+How it works
+	•	Create a Storage Account. 
+	•	Create one or more Containers. 
+	•	Upload blobs. 
+	•	Access blobs securely using Azure AD, Shared Access Signatures (SAS), or access keys. 
+Use cases:
+	•	Static website hosting 
+	•	Application logs 
+	•	Backup and archival 
+	•	Data lake storage 
+
+5. Have you worked with Multi-Stage YAML Pipelines?
+Sample Answer:
+"Yes. I have worked with Azure DevOps multi-stage YAML pipelines."
+Typical stages:
+Build     ↓ Unit Test     ↓ Security Scan     ↓ Deploy to Dev     ↓ Deploy to QA     ↓ Approval     ↓ Deploy to UAT     ↓ Approval     ↓ Deploy to Production
+Benefits:
+	•	Single YAML definition 
+	•	Reusable templates 
+	•	Automated approvals 
+	•	Better traceability 
+	•	Consistent deployments 
+
+6. How do you implement Environment Approval in Azure DevOps?
+Steps:
+	•	Azure DevOps 
+	•	Pipelines 
+	•	Environments 
+	•	Create or select an Environment. 
+	•	Configure Approvals and Checks. 
+	•	Add approvers (e.g., Team Lead or Manager). 
+	•	Reference the environment in the YAML pipeline. 
+Example:
+stages: - stage: Production   jobs:   - deployment: DeployProd     environment: Production
+When the pipeline reaches the Production stage, it pauses until an approver approves the deployment.
+
+7. Grafana shows a 404 API error. How would you troubleshoot and find the RCA?
+Troubleshooting steps:
+	•	Confirm the error in Grafana dashboards. 
+	•	Check API logs. 
+	•	Verify if the API endpoint exists. 
+	•	Check Kubernetes Ingress configuration. 
+	•	Verify Service and Endpoints:
+kubectl get svc kubectl get endpoints
+	•	Check pod health:
+kubectl get pods kubectl logs
+	•	Test the API directly:
+curl http://api-url
+	•	Check DNS resolution. 
+	•	Verify Azure Application Gateway or Load Balancer routing. 
+	•	Review recent deployments. 
+Possible Root Causes (RCA):
+	•	Incorrect API URL. 
+	•	Wrong ingress path. 
+	•	Service selector mismatch. 
+	•	Backend pods unavailable. 
+	•	Failed deployment. 
+	•	DNS issues. 
+	•	Application routing changes. 
+
+8. You are getting a 404 error. How would you troubleshoot from an infrastructure perspective?
+As an Infrastructure Engineer, I would check the infrastructure layer before assuming it's an application issue.
+Step 1: DNS
+	•	Is the domain resolving correctly?
+nslookup <domain>
+Step 2: Network
+	•	Verify connectivity.
+ping traceroute
+Step 3: Load Balancer/Application Gateway
+	•	Check backend health. 
+	•	Verify listener and routing rules. 
+Step 4: Kubernetes
+	•	Check Ingress:
+kubectl get ingress kubectl describe ingress
+	•	Check Services:
+kubectl get svc
+	•	Check Pods:
+kubectl get pods kubectl logs <pod-name>
+Step 5: Web Server
+	•	Verify NGINX or Apache configuration. 
+	•	Check reverse proxy rules. 
+Step 6: Firewall/NSG
+	•	Ensure required ports (80/443) are open. 
+Step 7: SSL
+	•	Validate certificates if HTTPS is used. 
+Step 8: Deployment
+	•	Confirm the latest deployment is healthy. 
+	•	Roll back if needed. 
+Conclusion: If all infrastructure components (DNS, networking, load balancer, ingress, services, and pods) are healthy, I would escalate the issue to the application team with my findings, as the 404 is likely due to an application routing or API configuration issue rather than the infrastructure itself.
+These responses are suitable for Azure DevOps/Cloud Engineer interviews with around 3–5 years of experience, as they demonstrate both technical knowledge and a structured troubleshooting approach.
+1. Trying to clone a repository and getting a 403 error. What will you do?
+A 403 Forbidden error means authentication succeeded or reached the server, but you don't have permission to access the repository.
+Troubleshooting steps:
+	•	Verify the repository URL. 
+	•	Check if I have access to the repository. 
+	•	Verify my Git credentials or Personal Access Token (PAT). 
+	•	Ensure the PAT hasn't expired and has the correct scopes (e.g., Code: Read). 
+	•	Check if SSH keys are configured correctly (if using SSH). 
+	•	Confirm I'm logged into the correct GitHub/Azure DevOps account. 
+	•	Test network/proxy settings if behind a corporate firewall. 
+	•	Ask the repository administrator to verify my permissions. 
+
+2. How to reduce Docker image size if it's 2.5 GB?
+Ways to reduce image size:
+	•	Use lightweight base images (e.g., alpine or slim images). 
+	•	Use multi-stage builds. 
+	•	Remove unnecessary packages and cache:
+apt-get clean rm -rf /var/lib/apt/lists/*
+	•	Combine RUN commands to reduce image layers. 
+	•	Add a .dockerignore file to exclude unnecessary files. 
+	•	Copy only required files instead of the entire project. 
+	•	Avoid installing development tools in the production image. 
+This can often reduce an image from several GB to a few hundred MB.
+
+3. Difference between CMD and ENTRYPOINT in Docker
+CMD
+ENTRYPOINT
+Provides default command
+Defines the main executable
+Can be overridden easily
+Always runs unless explicitly overridden
+Used for default arguments
+Used when the container should always execute a specific program
+Example:
+ENTRYPOINT ["python"] CMD ["app.py"]
+Running:
+docker run image test.py
+Results in:
+python test.py
+
+4. Difference between Ingress Controller and API Gateway
+Ingress Controller
+API Gateway
+Kubernetes component
+Application/API management layer
+Routes HTTP/HTTPS traffic
+Manages APIs
+Supports path and host routing
+Authentication, rate limiting, caching
+Works inside Kubernetes
+Can serve multiple applications and clients
+Ingress = traffic routing. API Gateway = API management and security.
+
+5. Difference between PV and PVC in Kubernetes
+Persistent Volume (PV)
+	•	Actual storage resource. 
+	•	Created by administrator or dynamically provisioned. 
+Persistent Volume Claim (PVC)
+	•	Request for storage by a Pod. 
+	•	Kubernetes binds PVC to a suitable PV. 
+Flow:
+Pod  ↓ PVC  ↓ PV  ↓ Storage
+
+6. How do you monitor Kubernetes applications?
+Typical monitoring stack:
+	•	Prometheus → Collect metrics. 
+	•	Grafana → Dashboards. 
+	•	Alertmanager → Alerts. 
+	•	Loki / ELK Stack → Logs. 
+	•	Azure Monitor / Azure Container Insights (for AKS). 
+Metrics monitored:
+	•	CPU 
+	•	Memory 
+	•	Pod status 
+	•	Node health 
+	•	Network 
+	•	API latency 
+	•	Error rates 
+
+7. Explain the working of CNI in Kubernetes
+CNI (Container Network Interface) provides networking for Pods.
+How it works:
+	•	Pod is created. 
+	•	Kubelet calls the CNI plugin. 
+	•	CNI assigns an IP address. 
+	•	Configures routing and networking. 
+	•	Pod communicates with other Pods. 
+Popular CNI plugins:
+	•	Azure CNI 
+	•	Calico 
+	•	Flannel 
+	•	Cilium 
+	•	Weave Net 
+
+8. Why do we require multiple containers in a Pod?
+Containers in the same Pod:
+	•	Share the same network namespace. 
+	•	Share storage volumes. 
+	•	Communicate using localhost. 
+Use cases:
+	•	Main application + logging agent. 
+	•	Main application + monitoring agent. 
+	•	Main application + proxy. 
+
+9. What is the use case of a Sidecar Container?
+A Sidecar Container runs alongside the main application container.
+Common use cases:
+	•	Log collection (Fluent Bit) 
+	•	Monitoring (Prometheus exporters) 
+	•	Service mesh proxy (Envoy) 
+	•	Configuration synchronization 
+	•	Security agents 
+Example:
+Pod ├── App Container ├── Fluent Bit Sidecar └── Envoy Sidecar
+
+10. Difference between count and for_each in Terraform
+count
+Creates resources using an index.
+count = 3
+Creates:
+	•	VM0 
+	•	VM1 
+	•	VM2 
+for_each
+Creates resources using keys.
+for_each = { dev = "eastus" prod = "westus" }
+Creates:
+	•	dev VM 
+	•	prod VM 
+Rule: Use count for identical resources and for_each when each resource has a unique name or configuration.
+
+11. What is a State File in Terraform?
+The Terraform State File (terraform.tfstate) stores the current state of the infrastructure.
+It contains:
+	•	Resource IDs 
+	•	Attributes 
+	•	Dependencies 
+	•	Metadata 
+Why it's important:
+	•	Tracks managed resources. 
+	•	Detects changes. 
+	•	Generates execution plans. 
+	•	Supports updates without recreating resources. 
+For teams, store the state remotely (e.g., Azure Storage Account) with state locking.
+
+12. Explain the CI/CD workflow
+Developer     ↓ Git Push     ↓ CI Pipeline     ↓ Build     ↓ Unit Tests     ↓ Security Scan     ↓ Artifact Creation     ↓ CD Pipeline     ↓ Deploy to Dev     ↓ Deploy to QA/UAT     ↓ Approval     ↓ Production
+Benefits:
+	•	Faster releases 
+	•	Automation 
+	•	Reduced manual effort 
+	•	Consistent deployments 
+
+13. You need to provision an Azure Storage Account in multiple environments. What Terraform setup would you design?
+Recommended structure:
+terraform/ ├── modules/ │   └── storage-account/ ├── env/ │   ├── dev/ │   ├── qa/ │   └── prod/ ├── backend.tf ├── provider.tf └── variables.tf
+Approach:
+	•	Create a reusable Storage Account module. 
+	•	Use separate variable files (dev.tfvars, qa.tfvars, prod.tfvars). 
+	•	Use separate remote state files for each environment. 
+	•	Deploy through Azure DevOps pipelines. 
+
+14. How do you configure a Terraform pipeline?
+Typical Azure DevOps pipeline:
+Checkout     ↓ Terraform Init     ↓ Terraform Validate     ↓ Terraform Format Check     ↓ Terraform Plan     ↓ Manual Approval     ↓ Terraform Apply
+Use:
+	•	Azure Service Connection 
+	•	Remote Backend 
+	•	Secure Variable Groups 
+	•	Environment Approvals 
+
+15. Should we have more than one pipeline for multiple environments?
+Usually No.
+A single multi-stage YAML pipeline is preferred.
+Example stages:
+	•	Dev 
+	•	QA 
+	•	UAT 
+	•	Production 
+The pipeline determines the environment using:
+	•	Pipeline parameters 
+	•	Variables 
+	•	Branch names 
+	•	Stage conditions 
+	•	Variable groups 
+Example:
+	•	develop → Dev 
+	•	release/* → QA 
+	•	main → Production 
+
+16. In CI/CD, which pipeline have you used?
+Sample Answer:
+"I have primarily worked with Azure DevOps YAML pipelines because they are version-controlled, reusable, and support Infrastructure as Code. I have basic knowledge of Classic pipelines but prefer YAML for modern CI/CD implementations."
+
+17. What is a Template in a YAML pipeline?
+A template is a reusable YAML file that avoids repeating common pipeline logic.
+Example:
+build-template.yml
+Used by multiple pipelines:
+- template: build-template.yml
+Benefits:
+	•	Reusability 
+	•	Easier maintenance 
+	•	Standardization 
+
+18. Difference between Parameters and Variables in a pipeline
+Parameters
+Variables
+Evaluated before the pipeline starts
+Can change during execution
+Used for pipeline structure
+Used for runtime values
+Immutable
+Mutable
+Compile time
+Runtime
+
+19. How do you change a username using a Git command?
+For the current repository:
+git config user.name "John Doe"
+For all repositories:
+git config --global user.name "John Doe"
+To verify:
+git config --global --list
+
+20. In a microservices architecture, how does a request reach a specific Pod?
+Request flow:
+User    ↓ DNS    ↓ Azure Front Door / Load Balancer    ↓ Application Gateway    ↓ Ingress Controller    ↓ Kubernetes Service    ↓ Target Pod    ↓ Application Container
+If multiple microservices exist, the Ingress routes requests based on the host or URL path (e.g., /orders, /users) to the appropriate Kubernetes Service, which then load-balances traffic across healthy Pods.
+
+21. Explain the process of designing and deploying infrastructure on Azure
+Typical process:
+	•	Gather requirements (compute, networking, security, storage). 
+	•	Design architecture (VNets, subnets, NSGs, Load Balancers, Storage, AKS/VMs). 
+	•	Write Infrastructure as Code using Terraform. 
+	•	Store code in Git. 
+	•	Configure Azure DevOps or GitHub Actions pipeline. 
+	•	Run terraform init, validate, and plan. 
+	•	Review changes and obtain approval. 
+	•	Execute terraform apply. 
+	•	Validate deployed resources. 
+	•	Configure monitoring (Azure Monitor, Prometheus, Grafana) and backups. 
+
+22. Explain CI/CD deployment using GitHub
+A typical GitHub-based workflow:
+Developer     ↓ Git Commit     ↓ Git Push     ↓ GitHub Repository     ↓ GitHub Actions Trigger     ↓ Build     ↓ Run Tests     ↓ Code Quality & Security Scan     ↓ Build Docker Image     ↓ Push Image to Azure Container Registry (ACR)     ↓ Deploy to AKS / Azure App Service     ↓ Smoke Tests     ↓ Production Deployment
+Key components:
+	•	GitHub: Source code management. 
+	•	GitHub Actions: CI/CD automation. 
+	•	Azure Container Registry (ACR): Stores Docker images. 
+	•	Azure Kubernetes Service (AKS) or Azure App Service: Hosts the application. 
+	•	Secrets: Store Azure credentials and tokens securely. 
+	•	Environments: Add manual approvals for production deployments. 
+This workflow provides automated, repeatable, and secure deployments with minimal manual intervention.
+1. Suppose your organization wants to ensure that no resources are deployed outside specific regions. How would you enforce this?
+Answer:
+I would use Azure Policy to restrict resource deployment to approved Azure regions.
+Steps:
+	•	Create or use the built-in Allowed Locations policy. 
+	•	Assign the policy at the appropriate scope: 
+	•	Management Group (preferred) 
+	•	Subscription 
+	•	Resource Group 
+	•	Specify the allowed regions (e.g., East US, Central India). 
+	•	Any deployment outside these regions will be denied. 
+Example:
+	•	Allowed Regions: 
+	•	Central India 
+	•	East US 
+	•	If someone tries to deploy a VM in West Europe, Azure blocks the deployment. 
+Benefits:
+	•	Governance 
+	•	Compliance 
+	•	Cost control 
+	•	Standardization 
+Interview Tip: Mention that assigning the policy at the Management Group level ensures it applies to all subscriptions beneath it.
+
+2. Explain the structure of subscriptions in an Azure Landing Zone for multiple environments.
+A Landing Zone organizes Azure resources in a secure, scalable, and governed way.
+Typical structure:
+Management Group │ ├── Platform │   ├── Connectivity Subscription │   ├── Identity Subscription │   └── Management Subscription │ ├── Production │   ├── Prod Subscription 1 │   ├── Prod Subscription 2 │ ├── Non-Production │   ├── Dev Subscription │   ├── QA Subscription │   └── UAT Subscription │ └── Sandbox     └── Developer Subscription
+Purpose of each:
+Platform
+	•	Shared networking 
+	•	Identity 
+	•	Monitoring 
+	•	Security 
+Production
+	•	Live business workloads 
+Non-Production
+	•	Development 
+	•	Testing 
+	•	UAT 
+Sandbox
+	•	Learning 
+	•	Experimentation 
+This separation improves:
+	•	Security 
+	•	Billing 
+	•	RBAC 
+	•	Policy management 
+
+3. How can you integrate Azure Landing Zone deployment with DevOps pipelines?
+Answer:
+Azure Landing Zone infrastructure is typically deployed using Infrastructure as Code (Terraform or Bicep) through Azure DevOps or GitHub Actions.
+Pipeline flow:
+Developer      ↓ Git Repository      ↓ Azure DevOps Pipeline      ↓ Terraform Init      ↓ Terraform Validate      ↓ Terraform Plan      ↓ Approval      ↓ Terraform Apply      ↓ Landing Zone Resources Created
+Resources created may include:
+	•	Management Groups 
+	•	Subscriptions 
+	•	VNets 
+	•	NSGs 
+	•	Azure Policies 
+	•	RBAC 
+	•	Log Analytics 
+	•	Key Vault 
+	•	Azure Monitor 
+Best Practices:
+	•	Store Terraform state remotely in Azure Storage. 
+	•	Use Azure Service Connections. 
+	•	Use separate variable files for Dev, QA, and Prod. 
+	•	Require approvals before production deployment. 
+
+4. Suppose you are migrating on-prem workloads to Azure. How does a Landing Zone help?
+Answer:
+An Azure Landing Zone provides a pre-configured, secure, and governed Azure environment before migrating workloads.
+Benefits:
+	•	Standardized network architecture. 
+	•	Built-in security policies. 
+	•	Centralized identity with Azure AD. 
+	•	RBAC configured. 
+	•	Logging and monitoring enabled. 
+	•	Backup and disaster recovery configured. 
+	•	Compliance policies enforced. 
+Migration approach:
+	•	Build the Landing Zone. 
+	•	Configure networking (Hub-and-Spoke). 
+	•	Configure Azure Policies. 
+	•	Configure monitoring. 
+	•	Migrate applications. 
+	•	Validate workloads. 
+	•	Cut over production traffic. 
+Without a Landing Zone, every application team would configure Azure differently, leading to inconsistencies and governance challenges.
+
+5. Can you explain Azure Policy Assignment?
+Answer:
+An Azure Policy Assignment applies a policy definition to a specific scope so Azure can enforce compliance.
+Components:
+	•	Policy Definition 
+	•	The rule to enforce. 
+	•	Example: Only allow approved VM sizes. 
+	•	Assignment 
+	•	Where the policy is applied. 
+	•	Scope 
+	•	Management Group 
+	•	Subscription 
+	•	Resource Group 
+	•	Parameters 
+	•	Customize the policy (e.g., allowed regions). 
+Common Policy Effects:
+	•	Deny – Blocks non-compliant deployments. 
+	•	Audit – Reports non-compliance. 
+	•	Append – Adds settings during deployment. 
+	•	Modify – Updates resources automatically. 
+	•	DeployIfNotExists – Deploys required resources if missing. 
+	•	AuditIfNotExists – Checks whether required resources exist. 
+Example:
+	•	Policy: Allow only Standard VM SKUs. 
+	•	Assigned at the Production Management Group. 
+	•	Any non-compliant VM deployment is denied. 
+
+6. Explain Hub-and-Spoke Network Architecture.
+Answer:
+Hub-and-Spoke is a network topology where a central Hub VNet provides shared services, and multiple Spoke VNets host application workloads.
+Diagram:
+                    On-Premises                          │                   VPN / ExpressRoute                          │                     Hub VNet         ┌──────────┼──────────┐         │          │          │  Azure Firewall  Bastion   DNS/Shared Services         │  ┌──────┴───────────────┐  │                      │ Spoke VNet 1       Spoke VNet 2 (Web App)          (Database)  │                      │ AKS/VMs              SQL/VMs
+Hub VNet contains:
+	•	Azure Firewall 
+	•	VPN Gateway 
+	•	ExpressRoute Gateway 
+	•	Azure Bastion 
+	•	DNS 
+	•	Shared services 
+Spoke VNets contain:
+	•	Application workloads 
+	•	AKS clusters 
+	•	Virtual Machines 
+	•	Databases 
+Communication:
+	•	Spokes connect to the Hub using VNet Peering. 
+	•	Traffic between spokes typically passes through the Hub for centralized inspection and control. 
+Benefits:
+	•	Centralized security 
+	•	Reduced management overhead 
+	•	Scalable architecture 
+	•	Better isolation between applications 
+	•	Cost optimization by sharing common services 
+Interview Tip:
+If asked why this architecture is preferred, explain that it allows organizations to centralize networking and security while keeping application environments isolated, which is ideal for enterprise-scale Azure deployments.
+

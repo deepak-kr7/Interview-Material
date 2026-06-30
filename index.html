@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & Azure DevOps Interview Preparation Hub</title>
+    <!-- Google Fonts: Plus Jakarta Sans for UI, JetBrains Mono for Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-infinity"></i></span>
+                    <span class="logo-text">DevOps<span>Hub</span></span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active" data-view="browse">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Browse Questions</span>
+                </a>
+                <a href="#" class="menu-item" data-view="flashcards">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Flashcards</span>
+                </a>
+                <a href="#" class="menu-item" data-view="mock">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span>Mock Interview</span>
+                </a>
+                <a href="#" class="menu-item" data-view="progress">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>My Progress</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="progress-widget">
+                    <div class="progress-widget-header">
+                        <span>Preparation Progress</span>
+                        <span id="widget-pct">0%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="widget-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-widget-stats">
+                        <span id="widget-count">0 / 0 Mastered</span>
+                    </div>
+                </div>
+                <div class="theme-toggle" id="theme-toggle-btn">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>Dark Mode</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search questions, answers, concepts (e.g. Terraform, AKS)...">
+                </div>
+                <div class="top-actions">
+                    <div class="stats-badge">
+                        <i class="fa-solid fa-fire"></i>
+                        <span id="streak-counter">0 Day Streak</span>
+                    </div>
+                    <a href="https://pages.github.com/" target="_blank" class="github-btn">
+                        <i class="fa-brands fa-github"></i>
+                        <span>Host Free on GitHub</span>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Panels -->
+            <div class="content-panel active" id="view-browse">
+                <div class="panel-header">
+                    <div>
+                        <h1>Interview Q&A Explorer</h1>
+                        <p class="subtitle">Browse, search, and master 190+ handpicked DevOps & Azure DevOps interview questions.</p>
+                    </div>
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <span class="stat-num" id="total-questions-count">0</span>
+                            <span class="stat-label">Total Q&A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <section class="filters-section">
+                    <div class="filter-group">
+                        <label class="filter-label">Categories</label>
+                        <div class="category-pills" id="category-pills-container">
+                            <button class="category-pill active" data-category="all">All Topics</button>
+                            <!-- Category pills will be injected here -->
+                        </div>
+                    </div>
+
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label class="filter-label">Difficulty</label>
+                            <div class="difficulty-filters">
+                                <button class="diff-btn active" data-diff="all">All</button>
+                                <button class="diff-btn" data-diff="Easy">Easy</button>
+                                <button class="diff-btn" data-diff="Medium">Medium</button>
+                                <button class="diff-btn" data-diff="Hard">Hard</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Status</label>
+                            <div class="status-filters">
+                                <button class="status-btn active" data-status="all">All</button>
+                                <button class="status-btn" data-status="unopened">Unopened</button>
+                                <button class="status-btn" data-status="learning">Learning</button>
+                                <button class="status-btn" data-status="mastered">Mastered</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group sort-group">
+                            <label class="filter-label">Sort By</label>
+                            <select id="sort-select" class="custom-select">
+                                <option value="default">Default Order</option>
+                                <option value="alphabetical">Alphabetical</option>
+                                <option value="difficulty-asc">Difficulty: Easy to Hard</option>
+                                <option value="difficulty-desc">Difficulty: Hard to Easy</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Questions List/Grid -->
+                <section class="questions-section">
+                    <div class="results-meta">
+                        <span id="results-count">Showing 0 questions</span>
+                        <button id="reset-filters" class="text-btn">Clear All Filters</button>
+                    </div>
+                    <div class="questions-grid" id="questions-grid">
+                        <!-- Q&A Cards will be dynamically injected here -->
+                    </div>
+                    <div class="no-results" id="no-results" style="display: none;">
+                        <i class="fa-solid fa-magnifying-glass-blur"></i>
+                        <h3>No questions found</h3>
+                        <p>Try adjusting your search terms or filters.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Flashcards Panel -->
+            <div class="content-panel" id="view-flashcards" style="display: none;">
+                <div class="panel-header">
+                    <div>
+                        <h1>Active Recall Flashcards</h1>
+                        <p class="subtitle">Test your knowledge using flashcards. Flip to reveal the answer and mark your progress.</p>
+                    </div>
+                </div>
+
+                <div class="flashcard-container-wrapper">
+                    <div class="flashcard-setup" id="flashcard-setup">
+                        <h3>Select Category for Flashcards</h3>
+                        <div class="category-grid" id="flashcard-category-grid">
+                            <!-- Category cards for flashcards -->
+                        </div>
+                        <button class="btn btn-primary" id="start-flashcards-btn">Start Studying</button>
+                    </div>
+
+                    <div class="flashcard-active-session" id="flashcard-active-session" style="display: none;">
+                        <div class="session-header">
+                            <button class="btn-icon" id="close-flashcards"><i class="fa-solid fa-arrow-left"></i> Exit</button>
+                            <span id="flashcard-progress-text">Card 1 of 10</span>
+                            <div class="session-stats">
+                                <span class="badge badge-success"><i class="fa-solid fa-check"></i> <span id="flash-mastered-count">0</span></span>
+                            </div>
+                        </div>
+
+                        <div class="flashcard-perspective">
+                            <div class="flashcard-card" id="flashcard-card">
+                                <div class="flashcard-face flashcard-front">
+                                    <div class="card-tag">QUESTION</div>
+                                    <div class="card-category" id="flash-card-category">Terraform</div>
+                                    <div class="card-question-text" id="flash-card-question">What is Terraform Lock?</div>
+                                    <div class="click-to-flip"><i class="fa-solid fa-rotate"></i> Click card to flip</div>
+                                </div>
+                                <div class="flashcard-face flashcard-back">
+                                    <div class="card-tag">ANSWER</div>
+                                    <div class="card-answer-scroll">
+                                        <div class="card-answer-text" id="flash-card-answer">Answer content...</div>
+                                    </div>
+                                    <div class="click-to-flip"><i class="fa-solid fa-rotate"></i> Click card to flip back</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flashcard-controls">
+                            <button class="btn btn-secondary" id="flash-prev-btn"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+                            <div class="assessment-buttons">
+                                <button class="btn btn-danger-outline" id="flash-still-learning-btn"><i class="fa-solid fa-xmark"></i> Still Learning</button>
+                                <button class="btn btn-success" id="flash-mastered-btn"><i class="fa-solid fa-check"></i> Got It! (Mastered)</button>
+                            </div>
+                            <button class="btn btn-secondary" id="flash-next-btn">Next <i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mock Interview Panel -->
+            <div class="content-panel" id="view-mock" style="display: none;">
+                <div class="panel-header">
+                    <div>
+                        <h1>Mock Interview Simulator</h1>
+                        <p class="subtitle">Simulate a real-world technical DevOps interview. Answer randomly selected questions and evaluate your performance.</p>
+                    </div>
+                </div>
+
+                <div class="mock-container">
+                    <div class="mock-setup" id="mock-setup">
+                        <div class="mock-setup-card">
+                            <h3>Configure Your Interview</h3>
+                            <p class="description">Select your focus areas and the number of questions you want to be asked. We will generate a custom interview panel for you.</p>
+                            
+                            <div class="form-group">
+                                <label class="filter-label">Select Topics</label>
+                                <div class="checkbox-grid" id="mock-topics-grid">
+                                    <!-- Dynamic checkboxes -->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="filter-label">Number of Questions</label>
+                                <div class="radio-group">
+                                    <label class="radio-label"><input type="radio" name="mock-count" value="5" checked> 5 Questions</label>
+                                    <label class="radio-label"><input type="radio" name="mock-count" value="10"> 10 Questions</label>
+                                    <label class="radio-label"><input type="radio" name="mock-count" value="15"> 15 Questions</label>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg" id="start-mock-btn">
+                                <i class="fa-solid fa-play"></i> Start Mock Interview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mock-active" id="mock-active" style="display: none;">
+                        <div class="mock-grid-layout">
+                            <!-- Left: Interview Navigation & Progress -->
+                            <div class="mock-sidebar">
+                                <h3>Interview Panel</h3>
+                                <div class="mock-questions-list" id="mock-questions-nav">
+                                    <!-- Dynamic list of questions -->
+                                </div>
+                                <div class="mock-sidebar-footer">
+                                    <button class="btn btn-danger-outline w-100" id="end-mock-early-btn">End Interview</button>
+                                </div>
+                            </div>
+
+                            <!-- Right: Active Question & Self Assessment -->
+                            <div class="mock-main">
+                                <div class="mock-card">
+                                    <div class="mock-card-header">
+                                        <span class="badge badge-info" id="mock-q-category">Terraform</span>
+                                        <span class="badge badge-outline" id="mock-q-difficulty">Medium</span>
+                                        <span class="mock-q-index" id="mock-q-index">Question 1 of 5</span>
+                                    </div>
+                                    <div class="mock-question-body">
+                                        <h2 id="mock-question-text">How do you manage state files in Terraform?</h2>
+                                    </div>
+                                    
+                                    <div class="mock-answer-section" id="mock-answer-section">
+                                        <button class="btn btn-primary btn-lg" id="mock-reveal-answer-btn">
+                                            <i class="fa-solid fa-eye"></i> Reveal Recommended Answer
+                                        </button>
+                                        
+                                        <div class="mock-answer-content" id="mock-answer-content" style="display: none;">
+                                            <h4>Recommended Answer:</h4>
+                                            <div class="mock-answer-scroll">
+                                                <div id="mock-answer-text-display">Answer here...</div>
+                                            </div>
+                                            
+                                            <div class="self-evaluation">
+                                                <h4>Rate Your Answer:</h4>
+                                                <p class="description">Be honest! How well did your mental or spoken answer match the recommended one?</p>
+                                                <div class="evaluation-actions">
+                                                    <button class="btn btn-eval btn-bad" data-score="1">
+                                                        <span class="icon"><i class="fa-solid fa-face-frown"></i></span>
+                                                        <span class="label">Poor / Forgot</span>
+                                                    </button>
+                                                    <button class="btn btn-eval btn-average" data-score="3">
+                                                        <span class="icon"><i class="fa-solid fa-face-meh"></i></span>
+                                                        <span class="label">Okay / Partial</span>
+                                                    </button>
+                                                    <button class="btn btn-eval btn-good" data-score="5">
+                                                        <span class="icon"><i class="fa-solid fa-face-smile"></i></span>
+                                                        <span class="label">Perfect!</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mock Results -->
+                    <div class="mock-results" id="mock-results" style="display: none;">
+                        <div class="mock-results-card">
+                            <div class="results-icon"><i class="fa-solid fa-trophy"></i></div>
+                            <h2>Interview Completed!</h2>
+                            <p class="subtitle">Here is how you performed based on your self-assessment.</p>
+                            
+                            <div class="score-display">
+                                <span class="score-num" id="mock-score-pct">80%</span>
+                                <span class="score-label">Overall Score</span>
+                            </div>
+
+                            <div class="results-stats">
+                                <div class="res-stat">
+                                    <span class="res-val" id="mock-total-answered">5/5</span>
+                                    <span class="res-lbl">Answered</span>
+                                </div>
+                                <div class="res-stat">
+                                    <span class="res-val" id="mock-perfect-count">3</span>
+                                    <span class="res-lbl">Perfect</span>
+                                </div>
+                                <div class="res-stat">
+                                    <span class="res-val" id="mock-average-count">2</span>
+                                    <span class="res-lbl">Partial</span>
+                                </div>
+                            </div>
+
+                            <div class="results-actions">
+                                <button class="btn btn-primary" id="mock-restart-btn">Start Another Interview</button>
+                                <button class="btn btn-secondary" id="mock-view-browse-btn">Review All Questions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Progress Panel -->
+            <div class="content-panel" id="view-progress" style="display: none;">
+                <div class="panel-header">
+                    <div>
+                        <h1>Preparation Progress & Analytics</h1>
+                        <p class="subtitle">Track your learning statistics, mastered topics, and see what areas need focus.</p>
+                    </div>
+                </div>
+
+                <div class="progress-dashboard">
+                    <!-- Progress Grid -->
+                    <div class="analytics-grid">
+                        <div class="analytic-card">
+                            <h3>Overall Progress</h3>
+                            <div class="radial-progress-container">
+                                <div class="radial-progress" id="progress-radial" style="--percent: 0;">
+                                    <div class="radial-inner">
+                                        <span id="progress-radial-text">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="analytic-legend">
+                                <div class="legend-item"><span class="dot dot-mastered"></span> <span id="legend-mastered">0 Mastered</span></div>
+                                <div class="legend-item"><span class="dot dot-learning"></span> <span id="legend-learning">0 Learning</span></div>
+                                <div class="legend-item"><span class="dot dot-unopened"></span> <span id="legend-unopened">0 Unopened</span></div>
+                            </div>
+                        </div>
+
+                        <div class="analytic-card">
+                            <h3>Topic Breakdown</h3>
+                            <div class="topic-bars-list" id="topic-bars-list">
+                                <!-- Dynamic progress bars per topic -->
+                            </div>
+                        </div>
+
+                        <div class="analytic-card full-width">
+                            <h3>Quick Actions</h3>
+                            <div class="quick-actions-grid">
+                                <div class="action-box" id="action-reset-all">
+                                    <div class="action-icon danger"><i class="fa-solid fa-trash-can"></i></div>
+                                    <div class="action-info">
+                                        <h4>Reset All Progress</h4>
+                                        <p>Clear all mastered questions, bookmarks, and streaks to start fresh.</p>
+                                    </div>
+                                </div>
+                                <div class="action-box" id="action-study-weak">
+                                    <div class="action-icon warning"><i class="fa-solid fa-graduation-cap"></i></div>
+                                    <div class="action-info">
+                                        <h4>Study Weak Topics</h4>
+                                        <p>Launch flashcards for categories where you have the lowest mastery score.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Question Detail Modal (for quick viewing and managing) -->
+    <div class="modal" id="q-detail-modal" style="display: none;">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="badge badge-info" id="modal-q-category">Category</span>
+                <span class="badge badge-outline" id="modal-q-difficulty">Medium</span>
+                <button class="close-modal-btn" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <h2 id="modal-q-title" class="question-title">What is Azure RBAC?</h2>
+                <hr class="modal-divider">
+                <div class="answer-container">
+                    <h3>Recommended Answer:</h3>
+                    <div id="modal-q-answer" class="markdown-content">
+                        <!-- Answer content -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-learning-actions">
+                    <button class="btn btn-outline" id="modal-btn-learning"><i class="fa-regular fa-bookmark"></i> Mark as Learning</button>
+                    <button class="btn btn-success" id="modal-btn-mastered"><i class="fa-solid fa-check"></i> Mark as Mastered</button>
+                </div>
+                <button class="btn btn-secondary" id="modal-btn-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load scripts. data.js MUST be loaded first as it contains the questions data. -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

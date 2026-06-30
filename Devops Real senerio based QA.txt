@@ -1,0 +1,2420 @@
+Tell Me About Yourself
+“Hello, my self  Deepak Kumar, and I am currently working as a Senior Consultant at Infosys in Pune. I have over 10 years of experience in IT, including more than 4+  years in DevOps and Cloud Engineering. 
+My major responsibilities are managing cloud infrastructure on Microsoft Azure, creating Infrastructure as Code using Terraform, and maintaining CI/CD pipelines using Azure DevOps.
+I am also working on AKS (Azure Kubernetes Service), where I deploy and manage containerized applications using Docker and Kubernetes. Along with deployment, I monitor application performance, troubleshoot production issues, and ensure high availability and scalability of applications.
+I have good hands-on experience with tools like Terraform, Azure DevOps, Docker, Kubernetes, Git, SonarQube, and Azure services such as ACR, Key Vault, Application Gateway, VNets, NSG, and Azure Monitor.
+
+Tell Me About Your Project
+“Currently, I am working on a project where we are migrating a large e-commerce application from on-premises infrastructure to Azure Cloud. The client is a Europe-based company named Qiagen, which provides genomic products for scientific research.
+The application was initially monolithic, and our goal was to convert it into microservices architecture and deploy it on AKS.
+Our team included Development, Testing, and DevOps teams, and I was part of the DevOps team. My responsibility was to design the infrastructure, automate deployments, and build CI/CD pipelines.
+For infrastructure provisioning, we used Terraform. We followed Azure Landing Zone architecture and created separate subscriptions for Dev, QA, and Production environments under management groups.
+I enjoy solving infrastructure and deployment-related challenges and continuously learning new DevOps technologies.”
+
+Using Terraform, we provisioned resources such as:
+	•	AKS Cluster 
+	•	ACR 
+	•	VNets and Subnets 
+	•	Key Vault 
+	•	Application Gateway 
+	•	Storage Accounts 
+	•	Azure Bastion 
+	•	Databases 
+Example:-   AKS (Azure Kubernetes service) Cluster – Managed Kubernetes service used to deploy and manage containerized applications in Microsoft Azure Azure. 
+  ACR (Azure Container Registry) – Private container image registry used to store and manage Docker images securely. 
+  VNets and Subnets – Virtual networking components used to isolate and securely connect Azure resources. 
+  Key Vault – Secure service used to store secrets, passwords, certificates, and encryption keys. 
+  Application Gateway – Layer 7 load balancer used for traffic routing, SSL termination, and web application firewall (WAF). 
+  Storage Accounts – Azure storage service used to store blobs, files, queues, and tables. 
+  Azure Bastion – Secure remote access service used to connect to VMs without exposing public IPs. 
+  Databases – Managed database services used to store and manage application data securely and efficiently.
+
+We created reusable Terraform modules and maintained the code in Git repositories. We also built Terraform CI/CD pipelines with stages like Init, Plan, and Apply. Additionally, we integrated tfsec scanning for security validation.
+For application deployment:
+  Git Repository – Source code was pulled from Git repositories for version control and collaboration. 
+  SonarQube – Used for static code analysis to identify bugs, vulnerabilities, and code quality issues. 
+  Docker Image Build – Application code was containerized by building Docker images. 
+  Anchore Scanner – Used to scan Docker images for security vulnerabilities and compliance issues. 
+  Azure Container Registry (ACR) – Securely stored and managed Docker container images in Microsoft Azure. 
+  AKS Deployment using Azure Pipelines – Applications were deployed automatically to AKS clusters using CI/CD pipelines in Azure DevOps. 
+
+For security:-
+
+  Application Gateway with WAF – Used for load balancing, SSL termination, and protecting applications from web attacks. 
+  SSL Certificates & Custom Domains – Configured secure HTTPS communication and custom domain access for applications. 
+  Azure Key Vault Integration – Secrets, certificates, and sensitive credentials were securely managed using Key Vault integrated with AKS. 
+  Azure Monitor & Container Insights – Used for monitoring AKS clusters, application performance, logs, metrics, and troubleshooting.
+We also enabled monitoring using Azure Monitor and Container Insights.”
+
+Tell Me About Terraform Implementation
+“We used Terraform as Infrastructure as Code for provisioning and managing Azure resources.
+Our Terraform setup had:
+	•	One repository for main Terraform code 
+	•	Another repository for reusable modules 
+Inside the main repository, we maintained separate folders for:
+	•	Dev 
+	•	Stage 
+	•	Prod 
+We used remote backend storage in Azure Blob Storage for maintaining Terraform state files.
+Terraform Workflow Explanation
+	•	Developer Creates PR – Developer raises a Pull Request after making infrastructure code changes in Git. 
+	•	Pipeline Trigger – CI/CD pipeline in Azure DevOps automatically triggers on PR creation. 
+	•	Terraform Init – Initializes Terraform providers, backend configuration, and modules. 
+	•	Terraform Plan – Generates an execution plan showing what infrastructure changes will be created, modified, or deleted. 
+	•	Plan Review – Team reviews the Terraform plan for validation and approval before deployment. 
+	•	Terraform Apply – After approval, Terraform applies the changes and provisions/updates resources in Microsoft Azure. 
+Short Interview Answer
+“Our Terraform workflow starts with a PR creation, which triggers the pipeline automatically. Then Terraform Init and Plan run, the team reviews the execution plan, and after approval Terraform Apply deploys the infrastructure changes.”
+
+We also implemented the following best practices in our Terraform setup to ensure secure, scalable, and reliable infrastructure management:
+🔒 State Locking
+	•	Prevents multiple users or pipelines from modifying the Terraform state file simultaneously. 
+	•	Helps avoid: 
+	•	State corruption 
+	•	Concurrent deployment conflicts 
+	•	Infrastructure inconsistency 
+	•	Implemented using remote backend locking in Azure Blob Storage. 
+🧩 Modular Code Structure
+	•	Terraform code was divided into reusable modules such as: 
+	•	VNet Module 
+	•	AKS Module 
+	•	NSG Module 
+	•	Storage Module 
+	•	Benefits: 
+	•	Better reusability       
+	•	Standardization 
+	•	Easier maintenance 
+	•	Improved team collaboration 
+🌍 Environment-Based Variable Files
+	•	Separate variable files maintained for each environment: 
+	•	dev.tfvars 
+	•	qa.tfvars 
+	•	stage.tfvars 
+	•	prod.tfvars 
+	•	This helped manage: 
+	•	Environment-specific configurations 
+	•	Resource naming 
+	•	Scaling settings 
+	•	Network ranges 
+	•	Improved flexibility and reduced configuration errors. 
+🛡️ tfsec Security Scanning
+	•	Integrated tfsec into the CI/CD pipeline for Terraform security validation. 
+	•	Automatically scanned Terraform code for: 
+	•	Open security groups 
+	•	Publicly exposed resources 
+	•	Unencrypted storage 
+	•	Weak network configurations 
+	•	Pipeline failed automatically if high-severity security issues were detected. 
+	•	Helped enforce DevSecOps and infrastructure compliance standards.
+This approach helped us maintain reusable, scalable, and secure infrastructure.”
+
+Explain Your CI/CD Process
+“We use Azure DevOps YAML pipelines for implementing CI/CD.
+We have two different pipelines:
+	•	Terraform Pipeline 
+	•	Application Pipeline 
+🚀 Terraform Pipeline Flow
+Whenever code is merged into the main branch, the Terraform CI/CD pipeline is triggered automatically in Azure DevOps.
+🔄 Pipeline Workflow
+1️⃣ Terraform Init
+	•	Initializes Terraform working directory. 
+	•	Downloads: 
+	•	Required providers 
+	•	Modules 
+	•	Backend configuration 
+	•	Connects to remote backend storage for Terraform state management. 
+2️⃣ Terraform Plan
+	•	Generates an execution plan. 
+	•	Validates infrastructure changes before deployment. 
+	•	Shows: 
+	•	Resources to be created 
+	•	Modified resources 
+	•	Deleted resources 
+	•	Helps the team review changes safely before applying. 
+3️⃣ tfsec Security Scanning
+	•	Runs automated security validation on Terraform code. 
+	•	Detects issues such as: 
+	•	Open security groups 
+	•	Publicly exposed resources 
+	•	Weak configurations 
+	•	Missing encryption settings 
+	•	Pipeline fails automatically if critical vulnerabilities are found. 
+4️⃣ Manual Approval Stage
+	•	Infrastructure changes are reviewed by authorized team members. 
+	•	Ensures: 
+	•	Change validation 
+	•	Compliance checks 
+	•	Production safety 
+	•	Prevents accidental or unintended infrastructure modifications. 
+5️⃣ Terraform Apply
+	•	After approval, Terraform applies the approved changes. 
+	•	Infrastructure gets provisioned or updated automatically in Azure. 
+
+🎯 Short Interview Answer
+“Our Terraform pipeline starts automatically when code is merged into the main branch. It executes Terraform Init, Plan, tfsec security scanning, manual approval, and finally Terraform Apply to provision infrastructure securely and automatically.”
+🚀 Application CI/CD Pipeline Flow
+When developers merge code into the Dev or Stage branch, the Application CI/CD pipeline is triggered automatically in Azure DevOps.
+
+🔄 Application Pipeline Workflow
+1️⃣ Repository Clone
+	•	Source code is pulled from the Git repository. 
+	•	Ensures the latest application code is available for build and deployment. 
+2️⃣ Application Build
+	•	Application build process starts. 
+	•	Dependencies are installed and application artifacts are generated. 
+3️⃣ Unit Testing
+	•	Automated unit tests are executed. 
+	•	Helps identify application issues early in the CI stage. 
+4️⃣ SonarQube Static Code Analysis
+	•	SonarQube scans the application code for: 
+	•	Bugs 
+	•	Vulnerabilities 
+	•	Code smells 
+	•	Security issues 
+	•	Ensures code quality and compliance standards. 
+5️⃣ Docker Image Build
+	•	Application is containerized using Docker. 
+	•	Docker image is created using Dockerfile. 
+6️⃣ Vulnerability Scanning using Anchore
+	•	Docker image is scanned for: 
+	•	Security vulnerabilities 
+	•	Outdated packages 
+	•	Compliance issues 
+	•	Pipeline can fail if critical vulnerabilities are detected. 
+7️⃣ Push Docker Image to ACR
+	•	Securely pushes the Docker image to: 
+	•	Azure Container Registry (ACR) 
+	•	ACR acts as a private image repository. 
+8️⃣ Deployment to AKS
+	•	Application deployment happens automatically on: 
+	•	Azure Kubernetes Service (AKS) 
+	•	Deployment is performed using: 
+	•	Kubernetes manifests 
+	•	Helm charts 
+
+☸️ Kubernetes Deployment Components
+🟢 Kubernetes Manifests
+Used for defining:
+	•	Deployments 
+	•	Services 
+	•	Ingress 
+	•	ConfigMaps 
+	•	Secrets 
+🟢 Helm Charts
+Used for:
+	•	Reusable deployments 
+	•	Parameterized configurations 
+	•	Simplified Kubernetes package management 
+
+🎯 Short Interview Answer
+“When developers merge code into Dev or Stage branches, the pipeline automatically clones the repository, builds the application, runs unit tests, performs SonarQube analysis, builds Docker images, scans them using Anchore, pushes images to ACR, and deploys applications to AKS using Kubernetes manifests or Helm charts.”
+This complete automation helped reduce manual work, improved deployment speed, and minimized production issues.”
+
+
+
+☸️ AKS Architecture Explanation
+We used Azure Kubernetes Service (AKS) as a managed Kubernetes platform for deploying and managing containerized applications in Azure.
+
+🏗️ AKS Cluster Architecture
+🔹 Node Pool Design
+Our AKS cluster was designed with multiple node pools based on workload requirements.
+🟦 Frontend Node Pool
+	•	Configured with high-memory nodes 
+	•	Used for frontend/UI applications 
+	•	Optimized for handling: 
+	•	User sessions 
+	•	Web traffic 
+	•	Application caching 
+🟩 Backend Node Pool
+	•	Configured with high-CPU nodes 
+	•	Used for backend microservices and APIs 
+	•	Optimized for: 
+	•	Processing requests 
+	•	Business logic execution 
+	•	API workloads 
+
+⚙️ Kubernetes Features Used
+🟢 Node Selectors
+	•	Used for workload scheduling. 
+	•	Ensured frontend and backend applications were deployed on the appropriate node pools. 
+Example:
+	•	Frontend pods ➜ High-memory nodes 
+	•	Backend pods ➜ High-CPU nodes 
+
+🟢 HPA (Horizontal Pod Autoscaler)
+	•	Automatically scaled application pods based on: 
+	•	CPU usage 
+	•	Memory usage 
+	•	Metrics 
+	•	Helped maintain: 
+	•	High availability 
+	•	Better performance 
+	•	Efficient resource utilization 
+
+🟢 Namespaces
+	•	Used for logical isolation of applications and environments. 
+	•	Helped separate: 
+	•	Dev 
+	•	QA 
+	•	Stage 
+	•	Production workloads 
+Benefits:
+	•	Better resource management 
+	•	Improved security 
+	•	Easier administration 
+
+🟢 RBAC (Role-Based Access Control)
+	•	Implemented RBAC for secure cluster access management. 
+	•	Controlled: 
+	•	User permissions 
+	•	Team access 
+	•	Kubernetes operations 
+Examples:
+	•	Read-only access 
+	•	Deployment access 
+	•	Admin access 
+
+🟢 Ingress Controller
+	•	Used for managing external HTTP/HTTPS traffic routing to applications inside AKS. 
+	•	Supported: 
+	•	URL-based routing 
+	•	SSL termination 
+	•	Traffic management 
+
+🌐 Application Exposure
+🟣 Application Gateway Ingress Controller (AGIC)
+Applications were exposed externally using:
+	•	Azure Application Gateway 
+	•	Application Gateway Ingress Controller (AGIC) 
+Benefits:
+	•	Layer 7 load balancing 
+	•	SSL offloading 
+	•	Web Application Firewall (WAF) 
+	•	Secure traffic routing 
+	•	Better scalability 
+
+📊 Monitoring & Observability
+🟢 Azure Monitor
+Used for:
+	•	Infrastructure monitoring 
+	•	Metrics collection 
+	•	Alerting 
+	•	Performance tracking 
+
+🟢 Container Insights
+Used for:
+	•	Pod monitoring 
+	•	Node health monitoring 
+	•	Container logs 
+	•	Troubleshooting 
+	•	AKS performance analysis 
+
+🎯 Short Interview Answer
+“We used AKS as a managed Kubernetes platform with separate node pools for frontend and backend workloads. We implemented node selectors, HPA, namespaces, RBAC, and ingress controllers for workload management, scaling, security, and traffic routing. Applications were exposed using Application Gateway Ingress Controller, and monitoring was handled through Azure Monitor and Container Insights.”
+
+
+Troubleshooting Example (CrashLoopBackOff)
+“If I encounter a CrashLoopBackOff issue in AKS, I follow these steps:
+	•	Check pod status 
+kubectl get pods
+	•	Check pod logs 
+kubectl logs pod-name
+	•	Describe pod for events 
+kubectl describe pod pod-name
+	•	Verify: 
+	•	Environment variables 
+	•	Secrets and ConfigMaps 
+	•	Image version 
+	•	Resource limits 
+	•	Database connectivity 
+	•	Coordinate with developers if application-level issue exists 
+	•	If issue impacts production, rollback deployment: 
+kubectl rollout undo deployment deployment-name
+This approach helps quickly restore service availability.”
+
+📅 Day-to-Day Activities
+My daily responsibilities as a DevOps & Cloud Engineer include managing cloud infrastructure, supporting deployments, monitoring systems, and ensuring platform stability and security.
+
+🔄 Daily Responsibilities
+🚀 Monitoring CI/CD Pipelines
+	•	Monitoring Azure DevOps pipelines 
+	•	Validating build and deployment status 
+	•	Troubleshooting pipeline failures 
+	•	Ensuring smooth CI/CD execution 
+
+☁️ Managing Azure Infrastructure
+	•	Managing Azure cloud resources 
+	•	Monitoring infrastructure health and utilization 
+	•	Handling scaling and configuration updates 
+	•	Supporting environment maintenance activities 
+
+☸️ Deploying Applications on AKS
+	•	Deploying containerized applications to AKS 
+	•	Managing Kubernetes deployments and services 
+	•	Handling Helm chart or manifest updates 
+	•	Monitoring application rollout status 
+
+🏗️ Creating & Updating Terraform Code
+	•	Writing Infrastructure as Code using Terraform 
+	•	Updating reusable Terraform modules 
+	•	Managing environment-specific configurations 
+	•	Reviewing and validating infrastructure changes 
+
+🛠️ Troubleshooting Production Issues
+	•	Investigating deployment failures 
+	•	Troubleshooting AKS pod/application issues 
+	•	Analyzing logs and monitoring alerts 
+	•	Coordinating with development and support teams 
+
+🐳 Managing Docker Images
+	•	Building Docker images 
+	•	Managing container image versions 
+	•	Pushing images to Azure Container Registry (ACR) 
+	•	Removing outdated or unused images 
+
+👨‍💻 Supporting Developers
+	•	Assisting developers with deployment issues 
+	•	Helping with CI/CD integration 
+	•	Supporting environment access and configuration 
+	•	Resolving infrastructure-related concerns 
+
+📊 Monitoring Application Performance
+	•	Monitoring applications using Azure Monitor & Container Insights 
+	•	Checking resource utilization and application health 
+	•	Configuring alerts and dashboards 
+	•	Identifying performance bottlenecks 
+
+🎫 Handling Tickets & Change Requests
+	•	Working on incident, service, and change requests 
+	•	Implementing approved infrastructure changes 
+	•	Supporting release and deployment activities 
+	•	Following ITIL and change management processes 
+
+🔐 Ensuring Security & Compliance
+	•	Monitoring security compliance 
+	•	Managing RBAC and access controls 
+	•	Validating vulnerability scans 
+	•	Ensuring secure secret management using Key Vault 
+
+🎯 Short Interview Answer
+“My daily activities include monitoring CI/CD pipelines, managing Azure infrastructure, deploying applications on AKS, writing Terraform code, troubleshooting production issues, managing Docker images, supporting developers, monitoring application performance, handling tickets and change requests, and ensuring security and compliance.”
+
+☁️ Azure Services Worked On
+I have worked on multiple Azure services across compute, networking, security, monitoring, storage, and DevOps domains.
+
+🚀 Compute & Container Services
+☸️ AKS (Azure Kubernetes Service)
+	•	Managed Kubernetes platform used for deploying and managing containerized applications. 
+	•	Worked on: 
+	•	Deployments 
+	•	Scaling 
+	•	Ingress 
+	•	Monitoring 
+	•	Troubleshooting 
+
+💻 Virtual Machines (VMs)
+	•	Provisioned and managed Linux/Windows VMs. 
+	•	Worked on: 
+	•	VM configuration 
+	•	Scaling 
+	•	Networking 
+	•	Security hardening 
+
+🔄 DevOps & CI/CD Services
+🛠️ Azure DevOps
+	•	Used for: 
+	•	CI/CD pipelines 
+	•	Source code management 
+	•	Release automation 
+	•	YAML pipelines 
+	•	Build and deployment orchestration 
+
+📦 Azure Container Registry (ACR)
+	•	Private container registry used for securely storing Docker images. 
+	•	Integrated with: 
+	•	AKS 
+	•	Azure DevOps pipelines 
+
+🔐 Security Services
+🔑 Azure Key Vault
+	•	Used for securely managing: 
+	•	Secrets 
+	•	Certificates 
+	•	API keys 
+	•	Connection strings 
+
+🛡️ Azure AD (Azure Active Directory)
+	•	Used for: 
+	•	Authentication 
+	•	Authorization 
+	•	RBAC 
+	•	Identity management 
+	•	Single Sign-On (SSO) 
+
+🔒 NSG (Network Security Group)
+	•	Implemented inbound and outbound traffic control using security rules. 
+	•	Used for subnet and NIC-level security. 
+
+🌐 Private Endpoints
+	•	Enabled secure private connectivity to Azure services without public internet exposure. 
+
+🖥️ Azure Bastion
+	•	Used for secure RDP/SSH access to VMs without exposing public IP addresses. 
+
+🌐 Networking Services
+🌍 Virtual Networks (VNets)
+	•	Designed and managed isolated Azure networks. 
+	•	Created: 
+	•	Subnets 
+	•	Routing configurations 
+	•	Secure connectivity 
+
+⚖️ Load Balancer
+	•	Distributed incoming traffic across backend resources for high availability. 
+
+🚦 Application Gateway
+	•	Layer 7 load balancer used for: 
+	•	URL-based routing 
+	•	SSL termination 
+	•	Web Application Firewall (WAF) 
+
+🌎 Azure Front Door
+	•	Used for: 
+	•	Global traffic routing 
+	•	Low-latency access 
+	•	WAF protection 
+	•	CDN integration 
+
+📊 Monitoring & Logging
+📈 Azure Monitor
+	•	Used for: 
+	•	Monitoring infrastructure 
+	•	Metrics collection 
+	•	Alerts 
+	•	Log analysis 
+	•	Performance monitoring 
+
+💾 Storage & Database Services
+🗂️ Azure Storage Account
+	•	Used for: 
+	•	Blob storage 
+	•	File shares 
+	•	Terraform backend state storage 
+
+🛢️ Azure SQL
+	•	Managed relational database service used for application data storage. 
+
+🌌 Cosmos DB
+	•	NoSQL database service used for globally distributed applications and scalable data storage. 
+
+🎯 Short Interview Answer
+“I have worked on multiple Azure services including AKS, Azure DevOps, ACR, Key Vault, VNets, NSG, Azure Bastion, Azure Monitor, Application Gateway, Azure Front Door, Storage Accounts, Azure SQL, Cosmos DB, Azure AD, Load Balancer, Virtual Machines, and Private Endpoints.”
+
+Common Interview Questions with Smart Answers
+Branching Strategy
+Feature Branching
+	•	Each developer works on a separate feature branch. 
+	•	Code is merged through Pull Requests after review. 
+Example:
+	•	feature/login 
+	•	feature/payment 
+GitFlow
+	•	Uses main, develop, feature, release, and hotfix branches. 
+	•	Best for large enterprise projects. 
+Trunk-Based Development
+	•	Developers create short-lived branches and merge quickly into the main branch. 
+	•	CI/CD validation runs automatically. 
+Interview Answer: “We mainly use feature branching and trunk-based development in Azure DevOps for faster integration, automated testing, and reduced merge conflicts.”
+
+VNet and Subnet
+VNet
+	•	Private network in Microsoft Azure Azure. 
+	•	Enables secure communication between resources. 
+Example:
+	•	10.0.0.0/16 
+Subnet
+	•	Smaller network inside a VNet. 
+	•	Used for network segmentation. 
+Example:
+	•	Web subnet 
+	•	App subnet 
+	•	DB subnet 
+Interview Answer: “VNet provides isolated networking in Azure, and subnets divide the VNet into smaller logical networks for better security and traffic management.”
+
+Backend Block in Terraform
+	•	Backend block stores Terraform state remotely. 
+Example:
+	•	Azure Storage Account backend 
+Benefits:
+	•	Team collaboration 
+	•	State locking 
+	•	Prevents state corruption 
+Interview Answer: “We use backend blocks to store Terraform state files remotely in Azure Storage Account for centralized state management and locking.”
+
+Deployment Errors Faced
+Terraform Errors
+	•	State lock issue 
+	•	Resource already exists 
+	•	Dependency issues 
+Azure Errors
+	•	RBAC permission denied 
+	•	NSG blocking traffic 
+	•	Quota limit exceeded 
+CI/CD Errors
+	•	YAML syntax issues 
+	•	Service connection failures 
+AKS Errors
+	•	ImagePullBackOff 
+	•	Pod crash loops 
+Interview Answer: “I have handled Terraform state lock issues, RBAC permission errors, NSG misconfigurations, CI/CD pipeline failures, and AKS image pull errors.”
+
+Terraform Modules
+	•	Modules are reusable Terraform components. 
+Examples:
+	•	VNet module 
+	•	NSG module 
+	•	AKS module 
+	•	Storage module 
+Benefits:
+	•	Reusability 
+	•	Standardization 
+	•	Easy maintenance 
+Interview Answer: “I worked on reusable Terraform modules for VNet, subnet, NSG, AKS, storage accounts, and virtual machines.”
+
+NSG and ASG
+NSG (Network Security Group)
+	•	Acts like a firewall. 
+	•	Controls inbound and outbound traffic using rules. 
+Example:
+	•	Allow port 80 
+	•	Allow SSH 22 
+	•	Deny all others 
+ASG (Application Security Group)
+	•	Logical grouping of VMs. 
+	•	Simplifies NSG rule management. 
+Example:
+	•	web-asg 
+	•	app-asg 
+	•	db-asg 
+
+Difference Between NSG and ASG
+NSG
+ASG
+Controls traffic using rules
+Groups VMs logically
+Works like firewall
+Used inside NSG rules
+Applied to subnet/NIC
+Applied to VM groups
+
+Why Terraform?
+“Terraform provides Infrastructure as Code, automation, version control, modularity, and multi-cloud support. It helps maintain consistent infrastructure and reduces manual configuration errors.”
+Why AKS?
+“AKS simplifies Kubernetes management, provides scalability, integrates well with Azure services, and reduces operational overhead because the control plane is managed by Azure.”
+What Challenges Did You Face?
+“One major challenge was Terraform auto-apply causing unintended infrastructure changes. To solve this, we introduced manual approval before Apply stage.”
+How Do You Secure Secrets?
+“We use Azure Key Vault integrated with AKS and RBAC policies to securely manage secrets like API keys, database credentials, and certificates.”
+Difference Between git fetch and git pull?
+	•	git fetch → Downloads changes only 
+	•	git pull → Downloads + merges changes 
+Difference Between Deployment and StatefulSet?
+	•	Deployment → Stateless applications 
+	•	StatefulSet → Stateful applications like databases
+
+1. How do you use tfsec and other security tools in CI/CD pipeline?
+“In our project, security was integrated as part of the CI/CD pipeline to follow DevSecOps practices.
+For Terraform code security scanning, we used tfsec. Whenever a developer created a pull request or merged code, the Terraform pipeline automatically triggered and executed tfsec scans to identify security misconfigurations such as:
+	•	Open security groups 
+	•	Publicly exposed resources 
+	•	Unencrypted storage 
+	•	Weak network rules 
+If tfsec detected any high-severity issue, the pipeline failed automatically.
+Apart from tfsec, we also used:
+	•	SonarQube for static code analysis 
+	•	Anchore for Docker image vulnerability scanning 
+	•	Azure Key Vault for secret management 
+	•	RBAC and Azure Policies for access control 
+This helped us ensure infrastructure, application code, and container images were secure before deployment.”
+
+2. What is trunk-based branching strategy?
+“Trunk-based development is a branching strategy where developers frequently commit small changes directly into a single main branch, usually called the trunk or main branch.
+Instead of maintaining long-running feature branches, developers create short-lived branches and merge changes quickly after validation.
+Advantages:
+	•	Faster integration 
+	•	Reduced merge conflicts 
+	•	Better collaboration 
+	•	Supports continuous integration and continuous deployment 
+In our project, we mainly used:
+	•	Main branch → Production 
+	•	Dev branch → Development 
+	•	Stage branch → Testing 
+Feature branches were short-lived and merged quickly after code review.”
+
+3. Have you made MCP server?
+“Yes, I have basic understanding and exposure to MCP (Model Context Protocol) servers in AI-integrated systems.
+MCP servers are used to provide context, tools, APIs, or external integrations to AI models securely and efficiently.
+Although I was not directly responsible for core MCP server development, I have worked on infrastructure setup, containerization, deployment, and CI/CD automation for AI-driven applications and APIs using:
+	•	Docker 
+	•	Kubernetes 
+	•	Azure Cloud 
+	•	Terraform 
+	•	CI/CD pipelines 
+I can also support deployment, monitoring, scaling, and infrastructure automation for MCP-based systems.”
+
+4. How VM is managed by Terraform?
+“Terraform manages Virtual Machines using Infrastructure as Code.
+In Azure, we define VM resources in Terraform configuration files using the azurerm provider.
+Typical VM components managed by Terraform:
+	•	Resource Group 
+	•	Virtual Network 
+	•	Subnet 
+	•	Network Interface 
+	•	NSG 
+	•	Public IP 
+	•	Virtual Machine 
+	•	OS Disk 
+Workflow:
+	•	Write Terraform code 
+	•	Run terraform init 
+	•	Run terraform plan 
+	•	Run terraform apply 
+Terraform automatically provisions and manages the VM infrastructure.
+Benefits:
+	•	Automation 
+	•	Version control 
+	•	Reusability 
+	•	Consistency 
+	•	Easy scaling and modification” 
+
+5. How do you manage multiple environments in production systems?
+“In our project, we managed multiple environments like Dev, QA, Stage, and Production using proper segregation and Infrastructure as Code.
+We followed Azure Landing Zone architecture.
+Our approach:
+	•	Separate subscriptions for each environment 
+	•	Separate resource groups 
+	•	Separate Terraform variable files 
+	•	Separate backend state files 
+	•	Environment-specific CI/CD pipelines 
+For Kubernetes:
+	•	Separate namespaces 
+	•	Separate configurations and secrets 
+	•	Different ingress and scaling settings 
+We also implemented:
+	•	RBAC access control 
+	•	Approval-based deployments for production 
+	•	Environment-specific monitoring and alerts 
+This helped maintain isolation, security, and stability across environments.”
+
+6. Have you used PowerShell in project?
+“Yes, I have used PowerShell in multiple tasks, especially in Azure and automation activities.
+Use cases:
+	•	Azure resource management 
+	•	Automation scripts 
+	•	VM administration 
+	•	Log collection 
+	•	Backup automation 
+	•	Deployment tasks in pipelines 
+Examples:
+	•	Managing Azure resources using Az PowerShell modules 
+	•	Automating cleanup tasks 
+	•	Creating scheduled jobs 
+	•	Retrieving logs and monitoring information 
+PowerShell helped reduce manual work and improved operational efficiency.”
+
+7. What is another method to create multiple Resource Groups apart from for_each?
+“Apart from for_each, we can use:
+	•	count 
+	•	modules 
+	•	dynamic blocks (in some scenarios) 
+Example using count: Terraform creates multiple resources based on numeric count values.
+Difference:
+	•	count is index-based 
+	•	for_each is key/value-based and more flexible 
+Usually:
+	•	count is preferred for similar resources 
+	•	for_each is preferred when resources have unique names or configurations” 
+
+8. Have you deployed applications on Docker and Kubernetes?
+“Yes, I have deployed applications using both Docker and Kubernetes.
+Docker Responsibilities:
+	•	Writing Dockerfiles 
+	•	Creating Docker images 
+	•	Multi-stage Docker builds 
+	•	Pushing images to Azure Container Registry 
+Kubernetes Responsibilities:
+	•	Creating deployments 
+	•	Services 
+	•	Ingress configurations 
+	•	ConfigMaps and Secrets 
+	•	Autoscaling using HPA 
+	•	Namespace management 
+Deployment Process:
+	•	Build Docker image 
+	•	Push image to ACR 
+	•	Deploy application on AKS through CI/CD pipeline 
+We used Helm charts and Kubernetes manifests for deployments.”
+
+9. Have you used AI Driven system in your project?
+“Yes, we have worked on AI-enabled and automation-driven systems indirectly in our projects.
+My contribution was mainly on:
+	•	Infrastructure provisioning 
+	•	CI/CD automation 
+	•	Container orchestration 
+	•	Monitoring and scalability 
+We supported applications that used:
+	•	AI APIs 
+	•	Data processing services 
+	•	Automated analytics systems 
+As a DevOps Engineer, my role focused on ensuring:
+	•	High availability 
+	•	Secure deployment 
+	•	Scalability 
+	•	Monitoring 
+	•	Automation of AI-based workloads” 
+
+10. Which type of resources have you created from Terraform?
+“I have created and managed multiple Azure resources using Terraform, including:
+Compute:
+	•	Virtual Machines 
+	•	VM Scale Sets 
+	•	AKS Cluster 
+Networking:
+	•	Virtual Networks 
+	•	Subnets 
+	•	NSG 
+	•	Load Balancer 
+	•	Application Gateway 
+	•	Public IPs 
+	•	Azure Firewall 
+	•	Bastion Host 
+Storage & Database:
+	•	Storage Accounts 
+	•	Azure SQL 
+	•	Cosmos DB 
+Security:
+	•	Azure Key Vault 
+	•	RBAC roles 
+	•	Managed Identities 
+DevOps:
+	•	Azure Container Registry 
+	•	Monitoring resources 
+	•	Log Analytics Workspace 
+Others:
+	•	Resource Groups 
+	•	Private Endpoints 
+	•	DNS Zones 
+	•	Azure Monitor Alerts 
+We managed all these resources using reusable Terraform modules and automated pipelines.”
+
+
+Terraform Best Practices — Interview Answer
+1. Modularize Everything (Don’t write monolithic code)
+“Terraform code should always be modularized instead of writing everything in a single file.
+For example:
+	•	Separate module for VNet 
+	•	Separate module for AKS 
+	•	Separate module for Storage Account 
+	•	Separate module for VM 
+Benefits:
+	•	Reusability 
+	•	Easy maintenance 
+	•	Better readability 
+	•	Team collaboration becomes easier 
+In our project, we maintained separate reusable modules and called them from environment-specific code.”
+
+2. Use Remote State + Locking
+“In production environments, Terraform state should never be stored locally.
+We used Azure Blob Storage as remote backend storage for Terraform state files.
+Benefits:
+	•	Centralized state management 
+	•	Team collaboration 
+	•	Prevents state file loss 
+	•	Better security 
+We also enabled state locking to avoid multiple users modifying infrastructure simultaneously.
+If state gets locked accidentally, we can release it using:
+terraform force-unlock ```”  ---  # 3. Keep Environments Isolated  “We always keep Dev, QA, Stage, and Production environments isolated.  Methods used: - Separate subscriptions - Separate resource groups - Separate backend state files - Separate variable files - Separate CI/CD pipelines  This prevents accidental changes in production and improves security and governance.”  ---  # 4. Never Hardcode Values  “Hardcoding values is not recommended in Terraform.  Instead, we use: - variables.tf - terraform.tfvars - environment variables - Key Vault secrets  Examples: - VM sizes - Passwords - IP ranges - Environment names  Benefits: - Flexibility - Reusability - Better security - Easier environment management”  ---  # 5. Follow Consistent Naming Conventions  “We follow standard naming conventions for all resources.  Example: - dev-vnet-eastus - prod-aks-cluster - qa-storage-account  Benefits: - Easy identification - Better management - Improved readability - Simplified troubleshooting”  ---  # 6. Use for_each over count  “Generally, for_each is preferred over count.  Reason: - for_each works with key-value pairs - Better resource tracking - Easier updates - Avoids index-related issues  Example: Different resource groups with different names can easily be managed using for_each.”  ---  # 7. Avoid Provisioners  “Provisioners like: - local-exec - remote-exec  should be avoided whenever possible.  Reason: - Less predictable - Difficult to maintain - Can cause failures  Instead, we prefer: - Cloud-init - Custom scripts - Configuration management tools - CI/CD automation”  ---  # 8. Store Secrets Securely  “Secrets should never be stored directly in Terraform code.  We used: - Azure Key Vault - Environment variables - Secret management systems  Examples: - Database passwords - API keys - Certificates  This improves security and compliance.”  ---  # 9. Use terraform plan before apply  “Before applying any infrastructure changes, we always execute: ```bash id="7jkl8r" terraform plan
+This helps:
+	•	Review changes 
+	•	Identify mistakes 
+	•	Prevent accidental deletion 
+	•	Validate infrastructure modifications 
+In our pipeline, manual approval was required after the plan stage before production apply.”
+
+10. Enable Version Control (Git)
+“All Terraform code should be stored in Git repositories.
+Benefits:
+	•	Version tracking 
+	•	Team collaboration 
+	•	Rollback capability 
+	•	Pull request reviews 
+	•	CI/CD integration 
+We used branching strategies and pull request approvals before merging Terraform changes.”
+
+11. Pin Provider Versions
+“We always define provider versions explicitly.
+Example:
+required_providers {   azurerm = {     source  = "hashicorp/azurerm"     version = "~> 3.0"   } }
+Benefits:
+	•	Prevents unexpected behavior 
+	•	Ensures stability 
+	•	Avoids compatibility issues after upgrades” 
+
+12. Use Lifecycle Rules Carefully
+“Terraform lifecycle rules help control resource behavior.
+Examples:
+	•	prevent_destroy 
+	•	ignore_changes 
+	•	create_before_destroy 
+Use cases:
+	•	Prevent accidental deletion of production resources 
+	•	Ignore dynamic property changes 
+	•	Reduce downtime during updates 
+These should be used carefully because incorrect usage can create infrastructure drift.”
+
+13. Keep Code Clean & Structured
+“Terraform code should always be:
+	•	Well organized 
+	•	Properly indented 
+	•	Commented 
+	•	Structured into files 
+Typical structure:
+	•	main.tf 
+	•	variables.tf 
+	•	outputs.tf 
+	•	providers.tf 
+	•	backend.tf 
+Benefits:
+	•	Easy maintenance 
+	•	Better readability 
+	•	Faster troubleshooting 
+	•	Easier onboarding for new team members” 
+
+Interview Closing Line
+“In our project, we followed these Terraform best practices to maintain scalable, secure, reusable, and production-ready infrastructure. These practices helped us reduce manual errors, improve automation, and maintain consistency across all environments.”
+What are the core services in Azure DevOps?
+“Azure DevOps provides multiple services that help manage the complete software development lifecycle.
+Main services are:
+1. Azure Repos
+Used for source code management using:
+	•	Git 
+	•	TFVC 
+Features:
+	•	Branching 
+	•	Pull requests 
+	•	Code reviews 
+	•	Version control 
+2. Azure Pipelines
+Used for:
+	•	Continuous Integration (CI) 
+	•	Continuous Delivery/Deployment (CD) 
+It automates:
+	•	Build 
+	•	Testing 
+	•	Deployment 
+3. Azure Boards
+Used for project and work tracking:
+	•	User stories 
+	•	Tasks 
+	•	Bugs 
+	•	Sprint planning 
+4. Azure Artifacts
+Used for package management:
+	•	npm 
+	•	Maven 
+	•	NuGet 
+	•	Python packages 
+5. Azure Test Plans
+Used for:
+	•	Manual testing 
+	•	Test case management 
+	•	Automated testing integration 
+One-line Answer:
+Azure DevOps provides Repos, Pipelines, Boards, Artifacts, and Test Plans for complete DevOps lifecycle management.”
+
+What is CI/CD?
+“CI/CD is a DevOps practice that automates software build, testing, and deployment processes.
+CI – Continuous Integration
+Developers frequently merge code into a shared repository.
+CI automatically:
+	•	Builds application 
+	•	Runs unit tests 
+	•	Performs code quality checks 
+Goal: Detect issues early.
+CD – Continuous Delivery / Deployment
+After CI success:
+	•	Application gets deployed automatically to environments like Dev, QA, and Production. 
+Benefits:
+	•	Faster releases 
+	•	Reduced manual work 
+	•	Better reliability 
+One-line Answer:
+CI/CD automates build, testing, and deployment processes for faster and reliable software delivery.”
+
+YAML vs Classic Pipeline
+“We can create pipelines in two ways:
+YAML Pipeline
+	•	Code-based pipeline 
+	•	Stored in repository 
+	•	Version-controlled 
+	•	Supports templates and reuse 
+	•	Preferred for modern DevOps 
+Example:
+trigger: - main
+Classic Pipeline
+	•	UI-based pipeline 
+	•	Easy for beginners 
+	•	Limited flexibility 
+	•	Harder to version control 
+Which one do you prefer?
+We mostly use YAML pipelines because they are reusable, scalable, and version-controlled.
+One-line Answer:
+YAML pipelines are code-driven and scalable, while Classic pipelines are UI-driven and simpler.”
+
+What is a Self-hosted Agent?
+“A self-hosted agent is an agent installed on our own server or VM to run pipelines.
+We use self-hosted agents when:
+	•	Custom tools are needed 
+	•	Specific network access required 
+	•	Security restrictions exist 
+	•	Large builds require dedicated resources 
+Benefits:
+	•	Full control 
+	•	Better customization 
+	•	Faster execution for large workloads 
+One-line Answer:
+Self-hosted agents run pipelines on our own infrastructure with more control and customization.”
+
+What is Microsoft-hosted Agent?
+“Microsoft-hosted agents are managed by Microsoft.
+Features:
+	•	Preconfigured environments 
+	•	No maintenance required 
+	•	Automatically provisioned 
+	•	Supports Windows/Linux/macOS 
+Best for:
+	•	Standard builds 
+	•	Small to medium projects 
+Limitation:
+	•	Less customization 
+One-line Answer:
+Microsoft-hosted agents are ready-to-use build environments managed by Microsoft.”
+
+What are stages, jobs, and tasks?
+“In Azure DevOps pipeline hierarchy:
+Stage
+Logical grouping like:
+	•	Build 
+	•	Test 
+	•	Deploy 
+Job
+Runs on an agent.
+Example:
+	•	Linux job 
+	•	Windows job 
+Task
+Individual execution step.
+Examples:
+	•	Run script 
+	•	Install Terraform 
+	•	Build Docker image 
+Hierarchy: Stage → Job → Task
+One-line Answer:
+Stages organize workflows, jobs run on agents, and tasks perform individual actions.”
+
+AZURE 
+
+What are variables in Azure DevOps?
+“Variables are used to store reusable values in pipelines.
+Types:
+	•	Pipeline variables 
+	•	Variable groups 
+	•	Secret variables 
+Examples:
+	•	Environment names 
+	•	Resource names 
+	•	URLs 
+	•	Credentials 
+Benefits:
+	•	Reusability 
+	•	Centralized configuration 
+	•	Better security 
+One-line Answer:
+Variables store reusable configuration values used across pipelines.”
+
+How do you secure secrets in pipelines?
+“We never hardcode secrets in pipeline YAML files.
+We use:
+	•	Azure Key Vault 
+	•	Secret variables 
+	•	RBAC access control 
+Examples of secrets:
+	•	Passwords 
+	•	API keys 
+	•	Connection strings 
+We integrate Azure Key Vault with Azure DevOps pipelines so secrets are fetched securely during runtime.
+One-line Answer:
+I secure secrets using Azure Key Vault, secret variables, and RBAC permissions.”
+
+What is Service Connection?
+“A Service Connection securely connects Azure DevOps to external services like:
+	•	Azure subscription 
+	•	Docker Hub 
+	•	GitHub 
+	•	Kubernetes clusters 
+It stores authentication details securely.
+Example: Azure Resource Manager service connection used for deploying infrastructure to Azure.
+One-line Answer:
+Service Connection securely connects Azure DevOps with external platforms and cloud services.”
+
+Pipeline is failing – how do you troubleshoot?
+“My troubleshooting approach is systematic.
+Steps:
+	•	Check pipeline logs 
+	•	Identify failed stage/task 
+	•	Verify: 
+	•	Variables 
+	•	Service connections 
+	•	Permissions 
+	•	Agent availability 
+	•	Enable debug logging: 
+system.debug: true
+	•	Reproduce issue locally if possible 
+If infrastructure-related:
+	•	Validate Terraform 
+	•	Check Kubernetes events/logs 
+One-line Answer:
+I isolate failures using logs, validate configurations, and debug step-by-step.”
+
+Deployment failed in production – what will you do?
+“First priority is restoring service quickly.
+Steps:
+	•	Check deployment logs 
+	•	Identify root cause 
+	•	Rollback to previous stable version 
+	•	Fix issue in lower environment 
+	•	Validate changes 
+	•	Redeploy safely 
+We usually maintain rollback strategies in AKS and CI/CD pipelines.
+One-line Answer:
+I perform rollback immediately, fix root cause, validate, and redeploy safely.”
+
+How do you handle zero-downtime deployment?
+“We use deployment strategies like:
+Blue-Green Deployment
+	•	Two environments: 
+	•	Blue (current) 
+	•	Green (new) 
+	•	Traffic switches after validation 
+Rolling Updates
+	•	Gradual pod replacement 
+	•	No complete downtime 
+We also:
+	•	Monitor application health 
+	•	Use load balancers 
+	•	Validate readiness probes 
+One-line Answer:
+I use rolling updates and blue-green deployments for zero downtime.”
+
+Pipeline is slow – how to optimize?
+“To optimize pipelines:
+	•	Enable caching 
+	•	Use parallel jobs 
+	•	Remove unnecessary tasks 
+	•	Optimize Docker layers 
+	•	Use lightweight agents 
+	•	Reduce repeated downloads 
+We also split pipelines logically for faster execution.
+One-line Answer:
+I optimize pipelines using caching, parallel execution, and task optimization.”
+
+How do you implement approvals in pipeline?
+“We use:
+	•	Environment approvals 
+	•	Manual validation tasks 
+	•	RBAC restrictions 
+Production deployments require manual approval from authorized team members before execution.
+Benefits:
+	•	Controlled deployment 
+	•	Reduced production risk 
+One-line Answer:
+I use environment-based approvals and validation steps for controlled deployments.”
+
+Agent not picking job – why?
+“Possible reasons:
+	•	Agent offline 
+	•	Capability mismatch 
+	•	Incorrect pool configuration 
+	•	Permission issue 
+Troubleshooting:
+	•	Check agent service status 
+	•	Validate pool assignment 
+	•	Verify required capabilities 
+One-line Answer:
+I verify agent health, capabilities, and pool configuration.”
+
+Pipeline triggered but not running
+“Common reasons:
+	•	Trigger misconfiguration 
+	•	Wrong branch filters 
+	•	YAML syntax issue 
+	•	Disabled pipeline 
+I check:
+	•	trigger section 
+	•	branch filters 
+	•	pipeline logs 
+	•	YAML validation 
+One-line Answer:
+I verify triggers, branch filters, and YAML syntax.”
+
+Permission denied error
+“This usually happens because of:
+	•	RBAC issue 
+	•	Invalid service connection 
+	•	Missing access rights 
+Steps:
+	•	Validate service connection 
+	•	Check Azure IAM roles 
+	•	Verify Kubernetes RBAC 
+	•	Ensure resource permissions 
+One-line Answer:
+I resolve permission errors by validating RBAC and service connection access.”
+
+How do you design reusable pipelines?
+“We create reusable pipelines using:
+	•	YAML templates 
+	•	Shared repositories 
+	•	Parameterized pipelines 
+Benefits:
+	•	DRY principle 
+	•	Standardization 
+	•	Easier maintenance 
+Example: Common build template reused across applications.
+One-line Answer:
+I use YAML templates and parameters to create reusable and scalable pipelines.”
+
+How do you implement pipeline-as-code best practices?
+“We treat pipelines like application code.
+Best practices:
+	•	Store YAML in Git 
+	•	Use PR reviews 
+	•	Modular templates 
+	•	Naming standards 
+	•	Version control 
+	•	Separate environments 
+Benefits:
+	•	Traceability 
+	•	Auditability 
+	•	Better collaboration 
+One-line Answer:
+I manage pipelines as version-controlled code using templates and reviews.”
+
+How do you manage multi-branch pipelines?
+“We configure branch-based triggers.
+Examples:
+	•	feature/* 
+	•	develop 
+	•	main 
+We also:
+	•	Enable PR validation 
+	•	Use separate deployment rules 
+	•	Apply environment-specific approvals 
+One-line Answer:
+I use branch filters and PR validation for managing multi-branch pipelines.”
+
+How would you migrate on-prem CI/CD to Azure DevOps?
+“Migration approach:
+	•	Analyze existing setup 
+	•	Move repositories to Azure Repos 
+	•	Rebuild pipelines in YAML 
+	•	Configure agents 
+	•	Migrate gradually 
+We avoid big-bang migration and move incrementally to reduce risks.
+One-line Answer:
+I migrate incrementally using YAML pipelines with minimal business disruption.”
+
+How do you handle secrets leakage incident?
+“Immediate actions:
+	•	Rotate credentials 
+	•	Revoke compromised access 
+	•	Audit logs 
+	•	Identify root cause 
+	•	Strengthen security policies 
+Preventive measures:
+	•	Key Vault 
+	•	Secret scanning 
+	•	RBAC 
+One-line Answer:
+I handle secret leakage using credential rotation, access revocation, and security audits.”
+
+What challenges did you face in project?
+“Some challenges we faced:
+	•	Pipeline failures 
+	•	Environment mismatch 
+	•	Deployment downtime 
+	•	Secret management 
+	•	Slow pipelines 
+Solutions:
+	•	Variable groups + Key Vault 
+	•	Blue-green deployments 
+	•	Pipeline optimization 
+	•	Better monitoring 
+	•	Standardized environments 
+One-line Answer:
+I solved deployment, security, and pipeline issues using automation and DevOps best practices.”
+
+Describe your CI/CD pipeline flow
+“Our pipeline flow:
+	•	Developer pushes code 
+	•	CI pipeline triggers 
+	•	Build application 
+	•	Run tests 
+	•	SonarQube analysis 
+	•	Build Docker image 
+	•	Vulnerability scanning 
+	•	Push image to ACR 
+	•	CD deployment: 
+	•	Dev 
+	•	QA 
+	•	Production 
+	•	Manual approval before production 
+One-line Answer:
+My CI/CD pipeline automates build, testing, security scanning, and controlled deployments.”
+
+Difference between Continuous Delivery vs Continuous Deployment
+Continuous Delivery
+Deployment requires manual approval before production.
+Continuous Deployment
+Production deployment happens automatically without manual intervention.
+One-line Answer:
+Continuous Delivery requires approval; Continuous Deployment is fully automated.”
+
+Why YAML pipelines over Classic?
+“Advantages of YAML:
+	•	Version-controlled 
+	•	Reusable 
+	•	Scalable 
+	•	Template support 
+	•	Easier automation 
+That’s why most modern projects prefer YAML pipelines.
+One-line Answer:
+YAML pipelines are flexible, reusable, scalable, and version-controlled.”
+
+How do you integrate Terraform in pipeline?
+“We automate infrastructure provisioning using Terraform in CI/CD pipelines.
+Pipeline flow:
+	•	Install Terraform 
+	•	Run terraform init 
+	•	Run terraform plan 
+	•	Security scan using tfsec 
+	•	Manual approval 
+	•	Run terraform apply 
+State file stored securely in Azure Blob Storage backend.
+One-line Answer:
+I automate infrastructure deployment using Terraform integrated into Azure DevOps pipelines.”
+
+
+What are Azure Service Models?
+“Azure provides three main cloud service models based on how much control and responsibility the customer wants.
+1. IaaS (Infrastructure as a Service)
+Azure provides infrastructure like:
+	•	Virtual Machines 
+	•	Networking 
+	•	Storage 
+Customer manages:
+	•	OS 
+	•	Applications 
+	•	Runtime 
+	•	Security patches 
+Examples:
+	•	Azure VM 
+	•	Virtual Network 
+	•	Load Balancer 
+Best for:
+	•	Lift-and-shift migration 
+	•	Full infrastructure control 
+
+2. PaaS (Platform as a Service)
+Azure manages:
+	•	Infrastructure 
+	•	OS 
+	•	Runtime 
+Customer manages:
+	•	Application 
+	•	Data 
+Examples:
+	•	Azure App Service 
+	•	Azure SQL Database 
+Benefits:
+	•	Faster development 
+	•	Less maintenance 
+
+3. SaaS (Software as a Service)
+Everything managed by provider.
+Users only consume software.
+Examples:
+	•	Office 365 
+	•	Outlook 
+	•	Teams 
+
+One-line Answer:
+Azure service models define control levels: IaaS gives maximum control, PaaS provides managed platforms, and SaaS delivers ready-to-use software.”
+
+What is Azure Active Directory?
+“Azure Active Directory (Azure AD) is Microsoft’s cloud-based identity and access management service.
+It provides:
+	•	Authentication 
+	•	Authorization 
+	•	Single Sign-On (SSO) 
+	•	Multi-Factor Authentication (MFA) 
+Uses:
+	•	User login management 
+	•	Secure application access 
+	•	RBAC integration 
+Example: Users can login once and access multiple applications securely.
+One-line Answer:
+Azure AD securely manages user identity, authentication, and access control.”
+
+What is NSG?
+“NSG stands for Network Security Group.
+It acts like a firewall that controls:
+	•	Inbound traffic 
+	•	Outbound traffic 
+Rules are based on:
+	•	Source IP 
+	•	Destination IP 
+	•	Port 
+	•	Protocol 
+NSG can be attached to:
+	•	Subnets 
+	•	Network Interfaces 
+Example: Allow port 80 and block port 22 from public internet.
+One-line Answer:
+NSG controls inbound and outbound traffic using security rules.”
+
+What is RBAC?
+“RBAC stands for Role-Based Access Control.
+It controls who can:
+	•	Access resources 
+	•	Perform actions 
+Examples of roles:
+	•	Owner 
+	•	Contributor 
+	•	Reader 
+Benefits:
+	•	Least privilege access 
+	•	Better security 
+	•	Controlled permissions 
+Example: Developer gets Contributor access only to Dev resource group.
+One-line Answer:
+RBAC controls access to Azure resources based on assigned roles.”
+
+What is Load Balancer?
+“Azure Load Balancer distributes incoming traffic across multiple servers or VMs.
+Benefits:
+	•	High availability 
+	•	Fault tolerance 
+	•	Better performance 
+It works at:
+	•	Layer 4 (TCP/UDP) 
+Use cases:
+	•	VM traffic distribution 
+	•	Backend server balancing 
+One-line Answer:
+Load Balancer distributes traffic across multiple resources for high availability.”
+
+What is VPN Gateway?
+“Azure VPN Gateway securely connects:
+	•	On-premises datacenter 
+	•	Remote users 
+	•	Azure VNets 
+Types:
+	•	Site-to-Site VPN 
+	•	Point-to-Site VPN 
+Traffic is encrypted over internet.
+One-line Answer:
+VPN Gateway securely connects on-premises environments to Azure.”
+
+What is Availability Set?
+“Availability Set improves VM uptime and availability.
+It protects against:
+	•	Hardware failure 
+	•	Planned maintenance 
+Uses:
+	•	Fault Domains 
+	•	Update Domains 
+This ensures all VMs don’t go down together.
+One-line Answer:
+Availability Set improves VM availability during failures and maintenance.”
+
+What is Azure Scale Set?
+“Azure VM Scale Set manages multiple identical VMs automatically.
+Features:
+	•	Auto scaling 
+	•	Load balancing 
+	•	High availability 
+Scaling based on:
+	•	CPU 
+	•	Memory 
+	•	Custom metrics 
+Best for:
+	•	Web applications 
+	•	Large workloads 
+One-line Answer:
+Scale Set automatically scales and manages multiple VM instances.”
+
+What is Azure Application Gateway?
+“Application Gateway is a Layer 7 load balancer.
+Features:
+	•	URL-based routing 
+	•	SSL termination 
+	•	Web Application Firewall (WAF) 
+	•	Session affinity 
+Best for:
+	•	Web applications 
+	•	HTTP/HTTPS traffic 
+One-line Answer:
+Application Gateway is a Layer 7 load balancer with intelligent routing and WAF support.”
+
+Difference between Load Balancer vs Application Gateway
+Load Balancer
+Application Gateway
+Layer 4
+Layer 7
+TCP/UDP traffic
+HTTP/HTTPS traffic
+Basic traffic distribution
+Intelligent routing
+No WAF
+Supports WAF
+One-line Answer:
+Load Balancer works at Layer 4, while Application Gateway works at Layer 7 with advanced routing.”
+
+What is Azure Functions?
+“Azure Functions is a serverless compute service.
+Features:
+	•	Event-driven execution 
+	•	Pay-per-use 
+	•	No server management 
+Triggers:
+	•	HTTP 
+	•	Timer 
+	•	Blob storage 
+	•	Queue messages 
+One-line Answer:
+Azure Functions executes code without managing servers.”
+
+What is Azure Key Vault?
+“Azure Key Vault securely stores:
+	•	Secrets 
+	•	Passwords 
+	•	Certificates 
+	•	Encryption keys 
+Benefits:
+	•	Centralized secret management 
+	•	RBAC integration 
+	•	Secure CI/CD integration 
+Used in:
+	•	Terraform 
+	•	Azure DevOps pipelines 
+	•	AKS 
+One-line Answer:
+Key Vault securely stores and manages secrets, keys, and certificates.”
+
+What is Azure Site Recovery (ASR)?
+“Azure Site Recovery is a disaster recovery solution.
+Features:
+	•	Workload replication 
+	•	Failover support 
+	•	Business continuity 
+It replicates workloads to another region for recovery during disaster.
+One-line Answer:
+ASR provides disaster recovery through workload replication and failover.”
+
+What is Azure Bastion?
+“Azure Bastion provides secure RDP and SSH access to VMs.
+Benefits:
+	•	No public IP needed 
+	•	Browser-based access 
+	•	Improved security 
+One-line Answer:
+Azure Bastion securely accesses VMs without exposing public IPs.”
+
+What is Azure Front Door?
+“Azure Front Door is a global Layer 7 load balancer.
+Features:
+	•	Global routing 
+	•	CDN integration 
+	•	SSL offloading 
+	•	WAF support 
+	•	Low latency routing 
+Best for:
+	•	Global applications 
+One-line Answer:
+Azure Front Door provides global traffic routing with low latency and high availability.”
+
+What is Azure Traffic Manager?
+“Traffic Manager is a DNS-based traffic routing service.
+Routing methods:
+	•	Priority 
+	•	Performance 
+	•	Geographic 
+	•	Weighted 
+Best for:
+	•	Multi-region applications 
+One-line Answer:
+Traffic Manager distributes global traffic using DNS-based routing.”
+
+What is Managed Identity?
+“Managed Identity provides Azure resources with identities to access other services securely.
+Benefits:
+	•	No credential storage 
+	•	Automatic credential management 
+	•	Integrated with Azure AD 
+Used for:
+	•	Accessing Key Vault 
+	•	Database authentication 
+One-line Answer:
+Managed Identity securely accesses Azure services without storing credentials.”
+
+What is Azure Policy?
+“Azure Policy enforces governance and compliance rules.
+Examples:
+	•	Restrict VM sizes 
+	•	Enforce tagging 
+	•	Deny public IPs 
+Actions:
+	•	Audit 
+	•	Deny 
+	•	Append 
+One-line Answer:
+Azure Policy enforces governance and compliance rules across Azure resources.”
+
+What is Private Endpoint?
+“Private Endpoint assigns a private IP to Azure services within a VNet.
+Benefits:
+	•	No public internet exposure 
+	•	Secure communication 
+	•	Better compliance 
+Used for:
+	•	Storage Accounts 
+	•	SQL Databases 
+	•	Key Vault 
+One-line Answer:
+Private Endpoint securely connects Azure services through private IP addresses.”
+
+Difference between Service Endpoint vs Private Endpoint
+Service Endpoint
+Private Endpoint
+Uses public endpoint
+Uses private IP
+Simpler setup
+More secure
+Traffic still public
+Traffic private
+One-line Answer:
+Private Endpoint is more secure because it uses private IP connectivity.”
+
+What is Azure Landing Zone?
+“Landing Zone is a preconfigured Azure environment designed using best practices.
+Includes:
+	•	Networking 
+	•	Security 
+	•	Governance 
+	•	Identity management 
+Built using:
+	•	Terraform 
+	•	ARM 
+	•	Bicep 
+One-line Answer:
+Landing Zone provides a secure and scalable Azure foundation.”
+
+What is Zero Trust Security?
+“Zero Trust follows: ‘Never trust, always verify.’
+Principles:
+	•	Identity verification 
+	•	Least privilege access 
+	•	Continuous monitoring 
+Used with:
+	•	MFA 
+	•	Conditional Access 
+	•	RBAC 
+One-line Answer:
+Zero Trust verifies every access request before granting permissions.”
+
+Event Hub vs Service Bus
+Event Hub
+Service Bus
+Streaming platform
+Messaging platform
+High throughput
+Guaranteed delivery
+Telemetry data
+Enterprise messaging
+One-line Answer:
+Event Hub handles streaming data, while Service Bus handles reliable messaging.”
+
+What is Azure Firewall?
+“Azure Firewall is a managed network security service.
+Features:
+	•	Traffic filtering 
+	•	Threat intelligence 
+	•	Logging 
+	•	Centralized control 
+Supports:
+	•	Application rules 
+	•	Network rules 
+One-line Answer:
+Azure Firewall protects Azure resources by filtering network traffic.”
+
+What is Azure Disk Types?
+“Azure provides multiple disk types:
+Standard HDD
+	•	Low cost 
+	•	Basic workloads 
+Standard SSD
+	•	Balanced performance 
+Premium SSD
+	•	High-performance applications 
+Ultra Disk
+	•	Extremely high IOPS 
+One-line Answer:
+Azure offers multiple disk types based on cost and performance requirements.”
+
+Difference between Availability Zone vs Region Pair
+Availability Zone
+Region Pair
+Same region
+Different regions
+Low latency
+Disaster recovery
+Local redundancy
+Geo redundancy
+One-line Answer:
+Availability Zones provide local redundancy, while Region Pairs provide disaster recovery.”
+
+What is ExpressRoute?
+“ExpressRoute provides private connectivity between:
+	•	On-premises datacenter 
+	•	Azure 
+Benefits:
+	•	Faster connection 
+	•	More secure 
+	•	No internet exposure 
+Used by enterprises requiring dedicated connectivity.
+One-line Answer:
+ExpressRoute provides private, secure, and high-speed Azure connectivity.”
+
+How do you design highly available architecture?
+“We use:
+	•	Availability Zones 
+	•	Multiple instances 
+	•	Load Balancers 
+	•	Auto scaling 
+	•	Backup and disaster recovery 
+Goal: Avoid single point of failure.
+One-line Answer:
+High availability is achieved using redundancy, load balancing, and failover mechanisms.”
+
+How do you design scalable architecture?
+“We design scalable systems using:
+	•	VM Scale Sets 
+	•	Auto scaling 
+	•	Stateless applications 
+	•	CDN 
+	•	Redis caching 
+One-line Answer:
+Scalability is achieved using auto-scaling and stateless architecture design.”
+
+How do you secure Azure resources?
+“We secure resources using:
+	•	RBAC 
+	•	NSG 
+	•	Firewall 
+	•	Key Vault 
+	•	Private Endpoints 
+	•	Monitoring and alerts 
+One-line Answer:
+Azure resources are secured using access control, network isolation, and monitoring.”
+
+What is fault domain vs update domain?
+Fault Domain
+Protects against hardware failures.
+Update Domain
+Protects during planned maintenance.
+One-line Answer:
+Fault domains isolate hardware failures, while update domains isolate maintenance events.”
+
+What is Hub-Spoke Architecture?
+“In Hub-Spoke architecture:
+Hub
+Contains shared services:
+	•	Firewall 
+	•	VPN 
+	•	DNS 
+Spoke
+Contains application VNets.
+Benefits:
+	•	Centralized security 
+	•	Better scalability 
+One-line Answer:
+Hub-Spoke centralizes networking and improves security and scalability.”
+What is Terraform State & why is it critical?
+“Terraform state is a file that stores the current mapping between Terraform configuration and real infrastructure resources.
+Whenever Terraform creates infrastructure, it stores resource details inside the state file.
+The state file contains:
+	•	Resource IDs 
+	•	Metadata 
+	•	Dependencies 
+	•	Current infrastructure status 
+Terraform compares:
+	•	Desired configuration vs 
+	•	Current state 
+to determine:
+	•	What to create 
+	•	What to update 
+	•	What to delete 
+Without state, Terraform cannot properly track infrastructure.
+For example: If a VM already exists but Terraform has no state information, Terraform may try to create the same VM again.
+That’s why state is extremely critical in Terraform.”
+
+Why Terraform State is Important
+1. Infrastructure Tracking
+Terraform knows which resources it manages.
+2. Change Detection
+Terraform identifies infrastructure drift and required modifications.
+3. Dependency Management
+Terraform maintains resource relationships and execution order.
+4. Performance Optimization
+Terraform does not query every resource every time.
+5. Collaboration
+Remote state allows teams to work together safely.
+
+Remote State Best Practice
+“In production, we never store state locally.
+We store Terraform state in:
+	•	Azure Blob Storage 
+	•	S3 bucket 
+	•	Terraform Cloud 
+We also enable:
+	•	State locking 
+	•	Versioning 
+	•	Backup 
+This prevents corruption and concurrent modifications.”
+
+One-line Answer
+“Terraform state is the source of truth that Terraform uses to track and manage infrastructure resources.”
+
+What if your Terraform state file is deleted?
+“If the Terraform state file gets deleted, Terraform loses track of all infrastructure resources.
+The infrastructure may still exist in Azure or cloud provider, but Terraform will no longer know it manages those resources.
+As a result:
+	•	Terraform may try to recreate existing resources 
+	•	Duplicate resources may be created 
+	•	Conflicts and deployment failures can happen 
+That’s why state backup is very important.”
+
+Recovery Methods
+Scenario 1: Remote Backend with Backup
+“If remote backend versioning is enabled:
+	•	Restore previous state version 
+	•	Continue normal operations 
+Example: Azure Blob Storage versioning or S3 versioning.”
+
+Scenario 2: No Backup Available
+“We rebuild the state using:
+terraform import
+Terraform import maps existing infrastructure into Terraform state manually.”
+Example:
+terraform import azurerm_resource_group.rg my-rg
+
+Best Practices to Prevent State Loss
+	•	Use remote backend 
+	•	Enable versioning 
+	•	Enable state locking 
+	•	Restrict access 
+	•	Take backups regularly 
+
+One-line Answer
+“If the state file is deleted, Terraform loses infrastructure tracking and may try to recreate existing resources.”
+
+What are Terraform Workspaces?
+“Terraform Workspaces allow multiple state files using the same Terraform configuration.
+Each workspace maintains:
+	•	Separate state 
+	•	Separate infrastructure 
+This is useful for environments like:
+	•	Dev 
+	•	QA 
+	•	Stage 
+	•	Production 
+Default workspace name:
+default
+Example: Same Terraform code can create:
+	•	Dev infrastructure in one workspace 
+	•	Production infrastructure in another workspace 
+without changing the code.”
+
+Workspace Commands
+Create Workspace
+terraform workspace new dev
+Switch Workspace
+terraform workspace select prod
+List Workspaces
+terraform workspace list
+
+Benefits of Workspaces
+	•	Environment isolation 
+	•	Reusability 
+	•	Simplified management 
+	•	Separate state tracking 
+
+Limitation
+“For large enterprise projects, separate folders and separate backend configurations are usually preferred over only workspaces.”
+
+One-line Answer
+“Terraform workspaces allow multiple isolated state files using the same Terraform code.”
+
+How do you manage multiple environments (Dev/Stage/Prod)?
+“In real projects, we manage multiple environments carefully to avoid conflicts and maintain isolation.
+We usually use:
+	•	Separate folders 
+	•	Separate variable files 
+	•	Separate backend state files 
+	•	Separate subscriptions/resource groups 
+for:
+	•	Dev 
+	•	QA 
+	•	Stage 
+	•	Production” 
+
+Our Approach
+1. Separate Variable Files
+Example:
+	•	dev.tfvars 
+	•	qa.tfvars 
+	•	prod.tfvars 
+Each file contains environment-specific values.
+
+2. Separate State Files
+Each environment has:
+	•	Independent backend 
+	•	Separate state management 
+This avoids accidental production impact.
+
+3. Resource Naming Convention
+Examples:
+	•	dev-vnet 
+	•	qa-aks 
+	•	prod-storage 
+This improves readability and management.
+
+4. CI/CD Integration
+“We use Azure DevOps pipelines for controlled deployments.
+Production deployment requires:
+	•	Approval 
+	•	Validation 
+	•	Security checks” 
+
+5. Environment Isolation
+We isolate:
+	•	Networking 
+	•	Access control 
+	•	Monitoring 
+	•	Secrets 
+for each environment.
+
+One-line Answer
+“I manage multiple environments using separate state files, variable files, naming conventions, and CI/CD-controlled deployments.”
+
+Difference between count, for_each, and dynamic
+1. count
+“count is used for creating multiple similar resources using numeric indexing.”
+Example:
+count = 3
+Resources created:
+	•	VM[0] 
+	•	VM[1] 
+	•	VM[2] 
+Best Use Case
+When resources are almost identical.
+Limitation
+Index-based tracking can cause issues if order changes.
+
+2. for_each
+“for_each is used for looping through:
+	•	Maps 
+	•	Sets 
+	•	Key-value pairs 
+It provides better resource identification.”
+Example:
+for_each = toset(["dev","qa","prod"])
+Benefits:
+	•	Better flexibility 
+	•	Easier updates 
+	•	Stable resource tracking 
+Best Use Case
+When resources have unique names/configurations.
+
+3. dynamic
+“dynamic blocks are used to generate nested configuration blocks dynamically.”
+Used when:
+	•	Nested blocks repeat 
+	•	Configuration changes dynamically 
+Example use cases:
+	•	Multiple security rules 
+	•	Multiple disks 
+	•	Multiple ingress rules 
+
+Comparison Table
+Feature
+count
+for_each
+dynamic
+Works with
+Numbers
+Maps/Sets
+Nested blocks
+Tracking
+Index-based
+Key-based
+Dynamic generation
+Flexibility
+Low
+High
+Very High
+Best for
+Similar resources
+Unique resources
+Nested configurations
+
+One-line Answer
+“count is index-based looping, for_each is key-based looping, and dynamic is used for generating nested blocks dynamically.”
+Scenario-Based DevOps / Cloud Interview Questions & Answers
+1. If You Need to Create 100 VMs in Multiple Regions, What Approach Will You Use?
+For large-scale VM deployment, I would use:
+	•	Terraform 
+	•	for_each 
+	•	reusable modules 
+	•	region-based architecture 
+Example Strategy
+	•	100 VMs in West Europe 
+	•	100 VMs in Central US 
+Best Practices
+	•	Separate VNets per region 
+	•	Global VNet Peering 
+	•	Reusable Terraform modules 
+	•	Separate Terraform state files 
+Communication Between Regions
+Use:
+	•	Global VNet Peering 
+	•	Azure backbone network 
+	•	Private communication 
+
+2. How Will You Reduce Latency Between Multi-Region VMs?
+Best Practices
+	•	Keep workloads regional 
+	•	Use local database/cache 
+	•	Avoid synchronous cross-region calls 
+	•	Use async communication 
+	•	Use Redis caching 
+	•	Use Azure Front Door 
+Networking
+	•	Global VNet Peering 
+	•	Accelerated networking 
+Architecture
+Users    │ Azure Front Door    │  ├── Europe Region  └── US Region
+
+3. How Do You Manage Secrets in Azure?
+Use:
+	•	Microsoft 
+Store:
+	•	Passwords 
+	•	API keys 
+	•	Certificates 
+	•	Connection strings 
+Best Practice
+Use:
+	•	Managed Identity 
+	•	RBAC 
+	•	Private Endpoint 
+Avoid
+❌ Hardcoding secrets ❌ Storing secrets in GitHub
+
+4. Explain Full Terraform Key Vault Setup
+Steps
+	•	Create Key Vault 
+	•	Store secrets 
+	•	Enable Managed Identity on VM 
+	•	Assign RBAC permissions 
+	•	Access secrets securely 
+Terraform Resources Used
+	•	azurerm_key_vault 
+	•	azurerm_key_vault_secret 
+	•	azurerm_role_assignment 
+
+5. Difference Between count and for_each in Terraform
+count
+for_each
+Index-based
+Key-based
+Less flexible
+More scalable
+Index shifting issue
+Stable resources
+Best Practice
+Use for_each for production.
+Example:
+for_each = var.vms
+
+6. If One Resource Needs to Be Deleted in Terraform, How Will You Do It?
+Best Method
+Remove resource block from code.
+Then run:
+terraform plan terraform apply
+Alternative
+terraform destroy -target=RESOURCE_NAME
+
+7. What Happens During Terraform Lifecycle?
+Lifecycle Flow
+terraform init terraform validate terraform plan terraform apply terraform destroy
+Purpose
+	•	Initialize providers 
+	•	Check syntax 
+	•	Create execution plan 
+	•	Create/update infrastructure 
+	•	Destroy infrastructure 
+
+8. What is Terraform Import?
+Used to import existing infrastructure into Terraform state.
+Example
+terraform import azurerm_resource_group.rg RESOURCE_ID
+
+9. Scenario: Production VM Accidentally Deleted. What Will You Do?
+Steps
+	•	Check monitoring alerts 
+	•	Check Terraform state 
+	•	Recreate VM using Terraform 
+	•	Restore backup if needed 
+	•	Check root cause 
+Prevention
+	•	Backup 
+	•	Availability Sets/Zones 
+	•	VMSS 
+	•	Monitoring alerts 
+
+10. Scenario: Application is Down in Kubernetes. How Will You Troubleshoot?
+Steps
+Check pods:
+kubectl get pods
+Describe pod:
+kubectl describe pod POD_NAME
+Check logs:
+kubectl logs POD_NAME
+Check:
+	•	CrashLoopBackOff 
+	•	Image pull errors 
+	•	CPU/memory issues 
+	•	Network issue 
+	•	ConfigMap/Secret issue 
+
+11. Scenario: Jenkins Build Failed. What Will You Check?
+Troubleshooting
+	•	Console logs 
+	•	Disk space 
+	•	Jenkins agent status 
+	•	Git access 
+	•	Docker daemon 
+	•	Credentials 
+Commands
+systemctl status jenkins
+
+12. Scenario: Disk Space Full on Linux Server
+Check Disk Usage
+df -h
+Find Large Files
+du -sh /*
+Cleanup
+	•	Old logs 
+	•	Docker images 
+	•	Temporary files 
+
+13. Scenario: How Will You Secure Terraform State?
+Best Practices
+	•	Remote backend 
+	•	State locking 
+	•	Encryption 
+	•	RBAC 
+Use:
+	•	Microsoft 
+	•	Storage account backend 
+
+14. Scenario: How Will You Deploy Zero-Downtime Application?
+Kubernetes
+Use:
+	•	Rolling updates 
+	•	Multiple replicas 
+	•	Readiness probes 
+Terraform
+create_before_destroy = true
+
+15. Scenario: How Will You Scale Kubernetes Application?
+Manual Scaling
+kubectl scale deployment nginx --replicas=5
+Auto Scaling
+Use:
+	•	HPA (Horizontal Pod Autoscaler) 
+
+16. Scenario: How Will You Handle Multi-Environment Infra?
+Structure
+dev/ stage/ prod/
+Best Practices
+	•	Separate state 
+	•	Separate variables 
+	•	Reusable modules 
+
+17. Scenario: Application Works Locally but Fails in Docker
+Check:
+	•	Port mapping 
+	•	Environment variables 
+	•	Dependencies 
+	•	Container logs 
+Logs
+docker logs CONTAINER_ID
+
+18. Scenario: How Will You Monitor Production Infrastructure?
+Use:
+	•	Prometheus 
+	•	Grafana 
+	•	Azure Monitor 
+	•	CloudWatch 
+Monitor:
+	•	CPU 
+	•	Memory 
+	•	Disk 
+	•	Network 
+	•	Application logs 
+
+19. Scenario: How Will You Secure Kubernetes Cluster?
+Security Best Practices
+	•	RBAC 
+	•	Network policies 
+	•	Secrets management 
+	•	Private cluster 
+	•	Image scanning 
+	•	Namespace isolation 
+
+20. Scenario: How Will You Handle Secrets in CI/CD Pipeline?
+Best Practice
+Use:
+	•	Azure Key Vault 
+	•	Jenkins credentials 
+	•	Kubernetes secrets 
+Avoid: ❌ Hardcoded passwords ❌ Secrets in GitHub
+
+Final Interview Closing Line
+“I have experience in cloud infrastructure, CI/CD, Terraform, Docker, Kubernetes, and Linux administration. I enjoy automating infrastructure and solving production issues using DevOps best practices.”
+DevOps / Cloud Engineer Interview Notes (Q&A)
+1. Self Introduction
+Hi, my name is [Your Name]. I am working as a DevOps/Cloud Engineer with experience in:
+	•	Linux Administration 
+	•	Cloud Infrastructure 
+	•	CI/CD pipelines 
+	•	Docker & Kubernetes 
+	•	Terraform 
+	•	Monitoring and deployment automation 
+Currently, I am working mainly on Microsoft cloud platform.
+Day-to-Day Activities
+	•	Managing cloud infrastructure 
+	•	Creating CI/CD pipelines using Jenkins 
+	•	Deploying applications 
+	•	Writing Terraform code 
+	•	Monitoring Linux servers 
+	•	Managing Docker containers and Kubernetes clusters 
+	•	Troubleshooting production issues 
+	•	Managing secrets using Microsoft 
+
+Linux Questions
+2. What is systemctl in Linux?
+systemctl is a command used to manage services in Linux systems that use systemd.
+Uses:
+	•	Start service 
+	•	Stop service 
+	•	Restart service 
+	•	Enable/Disable service 
+	•	Check service status 
+Commands
+systemctl start nginx systemctl stop nginx systemctl restart nginx systemctl status nginx
+Backend Working
+	•	systemctl talks to systemd 
+	•	systemd is PID 1 process 
+	•	Reads service unit files 
+	•	Manages service lifecycle 
+Service files location:
+/etc/systemd/system/
+
+3. Difference Between du and df
+Command
+Purpose
+df
+Filesystem disk usage
+du
+Directory/file size
+df
+df -h
+Shows:
+	•	Total disk 
+	•	Used space 
+	•	Free space 
+du
+du -sh /var/log
+Shows:
+	•	Size of directory/files 
+
+4. How to Check Running Processes/Services?
+Running Processes
+ps -ef
+Count:
+ps -ef | wc -l
+Real-time Monitoring
+top
+or
+htop
+Running Services
+systemctl list-units --type=service --state=running
+Count:
+systemctl list-units --type=service --state=running | wc -l
+
+Jenkins Questions
+5. What is Jenkins Pipeline?
+Jenkins pipeline automates:
+	•	Build 
+	•	Test 
+	•	Deployment 
+	•	CI/CD process 
+Flow
+Code → Build → Test → Deploy
+Benefits
+	•	Automation 
+	•	Faster deployment 
+	•	Reduced manual work 
+	•	Continuous Integration 
+Example
+pipeline {   agent any    stages {     stage('Build') {       steps {         echo 'Building'       }     }      stage('Deploy') {       steps {         echo 'Deploying'       }     }   } }
+
+Docker Questions
+6. Have You Worked on Docker?
+Yes, I have worked on Docker.
+Work Done:
+	•	Docker image creation 
+	•	Dockerfile writing 
+	•	Container deployment 
+	•	Docker Compose 
+	•	Registry push/pull 
+Commands
+docker build docker run docker ps docker logs
+
+Sample Dockerfile
+FROM nginx  COPY . /usr/share/nginx/html
+Build Image:
+docker build -t myapp .
+Run Container:
+docker run -d -p 80:80 myapp
+
+Kubernetes Questions
+7. Have You Deployed Applications on Docker or Kubernetes?
+Yes, I have deployed applications on both Docker and Kubernetes.
+Kubernetes Work:
+	•	Deployments 
+	•	Services 
+	•	Ingress 
+	•	ConfigMaps 
+	•	Secrets 
+	•	Autoscaling 
+	•	Troubleshooting pods 
+Commands
+kubectl get pods kubectl get svc kubectl logs pod-name kubectl describe pod pod-name
+
+Kubernetes Deployment Example
+apiVersion: apps/v1 kind: Deployment  metadata:   name: nginx  spec:   replicas: 2    selector:     matchLabels:       app: nginx    template:     metadata:       labels:         app: nginx      spec:       containers:       - name: nginx         image: nginx
+Apply:
+kubectl apply -f deployment.yaml
+
+Terraform Questions
+What is Terraform?
+Terraform is Infrastructure as Code tool used to automate cloud infrastructure creation.
+
+Terraform Lifecycle
+terraform init terraform plan terraform apply terraform destroy
+Commands
+terraform init terraform plan terraform apply terraform destroy
+
+What is Terraform State?
+Terraform state file:
+	•	tracks infrastructure 
+	•	stores resource metadata 
+File:
+terraform.tfstate
+
+Terraform Import
+Used to import existing infrastructure into Terraform state.
+Example:
+terraform import azurerm_resource_group.rg RESOURCE_ID
+
+Azure Questions
+Which Azure Services Have You Used?
+Worked on:
+	•	Virtual Machines 
+	•	VNets 
+	•	NSGs 
+	•	Load Balancers 
+	•	Storage Accounts 
+	•	AKS 
+	•	Azure Key Vault 
+	•	Azure Monitor 
+
+What is Azure Key Vault?
+Microsoft stores:
+	•	passwords 
+	•	secrets 
+	•	certificates 
+	•	API keys 
+Used with:
+	•	RBAC 
+	•	Managed Identity 
+
+Docker vs Kubernetes
+Docker
+Kubernetes
+Container platform
+Container orchestration
+Runs containers
+Manages/scales containers
+Single host focus
+Cluster management
+
+Jenkins vs Kubernetes
+Jenkins
+Kubernetes
+CI/CD tool
+Orchestration platform
+Build/deploy automation
+Runs applications
+
+Important DevOps Tools
+Tool
+Purpose
+Git
+Version control
+Jenkins
+CI/CD
+Docker
+Containers
+Kubernetes
+Orchestration
+Terraform
+Infrastructure automation
+
+Short Closing Line
+“I am interested in learning new DevOps technologies and improving automation, cloud infrastructure, and deployment processes.”
+
