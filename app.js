@@ -26,7 +26,7 @@ let flashcardSession = {
 let mockSession = {
     list: [],
     currentIndex: 0,
-    scores: {} // { index: 1 | 3 | 5 }
+    userAnswers: {} // { qIndex: [selected_option_indices] }
 };
 
 // Initialize the Application
@@ -439,11 +439,18 @@ function setupEventListeners() {
     // Mock Interview Controls
     document.getElementById('start-mock-btn').addEventListener('click', startMockInterview);
     document.getElementById('end-mock-early-btn').addEventListener('click', () => {
-        if (confirm("Are you sure you want to end the interview early? Your progress will be saved but incomplete.")) {
-            finishMockInterview();
+        if (confirm("Are you sure you want to quit the exam? Your progress will not be saved.")) {
+            switchView('mock');
+            document.getElementById('mock-setup').style.display = 'block';
+            document.getElementById('mock-active').style.display = 'none';
+            document.getElementById('mock-results').style.display = 'none';
         }
     });
-    document.getElementById('mock-reveal-answer-btn').addEventListener('click', revealMockAnswer);
+    
+    document.getElementById('mock-prev-btn').addEventListener('click', () => navigateMock(-1));
+    document.getElementById('mock-next-btn').addEventListener('click', () => navigateMock(1));
+    document.getElementById('mock-submit-btn').addEventListener('click', finishMockInterview);
+
     document.getElementById('mock-restart-btn').addEventListener('click', () => {
         switchView('mock');
         document.getElementById('mock-setup').style.display = 'block';
@@ -868,34 +875,24 @@ function setupMockSelection() {
 }
 
 function startMockInterview() {
-    const checkedTopics = Array.from(document.querySelectorAll('input[name="mock-topic"]:checked')).map(el => el.value);
-    
-    if (checkedTopics.length === 0) {
-        alert("Please select at least one topic for your interview.");
+    if (typeof mcqData === 'undefined') {
+        alert("MCQ data is not loaded!");
         return;
     }
     
-    const countEl = document.querySelector('input[name="mock-count"]:checked');
-    const mockCount = parseInt(countEl.value, 10);
-    
-    // Filter questions by selected topics
-    let eligible = questions.filter(q => checkedTopics.includes(q.category));
-    
-    if (eligible.length === 0) {
-        alert("No questions found for the selected topics.");
-        return;
-    }
-    
-    // Select N random questions
-    eligible.sort(() => Math.random() - 0.5);
-    mockSession.list = eligible.slice(0, Math.min(mockCount, eligible.length));
+    // Load all 20 MCQ questions
+    mockSession.list = [...mcqData];
     mockSession.currentIndex = 0;
-    mockSession.scores = {};
+    mockSession.userAnswers = {};
     mockSession.active = true;
     
     document.getElementById('mock-setup').style.display = 'none';
     document.getElementById('mock-active').style.display = 'block';
     document.getElementById('mock-results').style.display = 'none';
+    
+    // Show the third stat card in results just in case it was hidden previously
+    const thirdStat = document.querySelector('#mock-results .res-stat:nth-child(3)');
+    if (thirdStat) thirdStat.style.display = 'flex';
     
     renderMockNav();
     showMockQuestion();
@@ -909,7 +906,12 @@ function renderMockNav() {
     container.innerHTML = '';
     mockSession.list.forEach((q, idx) => {
         const div = document.createElement('div');
-        div.className = `mock-nav-item ${idx === 0 ? 'active' : ''}`;
+        
+        // We will show a dot or check icon on the nav item if it's answered
+        const isAnswered = mockSession.userAnswers[idx] && mockSession.userAnswers[idx].length > 0;
+        const statusClass = isAnswered ? 'answered-good' : ''; // use existing css class for green accent
+        
+        div.className = `mock-nav-item ${idx === mockSession.currentIndex ? 'active' : ''} ${statusClass}`;
         div.setAttribute('data-idx', idx);
         
         div.innerHTML = `
@@ -932,111 +934,139 @@ function showMockQuestion() {
     
     // Update active nav item
     document.querySelectorAll('.mock-nav-item').forEach(item => {
-        item.classList.toggle('active', parseInt(item.getAttribute('data-idx'), 10) === idx);
+        const itemIdx = parseInt(item.getAttribute('data-idx'), 10);
+        const isAnswered = mockSession.userAnswers[itemIdx] && mockSession.userAnswers[itemIdx].length > 0;
+        
+        item.classList.toggle('active', itemIdx === idx);
+        item.classList.toggle('answered-good', isAnswered);
     });
     
     document.getElementById('mock-q-category').innerText = q.category;
-    document.getElementById('mock-q-difficulty').innerText = q.difficulty;
+    document.getElementById('mock-q-type').innerText = q.multipleSelect ? "Multiple Select" : "Single Choice";
     document.getElementById('mock-q-index').innerText = `Question ${idx + 1} of ${mockSession.list.length}`;
     document.getElementById('mock-question-text').innerText = q.question;
-    document.getElementById('mock-answer-text-display').innerHTML = formatAnswerToHTML(q.answer);
     
-    // Reset visibility of answer
-    document.getElementById('mock-reveal-answer-btn').style.display = 'inline-flex';
-    document.getElementById('mock-answer-content').style.display = 'none';
+    // Render Options
+    const optionsContainer = document.getElementById('mock-options-container');
+    optionsContainer.innerHTML = '';
     
-    // Highlight evaluation button if already evaluated
-    const savedScore = mockSession.scores[idx];
-    document.querySelectorAll('.btn-eval').forEach(btn => {
-        btn.classList.remove('active');
-        if (savedScore && parseInt(btn.getAttribute('data-score'), 10) === savedScore) {
-            btn.classList.add('active');
-        }
+    const selectedOptions = mockSession.userAnswers[idx] || [];
+    
+    q.options.forEach((opt, optIdx) => {
+        const label = document.createElement('label');
+        const isChecked = selectedOptions.includes(optIdx);
+        label.className = `mock-option-label ${isChecked ? 'selected' : ''}`;
+        
+        const inputType = q.multipleSelect ? 'checkbox' : 'radio';
+        const inputName = `mock-option-${idx}`;
+        
+        label.innerHTML = `
+            <input type="${inputType}" name="${inputName}" value="${optIdx}" ${isChecked ? 'checked' : ''}>
+            <span class="option-letter">${String.fromCharCode(65 + optIdx)}</span>
+            <span class="option-text">${opt}</span>
+        `;
+        
+        // Handle option change
+        const input = label.querySelector('input');
+        input.addEventListener('change', () => {
+            if (q.multipleSelect) {
+                const checkedInputs = Array.from(document.querySelectorAll(`input[name="${inputName}"]:checked`));
+                mockSession.userAnswers[idx] = checkedInputs.map(el => parseInt(el.value, 10));
+            } else {
+                mockSession.userAnswers[idx] = [optIdx];
+            }
+            
+            // Toggle visual selected state
+            document.querySelectorAll(`input[name="${inputName}"]`).forEach(inp => {
+                inp.parentElement.classList.toggle('selected', inp.checked);
+            });
+            
+            // Update nav item state
+            renderMockNav();
+        });
+        
+        optionsContainer.appendChild(label);
     });
+    
+    // Navigation buttons visibility
+    const prevBtn = document.getElementById('mock-prev-btn');
+    const nextBtn = document.getElementById('mock-next-btn');
+    const submitBtn = document.getElementById('mock-submit-btn');
+    
+    if (idx === 0) {
+        prevBtn.style.display = 'none';
+    } else {
+        prevBtn.style.display = 'inline-flex';
+    }
+    
+    if (idx === mockSession.list.length - 1) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-flex';
+    } else {
+        nextBtn.style.display = 'inline-flex';
+        submitBtn.style.display = 'none';
+    }
 }
 
-function revealMockAnswer() {
-    document.getElementById('mock-reveal-answer-btn').style.display = 'none';
-    document.getElementById('mock-answer-content').style.display = 'block';
-    
-    // If unopened, mark as learning
-    const q = mockSession.list[mockSession.currentIndex];
-    if (userProgress[q.id] === 'unopened') {
-        updateQuestionStatus(q.id, 'learning');
-    }
-}
-
-function submitMockScore(score) {
-    const idx = mockSession.currentIndex;
-    mockSession.scores[idx] = score;
-    
-    // Update question status in general progress
-    const q = mockSession.list[idx];
-    if (score === 5) {
-        updateQuestionStatus(q.id, 'mastered');
-    } else {
-        updateQuestionStatus(q.id, 'learning');
-    }
-    
-    // Update left nav item class to show color
-    const navItem = document.querySelector(`.mock-nav-item[data-idx="${idx}"]`);
-    if (navItem) {
-        navItem.classList.remove('answered-bad', 'answered-average', 'answered-good');
-        if (score === 1) navItem.classList.add('answered-bad');
-        if (score === 3) navItem.classList.add('answered-average');
-        if (score === 5) navItem.classList.add('answered-good');
-    }
-    
-    // Automatically advance or finish
-    if (idx < mockSession.list.length - 1) {
-        setTimeout(() => {
-            mockSession.currentIndex += 1;
-            showMockQuestion();
-        }, 400);
-    } else {
-        // Last question evaluated, finish interview!
-        setTimeout(() => {
-            finishMockInterview();
-        }, 500);
+function navigateMock(dir) {
+    const nextIdx = mockSession.currentIndex + dir;
+    if (nextIdx >= 0 && nextIdx < mockSession.list.length) {
+        mockSession.currentIndex = nextIdx;
+        showMockQuestion();
     }
 }
 
 function finishMockInterview() {
+    const totalQ = mockSession.list.length;
+    const answeredCount = Object.keys(mockSession.userAnswers).filter(k => mockSession.userAnswers[k].length > 0).length;
+    
+    if (answeredCount < totalQ) {
+        if (!confirm(`You have only answered ${answeredCount} out of ${totalQ} questions. Are you sure you want to submit?`)) {
+            return;
+        }
+    }
+    
     mockSession.active = false;
     
     document.getElementById('mock-setup').style.display = 'none';
     document.getElementById('mock-active').style.display = 'none';
     document.getElementById('mock-results').style.display = 'block';
     
-    // Calculate Score
-    const totalQ = mockSession.list.length;
-    const answeredCount = Object.keys(mockSession.scores).length;
-    
-    let totalPoints = 0;
-    let perfectCount = 0;
-    let averageCount = 0;
-    let badCount = 0;
+    let correctCount = 0;
+    let wrongCount = 0;
     
     mockSession.list.forEach((q, idx) => {
-        const score = mockSession.scores[idx] || 0;
-        totalPoints += score;
-        if (score === 5) perfectCount++;
-        else if (score === 3) averageCount++;
-        else if (score === 1) badCount++;
+        const userAns = mockSession.userAnswers[idx] || [];
+        const correctAns = q.correctAnswer;
+        
+        // Sort arrays to compare
+        const userSorted = [...userAns].sort();
+        const correctSorted = [...correctAns].sort();
+        
+        const isCorrect = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
+        
+        if (isCorrect) {
+            correctCount++;
+        } else {
+            wrongCount++;
+        }
     });
     
-    // Max possible points is totalQ * 5
-    const maxPoints = totalQ * 5;
-    const scorePct = maxPoints > 0 ? Math.round((totalPoints / maxPoints) * 100) : 0;
+    const scorePct = Math.round((correctCount / totalQ) * 100);
     
+    // Update score cards
     document.getElementById('mock-score-pct').innerText = `${scorePct}%`;
-    document.getElementById('mock-total-answered').innerText = `Score: ${totalPoints} / ${maxPoints} Marks`;
-    document.getElementById('mock-perfect-count').innerText = perfectCount;
-    document.getElementById('mock-average-count').innerText = averageCount;
+    document.getElementById('mock-total-answered').innerText = `Marks: ${correctCount} / ${totalQ} Correct`;
+    document.getElementById('mock-perfect-count').innerText = correctCount;
+    document.getElementById('mock-average-count').innerText = wrongCount;
     
-    const badCountEl = document.getElementById('mock-bad-count');
-    if (badCountEl) {
-        badCountEl.innerText = badCount;
+    // Change badges text
+    document.querySelector('#mock-results .res-stat:nth-child(1) .res-lbl').innerText = "Correct";
+    document.querySelector('#mock-results .res-stat:nth-child(2) .res-lbl').innerText = "Wrong";
+    
+    const thirdStat = document.querySelector('#mock-results .res-stat:nth-child(3)');
+    if (thirdStat) {
+        thirdStat.style.display = 'none'; // Hide the third stat card in MCQ mode
     }
     
     // Render detailed breakdown
@@ -1044,34 +1074,68 @@ function finishMockInterview() {
     if (breakdownContainer) {
         breakdownContainer.innerHTML = '';
         mockSession.list.forEach((q, idx) => {
-            const score = mockSession.scores[idx] || 0;
-            let scoreText = 'Not Answered';
-            let scoreClass = 'badge-outline';
-            let scoreIcon = '<i class="fa-regular fa-circle-question"></i>';
+            const userAns = mockSession.userAnswers[idx] || [];
+            const correctAns = q.correctAnswer;
             
-            if (score === 5) {
-                scoreText = 'Perfect (5/5)';
-                scoreClass = 'badge-success';
-                scoreIcon = '<i class="fa-solid fa-face-smile"></i>';
-            } else if (score === 3) {
-                scoreText = 'Partial (3/5)';
-                scoreClass = 'badge-warning';
-                scoreIcon = '<i class="fa-solid fa-face-meh"></i>';
-            } else if (score === 1) {
-                scoreText = 'Poor (1/5)';
-                scoreClass = 'badge-danger';
-                scoreIcon = '<i class="fa-solid fa-face-frown"></i>';
-            }
+            const userSorted = [...userAns].sort();
+            const correctSorted = [...correctAns].sort();
+            const isCorrect = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
             
             const item = document.createElement('div');
-            item.className = 'mock-breakdown-item';
+            item.className = `mock-breakdown-item mcq-breakdown ${isCorrect ? 'correct-border' : 'wrong-border'}`;
+            
+            // Build Options HTML with check/cross marks
+            let optionsHtml = '<div class="mcq-results-options">';
+            q.options.forEach((opt, optIdx) => {
+                const isSelected = userAns.includes(optIdx);
+                const isCorr = correctAns.includes(optIdx);
+                
+                let optionClass = '';
+                let icon = '';
+                
+                if (isCorr) {
+                    optionClass = 'option-correct';
+                    icon = '<i class="fa-solid fa-circle-check option-result-icon text-success"></i>';
+                } else if (isSelected && !isCorr) {
+                    optionClass = 'option-wrong';
+                    icon = '<i class="fa-solid fa-circle-xmark option-result-icon text-danger"></i>';
+                }
+                
+                optionsHtml += `
+                    <div class="mcq-result-option-item ${optionClass} ${isSelected ? 'user-selected' : ''}">
+                        ${icon}
+                        <span class="option-letter">${String.fromCharCode(65 + optIdx)}</span>
+                        <span class="option-text">${opt}</span>
+                    </div>
+                `;
+            });
+            optionsHtml += '</div>';
+            
             item.innerHTML = `
-                <div class="mock-breakdown-q-row">
-                    <span class="mock-breakdown-num">${idx + 1}</span>
-                    <span class="mock-breakdown-question">${q.question}</span>
-                    <span class="badge ${scoreClass}">${scoreIcon} ${scoreText}</span>
+                <div class="mock-breakdown-q-row" style="cursor: pointer;">
+                    <span class="mock-breakdown-num ${isCorrect ? 'bg-success' : 'bg-danger'}">${idx + 1}</span>
+                    <span class="mock-breakdown-question" style="white-space: normal; overflow: visible; text-overflow: clip;">${q.question}</span>
+                    <span class="badge ${isCorrect ? 'badge-success' : 'badge-danger'}">
+                        ${isCorrect ? '<i class="fa-solid fa-check"></i> Correct' : '<i class="fa-solid fa-xmark"></i> Incorrect'}
+                    </span>
+                </div>
+                <div class="mcq-breakdown-expanded-content" style="display: none; padding-top: 16px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
+                    ${optionsHtml}
+                    <div class="mcq-explanation-box" style="margin-top: 16px; padding: 16px; background-color: rgba(0,0,0,0.2); border-radius: 8px; border-left: 4px solid var(--accent-primary);">
+                        <strong>Explanation:</strong>
+                        <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-secondary);">${q.explanation}</p>
+                    </div>
                 </div>
             `;
+            
+            // Add click handler to toggle expand
+            const headerRow = item.querySelector('.mock-breakdown-q-row');
+            headerRow.addEventListener('click', () => {
+                const exp = item.querySelector('.mcq-breakdown-expanded-content');
+                const isHidden = exp.style.display === 'none';
+                exp.style.display = isHidden ? 'block' : 'none';
+            });
+            
             breakdownContainer.appendChild(item);
         });
     }

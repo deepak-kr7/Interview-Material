@@ -230,27 +230,17 @@
                 <div class="mock-container">
                     <div class="mock-setup" id="mock-setup">
                         <div class="mock-setup-card">
-                            <h3>Configure Your Interview</h3>
-                            <p class="description">Select your focus areas and the number of questions you want to be asked. We will generate a custom interview panel for you.</p>
+                            <h3>DevOps & Azure DevOps MCQ Exam</h3>
+                            <p class="description">Test your knowledge with a comprehensive **20-question multiple-choice exam**. The set includes single-choice and multiple-select questions covering Terraform, Kubernetes, Azure DevOps, Linux, and general DevOps concepts. You will receive your detailed scorecard and answers with explanations after submitting.</p>
                             
-                            <div class="form-group">
-                                <label class="filter-label">Select Topics</label>
-                                <div class="checkbox-grid" id="mock-topics-grid">
-                                    <!-- Dynamic checkboxes -->
-                                </div>
+                            <div class="mock-exam-details">
+                                <div class="exam-detail-item"><i class="fa-solid fa-list-check"></i> <span>20 Questions</span></div>
+                                <div class="exam-detail-item"><i class="fa-solid fa-clock"></i> <span>No Time Limit</span></div>
+                                <div class="exam-detail-item"><i class="fa-solid fa-square-poll-vertical"></i> <span>Instant Scorecard & Explanations</span></div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="filter-label">Number of Questions</label>
-                                <div class="radio-group">
-                                    <label class="radio-label"><input type="radio" name="mock-count" value="5" checked> 5 Questions</label>
-                                    <label class="radio-label"><input type="radio" name="mock-count" value="10"> 10 Questions</label>
-                                    <label class="radio-label"><input type="radio" name="mock-count" value="15"> 15 Questions</label>
-                                </div>
-                            </div>
-
-                            <button class="btn btn-primary btn-lg" id="start-mock-btn">
-                                <i class="fa-solid fa-play"></i> Start Mock Interview
+                            <button class="btn btn-primary btn-lg" id="start-mock-btn" style="width: 100%; margin-top: 24px;">
+                                <i class="fa-solid fa-play"></i> Start 20-Question Exam
                             </button>
                         </div>
                     </div>
@@ -259,57 +249,35 @@
                         <div class="mock-grid-layout">
                             <!-- Left: Interview Navigation & Progress -->
                             <div class="mock-sidebar">
-                                <h3>Interview Panel</h3>
+                                <h3>Exam Progress</h3>
                                 <div class="mock-questions-list" id="mock-questions-nav">
                                     <!-- Dynamic list of questions -->
                                 </div>
                                 <div class="mock-sidebar-footer">
-                                    <button class="btn btn-danger-outline w-100" id="end-mock-early-btn">End Interview</button>
+                                    <button class="btn btn-danger-outline w-100" id="end-mock-early-btn">Quit Exam</button>
                                 </div>
                             </div>
 
-                            <!-- Right: Active Question & Self Assessment -->
+                            <!-- Right: Active Question & MCQ Options -->
                             <div class="mock-main">
                                 <div class="mock-card">
                                     <div class="mock-card-header">
                                         <span class="badge badge-info" id="mock-q-category">Terraform</span>
-                                        <span class="badge badge-outline" id="mock-q-difficulty">Medium</span>
-                                        <span class="mock-q-index" id="mock-q-index">Question 1 of 5</span>
+                                        <span class="badge badge-outline" id="mock-q-type">Single Choice</span>
+                                        <span class="mock-q-index" id="mock-q-index">Question 1 of 20</span>
                                     </div>
                                     <div class="mock-question-body">
-                                        <h2 id="mock-question-text">How do you manage state files in Terraform?</h2>
+                                        <h2 id="mock-question-text">Question text goes here?</h2>
+                                        
+                                        <div class="mock-options-container" id="mock-options-container">
+                                            <!-- Dynamic options will be injected here -->
+                                        </div>
                                     </div>
                                     
-                                    <div class="mock-answer-section" id="mock-answer-section">
-                                        <button class="btn btn-primary btn-lg" id="mock-reveal-answer-btn">
-                                            <i class="fa-solid fa-eye"></i> Reveal Recommended Answer
-                                        </button>
-                                        
-                                        <div class="mock-answer-content" id="mock-answer-content" style="display: none;">
-                                            <h4>Recommended Answer:</h4>
-                                            <div class="mock-answer-scroll">
-                                                <div id="mock-answer-text-display">Answer here...</div>
-                                            </div>
-                                            
-                                            <div class="self-evaluation">
-                                                <h4>Rate Your Answer:</h4>
-                                                <p class="description">Be honest! How well did your mental or spoken answer match the recommended one?</p>
-                                                <div class="evaluation-actions">
-                                                    <button class="btn btn-eval btn-bad" data-score="1">
-                                                        <span class="icon"><i class="fa-solid fa-face-frown"></i></span>
-                                                        <span class="label">Poor / Forgot</span>
-                                                    </button>
-                                                    <button class="btn btn-eval btn-average" data-score="3">
-                                                        <span class="icon"><i class="fa-solid fa-face-meh"></i></span>
-                                                        <span class="label">Okay / Partial</span>
-                                                    </button>
-                                                    <button class="btn btn-eval btn-good" data-score="5">
-                                                        <span class="icon"><i class="fa-solid fa-face-smile"></i></span>
-                                                        <span class="label">Perfect!</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="mock-navigation-row">
+                                        <button class="btn btn-secondary" id="mock-prev-btn"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+                                        <button class="btn btn-primary" id="mock-next-btn">Next <i class="fa-solid fa-chevron-right"></i></button>
+                                        <button class="btn btn-success" id="mock-submit-btn" style="display: none;"><i class="fa-solid fa-paper-plane"></i> Submit Exam</button>
                                     </div>
                                 </div>
                             </div>

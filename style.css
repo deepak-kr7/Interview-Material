@@ -1969,3 +1969,179 @@ body {
     flex-shrink: 0;
 }
 
+/* MCQ Option Labels */
+.mock-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.mock-option-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background-color: rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    position: relative;
+    user-select: none;
+}
+
+.mock-option-label:hover {
+    border-color: var(--border-hover);
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.mock-option-label.selected {
+    border-color: var(--accent-primary);
+    background-color: rgba(var(--accent-primary-rgb), 0.1);
+    box-shadow: var(--shadow-glow);
+}
+
+.mock-option-label input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-primary);
+    cursor: pointer;
+}
+
+.option-letter {
+    width: 28px;
+    height: 28px;
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.mock-option-label.selected .option-letter {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+}
+
+.option-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.mock-option-label.selected .option-text {
+    color: var(--text-primary);
+}
+
+.mock-navigation-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+}
+
+/* MCQ Results Breakdown */
+.mock-breakdown-item.mcq-breakdown {
+    border-left: 4px solid var(--border-color);
+    margin-bottom: 12px;
+}
+
+.mock-breakdown-item.correct-border {
+    border-left-color: var(--color-success);
+}
+
+.mock-breakdown-item.wrong-border {
+    border-left-color: var(--color-danger);
+}
+
+.mcq-results-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.mcq-result-option-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.mcq-result-option-item.user-selected {
+    border-color: var(--text-secondary);
+}
+
+.mcq-result-option-item.option-correct {
+    background-color: rgba(52, 211, 153, 0.08);
+    border-color: var(--color-success);
+    color: var(--text-primary);
+}
+
+.mcq-result-option-item.option-wrong {
+    background-color: rgba(248, 113, 113, 0.08);
+    border-color: var(--color-danger);
+    color: var(--text-primary);
+}
+
+.option-result-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.mcq-explanation-box {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--accent-primary);
+}
+
+.mcq-explanation-box strong {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.mcq-explanation-box p {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.mock-exam-details {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.exam-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.exam-detail-item i {
+    color: var(--accent-primary);
+}
+
+
