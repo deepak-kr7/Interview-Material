@@ -31,16 +31,14 @@ let mockSession = {
 
 // Initialize the Application
 document.addEventListener('DOMContentLoaded', () => {
-    // Load data from data.js (global qaData)
+    // Load data from data.js (global qaData) and shuffle them on load
     if (typeof qaData !== 'undefined') {
-        questions = qaData;
+        questions = [...qaData].sort(() => Math.random() - 0.5);
+        categories = [...new Set(qaData.map(q => q.category))];
     } else {
         console.error("qaData is not defined. Check data.js path.");
         return;
     }
-
-    // Extract unique categories
-    categories = [...new Set(questions.map(q => q.category))];
 
     // Load progress from LocalStorage
     loadProgress();
