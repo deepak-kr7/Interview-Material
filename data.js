@@ -2174,7 +2174,9 @@ const mcqData = [
       "To encrypt secrets and passwords used in the configuration",
       "To write temporary bash scripts for VM initialization"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "multipleSelect": false,
     "explanation": "Terraform uses state to map real-world resources to your configuration, keep track of metadata, and improve performance for large infrastructures."
   },
@@ -2188,7 +2190,9 @@ const mcqData = [
       "Deployment",
       "Job"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "multipleSelect": false,
     "explanation": "A Deployment is the standard Kubernetes resource designed for deploying and scaling stateless applications. For stateful applications (like databases), StatefulSet is preferred."
   },
@@ -2202,7 +2206,11 @@ const mcqData = [
       "kubelet",
       "etcd"
     ],
-    "correctAnswer": [0, 1, 3],
+    "correctAnswer": [
+      0,
+      1,
+      3
+    ],
     "multipleSelect": true,
     "explanation": "The Control Plane consists of kube-apiserver, kube-scheduler, kube-controller-manager, and etcd. kubelet runs on the worker nodes, not the control plane."
   },
@@ -2216,7 +2224,9 @@ const mcqData = [
       "Forbidden - The server understands the request but refuses to authorize it",
       "Not Found - The resource could not be found"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "multipleSelect": false,
     "explanation": "A 403 Forbidden status code indicates that the server understands who you are, but you do not have permission to access the requested resource."
   },
@@ -2230,7 +2240,9 @@ const mcqData = [
       "git merge is only used for local repositories, while git rebase is for remote repositories",
       "There is no difference; they are aliases of the same command"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "multipleSelect": false,
     "explanation": "git rebase reapplies commits on top of another base tip, creating a linear history. git merge joins two or more development histories together, creating a merge commit and preserving the chronological order."
   },
@@ -2244,7 +2256,11 @@ const mcqData = [
       "Azure Boards",
       "Azure Container Instances"
     ],
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "multipleSelect": true,
     "explanation": "Azure DevOps includes Azure Repos (Git), Azure Pipelines (CI/CD), Azure Boards (Agile tracking), Azure Artifacts, and Azure Test Plans. Azure Container Instances (ACI) is a standalone Azure cloud compute service."
   },
@@ -2258,7 +2274,9 @@ const mcqData = [
       "2376",
       "5000"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "multipleSelect": false,
     "explanation": "Docker daemon uses port 2375 for unencrypted communication, and port 2376 for encrypted (TLS) communication. Port 5000 is typically used for Docker Registry."
   },
@@ -2272,7 +2290,9 @@ const mcqData = [
       "terraform validate",
       "terraform show"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "multipleSelect": false,
     "explanation": "terraform validate checks the syntax, variable definitions, and consistency of your configuration files without connecting to remote services."
   },
@@ -2286,7 +2306,11 @@ const mcqData = [
       "OS-level Virtualization (Containerization)",
       "Continuous Integration"
     ],
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "multipleSelect": true,
     "explanation": "Type 1 Hypervisors run directly on hardware. Type 2 Hypervisors run on top of an OS. Containerization is OS-level virtualization. Continuous Integration is a software development practice, not a virtualization type."
   },
@@ -2300,7 +2324,9 @@ const mcqData = [
       "A local Git repository on your machine",
       "An automated testing tool built into Azure Boards"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "multipleSelect": false,
     "explanation": "A self-hosted agent is an agent that you set up and manage on your own infrastructure (virtual machine, physical server, or container) to run build and deployment jobs."
   },
@@ -2314,7 +2340,9 @@ const mcqData = [
       "ENTRYPOINT",
       "ENV"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "multipleSelect": false,
     "explanation": "ENTRYPOINT specifies the executable that will run when the container starts. Unlike CMD, it cannot be overridden by simply passing arguments at the command line; arguments are appended to the ENTRYPOINT."
   },
@@ -2328,7 +2356,11 @@ const mcqData = [
       "GitHub Flow",
       "Branch-Locking Strategy"
     ],
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "multipleSelect": true,
     "explanation": "GitFlow, Trunk-Based Development, and GitHub Flow are industry-standard branching strategies. Branch-locking is a policy, not a branching strategy."
   },
@@ -2342,7 +2374,9 @@ const mcqData = [
       "To act as a load balancer for virtual machines",
       "To store large video and database backup files"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "multipleSelect": false,
     "explanation": "Azure Key Vault is a cloud service that safeguards cryptographic keys, secrets (like API keys, database passwords), and certificates."
   },
@@ -2356,7 +2390,9 @@ const mcqData = [
       "A database storage volume",
       "A network firewall rule"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "multipleSelect": false,
     "explanation": "A Pod is the basic execution unit of a Kubernetes application. It represents a single instance of a running process in your cluster and can contain one or more containers."
   },
@@ -2370,7 +2406,11 @@ const mcqData = [
       "Developers merging their code changes back to the main branch frequently",
       "Manually deploying the application to the production server every month"
     ],
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "multipleSelect": true,
     "explanation": "CI is the practice of automating the integration of code changes from multiple contributors into a single software project. It involves frequent commits, automated builds, and automated tests. Manual monthly deployments are contrary to CI/CD."
   },
@@ -2384,7 +2424,9 @@ const mcqData = [
       "To initialize the working directory and download the required provider plugins and modules",
       "To format the terraform configuration files"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "multipleSelect": false,
     "explanation": "terraform init initializes a working directory containing Terraform configuration files. It downloads the required provider plugins (like Azure, AWS) and modules."
   },
@@ -2398,7 +2440,9 @@ const mcqData = [
       "8080",
       "9000"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "multipleSelect": false,
     "explanation": "Jenkins runs on port 8080 by default. Port 9000 is typically used by SonarQube, and 80/443 are standard HTTP/HTTPS ports."
   },
@@ -2412,7 +2456,11 @@ const mcqData = [
       "df",
       "pwd"
     ],
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "multipleSelect": true,
     "explanation": "'top' monitors CPU and processes in real-time, 'free' checks memory usage, and 'df' checks disk space. 'pwd' shows the current working directory, not system resources."
   },
@@ -2426,7 +2474,9 @@ const mcqData = [
       "To store database credentials securely",
       "To allocate IP addresses to the worker nodes"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "multipleSelect": false,
     "explanation": "An Ingress Controller is a daemon that manages external access to services in a Kubernetes cluster, providing routing rules, SSL termination, and name-based virtual hosting."
   },
@@ -2440,8 +2490,176 @@ const mcqData = [
       "git fetch is a newer command that replaces git pull completely",
       "git pull is used for pushing changes, while git fetch is for pulling changes"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "multipleSelect": false,
     "explanation": "git fetch gets the latest changes from the remote repository but does not merge them. git pull is a combination of git fetch followed by git merge, which immediately updates your local working branch."
+  },
+  {
+    "id": 21,
+    "category": "Azure & Azure DevOps",
+    "question": "What is the purpose of an Azure Application Gateway Web Application Firewall (WAF)?",
+    "options": [
+      "To speed up database query times",
+      "To protect web applications from common exploits and vulnerabilities like SQL injection and cross-site scripting (XSS)",
+      "To encrypt virtual machine hard disks",
+      "To manage user access permissions inside Azure DevOps"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "multipleSelect": false,
+    "explanation": "Azure WAF on Application Gateway provides centralized protection for your web applications from common exploits and vulnerabilities, such as those defined by OWASP top 10."
+  },
+  {
+    "id": 22,
+    "category": "Docker & Kubernetes",
+    "question": "Which of the following are valid states for a Kubernetes Pod? (Select all that apply)",
+    "options": [
+      "Running",
+      "Pending",
+      "Succeeded",
+      "Compiling"
+    ],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
+    "multipleSelect": true,
+    "explanation": "The valid phases/states of a Kubernetes Pod are Pending, Running, Succeeded, Failed, and Unknown. 'Compiling' is not a Pod phase."
+  },
+  {
+    "id": 23,
+    "category": "Terraform (IaC)",
+    "question": "In Terraform, how do you specify that resource B depends on resource A being created first, even if there is no direct attribute reference?",
+    "options": [
+      "Using the 'depends_on' meta-argument inside resource B's block",
+      "By naming resource B alphabetically after resource A",
+      "Using the 'terraform delay' command",
+      "By writing them in separate files"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "multipleSelect": false,
+    "explanation": "The 'depends_on' meta-argument is used to create explicit dependencies between resources when Terraform cannot automatically infer the dependency through attribute references."
+  },
+  {
+    "id": 24,
+    "category": "DevOps General",
+    "question": "What is the main goal of Continuous Deployment?",
+    "options": [
+      "To manually review code changes before releasing them once a month",
+      "To automatically release every code change that passes the pipeline directly to production without manual intervention",
+      "To compile code on a developer's local machine",
+      "To backup database servers every night"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "multipleSelect": false,
+    "explanation": "Continuous Deployment is the practice of automatically deploying every change that passes the automated testing phase of the pipeline directly to the production environment."
+  },
+  {
+    "id": 25,
+    "category": "Linux & Git",
+    "question": "Which Git command is used to apply a specific commit from one branch to another?",
+    "options": [
+      "git merge-commit",
+      "git cherry-pick",
+      "git clone --branch",
+      "git copy-commit"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "multipleSelect": false,
+    "explanation": "git cherry-pick is used to apply the changes introduced by an existing commit from another branch into your current working branch."
+  },
+  {
+    "id": 26,
+    "category": "DevOps General",
+    "question": "Which of the following are core pillars of Site Reliability Engineering (SRE)? (Select all that apply)",
+    "options": [
+      "Embracing risk and monitoring",
+      "Eliminating toil through automation",
+      "Using error budgets to balance velocity and reliability",
+      "Writing application code in Java only"
+    ],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
+    "multipleSelect": true,
+    "explanation": "Core SRE pillars include embracing risk, monitoring systems, eliminating toil, using error budgets, and practicing incident response."
+  },
+  {
+    "id": 27,
+    "category": "Docker & Kubernetes",
+    "question": "What is the purpose of the 'EXPOSE' instruction in a Dockerfile?",
+    "options": [
+      "To publish the port to the host machine automatically",
+      "To document which ports the container intends to listen on at runtime",
+      "To download external packages from the internet",
+      "To share a directory between containers"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "multipleSelect": false,
+    "explanation": "EXPOSE acts as a type of documentation between the person who builds the image and the person who runs the container. It does not actually publish the port; you must still use the '-p' flag at runtime to publish it."
+  },
+  {
+    "id": 28,
+    "category": "Terraform (IaC)",
+    "question": "What happens when you run 'terraform destroy'?",
+    "options": [
+      "It deletes your local Terraform configuration files",
+      "It terminates and deletes all remote resources managed by your Terraform state",
+      "It deletes only the state file from the remote backend",
+      "It formats your code files to look clean"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "multipleSelect": false,
+    "explanation": "terraform destroy is a convenient way to destroy all remote infrastructure managed by your Terraform configuration."
+  },
+  {
+    "id": 29,
+    "category": "CI/CD Pipelines",
+    "question": "Which of the following are benefits of using containerized agents/runners in CI/CD? (Select all that apply)",
+    "options": [
+      "Isolated build environments for every job",
+      "Ability to scale agents dynamically based on queue size",
+      "Zero cost for running builds",
+      "Easier dependency management since tools are inside the container image"
+    ],
+    "correctAnswer": [
+      0,
+      1,
+      3
+    ],
+    "multipleSelect": true,
+    "explanation": "Containerized agents provide isolation, dynamic scalability, and easy dependency management. They are not free, as you still pay for the underlying compute resources (VMs/Kubernetes nodes)."
+  },
+  {
+    "id": 30,
+    "category": "Linux & Git",
+    "question": "What does the Linux command 'df -h' do?",
+    "options": [
+      "Displays free memory on the system",
+      "Displays disk space usage for all mounted filesystems in a human-readable format",
+      "Deletes files in the home directory",
+      "Downloads files from a remote URL"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "multipleSelect": false,
+    "explanation": "df stands for 'disk free'. The '-h' flag makes the output human-readable (e.g., displaying sizes in GB/MB instead of bytes)."
   }
 ];
