@@ -42,7 +42,7 @@ const qaData = [
   },
   {
     "id": 6,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "Tell steps to build a VM",
     "answer": "•\tAzure Portal \n\t•\tCreate Resource Group \n\t•\tCreate Virtual Machine \n\t•\tSelect Image (Ubuntu/Windows) \n\t•\tChoose VM Size \n\t•\tConfigure Username & Password/SSH Key \n\t•\tConfigure Networking (VNet, NSG) \n\t•\tConfigure Disk \n\t•\tReview \n\t•\tCreate \nAfter deployment:\n\t•\tConnect using SSH/RDP \n\t•\tInstall required software",
     "difficulty": "Medium",
@@ -66,7 +66,7 @@ const qaData = [
   },
   {
     "id": 9,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Explain Azure Pipelines and process",
     "answer": "Azure Pipelines is a CI/CD service used to automate build, test, and deployment.\nFlow:\nDeveloper\n     ↓\nPush code to Git\n     ↓\nPipeline Trigger\n     ↓\nBuild\n     ↓\nRun Tests\n     ↓\nCreate Artifact\n     ↓\nDeploy to Dev\n     ↓\nApproval\n     ↓\nDeploy to QA\n     ↓\nDeploy to Production\nPipeline is usually defined using YAML.",
     "difficulty": "Medium",
@@ -98,7 +98,7 @@ const qaData = [
   },
   {
     "id": 13,
-    "category": "Terraform (IaC)",
+    "category": "CI/CD & Pipelines",
     "question": "Do we use terraform apply on pipelines?",
     "answer": "Yes.\nTypical CI/CD process:\nGit Push\n      ↓\nTerraform Init\n      ↓\nTerraform Validate\n      ↓\nTerraform Plan\n      ↓\nApproval\n      ↓\nTerraform Apply\nUsually:\n\t•\tterraform plan runs automatically. \n\t•\tterraform apply runs after approval for production.",
     "difficulty": "Medium",
@@ -178,7 +178,7 @@ const qaData = [
   },
   {
     "id": 23,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Have you worked with Multi-Stage YAML Pipelines?",
     "answer": "Sample Answer:\n\"Yes. I have worked with Azure DevOps multi-stage YAML pipelines.\"\nTypical stages:\nBuild\n    ↓\nUnit Test\n    ↓\nSecurity Scan\n    ↓\nDeploy to Dev\n    ↓\nDeploy to QA\n    ↓\nApproval\n    ↓\nDeploy to UAT\n    ↓\nApproval\n    ↓\nDeploy to Production\nBenefits:\n\t•\tSingle YAML definition \n\t•\tReusable templates \n\t•\tAutomated approvals \n\t•\tBetter traceability \n\t•\tConsistent deployments",
     "difficulty": "Medium",
@@ -298,7 +298,7 @@ const qaData = [
   },
   {
     "id": 38,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "Explain the CI/CD workflow",
     "answer": "“A robust CI/CD (Continuous Integration / Continuous Delivery) workflow automates the software release lifecycle from code commit to production deployment:\n\n\t1. Continuous Integration (CI) Phase:\n\t\t•\tGit Push: A developer pushes code or opens a Pull Request (PR).\n\t\t•\tTrigger: The CI pipeline (e.g., Azure Pipelines, Jenkins, GitHub Actions) starts automatically.\n\t\t•\tBuild: The application is compiled, and dependencies are installed.\n\t\t•\tUnit Testing: Automated unit tests are run to catch code bugs early.\n\t\t•\tCode Quality & Security: Tools like SonarQube scan the code for code smells, and tfsec/Trivy scan for vulnerabilities.\n\t\t•\tArtifact Creation: If all checks pass, a build artifact (e.g., a zip file, jar file, or Docker image) is generated and pushed to a registry (like ACR or Artifactory).\n\n\t2. Continuous Delivery / Deployment (CD) Phase:\n\t\t•\tDeploy to Dev/QA: The artifact is deployed automatically to lower environments.\n\t\t•\tIntegration & UAT Testing: Automated integration tests or manual User Acceptance Testing (UAT) is performed.\n\t\t•\tManual Approval: For production environments, a gatekeeper (release manager) reviews the release and provides manual approval.\n\t\t•\tProduction Release: The application is deployed to production using zero-downtime strategies (like Rolling Updates or Blue-Green deployments).”",
     "difficulty": "Hard",
@@ -314,7 +314,7 @@ const qaData = [
   },
   {
     "id": 40,
-    "category": "Terraform (IaC)",
+    "category": "CI/CD & Pipelines",
     "question": "How do you configure a Terraform pipeline?",
     "answer": "Typical Azure DevOps pipeline:\nCheckout\n    ↓\nTerraform Init\n    ↓\nTerraform Validate\n    ↓\nTerraform Format Check\n    ↓\nTerraform Plan\n    ↓\nManual Approval\n    ↓\nTerraform Apply\nUse:\n\t•\tAzure Service Connection \n\t•\tRemote Backend \n\t•\tSecure Variable Groups \n\t•\tEnvironment Approvals",
     "difficulty": "Medium",
@@ -322,7 +322,7 @@ const qaData = [
   },
   {
     "id": 41,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Should we have more than one pipeline for multiple environments?",
     "answer": "Usually No.\nA single multi-stage YAML pipeline is preferred.\nExample stages:\n\t•\tDev \n\t•\tQA \n\t•\tUAT \n\t•\tProduction \nThe pipeline determines the environment using:\n\t•\tPipeline parameters \n\t•\tVariables \n\t•\tBranch names \n\t•\tStage conditions \n\t•\tVariable groups \nExample:\n\t•\tdevelop → Dev \n\t•\trelease/* → QA \n\t•\tmain → Production",
     "difficulty": "Medium",
@@ -330,7 +330,7 @@ const qaData = [
   },
   {
     "id": 42,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "In CI/CD, which pipeline have you used?",
     "answer": "Sample Answer:\n\"I have primarily worked with Azure DevOps YAML pipelines because they are version-controlled, reusable, and support Infrastructure as Code. I have basic knowledge of Classic pipelines but prefer YAML for modern CI/CD implementations.\"",
     "difficulty": "Medium",
@@ -338,7 +338,7 @@ const qaData = [
   },
   {
     "id": 43,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is a Template in a YAML pipeline?",
     "answer": "“A Template in an Azure DevOps YAML pipeline is a reusable file that allows you to define common pipeline logic once and share it across multiple pipelines. This follows the DRY (Don't Repeat Yourself) principle.\n\nKey Types of Templates:\n\t1. Stage Templates: Define a complete deployment stage (e.g., a Dev deployment stage).\n\t2. Job Templates: Define a set of jobs (e.g., a build job that runs on multiple OS platforms).\n\t3. Step Templates: Define a sequence of tasks (e.g., a step to install Node.js, run npm build, and publish artifacts).\n\nBenefits of Using Templates:\n\t•   Reusability: Avoids duplicate YAML code across different repositories or pipelines.\n\t•   Security & Governance: Centralizes security scans or compliance tasks in a single template that all teams must reference.\n\t•   Maintainability: If a task version changes, you only need to update it in the template file rather than in hundreds of individual pipelines.”",
     "difficulty": "Hard",
@@ -346,7 +346,7 @@ const qaData = [
   },
   {
     "id": 44,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Difference between Parameters and Variables in a pipeline",
     "answer": "“In Azure DevOps YAML pipelines, both parameters and variables are used to store and pass values, but they differ significantly in their evaluation time, mutability, and security:\n\n\t1. Parameters (Compile-Time):\n\t\t•   What they are: Strongly-typed inputs defined at the top of the YAML file. They are evaluated at compile-time (before the pipeline starts running).\n\t\t•   Mutability: Immutable. Once the pipeline starts, their values cannot be changed.\n\t\t•   Use Case: Used to control the structure of the pipeline (e.g., passing a boolean to decide whether to run a deployment stage, or choosing a target environment from a dropdown list).\n\n\t2. Variables (Runtime):\n\t\t•   What they are: Dynamic values that can be defined in the YAML, in variable groups, or via the UI. They are evaluated at runtime.\n\t\t•   Mutability: Mutable. Their values can be updated dynamically during pipeline execution using logging commands (e.g., `##vso[task.setvariable]`).\n\t\t•   Use Case: Used to store secrets, build numbers, or dynamic outputs from one task to be used in a later task.\n\nSummary of Differences:\n| Feature | Parameters | Variables |\n| :--- | :--- | :--- |\n| Evaluation Time | Compile-Time (before execution). | Runtime (during execution). |\n| Mutability | Immutable (read-only). | Mutable (can be changed). |\n| Data Types | Strongly typed (string, number, boolean, object). | Only strings. |\n| Security | Highly secure (cannot be injected at runtime). | Vulnerable to runtime injection if not handled carefully. |\n| UI Prompting | Can prompt the user for input before running. | Cannot prompt the user with dropdowns. |”",
     "difficulty": "Hard",
@@ -378,7 +378,7 @@ const qaData = [
   },
   {
     "id": 48,
-    "category": "Docker & Kubernetes",
+    "category": "CI/CD & Pipelines",
     "question": "Explain CI/CD deployment using GitHub",
     "answer": "A typical GitHub-based workflow:\nDeveloper\n    ↓\nGit Commit\n    ↓\nGit Push\n    ↓\nGitHub Repository\n    ↓\nGitHub Actions Trigger\n    ↓\nBuild\n    ↓\nRun Tests\n    ↓\nCode Quality & Security Scan\n    ↓\nBuild Docker Image\n    ↓\nPush Image to Azure Container Registry (ACR)\n    ↓\nDeploy to AKS / Azure App Service\n    ↓\nSmoke Tests\n    ↓\nProduction Deployment\nKey components:\n\t•\tGitHub: Source code management. \n\t•\tGitHub Actions: CI/CD automation. \n\t•\tAzure Container Registry (ACR): Stores Docker images. \n\t•\tAzure Kubernetes Service (AKS) or Azure App Service: Hosts the application. \n\t•\tSecrets: Store Azure credentials and tokens securely. \n\t•\tEnvironments: Add manual approvals for production deployments. \nThis workflow provides automated, repeatable, and secure deployments with minimal manual intervention.",
     "difficulty": "Hard",
@@ -402,7 +402,7 @@ const qaData = [
   },
   {
     "id": 51,
-    "category": "Terraform (IaC)",
+    "category": "CI/CD & Pipelines",
     "question": "How can you integrate Azure Landing Zone deployment with DevOps pipelines?",
     "answer": "Azure Landing Zone infrastructure is typically deployed using Infrastructure as Code (Terraform or Bicep) through Azure DevOps or GitHub Actions.\nPipeline flow:\nDeveloper\n     ↓\nGit Repository\n     ↓\nAzure DevOps Pipeline\n     ↓\nTerraform Init\n     ↓\nTerraform Validate\n     ↓\nTerraform Plan\n     ↓\nApproval\n     ↓\nTerraform Apply\n     ↓\nLanding Zone Resources Created\nResources created may include:\n\t•\tManagement Groups \n\t•\tSubscriptions \n\t•\tVNets \n\t•\tNSGs \n\t•\tAzure Policies \n\t•\tRBAC \n\t•\tLog Analytics \n\t•\tKey Vault \n\t•\tAzure Monitor \nBest Practices:\n\t•\tStore Terraform state remotely in Azure Storage. \n\t•\tUse Azure Service Connections. \n\t•\tUse separate variable files for Dev, QA, and Prod. \n\t•\tRequire approvals before production deployment.",
     "difficulty": "Hard",
@@ -458,7 +458,7 @@ const qaData = [
   },
   {
     "id": 58,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "Explain Your CI/CD Process",
     "answer": "“We use Azure DevOps YAML pipelines for implementing CI/CD.\nWe have two different pipelines:\n\t•\tTerraform Pipeline \n\t•\tApplication Pipeline \n🚀 Terraform Pipeline Flow\nWhenever code is merged into the main branch, the Terraform CI/CD pipeline is triggered automatically in Azure DevOps.\n🔄 Pipeline Workflow\n1️⃣ Terraform Init\n\t•\tInitializes Terraform working directory. \n\t•\tDownloads: \n\t•\tRequired providers \n\t•\tModules \n\t•\tBackend configuration \n\t•\tConnects to remote backend storage for Terraform state management. \n2️⃣ Terraform Plan\n\t•\tGenerates an execution plan. \n\t•\tValidates infrastructure changes before deployment. \n\t•\tShows: \n\t•\tResources to be created \n\t•\tModified resources \n\t•\tDeleted resources \n\t•\tHelps the team review changes safely before applying. \n3️⃣ tfsec Security Scanning\n\t•\tRuns automated security validation on Terraform code. \n\t•\tDetects issues such as: \n\t•\tOpen security groups \n\t•\tPublicly exposed resources \n\t•\tWeak configurations \n\t•\tMissing encryption settings \n\t•\tPipeline fails automatically if critical vulnerabilities are found. \n4️⃣ Manual Approval Stage\n\t•\tInfrastructure changes are reviewed by authorized team members. \n\t•\tEnsures: \n\t•\tChange validation \n\t•\tCompliance checks \n\t•\tProduction safety \n\t•\tPrevents accidental or unintended infrastructure modifications. \n5️⃣ Terraform Apply\n\t•\tAfter approval, Terraform applies the approved changes. \n\t•\tInfrastructure gets provisioned or updated automatically in Azure. \n\n🎯 Short Interview Answer\n“Our Terraform pipeline starts automatically when code is merged into the main branch. It executes Terraform Init, Plan, tfsec security scanning, manual approval, and finally Terraform Apply to provision infrastructure securely and automatically.”\n🚀 Application CI/CD Pipeline Flow\nWhen developers merge code into the Dev or Stage branch, the Application CI/CD pipeline is triggered automatically in Azure DevOps.\n\n🔄 Application Pipeline Workflow\n1️⃣ Repository Clone\n\t•\tSource code is pulled from the Git repository. \n\t•\tEnsures the latest application code is available for build and deployment. \n2️⃣ Application Build\n\t•\tApplication build process starts. \n\t•\tDependencies are installed and application artifacts are generated. \n3️⃣ Unit Testing\n\t•\tAutomated unit tests are executed. \n\t•\tHelps identify application issues early in the CI stage. \n4️⃣ SonarQube Static Code Analysis\n\t•\tSonarQube scans the application code for: \n\t•\tBugs \n\t•\tVulnerabilities \n\t•\tCode smells \n\t•\tSecurity issues \n\t•\tEnsures code quality and compliance standards. \n5️⃣ Docker Image Build\n\t•\tApplication is containerized using Docker. \n\t•\tDocker image is created using Dockerfile. \n6️⃣ Vulnerability Scanning using Anchore\n\t•\tDocker image is scanned for: \n\t•\tSecurity vulnerabilities \n\t•\tOutdated packages \n\t•\tCompliance issues \n\t•\tPipeline can fail if critical vulnerabilities are detected. \n7️⃣ Push Docker Image to ACR\n\t•\tSecurely pushes the Docker image to: \n\t•\tAzure Container Registry (ACR) \n\t•\tACR acts as a private image repository. \n8️⃣ Deployment to AKS\n\t•\tApplication deployment happens automatically on: \n\t•\tAzure Kubernetes Service (AKS) \n\t•\tDeployment is performed using: \n\t•\tKubernetes manifests \n\t•\tHelm charts \n\n☸️ Kubernetes Deployment Components\n🟢 Kubernetes Manifests\nUsed for defining:\n\t•\tDeployments \n\t•\tServices \n\t•\tIngress \n\t•\tConfigMaps \n\t•\tSecrets \n🟢 Helm Charts\nUsed for:\n\t•\tReusable deployments \n\t•\tParameterized configurations \n\t•\tSimplified Kubernetes package management \n\n🎯 Short Interview Answer\n“When developers merge code into Dev or Stage branches, the pipeline automatically clones the repository, builds the application, runs unit tests, performs SonarQube analysis, builds Docker images, scans them using Anchore, pushes images to ACR, and deploys applications to AKS using Kubernetes manifests or Helm charts.”\nThis complete automation helped reduce manual work, improved deployment speed, and minimized production issues.”\n\n\n\n☸️ AKS Architecture Explanation\nWe used Azure Kubernetes Service (AKS) as a managed Kubernetes platform for deploying and managing containerized applications in Azure.\n\n🏗️ AKS Cluster Architecture\n🔹 Node Pool Design\nOur AKS cluster was designed with multiple node pools based on workload requirements.\n🟦 Frontend Node Pool\n\t•\tConfigured with high-memory nodes \n\t•\tUsed for frontend/UI applications \n\t•\tOptimized for handling: \n\t•\tUser sessions \n\t•\tWeb traffic \n\t•\tApplication caching \n🟩 Backend Node Pool\n\t•\tConfigured with high-CPU nodes \n\t•\tUsed for backend microservices and APIs \n\t•\tOptimized for: \n\t•\tProcessing requests \n\t•\tBusiness logic execution \n\t•\tAPI workloads \n\n⚙️ Kubernetes Features Used\n🟢 Node Selectors\n\t•\tUsed for workload scheduling. \n\t•\tEnsured frontend and backend applications were deployed on the appropriate node pools. \nExample:\n\t•\tFrontend pods ➜ High-memory nodes \n\t•\tBackend pods ➜ High-CPU nodes \n\n🟢 HPA (Horizontal Pod Autoscaler)\n\t•\tAutomatically scaled application pods based on: \n\t•\tCPU usage \n\t•\tMemory usage \n\t•\tMetrics \n\t•\tHelped maintain: \n\t•\tHigh availability \n\t•\tBetter performance \n\t•\tEfficient resource utilization \n\n🟢 Namespaces\n\t•\tUsed for logical isolation of applications and environments. \n\t•\tHelped separate: \n\t•\tDev \n\t•\tQA \n\t•\tStage \n\t•\tProduction workloads \nBenefits:\n\t•\tBetter resource management \n\t•\tImproved security \n\t•\tEasier administration \n\n🟢 RBAC (Role-Based Access Control)\n\t•\tImplemented RBAC for secure cluster access management. \n\t•\tControlled: \n\t•\tUser permissions \n\t•\tTeam access \n\t•\tKubernetes operations \nExamples:\n\t•\tRead-only access \n\t•\tDeployment access \n\t•\tAdmin access \n\n🟢 Ingress Controller\n\t•\tUsed for managing external HTTP/HTTPS traffic routing to applications inside AKS. \n\t•\tSupported: \n\t•\tURL-based routing \n\t•\tSSL termination \n\t•\tTraffic management \n\n🌐 Application Exposure\n🟣 Application Gateway Ingress Controller (AGIC)\nApplications were exposed externally using:\n\t•\tAzure Application Gateway \n\t•\tApplication Gateway Ingress Controller (AGIC) \nBenefits:\n\t•\tLayer 7 load balancing \n\t•\tSSL offloading \n\t•\tWeb Application Firewall (WAF) \n\t•\tSecure traffic routing \n\t•\tBetter scalability \n\n📊 Monitoring & Observability\n🟢 Azure Monitor\nUsed for:\n\t•\tInfrastructure monitoring \n\t•\tMetrics collection \n\t•\tAlerting \n\t•\tPerformance tracking \n\n🟢 Container Insights\nUsed for:\n\t•\tPod monitoring \n\t•\tNode health monitoring \n\t•\tContainer logs \n\t•\tTroubleshooting \n\t•\tAKS performance analysis \n\n🎯 Short Interview Answer\n“We used AKS as a managed Kubernetes platform with separate node pools for frontend and backend workloads. We implemented node selectors, HPA, namespaces, RBAC, and ingress controllers for workload management, scaling, security, and traffic routing. Applications were exposed using Application Gateway Ingress Controller, and monitoring was handled through Azure Monitor and Container Insights.”\n\n\nTroubleshooting Example (CrashLoopBackOff)\n“If I encounter a CrashLoopBackOff issue in AKS, I follow these steps:\n\t•\tCheck pod status \nkubectl get pods\n\t•\tCheck pod logs \nkubectl logs pod-name\n\t•\tDescribe pod for events \nkubectl describe pod pod-name\n\t•\tVerify: \n\t•\tEnvironment variables \n\t•\tSecrets and ConfigMaps \n\t•\tImage version \n\t•\tResource limits \n\t•\tDatabase connectivity \n\t•\tCoordinate with developers if application-level issue exists \n\t•\tIf issue impacts production, rollback deployment: \nkubectl rollout undo deployment deployment-name\nThis approach helps quickly restore service availability.”\n\n📅 Day-to-Day Activities\nMy daily responsibilities as a DevOps & Cloud Engineer include managing cloud infrastructure, supporting deployments, monitoring systems, and ensuring platform stability and security.\n\n🔄 Daily Responsibilities\n🚀 Monitoring CI/CD Pipelines\n\t•\tMonitoring Azure DevOps pipelines \n\t•\tValidating build and deployment status \n\t•\tTroubleshooting pipeline failures \n\t•\tEnsuring smooth CI/CD execution \n\n☁️ Managing Azure Infrastructure\n\t•\tManaging Azure cloud resources \n\t•\tMonitoring infrastructure health and utilization \n\t•\tHandling scaling and configuration updates \n\t•\tSupporting environment maintenance activities \n\n☸️ Deploying Applications on AKS\n\t•\tDeploying containerized applications to AKS \n\t•\tManaging Kubernetes deployments and services \n\t•\tHandling Helm chart or manifest updates \n\t•\tMonitoring application rollout status \n\n🏗️ Creating & Updating Terraform Code\n\t•\tWriting Infrastructure as Code using Terraform \n\t•\tUpdating reusable Terraform modules \n\t•\tManaging environment-specific configurations \n\t•\tReviewing and validating infrastructure changes \n\n🛠️ Troubleshooting Production Issues\n\t•\tInvestigating deployment failures \n\t•\tTroubleshooting AKS pod/application issues \n\t•\tAnalyzing logs and monitoring alerts \n\t•\tCoordinating with development and support teams \n\n🐳 Managing Docker Images\n\t•\tBuilding Docker images \n\t•\tManaging container image versions \n\t•\tPushing images to Azure Container Registry (ACR) \n\t•\tRemoving outdated or unused images \n\n👨‍💻 Supporting Developers\n\t•\tAssisting developers with deployment issues \n\t•\tHelping with CI/CD integration \n\t•\tSupporting environment access and configuration \n\t•\tResolving infrastructure-related concerns \n\n📊 Monitoring Application Performance\n\t•\tMonitoring applications using Azure Monitor & Container Insights \n\t•\tChecking resource utilization and application health \n\t•\tConfiguring alerts and dashboards \n\t•\tIdentifying performance bottlenecks \n\n🎫 Handling Tickets & Change Requests\n\t•\tWorking on incident, service, and change requests \n\t•\tImplementing approved infrastructure changes \n\t•\tSupporting release and deployment activities \n\t•\tFollowing ITIL and change management processes \n\n🔐 Ensuring Security & Compliance\n\t•\tMonitoring security compliance \n\t•\tManaging RBAC and access controls \n\t•\tValidating vulnerability scans \n\t•\tEnsuring secure secret management using Key Vault \n\n🎯 Short Interview Answer\n“My daily activities include monitoring CI/CD pipelines, managing Azure infrastructure, deploying applications on AKS, writing Terraform code, troubleshooting production issues, managing Docker images, supporting developers, monitoring application performance, handling tickets and change requests, and ensuring security and compliance.”\n\n☁️ Azure Services Worked On\nI have worked on multiple Azure services across compute, networking, security, monitoring, storage, and DevOps domains.\n\n🚀 Compute & Container Services\n☸️ AKS (Azure Kubernetes Service)\n\t•\tManaged Kubernetes platform used for deploying and managing containerized applications. \n\t•\tWorked on: \n\t•\tDeployments \n\t•\tScaling \n\t•\tIngress \n\t•\tMonitoring \n\t•\tTroubleshooting \n\n💻 Virtual Machines (VMs)\n\t•\tProvisioned and managed Linux/Windows VMs. \n\t•\tWorked on: \n\t•\tVM configuration \n\t•\tScaling \n\t•\tNetworking \n\t•\tSecurity hardening \n\n🔄 DevOps & CI/CD Services\n🛠️ Azure DevOps\n\t•\tUsed for: \n\t•\tCI/CD pipelines \n\t•\tSource code management \n\t•\tRelease automation \n\t•\tYAML pipelines \n\t•\tBuild and deployment orchestration \n\n📦 Azure Container Registry (ACR)\n\t•\tPrivate container registry used for securely storing Docker images. \n\t•\tIntegrated with: \n\t•\tAKS \n\t•\tAzure DevOps pipelines \n\n🔐 Security Services\n🔑 Azure Key Vault\n\t•\tUsed for securely managing: \n\t•\tSecrets \n\t•\tCertificates \n\t•\tAPI keys \n\t•\tConnection strings \n\n🛡️ Azure AD (Azure Active Directory)\n\t•\tUsed for: \n\t•\tAuthentication \n\t•\tAuthorization \n\t•\tRBAC \n\t•\tIdentity management \n\t•\tSingle Sign-On (SSO) \n\n🔒 NSG (Network Security Group)\n\t•\tImplemented inbound and outbound traffic control using security rules. \n\t•\tUsed for subnet and NIC-level security. \n\n🌐 Private Endpoints\n\t•\tEnabled secure private connectivity to Azure services without public internet exposure. \n\n🖥️ Azure Bastion\n\t•\tUsed for secure RDP/SSH access to VMs without exposing public IP addresses. \n\n🌐 Networking Services\n🌍 Virtual Networks (VNets)\n\t•\tDesigned and managed isolated Azure networks. \n\t•\tCreated: \n\t•\tSubnets \n\t•\tRouting configurations \n\t•\tSecure connectivity \n\n⚖️ Load Balancer\n\t•\tDistributed incoming traffic across backend resources for high availability. \n\n🚦 Application Gateway\n\t•\tLayer 7 load balancer used for: \n\t•\tURL-based routing \n\t•\tSSL termination \n\t•\tWeb Application Firewall (WAF) \n\n🌎 Azure Front Door\n\t•\tUsed for: \n\t•\tGlobal traffic routing \n\t•\tLow-latency access \n\t•\tWAF protection \n\t•\tCDN integration \n\n📊 Monitoring & Logging\n📈 Azure Monitor\n\t•\tUsed for: \n\t•\tMonitoring infrastructure \n\t•\tMetrics collection \n\t•\tAlerts \n\t•\tLog analysis \n\t•\tPerformance monitoring \n\n💾 Storage & Database Services\n🗂️ Azure Storage Account\n\t•\tUsed for: \n\t•\tBlob storage \n\t•\tFile shares \n\t•\tTerraform backend state storage \n\n🛢️ Azure SQL\n\t•\tManaged relational database service used for application data storage. \n\n🌌 Cosmos DB\n\t•\tNoSQL database service used for globally distributed applications and scalable data storage. \n\n🎯 Short Interview Answer\n“I have worked on multiple Azure services including AKS, Azure DevOps, ACR, Key Vault, VNets, NSG, Azure Bastion, Azure Monitor, Application Gateway, Azure Front Door, Storage Accounts, Azure SQL, Cosmos DB, Azure AD, Load Balancer, Virtual Machines, and Private Endpoints.”\n\nCommon Interview Questions with Smart Answers\nBranching Strategy\nFeature Branching\n\t•\tEach developer works on a separate feature branch. \n\t•\tCode is merged through Pull Requests after review. \nExample:\n\t•\tfeature/login \n\t•\tfeature/payment \nGitFlow\n\t•\tUses main, develop, feature, release, and hotfix branches. \n\t•\tBest for large enterprise projects. \nTrunk-Based Development\n\t•\tDevelopers create short-lived branches and merge quickly into the main branch. \n\t•\tCI/CD validation runs automatically. \nInterview Answer:\n“We mainly use feature branching and trunk-based development in Azure DevOps for faster integration, automated testing, and reduced merge conflicts.”\n\nVNet and Subnet\nVNet\n\t•\tPrivate network in Microsoft Azure Azure. \n\t•\tEnables secure communication between resources. \nExample:\n\t•\t10.0.0.0/16 \nSubnet\n\t•\tSmaller network inside a VNet. \n\t•\tUsed for network segmentation. \nExample:\n\t•\tWeb subnet \n\t•\tApp subnet \n\t•\tDB subnet \nInterview Answer:\n“VNet provides isolated networking in Azure, and subnets divide the VNet into smaller logical networks for better security and traffic management.”\n\nBackend Block in Terraform\n\t•\tBackend block stores Terraform state remotely. \nExample:\n\t•\tAzure Storage Account backend \nBenefits:\n\t•\tTeam collaboration \n\t•\tState locking \n\t•\tPrevents state corruption \nInterview Answer:\n“We use backend blocks to store Terraform state files remotely in Azure Storage Account for centralized state management and locking.”\n\nDeployment Errors Faced\nTerraform Errors\n\t•\tState lock issue \n\t•\tResource already exists \n\t•\tDependency issues \nAzure Errors\n\t•\tRBAC permission denied \n\t•\tNSG blocking traffic \n\t•\tQuota limit exceeded \nCI/CD Errors\n\t•\tYAML syntax issues \n\t•\tService connection failures \nAKS Errors\n\t•\tImagePullBackOff \n\t•\tPod crash loops \nInterview Answer:\n“I have handled Terraform state lock issues, RBAC permission errors, NSG misconfigurations, CI/CD pipeline failures, and AKS image pull errors.”\n\nTerraform Modules\n\t•\tModules are reusable Terraform components. \nExamples:\n\t•\tVNet module \n\t•\tNSG module \n\t•\tAKS module \n\t•\tStorage module \nBenefits:\n\t•\tReusability \n\t•\tStandardization \n\t•\tEasy maintenance \nInterview Answer:\n“I worked on reusable Terraform modules for VNet, subnet, NSG, AKS, storage accounts, and virtual machines.”\n\nNSG and ASG\nNSG (Network Security Group)\n\t•\tActs like a firewall. \n\t•\tControls inbound and outbound traffic using rules. \nExample:\n\t•\tAllow port 80 \n\t•\tAllow SSH 22 \n\t•\tDeny all others \nASG (Application Security Group)\n\t•\tLogical grouping of VMs. \n\t•\tSimplifies NSG rule management. \nExample:\n\t•\tweb-asg \n\t•\tapp-asg \n\t•\tdb-asg",
     "difficulty": "Hard",
@@ -522,7 +522,7 @@ const qaData = [
   },
   {
     "id": 66,
-    "category": "Terraform (IaC)",
+    "category": "CI/CD & Pipelines",
     "question": "How do you use tfsec and other security tools in CI/CD pipeline?",
     "answer": "“In our project, security was integrated as part of the CI/CD pipeline to follow DevSecOps practices.\nFor Terraform code security scanning, we used tfsec. Whenever a developer created a pull request or merged code, the Terraform pipeline automatically triggered and executed tfsec scans to identify security misconfigurations such as:\n\t•\tOpen security groups \n\t•\tPublicly exposed resources \n\t•\tUnencrypted storage \n\t•\tWeak network rules \nIf tfsec detected any high-severity issue, the pipeline failed automatically.\nApart from tfsec, we also used:\n\t•\tSonarQube for static code analysis \n\t•\tAnchore for Docker image vulnerability scanning \n\t•\tAzure Key Vault for secret management \n\t•\tRBAC and Azure Policies for access control \nThis helped us ensure infrastructure, application code, and container images were secure before deployment.”",
     "difficulty": "Hard",
@@ -610,7 +610,7 @@ const qaData = [
   },
   {
     "id": 77,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "What is CI/CD?",
     "answer": "“CI/CD is a DevOps practice that automates software build, testing, and deployment processes.\nCI – Continuous Integration\nDevelopers frequently merge code into a shared repository.\nCI automatically:\n\t•\tBuilds application \n\t•\tRuns unit tests \n\t•\tPerforms code quality checks \nGoal:\nDetect issues early.\nCD – Continuous Delivery / Deployment\nAfter CI success:\n\t•\tApplication gets deployed automatically to environments like Dev, QA, and Production. \nBenefits:\n\t•\tFaster releases \n\t•\tReduced manual work \n\t•\tBetter reliability \nOne-line Answer:\nCI/CD automates build, testing, and deployment processes for faster and reliable software delivery.”\n\nYAML vs Classic Pipeline\n“We can create pipelines in two ways:\nYAML Pipeline\n\t•\tCode-based pipeline \n\t•\tStored in repository \n\t•\tVersion-controlled \n\t•\tSupports templates and reuse \n\t•\tPreferred for modern DevOps \nExample:\ntrigger:\n- main\nClassic Pipeline\n\t•\tUI-based pipeline \n\t•\tEasy for beginners \n\t•\tLimited flexibility \n\t•\tHarder to version control",
     "difficulty": "Hard",
@@ -626,7 +626,7 @@ const qaData = [
   },
   {
     "id": 79,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "What is a Self-hosted Agent?",
     "answer": "“A self-hosted agent is an agent installed on our own server or VM to run pipelines.\nWe use self-hosted agents when:\n\t•\tCustom tools are needed \n\t•\tSpecific network access required \n\t•\tSecurity restrictions exist \n\t•\tLarge builds require dedicated resources \nBenefits:\n\t•\tFull control \n\t•\tBetter customization \n\t•\tFaster execution for large workloads \nOne-line Answer:\nSelf-hosted agents run pipelines on our own infrastructure with more control and customization.”",
     "difficulty": "Medium",
@@ -634,7 +634,7 @@ const qaData = [
   },
   {
     "id": 80,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "What is Microsoft-hosted Agent?",
     "answer": "“Microsoft-hosted agents are managed by Microsoft.\nFeatures:\n\t•\tPreconfigured environments \n\t•\tNo maintenance required \n\t•\tAutomatically provisioned \n\t•\tSupports Windows/Linux/macOS \nBest for:\n\t•\tStandard builds \n\t•\tSmall to medium projects \nLimitation:\n\t•\tLess customization \nOne-line Answer:\nMicrosoft-hosted agents are ready-to-use build environments managed by Microsoft.”",
     "difficulty": "Medium",
@@ -658,7 +658,7 @@ const qaData = [
   },
   {
     "id": 83,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you secure secrets in pipelines?",
     "answer": "“We never hardcode secrets in pipeline YAML files.\nWe use:\n\t•\tAzure Key Vault \n\t•\tSecret variables \n\t•\tRBAC access control \nExamples of secrets:\n\t•\tPasswords \n\t•\tAPI keys \n\t•\tConnection strings \nWe integrate Azure Key Vault with Azure DevOps pipelines so secrets are fetched securely during runtime.\nOne-line Answer:\nI secure secrets using Azure Key Vault, secret variables, and RBAC permissions.”",
     "difficulty": "Medium",
@@ -674,7 +674,7 @@ const qaData = [
   },
   {
     "id": 85,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Pipeline is failing – how do you troubleshoot?",
     "answer": "“My troubleshooting approach is systematic.\nSteps:\n\t•\tCheck pipeline logs \n\t•\tIdentify failed stage/task \n\t•\tVerify: \n\t•\tVariables \n\t•\tService connections \n\t•\tPermissions \n\t•\tAgent availability \n\t•\tEnable debug logging: \nsystem.debug: true\n\t•\tReproduce issue locally if possible \nIf infrastructure-related:\n\t•\tValidate Terraform \n\t•\tCheck Kubernetes events/logs \nOne-line Answer:\nI isolate failures using logs, validate configurations, and debug step-by-step.”",
     "difficulty": "Medium",
@@ -698,7 +698,7 @@ const qaData = [
   },
   {
     "id": 88,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Pipeline is slow – how to optimize?",
     "answer": "“To optimize pipelines:\n\t•\tEnable caching \n\t•\tUse parallel jobs \n\t•\tRemove unnecessary tasks \n\t•\tOptimize Docker layers \n\t•\tUse lightweight agents \n\t•\tReduce repeated downloads \nWe also split pipelines logically for faster execution.\nOne-line Answer:\nI optimize pipelines using caching, parallel execution, and task optimization.”",
     "difficulty": "Medium",
@@ -706,7 +706,7 @@ const qaData = [
   },
   {
     "id": 89,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you implement approvals in pipeline?",
     "answer": "“We use:\n\t•\tEnvironment approvals \n\t•\tManual validation tasks \n\t•\tRBAC restrictions \nProduction deployments require manual approval from authorized team members before execution.\nBenefits:\n\t•\tControlled deployment \n\t•\tReduced production risk \nOne-line Answer:\nI use environment-based approvals and validation steps for controlled deployments.”",
     "difficulty": "Medium",
@@ -714,7 +714,7 @@ const qaData = [
   },
   {
     "id": 90,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "Agent not picking job – why?",
     "answer": "“Possible reasons:\n\t•\tAgent offline \n\t•\tCapability mismatch \n\t•\tIncorrect pool configuration \n\t•\tPermission issue \nTroubleshooting:\n\t•\tCheck agent service status \n\t•\tValidate pool assignment \n\t•\tVerify required capabilities \nOne-line Answer:\nI verify agent health, capabilities, and pool configuration.”\n\nPipeline triggered but not running\n“Common reasons:\n\t•\tTrigger misconfiguration \n\t•\tWrong branch filters \n\t•\tYAML syntax issue \n\t•\tDisabled pipeline \nI check:\n\t•\ttrigger section \n\t•\tbranch filters \n\t•\tpipeline logs \n\t•\tYAML validation \nOne-line Answer:\nI verify triggers, branch filters, and YAML syntax.”\n\nPermission denied error\n“This usually happens because of:\n\t•\tRBAC issue \n\t•\tInvalid service connection \n\t•\tMissing access rights \nSteps:\n\t•\tValidate service connection \n\t•\tCheck Azure IAM roles \n\t•\tVerify Kubernetes RBAC \n\t•\tEnsure resource permissions \nOne-line Answer:\nI resolve permission errors by validating RBAC and service connection access.”",
     "difficulty": "Hard",
@@ -722,7 +722,7 @@ const qaData = [
   },
   {
     "id": 91,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you design reusable pipelines?",
     "answer": "“We create reusable pipelines using:\n\t•\tYAML templates \n\t•\tShared repositories \n\t•\tParameterized pipelines \nBenefits:\n\t•\tDRY principle \n\t•\tStandardization \n\t•\tEasier maintenance \nExample:\nCommon build template reused across applications.\nOne-line Answer:\nI use YAML templates and parameters to create reusable and scalable pipelines.”",
     "difficulty": "Medium",
@@ -730,7 +730,7 @@ const qaData = [
   },
   {
     "id": 92,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you implement pipeline-as-code best practices?",
     "answer": "“We treat pipelines like application code.\nBest practices:\n\t•\tStore YAML in Git \n\t•\tUse PR reviews \n\t•\tModular templates \n\t•\tNaming standards \n\t•\tVersion control \n\t•\tSeparate environments \nBenefits:\n\t•\tTraceability \n\t•\tAuditability \n\t•\tBetter collaboration \nOne-line Answer:\nI manage pipelines as version-controlled code using templates and reviews.”",
     "difficulty": "Medium",
@@ -738,7 +738,7 @@ const qaData = [
   },
   {
     "id": 93,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you manage multi-branch pipelines?",
     "answer": "“We configure branch-based triggers.\nExamples:\n\t•\tfeature/* \n\t•\tdevelop \n\t•\tmain \nWe also:\n\t•\tEnable PR validation \n\t•\tUse separate deployment rules \n\t•\tApply environment-specific approvals \nOne-line Answer:\nI use branch filters and PR validation for managing multi-branch pipelines.”",
     "difficulty": "Medium",
@@ -746,7 +746,7 @@ const qaData = [
   },
   {
     "id": 94,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How would you migrate on-prem CI/CD to Azure DevOps?",
     "answer": "“Migration approach:\n\t•\tAnalyze existing setup \n\t•\tMove repositories to Azure Repos \n\t•\tRebuild pipelines in YAML \n\t•\tConfigure agents \n\t•\tMigrate gradually \nWe avoid big-bang migration and move incrementally to reduce risks.\nOne-line Answer:\nI migrate incrementally using YAML pipelines with minimal business disruption.”",
     "difficulty": "Medium",
@@ -770,7 +770,7 @@ const qaData = [
   },
   {
     "id": 97,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Describe your CI/CD pipeline flow",
     "answer": "“Our pipeline flow:\n\t•\tDeveloper pushes code \n\t•\tCI pipeline triggers \n\t•\tBuild application \n\t•\tRun tests \n\t•\tSonarQube analysis \n\t•\tBuild Docker image \n\t•\tVulnerability scanning \n\t•\tPush image to ACR \n\t•\tCD deployment: \n\t•\tDev \n\t•\tQA \n\t•\tProduction \n\t•\tManual approval before production \nOne-line Answer:\nMy CI/CD pipeline automates build, testing, security scanning, and controlled deployments.”",
     "difficulty": "Medium",
@@ -786,7 +786,7 @@ const qaData = [
   },
   {
     "id": 99,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Why YAML pipelines over Classic?",
     "answer": "“Advantages of YAML:\n\t•\tVersion-controlled \n\t•\tReusable \n\t•\tScalable \n\t•\tTemplate support \n\t•\tEasier automation \nThat’s why most modern projects prefer YAML pipelines.\nOne-line Answer:\nYAML pipelines are flexible, reusable, scalable, and version-controlled.”",
     "difficulty": "Medium",
@@ -794,7 +794,7 @@ const qaData = [
   },
   {
     "id": 100,
-    "category": "Terraform (IaC)",
+    "category": "CI/CD & Pipelines",
     "question": "How do you integrate Terraform in pipeline?",
     "answer": "“We automate infrastructure provisioning using Terraform in CI/CD pipelines.\nPipeline flow:\n\t•\tInstall Terraform \n\t•\tRun terraform init \n\t•\tRun terraform plan \n\t•\tSecurity scan using tfsec \n\t•\tManual approval \n\t•\tRun terraform apply \nState file stored securely in Azure Blob Storage backend.\nOne-line Answer:\nI automate infrastructure deployment using Terraform integrated into Azure DevOps pipelines.”",
     "difficulty": "Medium",
@@ -1170,7 +1170,7 @@ const qaData = [
   },
   {
     "id": 147,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "Scenario: Jenkins Build Failed. What Will You Check?",
     "answer": "“When a Jenkins build fails, I follow these steps to quickly identify and resolve the issue:\n\n\t1. Analyze Console Output:\n\t\t•\tGo to the specific build number and open 'Console Output'.\n\t\t•\tScroll to the bottom to find the exact error message (e.g., compilation error, test failure, syntax error in Jenkinsfile, or permission denied).\n\t2. Check Jenkins Agent/Worker Status:\n\t\t•\tVerify if the build agent went offline during the build. Check 'Manage Jenkins' -> 'Nodes' to ensure the agent is connected and has enough resources.\n\t3. Check Disk Space:\n\t\t•\tVerify if the Jenkins server or agent has run out of disk space. I can run `df -h` on the agent or check Jenkins logs for `No space left on device`.\n\t4. Check Integration & Credentials:\n\t\t•\tCheck if the git checkout failed due to credential expiry or network issues.\n\t\t•\tVerify if external tools like Docker, Maven, or SonarQube are running and accessible from the Jenkins agent.\n\t5. Command-line Verification:\n\t\t•\tIf needed, log into the Jenkins agent and run the build command manually in the workspace directory to reproduce the error.”",
     "difficulty": "Hard",
@@ -1242,7 +1242,7 @@ const qaData = [
   },
   {
     "id": 156,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "Scenario: How Will You Handle Secrets in CI/CD Pipeline?",
     "answer": "“Managing secrets securely in CI/CD pipelines is critical to prevent credential leaks. I follow these strict security practices:\n\n\t1. Use Integrated Secrets Managers:\n\t\t•\tStore all credentials, API keys, and certificates in a dedicated secrets manager like Azure Key Vault, HashiCorp Vault, or AWS Secrets Manager.\n\t2. Fetch Secrets Dynamically:\n\t\t•\tConfigure the CI/CD pipeline (Jenkins, Azure Pipelines, or GitHub Actions) to fetch secrets dynamically at runtime using secure service connections or OIDC, rather than hardcoding them in the repository.\n\t3. Masking in Logs:\n\t\t•\tEnsure secret masking is enabled in the pipeline settings so that if a secret is accidentally printed to the console, it is automatically replaced with asterisks (`***`).\n\t\t•\tNever store secrets in plaintext in variables files (`terraform.tfvars`) or Git. Use environment variables injected by the runner or encrypted variables (like GitHub Encrypted Secrets).\n\t4. Rotate Credentials:\n\t\t•\tImplement regular rotation policies for passwords, SSH keys, and API tokens.”\n\nFinal Interview Closing Line\n“I have experience in cloud infrastructure, CI/CD, Terraform, Docker, Kubernetes, and Linux administration. I enjoy automating infrastructure and solving production issues using DevOps best practices.”\nDevOps / Cloud Engineer Interview Notes (Q&A)\n1. Self Introduction\nHi, my name is [Your Name].\nI am working as a DevOps/Cloud Engineer with experience in:\n\t•\tLinux Administration \n\t•\tCloud Infrastructure \n\t•\tCI/CD pipelines \n\t•\tDocker & Kubernetes \n\t•\tTerraform \n\t•\tMonitoring and deployment automation \nCurrently, I am working mainly on Microsoft cloud platform.\nDay-to-Day Activities\n\t•\tManaging cloud infrastructure \n\t•\tCreating CI/CD pipelines using Jenkins \n\t•\tDeploying applications \n\t•\tWriting Terraform code \n\t•\tMonitoring Linux servers \n\t•\tManaging Docker containers and Kubernetes clusters \n\t•\tTroubleshooting production issues \n\t•\tManaging secrets using Microsoft \n\nLinux Questions",
     "difficulty": "Hard",
@@ -1274,7 +1274,7 @@ const qaData = [
   },
   {
     "id": 160,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is Jenkins Pipeline?",
     "answer": "Jenkins pipeline automates:\n\t•\tBuild \n\t•\tTest \n\t•\tDeployment \n\t•\tCI/CD process \nFlow\nCode → Build → Test → Deploy\nBenefits\n\t•\tAutomation \n\t•\tFaster deployment \n\t•\tReduced manual work \n\t•\tContinuous Integration \nExample\npipeline {\n  agent any\n\n  stages {\n    stage('Build') {\n      steps {\n        echo 'Building'\n      }\n    }\n\n    stage('Deploy') {\n      steps {\n        echo 'Deploying'\n      }\n    }\n  }\n}\n\nDocker Questions",
     "difficulty": "Medium",
@@ -1458,7 +1458,7 @@ const qaData = [
   },
   {
     "id": 183,
-    "category": "Docker & Kubernetes",
+    "category": "CI/CD & Pipelines",
     "question": "What are Multi-stage Docker builds and why should you use them?",
     "answer": "• Multi-stage builds allow you to use multiple 'FROM' statements in a single Dockerfile. You can compile your code in an initial stage and copy only the compiled artifact into a final, lightweight stage.\n• Benefits: Reduces image size drastically (e.g., removing JDK, build tools, and source code, leaving only the JRE and the jar file). This improves security (fewer packages means smaller attack surface) and deployment speed.\n• Example:\n  FROM maven:3.8-openjdk-17 AS builder\n  RUN mvn package\n  \n  FROM openjdk:17-slim\n  COPY --from=builder /app/target/app.jar /app.jar\n  CMD [\"java\", \"-jar\", \"/app.jar\"]",
     "difficulty": "Hard",
@@ -1506,7 +1506,7 @@ const qaData = [
   },
   {
     "id": 189,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you implement caching in CI/CD pipelines, and why is it important?",
     "answer": "• Pipeline Caching: Saves dependencies (like npm node_modules, Maven .m2, NuGet packages) after the first build and restores them in subsequent runs.\n• Why: It significantly reduces build times by avoiding downloading gigabytes of dependencies over the internet for every single commit.\n• Azure Pipelines Syntax: Use the 'Cache@2' task, defining a key based on the package lock file (e.g., package-lock.json) so the cache is invalidated and rebuilt only when dependencies change.",
     "difficulty": "Medium",
@@ -1514,7 +1514,7 @@ const qaData = [
   },
   {
     "id": 190,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is the difference between Microsoft-hosted agents and Self-hosted agents in Azure DevOps?",
     "answer": "• Microsoft-hosted Agents: Managed entirely by Microsoft. A fresh virtual machine is created for every job and discarded afterward. Zero maintenance, but limited in CPU/Memory, cannot access private networks, and has execution time limits.\n• Self-hosted Agents: Installed and managed on your own infrastructure (VMs, physical servers, Kubernetes). They persist between builds, allowing faster caching. They can access resources inside your private VNet and have no execution time limits, but you are responsible for maintenance and updates.",
     "difficulty": "Hard",
@@ -1522,7 +1522,7 @@ const qaData = [
   },
   {
     "id": 191,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What are Multi-stage YAML pipelines and why are they preferred over Classic release pipelines?",
     "answer": "• Multi-stage YAML pipelines allow you to define both your Build (CI) and Release (CD) stages in a single YAML file (pipeline-as-code).\n• Why Preferred:\n  1. Version Control: The pipeline definition is stored in Git alongside the application code, allowing you to track changes, review via PRs, and roll back easily.\n  2. Reusability: You can use templates to share stages, jobs, and tasks across different pipelines.\n  3. Multi-stage: Clearly defines dependencies between stages (e.g., Dev -> QA -> Prod) with approvals and checks configured on environments.",
     "difficulty": "Hard",
@@ -1530,7 +1530,7 @@ const qaData = [
   },
   {
     "id": 192,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "How do you handle secrets leakage prevention in CI/CD?",
     "answer": "• Best Practices:\n  1. Mask Secrets: Ensure all secret variables in Azure DevOps are marked as 'secret'. The pipeline will automatically mask their values (showing '***') in the console logs.\n  2. GitGuardian / Trufflehog: Integrate secret-scanning tools in the pre-commit stage or as a pipeline task to scan the codebase for exposed passwords, keys, or certificates.\n  3. Short-lived Credentials: Use Azure Service Connections with Workload Identity Federation (OIDC) instead of storing long-lived service principal client secrets.",
     "difficulty": "Hard",
@@ -1786,7 +1786,7 @@ const qaData = [
   },
   {
     "id": 224,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is the difference between a Stage, a Job, and a Task in a CI/CD pipeline?",
     "answer": "• Stage: A major division in a pipeline that represents a logical phase of the workflow (e.g., Build, Test, Deploy to Dev, Deploy to Prod). Stages usually run sequentially.\n• Job: A collection of steps/tasks run by a single agent. Jobs within a stage can run in parallel if multiple agents are available.\n• Task/Step: The smallest building block of a pipeline. It is a linear sequence of operations executed within a job (e.g., running a bash script, copying files, compiling code).\n• Summary: A Pipeline has multiple Stages -> A Stage has multiple Jobs -> A Job has multiple Tasks.",
     "difficulty": "Hard",
@@ -1794,7 +1794,7 @@ const qaData = [
   },
   {
     "id": 225,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is a pipeline trigger, and what are the most common types of triggers?",
     "answer": "• A trigger is an event that automatically starts the execution of a CI/CD pipeline.\n• Common Types:\n  1. CI Trigger (Push): Triggers the pipeline whenever code is pushed to a specific branch (e.g., main or release/*).\n  2. PR Trigger (Pull Request): Triggers a validation pipeline when a PR is created or updated, ensuring code compiles and passes tests before merging.\n  3. Scheduled Trigger (Cron): Triggers the pipeline at specific times (e.g., nightly builds at 2:00 AM).\n  4. Pipeline Trigger (Chained): Triggers a pipeline upon the successful completion of another pipeline (e.g., deploying after a successful build).",
     "difficulty": "Hard",
@@ -1802,7 +1802,7 @@ const qaData = [
   },
   {
     "id": 226,
-    "category": "Docker & Kubernetes",
+    "category": "CI/CD & Pipelines",
     "question": "How do you implement automated rollbacks in a CD pipeline if a deployment fails?",
     "answer": "• Automated rollback restores the last known stable version of the application immediately when a deployment failure is detected.\n• Implementation Methods:\n  1. Kubernetes/Helm: Kubernetes automatically rolls back a rolling update if readiness probes fail. Helm supports 'helm rollback <release> <revision>'.\n  2. Pipeline Logic: Use a post-deployment script or task that triggers on failure (using 'condition: failed()' in YAML) to run a rollback script.\n  3. Deployment Slot Swap: In Azure App Services, if the swap to production fails health checks, it automatically swaps back to the staging slot.\n• Best Practice: Ensure database migrations are backward-compatible so that rolling back application code doesn't break the database.",
     "difficulty": "Hard",
@@ -1810,7 +1810,7 @@ const qaData = [
   },
   {
     "id": 227,
-    "category": "Docker & Kubernetes",
+    "category": "CI/CD & Pipelines",
     "question": "What is a Deployment Gate (or Quality Gate) in a release pipeline?",
     "answer": "• A Deployment Gate is an automated check that evaluates health and compliance criteria before a deployment starts or completes.\n• How it works: The pipeline pauses and queries external services. If the criteria are met, the deployment proceeds. If not, it fails or waits.\n• Examples:\n  1. Azure Monitor Alerts: Ensure no active critical alerts exist on the infrastructure.\n  2. SonarQube Quality Gate: Block deployment if the code coverage falls below 80% or new security vulnerabilities are found.\n  3. Service Desk (Jira/ServiceNow): Ensure the change management ticket is approved before deploying to production.",
     "difficulty": "Hard",
@@ -1818,7 +1818,7 @@ const qaData = [
   },
   {
     "id": 228,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you secure credentials, API keys, and certificates inside a CI/CD pipeline?",
     "answer": "• Best Practices:\n  1. Secret Variables: Store secrets in encrypted variable groups (Azure DevOps) or Secrets (GitHub) and mark them as hidden. The runner will mask them in logs.\n  2. Key Vault Integration: Fetch secrets dynamically at runtime from Azure Key Vault or HashiCorp Vault using a pipeline task.\n  3. Workload Identity (OIDC): Use passwordless authentication (OpenID Connect) so the pipeline uses temporary tokens rather than storing long-lived service principal client secrets.\n  4. Least Privilege: Restrict the pipeline's service connection permissions to only the resources it needs to manage.",
     "difficulty": "Hard",
@@ -1826,7 +1826,7 @@ const qaData = [
   },
   {
     "id": 229,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is the difference between a Declarative pipeline and a Scripted pipeline?",
     "answer": "• Declarative Pipeline (Preferred): Uses a structured, pre-defined schema (typically YAML in GitHub/Azure DevOps, or 'pipeline {}' block in Jenkins). It is easier to read, has built-in syntax checks, and enforces best practices.\n• Scripted Pipeline: Uses a programming language (like Groovy in Jenkins). It offers maximum flexibility and allows complex logic, loops, and error handling, but is harder to maintain and prone to errors.\n• Best Practice: Use Declarative (YAML) pipelines for 95% of use cases. Only use scripted blocks (like Groovy or inline Bash/Powershell) when complex dynamic logic is absolutely necessary.",
     "difficulty": "Hard",
@@ -1834,7 +1834,7 @@ const qaData = [
   },
   {
     "id": 230,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you optimize pipeline execution speed using parallel execution?",
     "answer": "• Parallel execution runs independent jobs or tasks simultaneously rather than sequentially, reducing the total pipeline duration.\n• Implementation:\n  1. Parallel Jobs: Define multiple jobs in a stage that do not depend on each other (e.g., running unit tests, linting, and security scans in parallel).\n  2. Matrix Builds: Run the same job with different configurations (e.g., testing on Node.js 16, 18, and 20 simultaneously).\n  3. Multi-agent: Ensure you have multiple self-hosted agents or concurrent Microsoft-hosted jobs available in your organization to run parallel tasks.",
     "difficulty": "Hard",
@@ -1842,7 +1842,7 @@ const qaData = [
   },
   {
     "id": 231,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is Semantic Versioning (SemVer) and how do you automate it in pipelines?",
     "answer": "• Semantic Versioning uses a three-part version number: MAJOR.MINOR.PATCH (e.g., 1.4.2).\n  • MAJOR: Incompatible API changes.\n  • MINOR: Add functionality in a backwards-compatible manner.\n  • PATCH: Backwards-compatible bug fixes.\n• Automation: Use tools like 'Semantic Release' or 'GitVersion' in your build pipeline. These tools analyze Git commit messages (following Conventional Commits standard like 'feat:', 'fix:') to automatically calculate the next version, generate release notes, and tag the Git repository.",
     "difficulty": "Hard",
@@ -1850,7 +1850,7 @@ const qaData = [
   },
   {
     "id": 232,
-    "category": "Docker & Kubernetes",
+    "category": "CI/CD & Pipelines",
     "question": "How do you handle database schema migrations in a Continuous Deployment pipeline?",
     "answer": "• Database migrations must be automated and run before the new application code is deployed.\n• Best Practices:\n  1. Use Migration Tools: Use tools like Liquibase, Flyway, or Entity Framework Migrations.\n  2. Run as a Pipeline Task: Run the migration task in the CD pipeline right before the deployment stage.\n  3. Expand and Contract Pattern: Design database changes to be backwards-compatible (e.g., if renaming a column, first add the new column, copy data, deploy code that writes to both, then remove the old column in a later release). This ensures the app doesn't crash during rolling updates or rollbacks.",
     "difficulty": "Hard",
@@ -1858,7 +1858,7 @@ const qaData = [
   },
   {
     "id": 233,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "What is a 'Matrix Build' in CI/CD and when would you use it?",
     "answer": "• A Matrix Build allows you to run a single job multiple times in parallel with different variable configurations.\n• Example: Testing a Python library across multiple Python versions (3.8, 3.9, 3.10) and operating systems (Linux, Windows, macOS).\n• YAML Syntax (GitHub Actions / Azure Pipelines):\n  strategy:\n    matrix:\n      python-version: [3.8, 3.9, 3.10]\n      os: [ubuntu-latest, windows-latest]\n• Use Case: Highly useful for open-source libraries, cross-platform applications, and compatibility testing.",
     "difficulty": "Hard",
@@ -1866,7 +1866,7 @@ const qaData = [
   },
   {
     "id": 234,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is the purpose of a Pull Request (PR) validation pipeline?",
     "answer": "• A PR validation pipeline is triggered automatically when a developer opens or updates a Pull Request.\n• Purpose: It compiles the code, runs unit tests, executes linter checks, and performs security scans on the feature branch *before* it is merged into the main branch.\n• Branch Policies: In GitHub or Azure DevOps, you can configure branch protection rules that prevent a PR from being merged unless this validation pipeline completes successfully. This keeps the main branch stable and clean.",
     "difficulty": "Medium",
@@ -1874,7 +1874,7 @@ const qaData = [
   },
   {
     "id": 235,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What are SAST, DAST, and Dependency Scanning, and where do they fit in a CI/CD pipeline?",
     "answer": "• SAST (Static Application Security Testing): Scans source code for vulnerabilities. Run in the **Build (CI) stage** (e.g., SonarQube).\n• Dependency Scanning (SCA): Scans third-party libraries for known vulnerabilities. Run in the **Build (CI) stage** (e.g., Snyk, OWASP Dependency Check).\n• DAST (Dynamic Application Security Testing): Scans the running application by simulating attacks. Run in the **Staging/QA stage** after deployment (e.g., OWASP ZAP).\n• Best Practice: Break the build if SAST or SCA finds high-severity vulnerabilities to enforce DevSecOps.",
     "difficulty": "Hard",
@@ -1882,7 +1882,7 @@ const qaData = [
   },
   {
     "id": 236,
-    "category": "Docker & Kubernetes",
+    "category": "CI/CD & Pipelines",
     "question": "What is a containerized runner/agent and what are its advantages?",
     "answer": "• A containerized runner is a CI/CD agent that runs inside a Docker container (e.g., running Azure DevOps agent as a pod in a Kubernetes cluster using KEDA for autoscaling).\n• Advantages:\n  1. Isolation: Each build job runs in a clean, isolated container environment.\n  2. Dynamic Scaling: Scale the number of agents up or down instantly based on the number of queued jobs in the pipeline.\n  3. Cost-Effective: Only consumes infrastructure resources when jobs are actively running.",
     "difficulty": "Medium",
@@ -1890,7 +1890,7 @@ const qaData = [
   },
   {
     "id": 237,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is a Service Connection in Azure DevOps pipelines?",
     "answer": "• A Service Connection is a secure configuration that allows Azure Pipelines to connect to external services (e.g., Azure Subscription, Kubernetes Cluster, Docker Registry, GitHub, Jira) without exposing credentials in the pipeline code.\n• How it works: It stores the authentication details (Service Principal, OAuth token, or Kubernetes kubeconfig) securely in Azure DevOps. Developers simply reference the service connection name in their YAML code.\n• Best Practice: Restrict service connection access to specific pipelines and branches using security permissions.",
     "difficulty": "Hard",
@@ -1898,7 +1898,7 @@ const qaData = [
   },
   {
     "id": 238,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you implement manual approvals and notifications in a CD pipeline?",
     "answer": "• Manual approvals ensure that deployments to critical environments (like Production) do not happen without sign-off from stakeholders.\n• Implementation:\n  1. Environments: In Azure DevOps or GitHub, define an environment (e.g., 'Production') and add 'Approvals and Checks'.\n  2. Approval Gate: When the pipeline reaches the deployment stage targeting that environment, it pauses and sends an email/notification to the designated approvers.\n  3. Notifications: Integrate webhooks to send automated messages to Slack or Microsoft Teams when a deployment starts, succeeds, or fails.",
     "difficulty": "Hard",
@@ -1906,7 +1906,7 @@ const qaData = [
   },
   {
     "id": 239,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is Pipeline-as-Code and what are its main benefits?",
     "answer": "• Pipeline-as-Code is the practice of defining your CI/CD pipelines using code (typically YAML, JSON, or Groovy) and storing the file in your Git repository alongside your application code.\n• Benefits:\n  1. Version Control: Track changes to the pipeline over time. You can see who modified a step, when, and why.\n  2. Code Review: Pipeline changes are reviewed via Pull Requests before being merged.\n  3. Consistency: Standardize pipelines across multiple projects using reusable templates.\n  4. Disaster Recovery: If the CI/CD server crashes, you can recreate all pipelines instantly from Git.",
     "difficulty": "Hard",
@@ -1914,7 +1914,7 @@ const qaData = [
   },
   {
     "id": 240,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "What is the difference between a Monorepo pipeline and a Multi-repo pipeline?",
     "answer": "• Monorepo Pipeline: A single Git repository contains multiple projects/microservices. The pipeline must use path filters ('paths' in YAML) to trigger only the jobs related to the specific microservice that was modified, avoiding rebuilding the entire repo.\n• Multi-repo Pipeline: Each microservice has its own Git repository and its own independent pipeline. It is simpler to manage but makes orchestrating cross-project deployments and managing shared dependencies more challenging.",
     "difficulty": "Medium",
@@ -1922,7 +1922,7 @@ const qaData = [
   },
   {
     "id": 241,
-    "category": "Azure & Azure DevOps",
+    "category": "CI/CD & Pipelines",
     "question": "How do you handle environment-specific configurations in a CD pipeline?",
     "answer": "• Keep your application build artifact environment-agnostic (build once, deploy many).\n• Best Practices:\n  1. Variable Groups / Environments: Use Azure DevOps Variable Groups or GitHub Environments to store variables (e.g., Database URLs, API endpoints) mapped to Dev, QA, and Prod.\n  2. Key Vault: Pull environment-specific secrets dynamically from environment-specific Key Vaults at deployment time.\n  3. Tokenization: Inject variables into configuration files (like appsettings.json or Kubernetes manifests) during the deployment stage using token replacement tasks.",
     "difficulty": "Hard",
@@ -1930,7 +1930,7 @@ const qaData = [
   },
   {
     "id": 242,
-    "category": "DevOps General",
+    "category": "CI/CD & Pipelines",
     "question": "What is a 'Dirty' build and how do you ensure clean builds in CI?",
     "answer": "• A 'Dirty' build occurs when files or artifacts left over from a previous build on the same agent affect the current build, leading to inconsistent results.\n• How to ensure Clean Builds:\n  1. Clean Workspace: Configure the pipeline to clean the workspace directory before running (e.g., 'clean: all' in Azure Pipelines, or running 'git clean -fdx').\n  2. Ephemeral Agents: Use Microsoft-hosted agents or containerized runners where a fresh, clean VM/container is created for every job and destroyed immediately afterward.",
     "difficulty": "Hard",
@@ -1938,10 +1938,50 @@ const qaData = [
   },
   {
     "id": 243,
-    "category": "Linux & Git",
+    "category": "CI/CD & Pipelines",
     "question": "What is GitOps and how does it differ from traditional push-based CI/CD?",
     "answer": "• Push-based CI/CD (Traditional): The pipeline compiles code and then actively 'pushes' the deployment to the target environment (e.g., running 'kubectl apply' or SSHing into a VM). The pipeline needs admin credentials to the environment.\n• Pull-based GitOps: The pipeline builds the container image and updates a Git repo containing Kubernetes manifests. An operator (like ArgoCD) running *inside* the cluster detects the change in Git and 'pulls' the deployment to match the desired state.\n• Benefit: Higher security (no external credentials needed) and automatic drift correction.",
     "difficulty": "Hard",
     "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 244,
+    "category": "CI/CD & Pipelines",
+    "question": "Scenario: Your CI/CD pipeline fails during the Docker build stage with the error 'no space left on device'. How do you troubleshoot and resolve this?",
+    "answer": "“This is a very common issue on self-hosted build agents or runners when old Docker layers, unused images, and build caches accumulate over time. Here is my step-by-step troubleshooting and resolution workflow:\n\n\t1. Immediate Mitigation (Cleanup):\n\t\t•   Log into the build agent via SSH/Bastion.\n\t\t•   Run `df -h` to identify which partition is full (usually `/var/lib/docker`).\n\t\t•   Run Docker prune commands to reclaim space immediately:\n\t\t\t•   `docker system prune -a --volumes` (removes all stopped containers, unused networks, dangling images, and build cache).\n\t\t\t•   `docker builder prune -a` (removes the buildkit cache, which often consumes hundreds of gigabytes).\n\t2. Root Cause Analysis:\n\t\t•   Check if there is a cleanup step in the pipeline. If developers are building Docker images without pruning old ones, the disk will always fill up.\n\t3. Long-Term Automated Prevention:\n\t\t•   **Pipeline Cleanup Step**: Add a post-build cleanup step in the YAML pipeline to prune local Docker images immediately after pushing them to the Azure Container Registry (ACR):\n\t\t\t`docker rmi $(docker images -f \\\"dangling=true\\\" -q)` or run `docker system prune -f` at the end of every run.\n\t\t•   **Cron Job Cleaner**: Set up a daily cron job on the build agent to run a system prune:\n\t\t\t`0 0 * * * /usr/bin/docker system prune -af --volumes`\n\t\t•   **Monitoring**: Configure alert thresholds in Azure Monitor or Prometheus/Grafana to notify the team when the build agent\\'s disk space exceeds 80%.”",
+    "difficulty": "Hard",
+    "source": "DevOps Real Scenario Q&A"
+  },
+  {
+    "id": 245,
+    "category": "CI/CD & Pipelines",
+    "question": "Scenario: A CI/CD pipeline fails at the 'Push Docker Image' stage with an 'Unauthorized' or 'Access Denied' error. How do you troubleshoot this?",
+    "answer": "“An 'unauthorized' error during the push stage means the build runner is failing to authenticate with the Azure Container Registry (ACR). I troubleshoot this using the following steps:\n\n\t1. Verify Service Connection / Service Principal:\n\t\t•   In Azure DevOps, check the **Service Connection** used by the pipeline to connect to Azure/ACR.\n\t\t•   Verify if the associated **Service Principal (App Registration)** client secret has expired. (This is the most common cause). If expired, generate a new secret in Entra ID and update the Service Connection.\n\t2. Verify RBAC Permissions:\n\t\t•   Ensure the Service Principal has the **AcrPush** role assigned at the ACR resource scope. If it only has *AcrPull*, it can download images but will fail to push.\n\t3. Check Network & Firewall Settings:\n\t\t•   If the ACR has public access disabled (Private ACR), ensure the self-hosted build agent is in the same VNet (or a peered VNet) and can resolve the private endpoint IP of the ACR.\n\t\t•   Verify DNS resolution using `nslookup myregistry.azurecr.io` from the build agent.\n\t4. Manual Authentication Test:\n\t\t•   Log into the build agent and run:\n\t\t\t`az acr login --name myregistry` or `docker login myregistry.azurecr.io -u <ServicePrincipalID> -p <ClientSecret>`\n\t\t•   This isolates whether the issue is with the pipeline task configuration or the Azure credentials themselves.”",
+    "difficulty": "Hard",
+    "source": "DevOps Real Scenario Q&A"
+  },
+  {
+    "id": 246,
+    "category": "CI/CD & Pipelines",
+    "question": "Scenario: During a Continuous Deployment (CD) release, the database migration step fails, locking the database and halting the deployment. How do you handle this?",
+    "answer": "“Database migrations are the most risk-prone part of a CD pipeline. When a migration fails, my immediate priority is to restore application availability and safely roll back or fix the migration:\n\n\t1. Immediate Action (Stop & Assess):\n\t\t•   Freeze the pipeline to prevent the new application pods from starting (since the schema is in an inconsistent state).\n\t\t•   Check the migration logs in the pipeline output to identify the failing SQL statement (e.g., table locks, constraint violations, or duplicate columns).\n\t2. Handling the Database Lock:\n\t\t•   If the migration tool (like Liquibase, Flyway, or Entity Framework) crashed mid-run, it might have left a lock table active (e.g., `DATABASECHANGELOGLOCK` in Liquibase).\n\t\t•   Log into the database securely and release the lock manually after ensuring no migration process is active:\n\t\t\t`UPDATE DATABASECHANGELOGLOCK SET LOCKED=ff, LOCKGRANTED=NULL, LOCKEDBY=NULL;`\n\t3. Rollback vs. Roll-Forward:\n\t\t•   **Rollback**: If the migration tool supports automatic rollback (and the migration was backward-compatible), trigger the rollback command via the pipeline.\n\t\t•   **Roll-Forward (Hotfix)**: If the migration made non-reversible changes (like dropping a column), the safest path is to write a corrective SQL script, commit it, and run a hotfix deployment to align the schema.\n\t4. Best Practices for Prevention:\n\t\t•   **Expand and Contract Pattern**: Never drop columns or rename tables in a single release. Step 1: Add new column (both old and new app versions work). Step 2: Migrate data. Step 3: Remove old column in a later release.\n\t\t•   **Pre-Deployment Backups**: Always trigger an automated database snapshot (Azure SQL / AWS RDS backup) right before running the migration step in the pipeline.”",
+    "difficulty": "Hard",
+    "source": "DevOps Real Scenario Q&A"
+  },
+  {
+    "id": 247,
+    "category": "CI/CD & Pipelines",
+    "question": "Scenario: A deployment pipeline fails with the error 'Key Vault Access Denied' or 'Secret Not Found' when trying to fetch application secrets. How do you troubleshoot this?",
+    "answer": "“This error indicates that the pipeline's authentication identity (Service Connection / Service Principal) does not have the required permissions to read from the Azure Key Vault. I troubleshoot this using these steps:\n\n\t1. Check Key Vault Access Policies / RBAC:\n\t\t•   In the Azure Portal, go to the Key Vault -> **Access configuration**.\n\t\t•   If using **Vault Access Policies**: Verify that the Service Principal used by the Azure DevOps Service Connection has `Get` and `List` permissions under **Secret Permissions**.\n\t\t•   If using **Azure RBAC**: Verify that the Service Principal has the **Key Vault Secrets User** role assigned at the Key Vault scope.\n\t2. Check Firewall & Networking:\n\t\t•   If the Key Vault has 'Allow access from: Private endpoints and selected networks' enabled, ensure that:\n\t\t\t•   The pipeline is running on a **self-hosted agent** deployed inside a subnet that is whitelisted in the Key Vault firewall, OR\n\t\t\t•   If using Microsoft-hosted agents, the Key Vault must allow public access, or you must dynamically whitelist the hosted agent's IP during the pipeline run (using `az keyvault network-rule add`).\n\t3. Verify Secret Name and Status:\n\t\t•   Ensure the secret name referenced in the YAML pipeline matches the Key Vault secret name exactly.\n\t\t•   Verify in Key Vault that the secret is **Enabled** and that the current date is not past the secret's **Expiration Date**.”",
+    "difficulty": "Hard",
+    "source": "DevOps Real Scenario Q&A"
+  },
+  {
+    "id": 248,
+    "category": "CI/CD & Pipelines",
+    "question": "Scenario: Your application CI/CD pipeline takes over 20 minutes to complete, slowing down the development team. How do you optimize it for speed?",
+    "answer": "“To optimize a slow CI/CD pipeline, I analyze the execution logs, identify the bottlenecks, and implement caching and parallelization strategies:\n\n\t1. Enable Dependency Caching:\n\t\t•   Most of the time is spent downloading packages (npm, Maven, NuGet, Python pip).\n\t\t•   I add a caching task in the YAML pipeline to cache these directories based on a hash of the lockfile (e.g., `package-lock.json` or `pom.xml`).\n\t\t•   In Azure DevOps: Use the `Cache@2` task to cache the `node_modules` or `.m2` directory.\n\t2. Optimize Docker Builds:\n\t\t•   **Multi-stage Builds**: Ensure the Dockerfile is optimized using multi-stage builds so only the final runtime binary is included.\n\t\t•   **Layer Caching**: Order the instructions in the Dockerfile from least-frequently changed to most-frequently changed (e.g., copy package files and run install *before* copying the application source code).\n\t\t•   **BuildKit Cache**: Enable remote caching in the docker build task:\n\t\t\t`docker buildx build --cache-from=type=registry,ref=myregistry.azurecr.io/cache --cache-to=type=registry,ref=myregistry.azurecr.io/cache,mode=max`\n\t3. Parallelize Jobs and Tasks:\n\t\t•   Split independent tasks (like running unit tests, static code analysis, and security scanning) into parallel jobs that run concurrently on different agents.\n\t4. Use Self-Hosted Runners with High Specs:\n\t\t•   If Microsoft-hosted agents (which are limited in CPU/Memory) are too slow, migrate the build stage to high-performance self-hosted runners on Azure VMs with SSD storage.”",
+    "difficulty": "Hard",
+    "source": "DevOps Real Scenario Q&A"
   }
 ];

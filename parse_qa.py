@@ -183,19 +183,23 @@ def categorize_question(q):
     if any(x in q_text for x in ["yourself", "your project", "why did you", "why do you", "challenges", "reason to change", "why need to change"]):
         return "Behavioral & Project"
         
-    # 2. Terraform
+    # 2. CI/CD & Pipelines
+    if any(x in q_text for x in ["pipeline", "ci/cd", "jenkins", "runner", "agent", "trigger", "rollback", "release", "build", "deployment gate"]):
+        return "CI/CD & Pipelines"
+        
+    # 3. Terraform
     if "terraform" in q_text or "terraform" in a_text[:100] or "tfsec" in q_text:
         return "Terraform (IaC)"
         
-    # 3. Kubernetes & Docker
+    # 4. Kubernetes & Docker
     if any(x in q_text for x in ["kubernetes", "k8s", "aks", "docker", "container", "pod", "replica", "statefulset", "deployment"]):
         return "Docker & Kubernetes"
         
-    # 4. Azure & Azure DevOps
+    # 5. Azure & Azure DevOps
     if any(x in q_text for x in ["azure", "pipeline", "rbac", "active directory", "nsg", "asg", "load balancer", "vnet", "subnet", "bastion", "key vault", "app gateway", "landing zone"]):
         return "Azure & Azure DevOps"
         
-    # 5. Linux & Git
+    # 6. Linux & Git
     if any(x in q_text for x in ["linux", "git", "bash", "command", "chown", "chmod"]):
         return "Linux & Git"
         
