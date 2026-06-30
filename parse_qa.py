@@ -212,6 +212,13 @@ def main():
     
     all_questions = q1 + q2
     
+    # Load and merge manually added extra questions
+    extra_file = os.path.join(dir_path, "extra_questions.json")
+    if os.path.exists(extra_file):
+        with open(extra_file, "r", encoding="utf-8") as f:
+            extra_questions = json.load(f)
+        all_questions += extra_questions
+    
     # Post-process, categorize, and clean
     categorized_questions = []
     seen_questions = set()
