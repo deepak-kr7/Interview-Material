@@ -2366,5 +2366,50 @@ body {
     word-break: break-word;
 }
 
+/* Social Share Buttons */
+.social-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-btn:hover {
+    transform: translateY(-4px) scale(1.08);
+    filter: brightness(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.social-btn.whatsapp {
+    background-color: #25d366;
+}
+
+.social-btn.telegram {
+    background-color: #0088cc;
+}
+
+.social-btn.twitter {
+    background-color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.social-btn.facebook {
+    background-color: #1877f2;
+}
+
+.copy-link-box input::selection {
+    background: var(--accent-primary);
+    color: #ffffff;
+}
+
+
 
 

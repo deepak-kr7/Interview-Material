@@ -493,6 +493,46 @@
         </div>
     </div>
 
+    <!-- Share Modal -->
+    <div class="modal" id="share-modal" style="display: none;">
+        <div class="modal-backdrop" id="share-backdrop"></div>
+        <div class="modal-content share-modal-content" style="max-width: 420px;">
+            <div class="modal-header">
+                <h3>Share Website</h3>
+                <button class="close-modal-btn" id="close-share-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding-top: 10px;">
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.4;">
+                    Share this DevOps Interview Preparation Hub with your friends and colleagues!
+                </p>
+                
+                <!-- Social Sharing Buttons -->
+                <div class="social-share-row" style="display: flex; justify-content: center; gap: 16px; margin-bottom: 24px;">
+                    <a href="#" id="share-whatsapp" target="_blank" class="social-btn whatsapp" title="Share on WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="#" id="share-telegram" target="_blank" class="social-btn telegram" title="Share on Telegram">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                    <a href="#" id="share-twitter" target="_blank" class="social-btn twitter" title="Share on X (Twitter)">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="#" id="share-facebook" target="_blank" class="social-btn facebook" title="Share on Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                </div>
+                
+                <!-- Copy Link Box -->
+                <div class="copy-link-box" style="display: flex; align-items: center; gap: 8px; background: var(--bg-app); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: var(--radius-sm);">
+                    <input type="text" id="share-url-input" readonly style="flex: 1; background: transparent; border: none; color: var(--text-primary); font-size: 0.85rem; outline: none;" value="">
+                    <button class="btn btn-primary btn-sm" id="copy-share-url-btn" style="padding: 6px 12px; font-size: 0.8rem; height: auto; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;">
+                        <i class="fa-regular fa-copy"></i> <span>Copy</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Load scripts. data.js MUST be loaded first as it contains the questions data. -->
     <script src="data.js"></script>
     <script src="app.js"></script>

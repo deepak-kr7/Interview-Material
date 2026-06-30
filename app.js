@@ -1385,29 +1385,57 @@ function initUserProfileAndEngagement() {
         });
     }
 
-    // 2. Share Button
-    if (shareBtn) {
-        shareBtn.addEventListener('click', () => {
-            const shareData = {
-                title: 'DevOps & Azure DevOps Interview Hub',
-                text: 'Prepare for your DevOps interviews with 270 Q&As, 3D Flashcards, and customizable MCQ Practice Exams!',
-                url: window.location.origin + window.location.pathname
-            };
+    // 2. Share Button & Modal
+    const shareModal = document.getElementById('share-modal');
+    const shareBackdrop = document.getElementById('share-backdrop');
+    const closeShareBtn = document.getElementById('close-share-btn');
+    const shareUrlInput = document.getElementById('share-url-input');
+    const copyShareUrlBtn = document.getElementById('copy-share-url-btn');
 
-            if (navigator.share) {
-                navigator.share(shareData)
-                    .catch(err => console.log('Error sharing:', err));
-            } else {
-                // Fallback: Copy to Clipboard
-                navigator.clipboard.writeText(shareData.url)
-                    .then(() => {
-                        alert("Website link copied to clipboard! Share it with your friends.");
-                    })
-                    .catch(err => {
-                        console.error("Failed to copy link:", err);
-                    });
-            }
+    if (shareBtn && shareModal) {
+        const siteUrl = window.location.origin + window.location.pathname;
+        const shareText = "Check out this DevOps & Azure DevOps Interview Preparation Hub! 270 Q&As, 3D Flashcards, and customizable Mock Exams.";
+        
+        // Setup Social Share Links
+        document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + " " + siteUrl)}`;
+        document.getElementById('share-telegram').href = `https://t.me/share/url?url=${encodeURIComponent(siteUrl)}&text=${encodeURIComponent(shareText)}`;
+        document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(siteUrl)}`;
+        document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}`;
+        
+        shareUrlInput.value = siteUrl;
+
+        shareBtn.addEventListener('click', () => {
+            shareModal.style.display = 'flex';
+            if (dropdown) dropdown.style.display = 'none';
+            if (avatarBtn) avatarBtn.classList.remove('active');
         });
+
+        // Close Share Modal
+        const hideShareModal = () => {
+            shareModal.style.display = 'none';
+        };
+        if (closeShareBtn) closeShareBtn.addEventListener('click', hideShareModal);
+        if (shareBackdrop) shareBackdrop.addEventListener('click', hideShareModal);
+
+        // Copy Share Link
+        if (copyShareUrlBtn) {
+            copyShareUrlBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(siteUrl)
+                    .then(() => {
+                        const btnText = copyShareUrlBtn.querySelector('span');
+                        const btnIcon = copyShareUrlBtn.querySelector('i');
+                        
+                        btnText.innerText = "Copied!";
+                        btnIcon.className = "fa-solid fa-check";
+                        
+                        setTimeout(() => {
+                            btnText.innerText = "Copy";
+                            btnIcon.className = "fa-regular fa-copy";
+                        }, 2000);
+                    })
+                    .catch(err => console.error("Failed to copy link", err));
+            });
+        }
     }
 
     // 3. Likes Logic
