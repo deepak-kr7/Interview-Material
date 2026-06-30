@@ -2184,10 +2184,10 @@ body {
     top: 50px;
     right: 0;
     width: 290px;
-    background: #0f172a; /* Solid Slate-900 (Opaque, no transparency) */
-    border: 2px solid var(--accent-primary); /* Distinct violet border */
+    background: var(--bg-card); /* Opaque theme card background */
+    border: 2px solid var(--accent-primary); /* Distinct theme accent border */
     border-radius: var(--radius-md);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--accent-primary-rgb), 0.15); /* Neon violet shadow glow */
+    box-shadow: var(--card-shadow), 0 0 15px rgba(var(--accent-primary-rgb), 0.15); /* Glowing shadow */
     padding: 18px;
     display: flex;
     flex-direction: column;
@@ -2256,7 +2256,7 @@ body {
     align-items: center;
     gap: 12px;
     padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--bg-app); /* Theme app background */
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     cursor: pointer;
@@ -2306,7 +2306,7 @@ body {
     justify-content: center;
     gap: 6px;
     padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--bg-app); /* Theme app background */
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     color: var(--text-secondary);
@@ -2333,7 +2333,7 @@ body {
 
 /* Comments Modal Elements */
 .comment-card {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--bg-app); /* Theme app background */
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     padding: 12px;
