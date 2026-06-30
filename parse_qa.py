@@ -92,7 +92,13 @@ def parse_real_scenario(filepath):
             lead_space = len(line) - len(line.lstrip())
             # Ensure it's not indented list item (which might be part of an answer)
             if lead_space == 0:
-                return True, num_match.group(2).strip()
+                content = num_match.group(2).strip()
+                lower_content = content.lower()
+                is_q_starter = any(lower_content.startswith(starter) for starter in question_starters)
+                ends_with_q = content.endswith('?')
+                is_scenario = "scenario:" in lower_content
+                if is_q_starter or ends_with_q or is_scenario:
+                    return True, content
                 
         # Check if it's a known header
         lower_stripped = stripped.lower()
@@ -118,6 +124,10 @@ def parse_real_scenario(filepath):
         
         if lower_stripped in known_headers:
             return True, stripped
+            
+        # Lines ending with a colon (e.g. "Describe pod:") are usually headings or instructions, not questions
+        if stripped.endswith(':'):
+            return False, None
             
         if (is_starter or ends_with_q) and len(stripped) < 120:
             # Avoid matching list items like "1. IaaS..." or bullet points
