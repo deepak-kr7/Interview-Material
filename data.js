@@ -1999,6 +1999,166 @@ const qaData = [
     "answer": "• Check IP Address:\n  • 'ip addr show' (or 'ip a') - The modern and preferred command.\n  • 'ifconfig' - The legacy command (may require net-tools package).\n• Verify Internet Connectivity:\n  • 'ping 8.8.8.8' - Tests network reachability to Google's public DNS.\n  • 'curl -I https://www.google.com' - Tests DNS resolution and HTTP connectivity.",
     "difficulty": "Easy",
     "source": "Best DevOps Practices"
+  },
+  {
+    "id": 251,
+    "category": "CI/CD Pipelines",
+    "question": "What is the difference between a Stage, a Job, and a Task in a CI/CD pipeline?",
+    "answer": "• Stage: A major division in a pipeline that represents a logical phase of the workflow (e.g., Build, Test, Deploy to Dev, Deploy to Prod). Stages usually run sequentially.\n• Job: A collection of steps/tasks run by a single agent. Jobs within a stage can run in parallel if multiple agents are available.\n• Task/Step: The smallest building block of a pipeline. It is a linear sequence of operations executed within a job (e.g., running a bash script, copying files, compiling code).\n• Summary: A Pipeline has multiple Stages -> A Stage has multiple Jobs -> A Job has multiple Tasks.",
+    "difficulty": "Easy",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 252,
+    "category": "CI/CD Pipelines",
+    "question": "What is a pipeline trigger, and what are the most common types of triggers?",
+    "answer": "• A trigger is an event that automatically starts the execution of a CI/CD pipeline.\n• Common Types:\n  1. CI Trigger (Push): Triggers the pipeline whenever code is pushed to a specific branch (e.g., main or release/*).\n  2. PR Trigger (Pull Request): Triggers a validation pipeline when a PR is created or updated, ensuring code compiles and passes tests before merging.\n  3. Scheduled Trigger (Cron): Triggers the pipeline at specific times (e.g., nightly builds at 2:00 AM).\n  4. Pipeline Trigger (Chained): Triggers a pipeline upon the successful completion of another pipeline (e.g., deploying after a successful build).",
+    "difficulty": "Easy",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 253,
+    "category": "CI/CD Pipelines",
+    "question": "How do you implement automated rollbacks in a CD pipeline if a deployment fails?",
+    "answer": "• Automated rollback restores the last known stable version of the application immediately when a deployment failure is detected.\n• Implementation Methods:\n  1. Kubernetes/Helm: Kubernetes automatically rolls back a rolling update if readiness probes fail. Helm supports 'helm rollback <release> <revision>'.\n  2. Pipeline Logic: Use a post-deployment script or task that triggers on failure (using 'condition: failed()' in YAML) to run a rollback script.\n  3. Deployment Slot Swap: In Azure App Services, if the swap to production fails health checks, it automatically swaps back to the staging slot.\n• Best Practice: Ensure database migrations are backward-compatible so that rolling back application code doesn't break the database.",
+    "difficulty": "Hard",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 254,
+    "category": "CI/CD Pipelines",
+    "question": "What is a Deployment Gate (or Quality Gate) in a release pipeline?",
+    "answer": "• A Deployment Gate is an automated check that evaluates health and compliance criteria before a deployment starts or completes.\n• How it works: The pipeline pauses and queries external services. If the criteria are met, the deployment proceeds. If not, it fails or waits.\n• Examples:\n  1. Azure Monitor Alerts: Ensure no active critical alerts exist on the infrastructure.\n  2. SonarQube Quality Gate: Block deployment if the code coverage falls below 80% or new security vulnerabilities are found.\n  3. Service Desk (Jira/ServiceNow): Ensure the change management ticket is approved before deploying to production.",
+    "difficulty": "Medium",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 255,
+    "category": "CI/CD Pipelines",
+    "question": "How do you secure credentials, API keys, and certificates inside a CI/CD pipeline?",
+    "answer": "• Best Practices:\n  1. Secret Variables: Store secrets in encrypted variable groups (Azure DevOps) or Secrets (GitHub) and mark them as hidden. The runner will mask them in logs.\n  2. Key Vault Integration: Fetch secrets dynamically at runtime from Azure Key Vault or HashiCorp Vault using a pipeline task.\n  3. Workload Identity (OIDC): Use passwordless authentication (OpenID Connect) so the pipeline uses temporary tokens rather than storing long-lived service principal client secrets.\n  4. Least Privilege: Restrict the pipeline's service connection permissions to only the resources it needs to manage.",
+    "difficulty": "Hard",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 256,
+    "category": "CI/CD Pipelines",
+    "question": "What is the difference between a Declarative pipeline and a Scripted pipeline?",
+    "answer": "• Declarative Pipeline (Preferred): Uses a structured, pre-defined schema (typically YAML in GitHub/Azure DevOps, or 'pipeline {}' block in Jenkins). It is easier to read, has built-in syntax checks, and enforces best practices.\n• Scripted Pipeline: Uses a programming language (like Groovy in Jenkins). It offers maximum flexibility and allows complex logic, loops, and error handling, but is harder to maintain and prone to errors.\n• Best Practice: Use Declarative (YAML) pipelines for 95% of use cases. Only use scripted blocks (like Groovy or inline Bash/Powershell) when complex dynamic logic is absolutely necessary.",
+    "difficulty": "Medium",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 257,
+    "category": "CI/CD Pipelines",
+    "question": "How do you optimize pipeline execution speed using parallel execution?",
+    "answer": "• Parallel execution runs independent jobs or tasks simultaneously rather than sequentially, reducing the total pipeline duration.\n• Implementation:\n  1. Parallel Jobs: Define multiple jobs in a stage that do not depend on each other (e.g., running unit tests, linting, and security scans in parallel).\n  2. Matrix Builds: Run the same job with different configurations (e.g., testing on Node.js 16, 18, and 20 simultaneously).\n  3. Multi-agent: Ensure you have multiple self-hosted agents or concurrent Microsoft-hosted jobs available in your organization to run parallel tasks.",
+    "difficulty": "Medium",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 258,
+    "category": "CI/CD Pipelines",
+    "question": "What is Semantic Versioning (SemVer) and how do you automate it in pipelines?",
+    "answer": "• Semantic Versioning uses a three-part version number: MAJOR.MINOR.PATCH (e.g., 1.4.2).\n  • MAJOR: Incompatible API changes.\n  • MINOR: Add functionality in a backwards-compatible manner.\n  • PATCH: Backwards-compatible bug fixes.\n• Automation: Use tools like 'Semantic Release' or 'GitVersion' in your build pipeline. These tools analyze Git commit messages (following Conventional Commits standard like 'feat:', 'fix:') to automatically calculate the next version, generate release notes, and tag the Git repository.",
+    "difficulty": "Medium",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 259,
+    "category": "CI/CD Pipelines",
+    "question": "How do you handle database schema migrations in a Continuous Deployment pipeline?",
+    "answer": "• Database migrations must be automated and run before the new application code is deployed.\n• Best Practices:\n  1. Use Migration Tools: Use tools like Liquibase, Flyway, or Entity Framework Migrations.\n  2. Run as a Pipeline Task: Run the migration task in the CD pipeline right before the deployment stage.\n  3. Expand and Contract Pattern: Design database changes to be backwards-compatible (e.g., if renaming a column, first add the new column, copy data, deploy code that writes to both, then remove the old column in a later release). This ensures the app doesn't crash during rolling updates or rollbacks.",
+    "difficulty": "Hard",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 260,
+    "category": "CI/CD Pipelines",
+    "question": "What is a 'Matrix Build' in CI/CD and when would you use it?",
+    "answer": "• A Matrix Build allows you to run a single job multiple times in parallel with different variable configurations.\n• Example: Testing a Python library across multiple Python versions (3.8, 3.9, 3.10) and operating systems (Linux, Windows, macOS).\n• YAML Syntax (GitHub Actions / Azure Pipelines):\n  strategy:\n    matrix:\n      python-version: [3.8, 3.9, 3.10]\n      os: [ubuntu-latest, windows-latest]\n• Use Case: Highly useful for open-source libraries, cross-platform applications, and compatibility testing.",
+    "difficulty": "Easy",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 261,
+    "category": "CI/CD Pipelines",
+    "question": "What is the purpose of a Pull Request (PR) validation pipeline?",
+    "answer": "• A PR validation pipeline is triggered automatically when a developer opens or updates a Pull Request.\n• Purpose: It compiles the code, runs unit tests, executes linter checks, and performs security scans on the feature branch *before* it is merged into the main branch.\n• Branch Policies: In GitHub or Azure DevOps, you can configure branch protection rules that prevent a PR from being merged unless this validation pipeline completes successfully. This keeps the main branch stable and clean.",
+    "difficulty": "Easy",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 262,
+    "category": "CI/CD Pipelines",
+    "question": "What are SAST, DAST, and Dependency Scanning, and where do they fit in a CI/CD pipeline?",
+    "answer": "• SAST (Static Application Security Testing): Scans source code for vulnerabilities. Run in the **Build (CI) stage** (e.g., SonarQube).\n• Dependency Scanning (SCA): Scans third-party libraries for known vulnerabilities. Run in the **Build (CI) stage** (e.g., Snyk, OWASP Dependency Check).\n• DAST (Dynamic Application Security Testing): Scans the running application by simulating attacks. Run in the **Staging/QA stage** after deployment (e.g., OWASP ZAP).\n• Best Practice: Break the build if SAST or SCA finds high-severity vulnerabilities to enforce DevSecOps.",
+    "difficulty": "Medium",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 263,
+    "category": "CI/CD Pipelines",
+    "question": "What is a containerized runner/agent and what are its advantages?",
+    "answer": "• A containerized runner is a CI/CD agent that runs inside a Docker container (e.g., running Azure DevOps agent as a pod in a Kubernetes cluster using KEDA for autoscaling).\n• Advantages:\n  1. Isolation: Each build job runs in a clean, isolated container environment.\n  2. Dynamic Scaling: Scale the number of agents up or down instantly based on the number of queued jobs in the pipeline.\n  3. Cost-Effective: Only consumes infrastructure resources when jobs are actively running.",
+    "difficulty": "Medium",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 264,
+    "category": "CI/CD Pipelines",
+    "question": "What is a Service Connection in Azure DevOps pipelines?",
+    "answer": "• A Service Connection is a secure configuration that allows Azure Pipelines to connect to external services (e.g., Azure Subscription, Kubernetes Cluster, Docker Registry, GitHub, Jira) without exposing credentials in the pipeline code.\n• How it works: It stores the authentication details (Service Principal, OAuth token, or Kubernetes kubeconfig) securely in Azure DevOps. Developers simply reference the service connection name in their YAML code.\n• Best Practice: Restrict service connection access to specific pipelines and branches using security permissions.",
+    "difficulty": "Easy",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 265,
+    "category": "CI/CD Pipelines",
+    "question": "How do you implement manual approvals and notifications in a CD pipeline?",
+    "answer": "• Manual approvals ensure that deployments to critical environments (like Production) do not happen without sign-off from stakeholders.\n• Implementation:\n  1. Environments: In Azure DevOps or GitHub, define an environment (e.g., 'Production') and add 'Approvals and Checks'.\n  2. Approval Gate: When the pipeline reaches the deployment stage targeting that environment, it pauses and sends an email/notification to the designated approvers.\n  3. Notifications: Integrate webhooks to send automated messages to Slack or Microsoft Teams when a deployment starts, succeeds, or fails.",
+    "difficulty": "Easy",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 266,
+    "category": "CI/CD Pipelines",
+    "question": "What is Pipeline-as-Code and what are its main benefits?",
+    "answer": "• Pipeline-as-Code is the practice of defining your CI/CD pipelines using code (typically YAML, JSON, or Groovy) and storing the file in your Git repository alongside your application code.\n• Benefits:\n  1. Version Control: Track changes to the pipeline over time. You can see who modified a step, when, and why.\n  2. Code Review: Pipeline changes are reviewed via Pull Requests before being merged.\n  3. Consistency: Standardize pipelines across multiple projects using reusable templates.\n  4. Disaster Recovery: If the CI/CD server crashes, you can recreate all pipelines instantly from Git.",
+    "difficulty": "Easy",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 267,
+    "category": "CI/CD Pipelines",
+    "question": "What is the difference between a Monorepo pipeline and a Multi-repo pipeline?",
+    "answer": "• Monorepo Pipeline: A single Git repository contains multiple projects/microservices. The pipeline must use path filters ('paths' in YAML) to trigger only the jobs related to the specific microservice that was modified, avoiding rebuilding the entire repo.\n• Multi-repo Pipeline: Each microservice has its own Git repository and its own independent pipeline. It is simpler to manage but makes orchestrating cross-project deployments and managing shared dependencies more challenging.",
+    "difficulty": "Medium",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 268,
+    "category": "CI/CD Pipelines",
+    "question": "How do you handle environment-specific configurations in a CD pipeline?",
+    "answer": "• Keep your application build artifact environment-agnostic (build once, deploy many).\n• Best Practices:\n  1. Variable Groups / Environments: Use Azure DevOps Variable Groups or GitHub Environments to store variables (e.g., Database URLs, API endpoints) mapped to Dev, QA, and Prod.\n  2. Key Vault: Pull environment-specific secrets dynamically from environment-specific Key Vaults at deployment time.\n  3. Tokenization: Inject variables into configuration files (like appsettings.json or Kubernetes manifests) during the deployment stage using token replacement tasks.",
+    "difficulty": "Medium",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 269,
+    "category": "CI/CD Pipelines",
+    "question": "What is a 'Dirty' build and how do you ensure clean builds in CI?",
+    "answer": "• A 'Dirty' build occurs when files or artifacts left over from a previous build on the same agent affect the current build, leading to inconsistent results.\n• How to ensure Clean Builds:\n  1. Clean Workspace: Configure the pipeline to clean the workspace directory before running (e.g., 'clean: all' in Azure Pipelines, or running 'git clean -fdx').\n  2. Ephemeral Agents: Use Microsoft-hosted agents or containerized runners where a fresh, clean VM/container is created for every job and destroyed immediately afterward.",
+    "difficulty": "Easy",
+    "source": "CI/CD Best Practices"
+  },
+  {
+    "id": 270,
+    "category": "CI/CD Pipelines",
+    "question": "What is GitOps and how does it differ from traditional push-based CI/CD?",
+    "answer": "• Push-based CI/CD (Traditional): The pipeline compiles code and then actively 'pushes' the deployment to the target environment (e.g., running 'kubectl apply' or SSHing into a VM). The pipeline needs admin credentials to the environment.\n• Pull-based GitOps: The pipeline builds the container image and updates a Git repo containing Kubernetes manifests. An operator (like ArgoCD) running *inside* the cluster detects the change in Git and 'pulls' the deployment to match the desired state.\n• Benefit: Higher security (no external credentials needed) and automatic drift correction.",
+    "difficulty": "Hard",
+    "source": "CI/CD Best Practices"
   }
 ];
 
