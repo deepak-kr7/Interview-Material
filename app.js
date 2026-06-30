@@ -1373,12 +1373,14 @@ function initUserProfileAndEngagement() {
             e.stopPropagation();
             const isHidden = dropdown.style.display === 'none' || dropdown.style.display === '';
             dropdown.style.display = isHidden ? 'flex' : 'none';
+            avatarBtn.classList.toggle('active', isHidden);
         });
 
         // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!dropdown.contains(e.target) && !avatarBtn.contains(e.target)) {
                 dropdown.style.display = 'none';
+                avatarBtn.classList.remove('active');
             }
         });
     }

@@ -2172,21 +2172,27 @@ body {
     box-shadow: 0 0 10px rgba(var(--accent-primary-rgb), 0.2);
 }
 
+.user-avatar.active {
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-glow);
+}
+
 .user-dropdown {
     position: absolute;
     top: 50px;
     right: 0;
-    width: 280px;
-    background: var(--card-background);
-    border: 1px solid var(--border-color);
+    width: 290px;
+    background: #0f172a; /* Solid Slate-900 (Opaque, no transparency) */
+    border: 2px solid var(--accent-primary); /* Distinct violet border */
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg), 0 10px 30px rgba(0, 0, 0, 0.5);
-    padding: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--accent-primary-rgb), 0.15); /* Neon violet shadow glow */
+    padding: 18px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     animation: slideInDown 0.2s ease-out;
-    backdrop-filter: blur(10px);
 }
 
 @keyframes slideInDown {
