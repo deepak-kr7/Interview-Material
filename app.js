@@ -350,6 +350,18 @@ window.copyCodeBlock = function(btn) {
    NAVIGATION & VIEW SWITCHING
    ========================================================================== */
 function setupEventListeners() {
+    // Logo Click to go Home
+    const logoLink = document.getElementById('logo-link');
+    if (logoLink) {
+        logoLink.addEventListener('click', () => {
+            switchView('browse');
+            document.querySelectorAll('.menu-item').forEach(mi => mi.classList.remove('active'));
+            const browseMenu = document.querySelector('.menu-item[data-view="browse"]');
+            if (browseMenu) browseMenu.classList.add('active');
+            resetAllFilters();
+        });
+    }
+
     // View switching
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach(item => {
@@ -1003,11 +1015,14 @@ function finishMockInterview() {
     let totalPoints = 0;
     let perfectCount = 0;
     let averageCount = 0;
+    let badCount = 0;
     
-    Object.values(mockSession.scores).forEach(score => {
+    mockSession.list.forEach((q, idx) => {
+        const score = mockSession.scores[idx] || 0;
         totalPoints += score;
         if (score === 5) perfectCount++;
-        if (score === 3) averageCount++;
+        else if (score === 3) averageCount++;
+        else if (score === 1) badCount++;
     });
     
     // Max possible points is totalQ * 5
@@ -1015,9 +1030,51 @@ function finishMockInterview() {
     const scorePct = maxPoints > 0 ? Math.round((totalPoints / maxPoints) * 100) : 0;
     
     document.getElementById('mock-score-pct').innerText = `${scorePct}%`;
-    document.getElementById('mock-total-answered').innerText = `${answeredCount} / ${totalQ}`;
+    document.getElementById('mock-total-answered').innerText = `Score: ${totalPoints} / ${maxPoints} Marks`;
     document.getElementById('mock-perfect-count').innerText = perfectCount;
     document.getElementById('mock-average-count').innerText = averageCount;
+    
+    const badCountEl = document.getElementById('mock-bad-count');
+    if (badCountEl) {
+        badCountEl.innerText = badCount;
+    }
+    
+    // Render detailed breakdown
+    const breakdownContainer = document.getElementById('mock-results-breakdown');
+    if (breakdownContainer) {
+        breakdownContainer.innerHTML = '';
+        mockSession.list.forEach((q, idx) => {
+            const score = mockSession.scores[idx] || 0;
+            let scoreText = 'Not Answered';
+            let scoreClass = 'badge-outline';
+            let scoreIcon = '<i class="fa-regular fa-circle-question"></i>';
+            
+            if (score === 5) {
+                scoreText = 'Perfect (5/5)';
+                scoreClass = 'badge-success';
+                scoreIcon = '<i class="fa-solid fa-face-smile"></i>';
+            } else if (score === 3) {
+                scoreText = 'Partial (3/5)';
+                scoreClass = 'badge-warning';
+                scoreIcon = '<i class="fa-solid fa-face-meh"></i>';
+            } else if (score === 1) {
+                scoreText = 'Poor (1/5)';
+                scoreClass = 'badge-danger';
+                scoreIcon = '<i class="fa-solid fa-face-frown"></i>';
+            }
+            
+            const item = document.createElement('div');
+            item.className = 'mock-breakdown-item';
+            item.innerHTML = `
+                <div class="mock-breakdown-q-row">
+                    <span class="mock-breakdown-num">${idx + 1}</span>
+                    <span class="mock-breakdown-question">${q.question}</span>
+                    <span class="badge ${scoreClass}">${scoreIcon} ${scoreText}</span>
+                </div>
+            `;
+            breakdownContainer.appendChild(item);
+        });
+    }
 }
 
 /* ==========================================================================

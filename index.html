@@ -17,7 +17,7 @@
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <div class="logo">
+                <div class="logo" id="logo-link" style="cursor: pointer;">
                     <span class="logo-icon"><i class="fa-solid fa-infinity"></i></span>
                     <span class="logo-text">DevOps<span>Hub</span></span>
                 </div>
@@ -58,6 +58,10 @@
                 <div class="theme-toggle" id="theme-toggle-btn">
                     <i class="fa-solid fa-moon"></i>
                     <span>Dark Mode</span>
+                </div>
+                <div class="sidebar-signature">
+                    <p>© 2026 DevOpsHub</p>
+                    <p>Designed by <span>Deepak Kumar</span></p>
                 </div>
             </div>
         </aside>
@@ -320,22 +324,29 @@
                             <p class="subtitle">Here is how you performed based on your self-assessment.</p>
                             
                             <div class="score-display">
-                                <span class="score-num" id="mock-score-pct">80%</span>
-                                <span class="score-label">Overall Score</span>
+                                <span class="score-num" id="mock-score-pct">0%</span>
+                                <span class="score-label" id="mock-total-answered">0 / 0 Marks</span>
                             </div>
 
                             <div class="results-stats">
                                 <div class="res-stat">
-                                    <span class="res-val" id="mock-total-answered">5/5</span>
-                                    <span class="res-lbl">Answered</span>
+                                    <span class="res-val" id="mock-perfect-count">0</span>
+                                    <span class="res-lbl">Perfect (5/5)</span>
                                 </div>
                                 <div class="res-stat">
-                                    <span class="res-val" id="mock-perfect-count">3</span>
-                                    <span class="res-lbl">Perfect</span>
+                                    <span class="res-val" id="mock-average-count">0</span>
+                                    <span class="res-lbl">Partial (3/5)</span>
                                 </div>
                                 <div class="res-stat">
-                                    <span class="res-val" id="mock-average-count">2</span>
-                                    <span class="res-lbl">Partial</span>
+                                    <span class="res-val" id="mock-bad-count">0</span>
+                                    <span class="res-lbl">Poor (1/5)</span>
+                                </div>
+                            </div>
+
+                            <div class="mock-results-breakdown-section">
+                                <h3>Detailed Question Breakdown</h3>
+                                <div class="mock-breakdown-list" id="mock-results-breakdown">
+                                    <!-- Dynamic breakdown items will be injected here -->
                                 </div>
                             </div>
 
