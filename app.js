@@ -911,8 +911,8 @@ function startMockInterview() {
         return;
     }
     
-    // Load all 20 MCQ questions
-    mockSession.list = [...mcqData];
+    // Load all 20 MCQ questions and shuffle them randomly
+    mockSession.list = [...mcqData].sort(() => Math.random() - 0.5);
     mockSession.currentIndex = 0;
     mockSession.userAnswers = {};
     mockSession.active = true;
