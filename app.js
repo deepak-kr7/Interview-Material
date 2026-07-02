@@ -27,7 +27,8 @@ let flashcardSession = {
 let mockSession = {
     list: [],
     currentIndex: 0,
-    userAnswers: {} // { qIndex: [selected_option_indices] }
+    userAnswers: {}, // { qIndex: [selected_option_indices] }
+    usedQuestionIds: []
 };
 
 // Helper function to get 12-hour stable shuffled questions
@@ -982,9 +983,30 @@ function startMockInterview() {
         return;
     }
     
-    // Shuffles all MCQ questions in mcq_data.js
-    const shuffled = [...mcqData].sort(() => Math.random() - 0.5);
+    // Initialize usedQuestionIds if not present
+    if (!mockSession.usedQuestionIds) {
+        mockSession.usedQuestionIds = [];
+    }
+    
+    // Filter out already used question IDs
+    let available = mcqData.filter(q => !mockSession.usedQuestionIds.includes(q.id));
+    
+    // If not enough questions left, reset history
+    if (available.length < mockCount) {
+        mockSession.usedQuestionIds = [];
+        available = [...mcqData];
+    }
+    
+    // Shuffles MCQ questions
+    const shuffled = [...available].sort(() => Math.random() - 0.5);
     mockSession.list = shuffled.slice(0, Math.min(mockCount, shuffled.length));
+    
+    // Record these question IDs as used
+    mockSession.list.forEach(q => {
+        if (!mockSession.usedQuestionIds.includes(q.id)) {
+            mockSession.usedQuestionIds.push(q.id);
+        }
+    });
     
     mockSession.type = 'mcq';
     mockSession.currentIndex = 0;
