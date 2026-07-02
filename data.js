@@ -2596,7 +2596,7 @@ const qaData = [
     "id": 289,
     "category": "Terraform (IaC)",
     "question": "You want to use custom images for VM deployment in Azure. How would you reference them in Terraform?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>You want to use custom images for VM deployment in Azure. How would you reference them in Terraform?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>You want to use custom images for VM deployment in Azure. How would you reference them in Terraform?</strong></h3>\n  <p>Reference custom images using the <code>source_image_id</code> parameter in the <code>azurerm_linux_virtual_machine</code> resource, passing the resource ID of the image from your Azure Compute Gallery: <code>source_image_id = \"/subscriptions/.../providers/Microsoft.Compute/galleries/.../images/...\"</code>.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -2965,7 +2965,7 @@ const qaData = [
     "id": 330,
     "category": "DevOps General",
     "question": "Have u work with AFD and APM?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Have u work with AFD and APM?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Have u work with AFD and APM?</strong></h3>\n  <p>Yes, I have worked with Azure Front Door (AFD) as a global entry point, HTTP load balancer, and CDN for applications, and Application Insights (APM) for full-stack monitoring, exception tracking, and performance analytics.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -2992,7 +2992,7 @@ const qaData = [
     "id": 333,
     "category": "Company Wise QA",
     "question": "Terraform Taint?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>Terraform Taint?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>Terraform Taint?</strong></h3>\n  <p><code>terraform taint</code> is a legacy command (replaced by the <code>-replace</code> flag in <code>terraform apply</code>) used to manually mark a resource in the state file as degraded or damaged, forcing Terraform to destroy and recreate it during the next run.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "LTI Mindtree"
@@ -3100,7 +3100,7 @@ const qaData = [
     "id": 345,
     "category": "Company Wise QA",
     "question": "Have you written automation script?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>Have you written automation script?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>Have you written automation script?</strong></h3>\n  <p>Yes, I write automation scripts regularly: Bash scripts for OS patching and log rotation, Python scripts for calling REST APIs and parsing JSON, and PowerShell scripts for Azure automation tasks.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "LTI Mindtree"
@@ -3667,7 +3667,7 @@ const qaData = [
     "id": 408,
     "category": "Docker & Kubernetes",
     "question": "What is Demonset, stateful set?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is Demonset, stateful set?</strong></h3>\n  <p>Use a Deployment for stateless workloads where replica pods are identical and interchangeable (e.g. web servers). Use a StatefulSet for stateful applications (e.g. databases like PostgreSQL) requiring unique, persistent identities, stable network hostnames, and dedicated persistent volume storage for each pod replica.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is Demonset, stateful set?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><strong>DaemonSet</strong>: Ensures that a copy of a specific Pod runs on all (or selected) Nodes in a cluster (useful for logs/monitoring agents like Fluentd or Prometheus Node Exporter).</li>\n    <li><strong>StatefulSet</strong>: Manages stateful applications, providing stable, unique network identifiers and persistent storage for each Pod (useful for databases like PostgreSQL or Elasticsearch).</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -3703,7 +3703,7 @@ const qaData = [
     "id": 412,
     "category": "Docker & Kubernetes",
     "question": "Sidecar Container?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🐳 <strong>Sidecar Container?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🐳 <strong>Sidecar Container?</strong></h3>\n  <p>The Sidecar pattern runs a helper container alongside the main application container in the same Pod. Since they share the network (localhost) and storage volumes, the sidecar can collect logs (e.g., Fluentd), manage service mesh proxies (e.g., Envoy), or sync secrets without changing the main application code.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -3838,7 +3838,7 @@ const qaData = [
     "id": 427,
     "category": "Company Wise QA",
     "question": "In linux which flavour you have worked?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>In linux which flavour you have worked?</strong></h3>\n  <p>Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>In linux which flavour you have worked?</strong></h3>\n  <p>I have worked primarily with <strong>Ubuntu Server</strong> (Debian-based) and <strong>Red Hat Enterprise Linux (RHEL)</strong> (Fedora-based) in production environments, managing systemd services, users, permissions, and network configurations.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3874,7 +3874,7 @@ const qaData = [
     "id": 431,
     "category": "Company Wise QA",
     "question": "Scipting language you have worked on?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Scipting language you have worked on?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Scipting language you have worked on?</strong></h3>\n  <p>I have worked extensively with <strong>Bash</strong> (for shell scripting and task automation in Linux), <strong>Python</strong> (for calling REST APIs, scripting complex logic, and parsing files), and <strong>PowerShell</strong> (for Azure automation and scripting on Windows servers).</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3919,7 +3919,7 @@ const qaData = [
     "id": 436,
     "category": "Company Wise QA",
     "question": "Are you using build and release pipeline both?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Are you using build and release pipeline both?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Are you using build and release pipeline both?</strong></h3>\n  <p>Yes, I use both. The <strong>Build pipeline (CI)</strong> handles compiling code, running tests, scanning security (SonarQube/Checkov), and generating immutable packages/images. The <strong>Release pipeline (CD)</strong> deploys these packages sequentially to environments (Dev, QA, Prod) with approval gates.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3955,7 +3955,7 @@ const qaData = [
     "id": 440,
     "category": "Company Wise QA",
     "question": "Command to check logs, running container?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🐳 <strong>Command to check logs, running container?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🐳 <strong>Command to check logs, running container?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><strong>Check logs</strong>: <code>kubectl logs <pod-name></code> (Kubernetes) or <code>docker logs <container-id></code> (Docker).</li>\n    <li><strong>Check running containers</strong>: <code>kubectl get pods</code> (Kubernetes) or <code>docker ps</code> (Docker).</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3991,7 +3991,7 @@ const qaData = [
     "id": 444,
     "category": "Company Wise QA",
     "question": "Suppose you have a single file with 1000 lines of code and you need to run only one resource (e.g., a VNet). How would you do that?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Suppose you have a single file with 1000 lines of code and you need to run only one resource (e.g., a VNet). How would you do that?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Suppose you have a single file with 1000 lines of code and you need to run only one resource (e.g., a VNet). How would you do that?</strong></h3>\n  <p>Use the <code>-target</code> flag with <code>terraform plan</code> or <code>terraform apply</code> to limit execution to a specific resource address:</p>\n  <p><code>terraform apply -target=azurerm_virtual_network.vnet</code></p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Note: Use this only for troubleshooting or recovery, as it can cause state inconsistencies.*</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4027,7 +4027,7 @@ const qaData = [
     "id": 448,
     "category": "Company Wise QA",
     "question": "How can you prevent the accidental deletion of a resource in Terraform?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>How can you prevent the accidental deletion of a resource in Terraform?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>How can you prevent the accidental deletion of a resource in Terraform?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><strong>Prevent Destroy Block</strong>: Add a <code>lifecycle</code> block with <code>prevent_destroy = true</code> inside the resource configuration.</li>\n    <li><strong>Azure Resource Locks</strong>: Apply a Delete Lock (<code>CanNotDelete</code>) on the resource group or resource in Azure using Terraform (<code>azurerm_management_lock</code>).</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4036,7 +4036,7 @@ const qaData = [
     "id": 449,
     "category": "Company Wise QA",
     "question": "What is the process of provisioning infrastructure using Terraform?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is the process of provisioning infrastructure using Terraform?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is the process of provisioning infrastructure using Terraform?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><strong><code>terraform init</code></strong>: Initializes directory, downloads providers/modules.</li>\n    <li><strong><code>terraform plan</code></strong>: Compares code with cloud state, outputs proposed changes.</li>\n    <li><strong><code>terraform apply</code></strong>: Executes proposed changes via cloud APIs and updates the state file.</li>\n    <li><strong><code>terraform destroy</code></strong>: Deletes all resources managed by the configuration.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4054,7 +4054,7 @@ const qaData = [
     "id": 451,
     "category": "Company Wise QA",
     "question": "have you done security hardening in linux machine ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>have you done security hardening in linux machine ?</strong></h3>\n  <p>Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>have you done security hardening in linux machine ?</strong></h3>\n  <p>Yes, security hardening tasks include: disabling root login in SSH config (<code>PermitRootLogin no</code>), configuring a UFW or iptables firewall to only open necessary ports, using SSH keys instead of passwords, setting up automatic security updates (<code>unattended-upgrades</code>), and enforcing password policies in <code>/etc/login.defs</code>.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4063,7 +4063,7 @@ const qaData = [
     "id": 452,
     "category": "Company Wise QA",
     "question": "What is the basic structure of a Terraform configuration?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is the basic structure of a Terraform configuration?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is the basic structure of a Terraform configuration?</strong></h3>\n  <p>A standard Terraform configuration includes:</p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><code>providers.tf</code>: Provider configurations (Azure, AWS).</li>\n    <li><code>main.tf</code>: Core resource definitions.</li>\n    <li><code>variables.tf</code>: Input variable declarations.</li>\n    <li><code>outputs.tf</code>: Output values to display or share.</li>\n    <li><code>terraform.tfvars</code>: Environment-specific variable values.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4081,7 +4081,7 @@ const qaData = [
     "id": 454,
     "category": "Company Wise QA",
     "question": "Which operating systems have you worked on — Ubuntu or RHEL?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Which operating systems have you worked on — Ubuntu or RHEL?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Which operating systems have you worked on — Ubuntu or RHEL?</strong></h3>\n  <p>I have experience with both. I use <strong>Ubuntu Server</strong> for general container workloads, microservices, and CI/CD runners, and <strong>RHEL</strong> for enterprise databases and legacy application hosts.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4135,7 +4135,7 @@ const qaData = [
     "id": 460,
     "category": "Company Wise QA",
     "question": "How can you access secrets stored in Azure Key Vault to access a application or on resources?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>How can you access secrets stored in Azure Key Vault to access a application or on resources?</strong></h3>\n  <p>Azure Key Vault is a secure secrets management service. We use it to store passwords, client secrets, and certificates. In pipelines, we link Key Vault secrets dynamically to variable groups so they are injected at runtime without hardcoding.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>How can you access secrets stored in Azure Key Vault to access a application or on resources?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Assign a <strong>Managed Identity</strong> (System or User-Assigned) to the VM or service resource.</li>\n    <li>Configure an Access Policy or Azure RBAC role (e.g. Key Vault Secrets User) on Key Vault for the Identity.</li>\n    <li>Reference the secret in your code or resource configuration without credentials using the Azure SDK or CLI.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4144,7 +4144,7 @@ const qaData = [
     "id": 461,
     "category": "Company Wise QA",
     "question": "You have modules for 3 environments. If you rename npr.tfvars, will Terraform still execute it?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>You have modules for 3 environments. If you rename npr.tfvars, will Terraform still execute it?</strong></h3>\n  <p>A Terraform module is a package of reusable Terraform configuration files in a directory. It allows you to group related infrastructure components together (like a VM, disk, and NIC) and instantiate them multiple times across environments (dev, test, prod) with different inputs.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>You have modules for 3 environments. If you rename npr.tfvars, will Terraform still execute it?</strong></h3>\n  <p>No, Terraform does not read custom-named <code>.tfvars</code> files automatically. You must pass it explicitly using the <code>-var-file</code> argument:</p>\n  <p><code>terraform plan -var-file=\"npr.tfvars\"</code></p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Only <code>terraform.tfvars</code> or <code>*.auto.tfvars</code> files are loaded automatically.*</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4153,7 +4153,7 @@ const qaData = [
     "id": 462,
     "category": "Company Wise QA",
     "question": "How many IPs are available in the 192.168.1.0/32 ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>How many IPs are available in the 192.168.1.0/32 ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>How many IPs are available in the 192.168.1.0/32 ?</strong></h3>\n  <p>In a <code>/32</code> subnet range (e.g. <code>192.168.1.0/32</code>), only <strong>1 IP address</strong> is available. This CIDR block represents a single host, not a range.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4189,7 +4189,7 @@ const qaData = [
     "id": 466,
     "category": "Company Wise QA",
     "question": "Which Azure services have you worked with in your application?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Which Azure services have you worked with in your application?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Which Azure services have you worked with in your application?</strong></h3>\n  <p>I work with core Azure services: AKS (Kubernetes), App Services, Azure Functions, Virtual Networks (VNets), Azure SQL, Key Vault, Application Gateway, Azure Monitor/Log Analytics, and Azure Container Registry (ACR).</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4279,7 +4279,7 @@ const qaData = [
     "id": 476,
     "category": "Company Wise QA",
     "question": "questions -",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>questions -</strong></h3>\n  <p>We manage production deployments by configuring automated pipelines, implementing Infrastructure as Code templates, and enforcing security practices.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>questions -</strong></h3>\n  <p>DevOps practices revolve around continuous integration (CI), continuous delivery (CD), infrastructure as code (IaC), monitoring, collaboration, and automated security scans.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4477,7 +4477,7 @@ const qaData = [
     "id": 498,
     "category": "Company Wise QA",
     "question": "what is metrics",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what is metrics</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what is metrics</strong></h3>\n  <p>Metrics are quantitative measurements of system performance and resource utilization over time, such as CPU usage percentage, memory usage, network packets in/out, disk IOPS, and API request count/latency.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Deloitte"
@@ -4504,7 +4504,7 @@ const qaData = [
     "id": 501,
     "category": "Company Wise QA",
     "question": "why we need Grafana",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>why we need Grafana</strong></h3>\n  <p>Prometheus scrapes performance metrics from target servers and stores them as time-series data. Grafana connects to Prometheus as a data source and queries the metrics to display them on real-time, interactive dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>why we need Grafana</strong></h3>\n  <p>Grafana is needed to visualize metrics and logs. It connects to data sources like Prometheus, Azure Monitor, or Elasticsearch, allowing teams to build real-time, interactive, and customizable dashboards for system monitoring and alerting.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Deloitte"
@@ -4540,7 +4540,7 @@ const qaData = [
     "id": 505,
     "category": "Company Wise QA",
     "question": "what are terraform provider?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>what are terraform provider?</strong></h3>\n  <p>Terraform providers are plugins that act as translators between the Terraform core engine and target cloud platform APIs (like AzureRM, AWS, or GCP). They translate declarative HCL configurations into actual API calls to create, update, or delete resources.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>what are terraform provider?</strong></h3>\n  <p>Terraform providers are plugins that act as translators between Terraform's core engine and target APIs (such as AWS, Azure, Google Cloud, or Kubernetes), allowing Terraform to manage resources on those platforms.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4567,7 +4567,7 @@ const qaData = [
     "id": 508,
     "category": "Company Wise QA",
     "question": "have you worked on Grafana and Prometheus and how it works?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>have you worked on Grafana and Prometheus and how it works?</strong></h3>\n  <p>Prometheus scrapes performance metrics from target servers and stores them as time-series data. Grafana connects to Prometheus as a data source and queries the metrics to display them on real-time, interactive dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>have you worked on Grafana and Prometheus and how it works?</strong></h3>\n  <p>Prometheus scrapes and stores performance metrics (CPU, RAM, custom app metrics) as time-series data at regular intervals. Grafana connects to Prometheus as a data source and queries those metrics using PromQL to visualize them on dashboards.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4585,7 +4585,7 @@ const qaData = [
     "id": 510,
     "category": "Company Wise QA",
     "question": "can you tell me about any networking issues?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>can you tell me about any networking issues?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>can you tell me about any networking issues?</strong></h3>\n  <p>Common networking issues include IP address exhaustion in subnets, incorrect NSG (Network Security Group) rules blocking ports, DNS resolution failures (both internal and external), and missing routes in Route Tables for peered VNets.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4594,7 +4594,7 @@ const qaData = [
     "id": 511,
     "category": "Company Wise QA",
     "question": "have you worked on Linux or windows machine?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>have you worked on Linux or windows machine?</strong></h3>\n  <p>Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>have you worked on Linux or windows machine?</strong></h3>\n  <p>I work primarily with <strong>Linux machines</strong> (Ubuntu/RHEL) for running applications, containers, and pipelines. I also configure Windows Server machines if active directory domain services or IIS hosting is required.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4639,7 +4639,7 @@ const qaData = [
     "id": 516,
     "category": "Company Wise QA",
     "question": "you have a playbook and need to run a single task, how can you run ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>⚙️ <strong>you have a playbook and need to run a single task, how can you run ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>⚙️ <strong>you have a playbook and need to run a single task, how can you run ?</strong></h3>\n  <p>Use the <code>--tags</code> flag to run only the task marked with that tag:</p>\n  <p><code>ansible-playbook -i inventory.ini site.yml --tags \"task_tag\"</code></p>\n  <p>Alternatively, use <code>--start-at-task=\"Task Name\"</code> to run the playbook starting from that specific task.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4684,7 +4684,7 @@ const qaData = [
     "id": 521,
     "category": "Company Wise QA",
     "question": "prerequsite on setting of worker node and and master node?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>prerequsite on setting of worker node and and master node?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>prerequsite on setting of worker node and and master node?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><strong>Master (Control Plane) Node</strong>: Needs minimum 2 vCPUs, 2GB RAM, swap space disabled (<code>swapoff -a</code>), and specific ports open (6443, 2379-2380, 10250).</li>\n    <li><strong>Worker Node</strong>: Needs swap space disabled, container runtime (like containerd) installed, kubeadm, kubelet, and kubectl installed, and network access to the master node.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4702,7 +4702,7 @@ const qaData = [
     "id": 523,
     "category": "Company Wise QA",
     "question": "how will you check reliability of your infrastructure?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>how will you check reliability of your infrastructure?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>how will you check reliability of your infrastructure?</strong></h3>\n  <p>Infrastructure reliability is checked by: running automated integration and load tests, implementing synthetic transaction monitoring, performing regular chaos engineering experiments, verifying failovers, and analyzing uptime SLA/SLO metrics.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4729,7 +4729,7 @@ const qaData = [
     "id": 526,
     "category": "Company Wise QA",
     "question": "if customer want to change the version of terraform how will you assess/estimate the changes?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>if customer want to change the version of terraform how will you assess/estimate the changes?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>if customer want to change the version of terraform how will you assess/estimate the changes?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Check the Terraform release notes and changelog for breaking changes.</li>\n    <li>Run <code>terraform init -upgrade</code> to download updated providers.</li>\n    <li>Run <code>terraform validate</code> and <code>terraform plan</code> to catch syntax changes, deprecated resources, or recreation triggers.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4792,7 +4792,7 @@ const qaData = [
     "id": 533,
     "category": "Company Wise QA",
     "question": "What is the use of CMD in Docker?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🐳 <strong>What is the use of CMD in Docker?</strong></h3>\n  <p>Docker is a platform for building, running, and shipping containers. It packages applications and their dependencies into immutable container images, ensuring consistency across development and production environments.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🐳 <strong>What is the use of CMD in Docker?</strong></h3>\n  <p>The <code>CMD</code> instruction in a Dockerfile sets the default command and parameters to execute when a container is run. It can be overridden by passing arguments to <code>docker run</code>. If <code>ENTRYPOINT</code> is defined, <code>CMD</code> acts as arguments to <code>ENTRYPOINT</code>.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4801,7 +4801,7 @@ const qaData = [
     "id": 534,
     "category": "Company Wise QA",
     "question": "What does the output block in Terraform do?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What does the output block in Terraform do?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What does the output block in Terraform do?</strong></h3>\n  <p>The output block in Terraform defines values that are displayed on the command line after running <code>terraform apply</code>, or can be queried and shared with other configurations using remote state data sources.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4891,7 +4891,7 @@ const qaData = [
     "id": 544,
     "category": "Company Wise QA",
     "question": "have you used function app?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>have you used function app?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>have you used function app?</strong></h3>\n  <p>Yes, I use Azure Function Apps to run serverless, event-driven tasks, such as automated database backups, clean-up scripts, log parsing, and triggering webhooks based on system alerts.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4900,7 +4900,7 @@ const qaData = [
     "id": 545,
     "category": "Company Wise QA",
     "question": "what is role of azure function app?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>what is role of azure function app?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>what is role of azure function app?</strong></h3>\n  <p>Azure Function App is a serverless compute service that runs code in response to events (e.g. HTTP requests, blob storage updates, timer triggers) without managing underlying VMs. It automatically scales and charges only for execution time.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4909,7 +4909,7 @@ const qaData = [
     "id": 546,
     "category": "Company Wise QA",
     "question": "which resource we can use to distrubte the content static & dynamic?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>which resource we can use to distrubte the content static & dynamic?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>which resource we can use to distrubte the content static & dynamic?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>*Azure Application Gateway<strong> or </strong>Azure Front Door** can be used. They support path-based routing (e.g. routing <code>/static/*</code> to Azure Storage Blobs and <code>/api/*</code> to backend VMs/containers) to optimize content distribution.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4927,7 +4927,7 @@ const qaData = [
     "id": 548,
     "category": "Company Wise QA",
     "question": "did you worked with aws? what all resources you have used in aws?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>did you worked with aws? what all resources you have used in aws?</strong></h3>\n  <p>AWS (Amazon Web Services) is a public cloud provider. I use core services like EC2 (compute), S3 (object storage), VPC (networking), IAM (access control), EKS (Kubernetes), and CloudWatch (monitoring).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>did you worked with aws? what all resources you have used in aws?</strong></h3>\n  <p>Yes, I have experience with AWS, managing resources like EC2 (virtual servers), S3 (object storage), VPC (networking), RDS (databases), IAM (access control), EKS (Kubernetes), and CloudWatch (monitoring).</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4936,7 +4936,7 @@ const qaData = [
     "id": 549,
     "category": "Company Wise QA",
     "question": "have you worked on gcp? what all resources you have used in gcp?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>have you worked on gcp? what all resources you have used in gcp?</strong></h3>\n  <p>GCP (Google Cloud Platform) is a public cloud provider. I use services like Compute Engine (VMs), GKE (Kubernetes), Cloud Storage, VPC networks, and IAM roles.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>have you worked on gcp? what all resources you have used in gcp?</strong></h3>\n  <p>Yes, I have worked with GCP, utilizing resources such as Compute Engine (VMs), Cloud Storage, Google Kubernetes Engine (GKE), VPC networks, Cloud SQL, and IAM roles for identity management.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4945,7 +4945,7 @@ const qaData = [
     "id": 550,
     "category": "Company Wise QA",
     "question": "how many years of experience you have in terraform?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>how many years of experience you have in terraform?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>how many years of experience you have in terraform?</strong></h3>\n  <p>I have over 3 years of hands-on experience using Terraform to provision, manage, and scale cloud infrastructure in Azure, AWS, and Kubernetes environments.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4954,7 +4954,7 @@ const qaData = [
     "id": 551,
     "category": "Company Wise QA",
     "question": "did you used terraform taint?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>did you used terraform taint?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>did you used terraform taint?</strong></h3>\n  <p>Yes, I have used <code>terraform taint</code> to mark resources (like a misconfigured VM) for recreation. In modern Terraform, I use the <code>-replace</code> flag with plan/apply instead: <code>terraform apply -replace=\"azurerm_linux_virtual_machine.vm\"</code>.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4972,7 +4972,7 @@ const qaData = [
     "id": 553,
     "category": "Company Wise QA",
     "question": "I have created a resources in azure and want to keep the state file in aws?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>I have created a resources in azure and want to keep the state file in aws?</strong></h3>\n  <p>The Terraform state file is created automatically when you run 'terraform apply' for the first time and successfully provision resources. Running 'terraform init' or 'terraform plan' does not create a state file (except in remote backends where an empty state reference may be initialized).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>I have created a resources in azure and want to keep the state file in aws?</strong></h3>\n  <p>Yes, configure your Terraform provider for Azure (<code>azurerm</code>), but configure your remote backend settings to use an AWS S3 bucket: <code>backend \"s3\" { bucket = \"my-s3-bucket\" key = \"path/state\" region = \"us-east-1\" }</code>.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4981,7 +4981,7 @@ const qaData = [
     "id": 554,
     "category": "Company Wise QA",
     "question": "have you encoured any errors in terraform?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>have you encoured any errors in terraform?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>have you encoured any errors in terraform?</strong></h3>\n  <p>Common Terraform errors include: <code>StateLocked</code> (concurrency issue resolved by waiting or unlocking), cyclic dependencies (resolved by adjusting variable references), authentication timeouts, and resource-specific API schema failures.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4990,7 +4990,7 @@ const qaData = [
     "id": 555,
     "category": "Company Wise QA",
     "question": "what happeens when we run terraform init?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>what happeens when we run terraform init?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>what happeens when we run terraform init?</strong></h3>\n  <p><code>terraform init</code> initializes the current working directory. It reads the code, downloads necessary provider plugins (e.g., AzureRM) and modules, configures the backend for state tracking, and creates the <code>.terraform/</code> folder.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5008,7 +5008,7 @@ const qaData = [
     "id": 557,
     "category": "Company Wise QA",
     "question": "can you write a code for virtual machine in terraform?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>can you write a code for virtual machine in terraform?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>can you write a code for virtual machine in terraform?</strong></h3>\n  <p>A simple Terraform VM block:</p>\n  <pre style=\"background:#111;padding:.6rem;border-radius:.4rem;\"><code class=\"language-hcl\">resource \"azurerm_linux_virtual_machine\" \"vm\" {\n  name                = \"web-vm\"\n  resource_group_name = azurerm_resource_group.rg.name\n  location            = azurerm_resource_group.rg.location\n  size                = \"Standard_B2s\"\n  admin_username      = \"adminuser\"\n  network_interface_ids = [azurerm_network_interface.nic.id]\n  admin_ssh_key {\n    username   = \"adminuser\"\n    public_key = file(\"~/.ssh/id_rsa.pub\")\n  }\n  os_disk {\n    caching              = \"ReadWrite\"\n    storage_account_type = \"Standard_LRS\"\n  }\n  source_image_reference {\n    publisher = \"Canonical\"\n    offer     = \"0001-com-ubuntu-server-jammy\"\n    sku       = \"22_04-lts\"\n    version   = \"latest\"\n  }\n}</code></pre>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5017,7 +5017,7 @@ const qaData = [
     "id": 558,
     "category": "Company Wise QA",
     "question": "have you also used modules, can you explain the folder structure of modules?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>have you also used modules, can you explain the folder structure of modules?</strong></h3>\n  <p>A Terraform module folder typically contains: <code>main.tf</code> (resource definitions), <code>variables.tf</code> (input variable declarations), and <code>outputs.tf</code> (output values). You structure them in a subfolder and call them using: module \"name\" { source = \"./modules/vnet\" ... }</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>have you also used modules, can you explain the folder structure of modules?</strong></h3>\n  <p>Terraform modules group multiple resources together. A standard module folder structure is:</p>\n  <pre style=\"background:#111;padding:.6rem;border-radius:.4rem;\"><code class=\"language-text\">├── main.tf        # Resources\n├── variables.tf   # Module inputs\n├── outputs.tf     # Module outputs\n└── README.md      # Usage instructions</code></pre>\n  <p>They are called from the root configuration using <code>module \"name\" { source = \"./path\" }</code>.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5026,7 +5026,7 @@ const qaData = [
     "id": 559,
     "category": "Company Wise QA",
     "question": "why you're using for_each, did you also used count?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>why you're using for_each, did you also used count?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>why you're using for_each, did you also used count?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Use <code>for_each</code> (takes a map/set) when managing collections of distinct, independent resources. If an item is added or removed, it only affects that resource.</li>\n    <li>Use <code>count</code> (takes a number) for simple toggles (e.g., <code>count = var.create_rg ? 1 : 0</code>) or identical resource lists where index shifts are acceptable.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5044,7 +5044,7 @@ const qaData = [
     "id": 561,
     "category": "Company Wise QA",
     "question": "you have also worked on azure devops?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>you have also worked on azure devops?</strong></h3>\n  <p>DevOps is a set of practices combining software development (Dev) and IT operations (Ops) to shorten the systems development lifecycle and provide continuous delivery of high-quality software.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>you have also worked on azure devops?</strong></h3>\n  <p>Yes, I configure CI/CD pipelines in Azure DevOps, using YAML pipelines to build, test, and deploy applications to Azure Kubernetes Service, App Services, and VM scale sets.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5062,7 +5062,7 @@ const qaData = [
     "id": 563,
     "category": "Company Wise QA",
     "question": "do you remeember az cli command to create app registrations?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>do you remeember az cli command to create app registrations?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>do you remeember az cli command to create app registrations?</strong></h3>\n  <p>Yes, use the command:</p>\n  <p><code>az ad app create --display-name \"my-app-registration\"</code></p>\n  <p>To retrieve credential details, run:</p>\n  <p><code>az ad sp create-for-rbac --name \"my-app-registration\"</code></p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5080,7 +5080,7 @@ const qaData = [
     "id": 565,
     "category": "Company Wise QA",
     "question": "what are the steps in ci pipeline as you know there is code commit?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>what are the steps in ci pipeline as you know there is code commit?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>what are the steps in ci pipeline as you know there is code commit?</strong></h3>\n  <p>Standard steps in a CI pipeline: 1. Code Commit trigger. 2. Fetch dependencies. 3. Code linting and formatting verification. 4. Run unit and integration tests. 5. Static Code Analysis (SonarQube) / Security scans. 6. Build and package application artifacts/container images. 7. Publish/upload artifacts.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5089,7 +5089,7 @@ const qaData = [
     "id": 566,
     "category": "Company Wise QA",
     "question": "what is steps to generate artifacts?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what is steps to generate artifacts?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what is steps to generate artifacts?</strong></h3>\n  <p>To generate and store artifacts in Azure Pipelines, use the <code>PublishPipelineArtifact@1</code> task in your YAML:</p>\n  <pre style=\"background:#111;padding:.6rem;border-radius:.4rem;\"><code class=\"language-yaml\">- task: PublishPipelineArtifact@1\n  inputs:\n    targetPath: '$(Build.ArtifactStagingDirectory)'\n    artifact: 'drop'\n    publishLocation: 'pipeline'</code></pre>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5098,7 +5098,7 @@ const qaData = [
     "id": 567,
     "category": "Company Wise QA",
     "question": "which package types you have used in your CD pipelines?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>which package types you have used in your CD pipelines?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>which package types you have used in your CD pipelines?</strong></h3>\n  <p>I use standard package formats in CD pipelines: <strong>Zip archives</strong> (for Azure App Services/Node.js), <strong>Docker images</strong> (for Kubernetes/AKS), <strong>NuGet/NPM packages</strong> (for internal libraries), and <strong>Terraform tar packages</strong> (for infrastructure configurations).</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5107,7 +5107,7 @@ const qaData = [
     "id": 568,
     "category": "Company Wise QA",
     "question": "which langauges are you well versed with?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>which langauges are you well versed with?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>which langauges are you well versed with?</strong></h3>\n  <p>I am well-versed in <strong>Python</strong> (for automation, REST APIs, and utilities), <strong>Bash/Shell</strong> (for OS automation and pipeline scripts), <strong>YAML/JSON</strong> (for configuration and pipeline manifests), and basic <strong>SQL</strong>.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5125,7 +5125,7 @@ const qaData = [
     "id": 570,
     "category": "Company Wise QA",
     "question": "What is the Hub and Spoke network topology in Azure?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>What is the Hub and Spoke network topology in Azure?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>What is the Hub and Spoke network topology in Azure?</strong></h3>\n  <p>The <strong>Hub and Spoke network topology</strong> in Azure is a hub-and-spoke model where:</p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>The <strong>Hub</strong> VNet acts as a central point of connectivity for shared services (like Azure Firewall, ExpressRoute/VPN Gateways, and private DNS zones).</li>\n    <li>The <strong>Spoke</strong> VNets peer with the Hub VNet and isolate workloads. Traffic between spokes can be routed through the Hub's firewall.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5143,7 +5143,7 @@ const qaData = [
     "id": 572,
     "category": "Company Wise QA",
     "question": "Can you describe some firewall rules you have configured or worked on in Azure?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Can you describe some firewall rules you have configured or worked on in Azure?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Can you describe some firewall rules you have configured or worked on in Azure?</strong></h3>\n  <p>I have configured firewall rules in <strong>Azure Firewall</strong> and <strong>Network Security Groups (NSGs)</strong>, such as blocking all inbound traffic by default, permitting SSH (22) or HTTP (80/443) only from trusted CIDR blocks, and restricting outbound access from private subnets to specific endpoints (FQDNs).</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5170,7 +5170,7 @@ const qaData = [
     "id": 575,
     "category": "Company Wise QA",
     "question": "What is PIM (Privileged Identity Management), and why is it important?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is PIM (Privileged Identity Management), and why is it important?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is PIM (Privileged Identity Management), and why is it important?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>*Privileged Identity Management (PIM)<strong> is a service in Microsoft Entra ID that manages, controls, and monitors access to important resources. It provides </strong>Just-In-Time (JIT)** access, requiring approval, multi-factor authentication, and justification for activating admin roles for a limited duration, preventing permanent admin privileges.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5179,7 +5179,7 @@ const qaData = [
     "id": 576,
     "category": "Company Wise QA",
     "question": "If a user is assigned access at the Management Group level, can they access all subscriptions under it? How can we restrict access to specific subscriptions?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>If a user is assigned access at the Management Group level, can they access all subscriptions under it? How can we restrict access to specific subscriptions?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>If a user is assigned access at the Management Group level, can they access all subscriptions under it? How can we restrict access to specific subscriptions?</strong></h3>\n  <p>Yes, by default, child resource groups and subscriptions inherit access from the parent Management Group. To restrict access, you must assign permissions at the individual subscription/resource group level, or use Azure Policy at the Management Group scope to block resource creation or deny actions.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5188,7 +5188,7 @@ const qaData = [
     "id": 577,
     "category": "Company Wise QA",
     "question": "Suppose there are three VNets: A, B, and C. VNet A is peered with VNet B, and VNet B is peered with VNet C. Can VNet A communicate directly with VNet C?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Suppose there are three VNets: A, B, and C. VNet A is peered with VNet B, and VNet B is peered with VNet C. Can VNet A communicate directly with VNet C?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Suppose there are three VNets: A, B, and C. VNet A is peered with VNet B, and VNet B is peered with VNet C. Can VNet A communicate directly with VNet C?</strong></h3>\n  <p>No, VNet Peering is not transitive. If VNet A is peered with VNet B, and VNet B is peered with VNet C, VNet A cannot communicate with VNet C. To enable communication, you must peer VNet A directly with VNet C, or route traffic through a VPN Gateway / Azure Firewall in VNet B using User Defined Routes (UDRs).</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5206,7 +5206,7 @@ const qaData = [
     "id": 579,
     "category": "Company Wise QA",
     "question": "Suppose you have two instances. How can you transfer a file from one instance to another?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>Suppose you have two instances. How can you transfer a file from one instance to another?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>Suppose you have two instances. How can you transfer a file from one instance to another?</strong></h3>\n  <p>To transfer a file between two Linux instances: 1. Use <code>scp</code> command: <code>scp -i key.pem file.txt user@destination_ip:/path</code>. 2. Use <code>rsync</code> (faster for directories): <code>rsync -avz -e \"ssh -i key.pem\" file.txt user@destination_ip:/path</code>. 3. Set up an NFS or SMB shared storage mount on both instances.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5215,7 +5215,7 @@ const qaData = [
     "id": 580,
     "category": "Company Wise QA",
     "question": "How can you transfer files between two instances without using SFTP or SCP?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>How can you transfer files between two instances without using SFTP or SCP?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>How can you transfer files between two instances without using SFTP or SCP?</strong></h3>\n  <p>If SSH/SFTP ports are blocked, you can: 1. Host the file temporarily on an HTTP server (e.g. <code>python3 -m http.server 8000</code>) and download using <code>wget</code>/<code>curl</code> from the other instance. 2. Upload the file to an intermediate cloud store (like Azure Blob or AWS S3) and download it. 3. Use netcat: receiver runs <code>nc -l 9000 > file.txt</code> and sender runs <code>nc target_ip 9000 < file.txt</code>.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5224,7 +5224,7 @@ const qaData = [
     "id": 581,
     "category": "Company Wise QA",
     "question": "Have you performed any migration tasks (e.g., on-premises to cloud, one tenant to another, or between subscription IDs)?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>Have you performed any migration tasks (e.g., on-premises to cloud, one tenant to another, or between subscription IDs)?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>Have you performed any migration tasks (e.g., on-premises to cloud, one tenant to another, or between subscription IDs)?</strong></h3>\n  <p>Yes, I have performed migration tasks: migrating workloads from on-premises VMs to Azure VMs, migrating database schemas, moving Azure resources between subscriptions, and transferring dockerized workloads to AKS clusters.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5242,7 +5242,7 @@ const qaData = [
     "id": 583,
     "category": "Company Wise QA",
     "question": "How can a user log in to a Linux machine using Entra ID credentials?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>How can a user log in to a Linux machine using Entra ID credentials?</strong></h3>\n  <p>Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>How can a user log in to a Linux machine using Entra ID credentials?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Install the Microsoft Entra ID login extension on the Linux VM: <code>az vm extension set --publisher Microsoft.Azure.ActiveDirectory --name AADSSHLoginForLinux</code>.</li>\n    <li>Assign the 'Virtual Machine Administrator Login' or 'Virtual Machine User Login' role to the Entra ID user.</li>\n    <li>The user logs in via CLI: <code>az ssh vm --resource-group rg --name vm</code>.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5260,7 +5260,7 @@ const qaData = [
     "id": 585,
     "category": "Company Wise QA",
     "question": "What is the name of the file where network configurations are stored and managed in Linux?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>What is the name of the file where network configurations are stored and managed in Linux?</strong></h3>\n  <p>Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>What is the name of the file where network configurations are stored and managed in Linux?</strong></h3>\n  <p>In Linux, network configurations are stored in different paths depending on the distribution:</p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><strong>Ubuntu (Netplan)</strong>: <code>/etc/netplan/*.yaml</code></li>\n    <li><strong>RHEL / CentOS</strong>: <code>/etc/sysconfig/network-scripts/ifcfg-<interface></code> (older) or NetworkManager keyfiles in <code>/etc/NetworkManager/system-connections/</code> (newer).</li>\n    <li><strong>Hosts file</strong>: <code>/etc/hosts</code> for local DNS mapping.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5296,7 +5296,7 @@ const qaData = [
     "id": 589,
     "category": "Company Wise QA",
     "question": "Experience with Kubernetes?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>Experience with Kubernetes?</strong></h3>\n  <p>Kubernetes is an open-source container orchestration platform that automates deployment, scaling, management, and networking of containerized workloads.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>Experience with Kubernetes?</strong></h3>\n  <p>I have over 2 years of experience with Kubernetes (primarily AKS and local minikube), deploying applications, managing service routing, autoscaling (HPA), persistent volumes, ConfigMaps, Secrets, namespaces, and Helm charts.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5359,7 +5359,7 @@ const qaData = [
     "id": 596,
     "category": "Company Wise QA",
     "question": "In a self-hosted agent scenario with multiple VMs, how can I ensure that only one specific VM is used for executing the tasks out of multiple vm's, instead of using all the VMs?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>In a self-hosted agent scenario with multiple VMs, how can I ensure that only one specific VM is used for executing the tasks out of multiple vm's, instead of using all the VMs?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>In a self-hosted agent scenario with multiple VMs, how can I ensure that only one specific VM is used for executing the tasks out of multiple vm's, instead of using all the VMs?</strong></h3>\n  <p>Use <strong>Agent Demands / Demands</strong> in your YAML pipeline configuration. Assign a unique capability (tag) to the specific VM agent in the project settings, then reference it under the <code>demands</code> block in your YAML job:</p>\n  <pre style=\"background:#111;padding:.6rem;border-radius:.4rem;\"><code class=\"language-yaml\">pool:\n  name: MySelfHostedPool\n  demands: AgentName -equals my-specific-vm</code></pre>\n</div>",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5368,7 +5368,7 @@ const qaData = [
     "id": 597,
     "category": "Company Wise QA",
     "question": "Why blue green deployment -- whats rollback?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Why blue green deployment -- whats rollback?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Why blue green deployment -- whats rollback?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><strong>Blue-Green Deployment</strong>: A strategy where you run two identical environments (Blue is production, Green is new release). Once Green is verified, route all traffic to Green.</li>\n    <li><strong>Rollback</strong>: If an error is detected in Green, you immediately redirect the router/load balancer traffic back to Blue, restoring service instantly with zero downtime.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5395,7 +5395,7 @@ const qaData = [
     "id": 600,
     "category": "Company Wise QA",
     "question": "How will you integrate azure key vault into pipeline with scripting?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>How will you integrate azure key vault into pipeline with scripting?</strong></h3>\n  <p>Azure Key Vault is a secure secrets management service. We use it to store passwords, client secrets, and certificates. In pipelines, we link Key Vault secrets dynamically to variable groups so they are injected at runtime without hardcoding.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>How will you integrate azure key vault into pipeline with scripting?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Authorize the pipeline service principal (managed identity) in Azure Key Vault's Access Policies or RBAC (Secrets User).</li>\n    <li>In the pipeline script, call the Azure CLI task to fetch secrets dynamically:</li>\n  </ul>\n  <p><code>az keyvault secret show --name \"mySecret\" --vault-name \"myVault\" --query \"value\" -o tsv</code>.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5404,7 +5404,7 @@ const qaData = [
     "id": 601,
     "category": "Company Wise QA",
     "question": "Do you know any scripting language?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>Do you know any scripting language?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>Do you know any scripting language?</strong></h3>\n  <p>Yes, I work with <strong>Bash/Shell</strong> for general Linux task automation and command sequencing, and <strong>Python</strong> for complex logic, calling REST APIs, and parsing JSON/XML data.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5422,7 +5422,7 @@ const qaData = [
     "id": 603,
     "category": "Company Wise QA",
     "question": "6-What is the Terraform state file and why is it important?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>6-What is the Terraform state file and why is it important?</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>6-What is the Terraform state file and why is it important?</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a local or remote JSON database that keeps track of the metadata and IDs of the actual infrastructure resources created, mapping them directly to your code configurations so Terraform can plan updates.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5431,7 +5431,7 @@ const qaData = [
     "id": 604,
     "category": "Company Wise QA",
     "question": "7- What r some challenges u faced while using Terraform and how did u solve them?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>7- What r some challenges u faced while using Terraform and how did u solve them?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>7- What r some challenges u faced while using Terraform and how did u solve them?</strong></h3>\n  <p>A key challenge was managing parallel deployments causing state file locks. We solved this by migrating to Azure Blob Storage remote backend with native state locking. Another challenge was importing legacy untracked resources, which we solved using the new <code>import</code> block introduced in Terraform 1.5.</p>\n</div>",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5440,7 +5440,7 @@ const qaData = [
     "id": 605,
     "category": "Company Wise QA",
     "question": "8-What is DSC in PowerShell?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>8-What is DSC in PowerShell?</strong></h3>\n  <p>PowerShell is a cross-platform task automation and configuration management framework. In DevOps, it is extensively used for writing automation scripts, managing Azure resources via Az PowerShell modules, and configuring systems using Desired State Configuration (DSC).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>8-What is DSC in PowerShell?</strong></h3>\n  <p>Detailed technical explanation for <strong>8-What is DSC in PowerShell</strong> in DevOps Engineering:</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5449,7 +5449,7 @@ const qaData = [
     "id": 606,
     "category": "Company Wise QA",
     "question": "9-Tell me about a recent PowerShell script you wrote and what was it about?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>9-Tell me about a recent PowerShell script you wrote and what was it about?</strong></h3>\n  <p>PowerShell is a cross-platform task automation and configuration management framework. In DevOps, it is extensively used for writing automation scripts, managing Azure resources via Az PowerShell modules, and configuring systems using Desired State Configuration (DSC).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>9-Tell me about a recent PowerShell script you wrote and what was it about?</strong></h3>\n  <p>I recently wrote a PowerShell script to automate the rotation of expired Azure AD application registrations client secrets, creating new secrets, updating them in Key Vault, and notifying the team via Slack webhook.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5458,7 +5458,7 @@ const qaData = [
     "id": 607,
     "category": "Company Wise QA",
     "question": "10-Why did u leave your previous company, and why hve u made frequent job changes? r u planning to leave this company as well within the next year?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>10-Why did u leave your previous company, and why hve u made frequent job changes? r u planning to leave this company as well within the next year?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>10-Why did u leave your previous company, and why hve u made frequent job changes? r u planning to leave this company as well within the next year?</strong></h3>\n  <p>Detailed technical explanation for <strong>10-Why did u leave your previous company, and why hve u made frequent job changes r u planning to leave this company as well within the next year</strong> in DevOps Engineering:</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5503,7 +5503,7 @@ const qaData = [
     "id": 612,
     "category": "Company Wise QA",
     "question": "How can you schedule a Bash script to run at specific intervals using cron?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>How can you schedule a Bash script to run at specific intervals using cron?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>How can you schedule a Bash script to run at specific intervals using cron?</strong></h3>\n  <p>Use <code>crontab -e</code> to edit cron jobs. Add a line using the five-field format (minute hour day-of-month month day-of-week). For example, to run a script every day at midnight:</p>\n  <p><code>0 0 * * * /usr/local/bin/backup.sh >> /var/log/backup.log 2>&1</code>.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5530,7 +5530,7 @@ const qaData = [
     "id": 615,
     "category": "Company Wise QA",
     "question": "What are the key benefits of using Infrastructure as Code in DevOps?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What are the key benefits of using Infrastructure as Code in DevOps?</strong></h3>\n  <p>DevOps is a set of practices combining software development (Dev) and IT operations (Ops) to shorten the systems development lifecycle and provide continuous delivery of high-quality software.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What are the key benefits of using Infrastructure as Code in DevOps?</strong></h3>\n  <p>Key benefits of IaC: 1. <strong>Consistency</strong>: Eliminates human error and drift. 2. <strong>Speed</strong>: Rapid provisioning of environments. 3. <strong>Traceability</strong>: Changes are tracked in Git. 4. <strong>Reusability</strong>: Modular templates can be shared. 5. <strong>Cost Savings</strong>: Spin down test environments when idle.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5539,7 +5539,7 @@ const qaData = [
     "id": 616,
     "category": "Company Wise QA",
     "question": "Which IaC tools have you used (e.g., Terraform, ARM Templates, Bicep, Pulumi), and what was your experience?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>Which IaC tools have you used (e.g., Terraform, ARM Templates, Bicep, Pulumi), and what was your experience?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>Which IaC tools have you used (e.g., Terraform, ARM Templates, Bicep, Pulumi), and what was your experience?</strong></h3>\n  <p>I work primarily with <strong>Terraform</strong> for multi-cloud infrastructure and <strong>Azure Bicep</strong> for Azure-native resources. Terraform provides a unified syntax and remote state management across diverse providers, while Bicep offers faster deployments and zero-day support for Azure services.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5566,7 +5566,7 @@ const qaData = [
     "id": 619,
     "category": "Company Wise QA",
     "question": "what is this job for ? why you fit for this job ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what is this job for ? why you fit for this job ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what is this job for ? why you fit for this job ?</strong></h3>\n  <p>I fit this role because of my strong hands-on experience in Azure, Kubernetes (AKS), and Infrastructure as Code (Terraform), combined with my background in automating pipelines, debugging systems, and enforcing security practices.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5584,7 +5584,7 @@ const qaData = [
     "id": 621,
     "category": "Company Wise QA",
     "question": "Did you tell about your present role in operation and automation ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Did you tell about your present role in operation and automation ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Did you tell about your present role in operation and automation ?</strong></h3>\n  <p>Yes, in my current role, I manage active operations (alerts, scaling, container restarts) and build automations: writing Terraform for infrastructure updates and creating CI/CD templates in Azure DevOps to automate code packaging and scanning.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5593,7 +5593,7 @@ const qaData = [
     "id": 622,
     "category": "Company Wise QA",
     "question": "what are the roles in cloudops ( operation ) ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what are the roles in cloudops ( operation ) ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what are the roles in cloudops ( operation ) ?</strong></h3>\n  <p>CloudOps roles include: provisioning cloud resources, managing network security (firewalls, NSGs), monitoring application uptime and metrics, configuring alerts, patching virtual machines, and coordinating disaster recovery backups.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5611,7 +5611,7 @@ const qaData = [
     "id": 624,
     "category": "Company Wise QA",
     "question": "what is the process of patch you deploy the production ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what is the process of patch you deploy the production ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what is the process of patch you deploy the production ?</strong></h3>\n  <p>In production: 1. Test patches in a staging environment. 2. Schedule a maintenance window. 3. Back up critical VM volumes and databases. 4. Drain traffic from target nodes using a load balancer. 5. Apply OS updates and restart VM. 6. Verify health and restore traffic.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5620,7 +5620,7 @@ const qaData = [
     "id": 625,
     "category": "Company Wise QA",
     "question": "have you experinced in bash script ? explain ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>have you experinced in bash script ? explain ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>have you experinced in bash script ? explain ?</strong></h3>\n  <p>Yes, I write Bash scripts for automation tasks such as log rotation, cleaning temporary directory contents, health check scripts that curl local web servers and alert on 5xx codes, and system config modifications.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5629,7 +5629,7 @@ const qaData = [
     "id": 626,
     "category": "Company Wise QA",
     "question": "troubleshooting ? give only exact command ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>troubleshooting ? give only exact command ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>troubleshooting ? give only exact command ?</strong></h3>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Check logs: <code>journalctl -u nginx</code> or <code>tail -n 100 /var/log/syslog</code>.</li>\n    <li>Check CPU: <code>top -b -n 1 | head -n 20</code>.</li>\n    <li>Check memory: <code>free -m</code>.</li>\n    <li>Check network: <code>ss -tuln</code>.</li>\n    <li>Check disk: <code>df -h</code>.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5647,7 +5647,7 @@ const qaData = [
     "id": 628,
     "category": "Company Wise QA",
     "question": "what is host ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>what is host ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>what is host ?</strong></h3>\n  <p>A host refers to any computer or device connected to a computer network that can send or receive data, host applications, or store files (e.g. an Azure VM, a physical server, or a container node).</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5656,7 +5656,7 @@ const qaData = [
     "id": 629,
     "category": "Company Wise QA",
     "question": "where are you using yaml files ? why we used yaml files ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>where are you using yaml files ? why we used yaml files ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>where are you using yaml files ? why we used yaml files ?</strong></h3>\n  <p>YAML files are used for configuring Kubernetes manifests, Ansible playbooks, and GitHub/Azure Pipelines. We use YAML because it is human-readable, supports hierarchical structuring, and is standard across DevOps tools.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5665,7 +5665,7 @@ const qaData = [
     "id": 630,
     "category": "Company Wise QA",
     "question": "what resources you created in azure ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>what resources you created in azure ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>what resources you created in azure ?</strong></h3>\n  <p>I have provisioned Virtual Networks (VNets), subnets, network security groups (NSGs), virtual machines (VMs), App Service plans, Azure Container Registries (ACR), AKS clusters, Key Vaults, and Azure SQL databases.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5683,7 +5683,7 @@ const qaData = [
     "id": 632,
     "category": "Company Wise QA",
     "question": "Give some examples for the sop ? explain ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Give some examples for the sop ? explain ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Give some examples for the sop ? explain ?</strong></h3>\n  <p>Standard Operating Procedures (SOPs) include: steps to restore database backups, procedures for VM disk expansion, checklist for manual production deployments, and diagnostic steps for network connectivity failures.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5692,7 +5692,7 @@ const qaData = [
     "id": 633,
     "category": "Company Wise QA",
     "question": "when you do the release ? what are the challenges you faced ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>when you do the release ? what are the challenges you faced ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>when you do the release ? what are the challenges you faced ?</strong></h3>\n  <p>We run releases during low-traffic maintenance windows. Challenges faced include database migration locks and API integration failures. We resolved these by implementing blue-green deployments for instant rollbacks and backward-compatible database schema updates.</p>\n</div>",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5719,7 +5719,7 @@ const qaData = [
     "id": 636,
     "category": "Company Wise QA",
     "question": "what you want do in next 5 years ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what you want do in next 5 years ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>what you want do in next 5 years ?</strong></h3>\n  <p>In the next 5 years, I aim to deepen my expertise in cloud architecture, master security-focused DevSecOps pipelines, design highly scalable Kubernetes architectures, and lead DevOps engineering teams.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5728,7 +5728,7 @@ const qaData = [
     "id": 637,
     "category": "Company Wise QA",
     "question": "In past years what skills you have added to yourself ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>In past years what skills you have added to yourself ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>In past years what skills you have added to yourself ?</strong></h3>\n  <p>In the past year, I have mastered Kubernetes cluster administration, added Azure Bicep to my IaC skills, learned OPA Gatekeeper for policy-as-code enforcement, and automated secret rotations in pipelines.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5737,7 +5737,7 @@ const qaData = [
     "id": 638,
     "category": "Company Wise QA",
     "question": "Why you are looking for the change ? what are the repetitive task you doing ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Why you are looking for the change ? what are the repetitive task you doing ?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Why you are looking for the change ? what are the repetitive task you doing ?</strong></h3>\n  <p>I am looking for a change to work on larger-scale Kubernetes environments and design advanced DevSecOps pipelines. Repetitive tasks in my current role (like VM provisioning or certificate renewals) have all been automated.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5746,7 +5746,7 @@ const qaData = [
     "id": 639,
     "category": "Company Wise QA",
     "question": "how many types of declare & stored the variable?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>how many types of declare & stored the variable?</strong></h3>\n  <p>Terraform variables can be declared in variable blocks with type constraints (string, number, bool, list, map, object) and stored/passed in terraform.tfvars files, environment variables (prefixed with TF_VAR_), or command line flags (-var=\"name=value\").</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>how many types of declare & stored the variable?</strong></h3>\n  <p>In Terraform, variables can be declared inside <code>variables.tf</code> as inputs, defined in <code>terraform.tfvars</code>, passed as command line arguments (<code>-var</code>), or set as environment variables (<code>TF_VAR_name</code>).</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5764,7 +5764,7 @@ const qaData = [
     "id": 641,
     "category": "Company Wise QA",
     "question": "what is Ansible, why we use?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>⚙️ <strong>what is Ansible, why we use?</strong></h3>\n  <p>Ansible is an open-source, agentless configuration management and automation tool. It connects to target nodes via SSH or WinRM and executes tasks defined in YAML playbooks, eliminating the need to install and maintain agent software on target servers.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>⚙️ <strong>what is Ansible, why we use?</strong></h3>\n  <p>Ansible is an open-source IT automation tool for configuration management and application deployment. It is agentless, meaning it connects to target hosts over SSH or WinRM without installing agent software on the targets.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5782,7 +5782,7 @@ const qaData = [
     "id": 643,
     "category": "Company Wise QA",
     "question": "New feature which is not present in terraform how would you provisioning them in azure portal through Terraform?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>New feature which is not present in terraform how would you provisioning them in azure portal through Terraform?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>New feature which is not present in terraform how would you provisioning them in azure portal through Terraform?</strong></h3>\n  <p>Use the <code>azurerm_resource_group_template_deployment</code> resource in Terraform to deploy an ARM template containing the new resource, or run a <code>local-exec</code> provisioner executing an Azure CLI command.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5800,7 +5800,7 @@ const qaData = [
     "id": 645,
     "category": "Company Wise QA",
     "question": "Terraform backend, terraform statefile management?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>Terraform backend, terraform statefile management?</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>Terraform backend, terraform statefile management?</strong></h3>\n  <p>Terraform remote backends (like Azure Blob) store the state file securely. State locking prevents multiple users from executing deployments simultaneously, preventing file corruption and deployment conflicts.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5809,7 +5809,7 @@ const qaData = [
     "id": 646,
     "category": "Company Wise QA",
     "question": "if we want to validate our terraform code, is we need to execute terraform init commands?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>if we want to validate our terraform code, is we need to execute terraform init commands?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>if we want to validate our terraform code, is we need to execute terraform init commands?</strong></h3>\n  <p>No, <code>terraform validate</code> does not strictly require <code>terraform init</code> to have completed, but it is highly recommended because validate needs provider plugins and schemas downloaded by init to verify resource definitions.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5818,7 +5818,7 @@ const qaData = [
     "id": 647,
     "category": "Company Wise QA",
     "question": "What are artifacts?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What are artifacts?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What are artifacts?</strong></h3>\n  <p>Artifacts are the compiled, packaged outputs of a CI pipeline (e.g. a zip file, jar file, or container image) that are stored and deployed to target environments by the CD pipeline.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5827,7 +5827,7 @@ const qaData = [
     "id": 648,
     "category": "Company Wise QA",
     "question": "What is the purpose of ci/cd?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>What is the purpose of ci/cd?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>What is the purpose of ci/cd?</strong></h3>\n  <p>The purpose of CI/CD is to automate the integration and deployment of code changes, ensuring rapid feedback, reducing manual deployment errors, and allowing teams to release features frequently and reliably.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5836,7 +5836,7 @@ const qaData = [
     "id": 649,
     "category": "Company Wise QA",
     "question": "Have you work on Azure monitor or logs?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Have you work on Azure monitor or logs?</strong></h3>\n  <p>Azure Monitor collects and analyzes telemetry data (metrics, logs) from cloud resources. I write Kusto Query Language (KQL) queries in Log Analytics workspaces to create performance dashboards and trigger alert notifications on Slack/PagerDuty.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Have you work on Azure monitor or logs?</strong></h3>\n  <p>Yes, I use Azure Monitor to track system performance metrics and Log Analytics to collect logs. I query logs using Kusto Query Language (KQL) to build dashboards and configure alert notifications.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5854,7 +5854,7 @@ const qaData = [
     "id": 651,
     "category": "Company Wise QA",
     "question": "What is keyvalut and their usecase?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is keyvalut and their usecase?</strong></h3>\n  <p>Azure Key Vault is a secure secrets management service. We use it to store passwords, client secrets, and certificates. In pipelines, we link Key Vault secrets dynamically to variable groups so they are injected at runtime without hardcoding.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is keyvalut and their usecase?</strong></h3>\n  <p>Azure Key Vault is a secure cloud service for storing secrets (passwords, connection strings), keys (encryption keys), and certificates. Its use case is to prevent hardcoding sensitive credentials in source code.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5872,7 +5872,7 @@ const qaData = [
     "id": 653,
     "category": "Company Wise QA",
     "question": "Have you use variables in ci/cd?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Have you use variables in ci/cd?</strong></h3>\n  <p>Terraform variables can be declared in variable blocks with type constraints (string, number, bool, list, map, object) and stored/passed in terraform.tfvars files, environment variables (prefixed with TF_VAR_), or command line flags (-var=\"name=value\").</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Have you use variables in ci/cd?</strong></h3>\n  <p>Yes, I use variables in CI/CD pipelines to parameterize configurations (like target resource groups, environments, and build version tags), separating code from environment-specific values.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5890,7 +5890,7 @@ const qaData = [
     "id": 655,
     "category": "Company Wise QA",
     "question": "What is azure policy & why we use in ci/cd?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>What is azure policy & why we use in ci/cd?</strong></h3>\n  <p>Azure Policy is a service that enforces organizational standards and assesses compliance. In CI/CD, we run policy compliance checks (e.g. verifying that storage accounts have public access disabled or resource tags exist) before allowing resource creation.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>What is azure policy & why we use in ci/cd?</strong></h3>\n  <p>SonarQube is a static code analysis tool used in CI pipelines to scan code quality. It detects code smells, bugs, security vulnerabilities, and measures code coverage, blocking builds if quality gates are not met.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5917,7 +5917,7 @@ const qaData = [
     "id": 658,
     "category": "Company Wise QA",
     "question": "3-What is Ansible and why we use it?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>⚙️ <strong>3-What is Ansible and why we use it?</strong></h3>\n  <p>Ansible is an open-source, agentless configuration management and automation tool. It connects to target nodes via SSH or WinRM and executes tasks defined in YAML playbooks, eliminating the need to install and maintain agent software on target servers.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>⚙️ <strong>3-What is Ansible and why we use it?</strong></h3>\n  <p>Git GitFlow is a branching model using: a <code>main</code> branch (production), a <code>develop</code> branch (integration), <code>feature/</code> branches for new changes, <code>release/</code> branches for preparation, and <code>hotfix/</code> branches for urgent fixes.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5971,7 +5971,7 @@ const qaData = [
     "id": 664,
     "category": "Company Wise QA",
     "question": "What is Ingress in K8s?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>What is Ingress in K8s?</strong></h3>\n  <p>An Ingress in Kubernetes is an API object that manages external access to the services in a cluster, typically HTTP/HTTPS. It provides load balancing, SSL termination, and name-based virtual hosting, routing traffic to backend Pods via an Ingress Controller.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>What is Ingress in K8s?</strong></h3>\n  <p>Yes, I have configured Application Gateway rules: path-based routing (routing <code>/images</code> to storage and <code>/api</code> to VM scale sets), listener configurations (Port 80/443), and SSL certificate bindings.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5980,7 +5980,7 @@ const qaData = [
     "id": 665,
     "category": "Company Wise QA",
     "question": "- Ansible aata hai?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>⚙️ <strong>- Ansible aata hai?</strong></h3>\n  <p>Ansible is an open-source, agentless configuration management and automation tool. It connects to target nodes via SSH or WinRM and executes tasks defined in YAML playbooks, eliminating the need to install and maintain agent software on target servers.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>⚙️ <strong>- Ansible aata hai?</strong></h3>\n  <p>Common database connection issues include: incorrect connection strings, database firewall blocking VM/pod IPs, database service being offline, and missing or expired client certificate credentials.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5998,7 +5998,7 @@ const qaData = [
     "id": 667,
     "category": "Company Wise QA",
     "question": "- powershell you know?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>- powershell you know?</strong></h3>\n  <p>PowerShell is a cross-platform task automation and configuration management framework. In DevOps, it is extensively used for writing automation scripts, managing Azure resources via Az PowerShell modules, and configuring systems using Desired State Configuration (DSC).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>- powershell you know?</strong></h3>\n  <p>To resolve database connectivity issues: 1. Ping the DB server or use <code>nc -zv <db_ip> 1433</code> (SQL Server) to check port connectivity. 2. Verify virtual network peering and check database firewall rule settings.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -6007,7 +6007,7 @@ const qaData = [
     "id": 668,
     "category": "Company Wise QA",
     "question": "Could you explain the key components of the Kubernetes control plane and their respective roles?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>Could you explain the key components of the Kubernetes control plane and their respective roles?</strong></h3>\n  <p>The Kubernetes Control Plane consists of: kube-apiserver (exposes the API), etcd (consistent key-value storage), kube-scheduler (assigns pods to nodes), kube-controller-manager (runs controller processes), and cloud-controller-manager (integrates with cloud APIs).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>Could you explain the key components of the Kubernetes control plane and their respective roles?</strong></h3>\n  <p>Kubernetes Helm is a package manager that uses YAML templates called 'charts' to bundle Kubernetes resources (Deployments, Services, ConfigMaps) so they can be versioned, customized, and deployed easily.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6034,7 +6034,7 @@ const qaData = [
     "id": 671,
     "category": "Company Wise QA",
     "question": "In what scenarios would you choose a StatefulSet over a Deployment, and why?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>In what scenarios would you choose a StatefulSet over a Deployment, and why?</strong></h3>\n  <p>Use a Deployment for stateless workloads where replica pods are identical and interchangeable (e.g. web servers). Use a StatefulSet for stateful applications (e.g. databases like PostgreSQL) requiring unique, persistent identities, stable network hostnames, and dedicated persistent volume storage for each pod replica.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>In what scenarios would you choose a StatefulSet over a Deployment, and why?</strong></h3>\n  <p>I have configured: 1. <strong>ClusterIP</strong> (internal exposure). 2. <strong>NodePort</strong> (exposes service on a static port on each Node). 3. <strong>LoadBalancer</strong> (provisions a cloud load balancer). 4. <strong>Headless</strong> (ClusterIP set to None for stateful apps).</p>\n</div>",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6070,7 +6070,7 @@ const qaData = [
     "id": 675,
     "category": "Company Wise QA",
     "question": "What deployment strategies do you recommend to ensure zero downtime during application releases?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What deployment strategies do you recommend to ensure zero downtime during application releases?</strong></h3>\n  <p>To ensure zero downtime, use: 1. <strong>Blue-Green Deployments</strong>: Maintain two identical environments, route traffic to the new one after successful verification. 2. <strong>Canary Deployments</strong>: Route a small percentage of traffic to the new version before rolling out to everyone. 3. <strong>Rolling Updates</strong>: Gradually replace old pod instances with new ones in a rolling fashion.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What deployment strategies do you recommend to ensure zero downtime during application releases?</strong></h3>\n  <p>Kubernetes Cluster upgrades are scheduled to maintain security patches and stability. Before upgrading, check version compatibility with plugins (CNI, CSI) and update kubeadm, control plane nodes, and worker nodes sequentially.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6088,7 +6088,7 @@ const qaData = [
     "id": 677,
     "category": "Company Wise QA",
     "question": "If a pipeline's unit tests fail immediately after a commit, what steps would you take to identify and resolve the issue efficiently?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>If a pipeline's unit tests fail immediately after a commit, what steps would you take to identify and resolve the issue efficiently?</strong></h3>\n  <p>If unit tests fail after a commit: 1. Review the pipeline build logs to locate the failing test case. 2. Verify that local dependencies match the pipeline runner environment. 3. Run the tests locally in your workspace. 4. Check for code syntax errors or missing environment configurations.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>If a pipeline's unit tests fail immediately after a commit, what steps would you take to identify and resolve the issue efficiently?</strong></h3>\n  <p>Yes, I have configured Prometheus metrics: CPU/memory usage, node disk IOPS, HTTP request latency, active container counts, and custom business metrics exposed by applications on <code>/metrics</code>.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6097,7 +6097,7 @@ const qaData = [
     "id": 678,
     "category": "Company Wise QA",
     "question": "What methods do you use to pass artifacts or variables between stages in a CI/CD pipeline?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What methods do you use to pass artifacts or variables between stages in a CI/CD pipeline?</strong></h3>\n  <p>Terraform variables can be declared in variable blocks with type constraints (string, number, bool, list, map, object) and stored/passed in terraform.tfvars files, environment variables (prefixed with TF_VAR_), or command line flags (-var=\"name=value\").</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What methods do you use to pass artifacts or variables between stages in a CI/CD pipeline?</strong></h3>\n  <p>Grafana works by adding data sources (like Prometheus or Azure Monitor), writing queries (using PromQL or KQL) to fetch metrics, and creating dashboards with charts, graphs, and alert thresholds.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6115,7 +6115,7 @@ const qaData = [
     "id": 680,
     "category": "Company Wise QA",
     "question": "Do you have ID about AKS?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>Do you have ID about AKS?</strong></h3>\n  <p>Azure Kubernetes Service (AKS) is a managed container orchestration service that simplifies Kubernetes deployment, management, and operations by offloading the control plane management to Microsoft, charging only for active worker node VMs.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>Do you have ID about AKS?</strong></h3>\n  <p>Tomcat configuration is managed by editing XML files under <code>/etc/tomcat/conf/</code> (or equivalent path): <code>server.xml</code> for ports and connectors, <code>web.xml</code> for defaults, and <code>context.xml</code> for database resources.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6160,7 +6160,7 @@ const qaData = [
     "id": 685,
     "category": "Company Wise QA",
     "question": "What If I remove the vm instance  from the state file and run terraform apply?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What If I remove the vm instance  from the state file and run terraform apply?</strong></h3>\n  <p>If you remove a resource from the state file (e.g. using 'terraform state rm') and run 'terraform apply', Terraform will think the resource no longer exists in your infrastructure and will attempt to recreate it. If you want to delete a resource, you should delete its HCL code configuration and run 'terraform apply'.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What If I remove the vm instance  from the state file and run terraform apply?</strong></h3>\n  <p>In Linux, packages are installed using command CLI:</p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Ubuntu: <code>sudo apt update && sudo apt install <package-name></code></li>\n    <li>RHEL: <code>sudo dnf install <package-name></code>.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6178,7 +6178,7 @@ const qaData = [
     "id": 687,
     "category": "Company Wise QA",
     "question": "What is smallest components in aks?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>What is smallest components in aks?</strong></h3>\n  <p>The smallest deployable component in Azure Kubernetes Service (AKS) or any Kubernetes cluster is a <strong>Pod</strong>, which represents a single instance of a running process and can contain one or more containers.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>What is smallest components in aks?</strong></h3>\n  <p>To upgrade the OS:</p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><strong>Ubuntu</strong>: <code>sudo apt update && sudo apt upgrade -y</code></li>\n    <li><strong>RHEL</strong>: <code>sudo dnf update -y</code>.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6187,7 +6187,7 @@ const qaData = [
     "id": 688,
     "category": "Linux & Git",
     "question": "What is Git?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is Git?</strong></h3>\n  <p>Git is a distributed version control system used to track changes in source code. A Git Repository is the storage space (local or remote) that tracks all project files and commit histories. A commit represents a saved snapshot of staged changes in the project history.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is Git?</strong></h3>\n  <p>To check OS version:</p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Ubuntu: <code>lsb_release -a</code> or <code>cat /etc/os-release</code></li>\n    <li>RHEL: <code>cat /etc/redhat-release</code>.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6196,7 +6196,7 @@ const qaData = [
     "id": 689,
     "category": "Linux & Git",
     "question": "What is a Git repository?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is a Git repository?</strong></h3>\n  <p>Git is a distributed version control system used to track changes in source code. A Git Repository is the storage space (local or remote) that tracks all project files and commit histories. A commit represents a saved snapshot of staged changes in the project history.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is a Git repository?</strong></h3>\n  <p>A script to fetch OS information from multiple hosts:</p>\n  <pre style=\"background:#111;padding:.6rem;border-radius:.4rem;\"><code class=\"language-bash\">for host in $(cat hosts.txt); do\n  ssh -i key.pem user@$host \"uname -a; cat /etc/os-release | grep PRETTY_NAME\" \ndone</code></pre>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6223,7 +6223,7 @@ const qaData = [
     "id": 692,
     "category": "Linux & Git",
     "question": "What is a commit in Git?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is a commit in Git?</strong></h3>\n  <p>Git is a distributed version control system used to track changes in source code. A Git Repository is the storage space (local or remote) that tracks all project files and commit histories. A commit represents a saved snapshot of staged changes in the project history.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is a commit in Git?</strong></h3>\n  <p>Azure Private DNS manages domain names within a virtual network without public internet resolution. Use case: resolving internal VM/database names securely within peered VNets (e.g. <code>db.internal.cloud</code>).</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6250,7 +6250,7 @@ const qaData = [
     "id": 695,
     "category": "Linux & Git",
     "question": "What is the purpose of the .gitignore file?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is the purpose of the .gitignore file?</strong></h3>\n  <p>The .gitignore file specifies untracked files or folders (e.g., node_modules/, local secrets, logs, or pycache) that Git should ignore and never commit to the remote repository.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is the purpose of the .gitignore file?</strong></h3>\n  <p>In Git, staging area (<code>git add</code>) prepares changes to be committed, while committing (<code>git commit</code>) records those staged changes permanently in the local repository history.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6295,7 +6295,7 @@ const qaData = [
     "id": 700,
     "category": "Linux & Git",
     "question": "What is the purpose of the git stash command?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is the purpose of the git stash command?</strong></h3>\n  <p>The 'git stash' command temporarily shelves (stashes) uncommitted changes in your working directory, allowing you to switch branches or run pulls on a clean working directory, and re-apply the changes later using 'git stash pop'.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is the purpose of the git stash command?</strong></h3>\n  <p>Git tags are labels pointing to specific points in Git history, usually used for release versions (e.g., <code>v1.2.0</code>). Create a tag: <code>git tag -a v1.2.0 -m \"release message\"</code> and push: <code>git push origin v1.2.0</code>.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6340,7 +6340,7 @@ const qaData = [
     "id": 705,
     "category": "Linux & Git",
     "question": "What is the purpose of git cherry-pick?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is the purpose of git cherry-pick?</strong></h3>\n  <p>'git cherry-pick' is a command that allows you to select a specific commit from one branch and apply its changes as a new commit onto your current active branch.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>What is the purpose of git cherry-pick?</strong></h3>\n  <p>A Git repository is a database tracking file changes. A Git branch is a lightweight pointer to a specific commit, allowing developers to isolate changes and work in parallel without affecting main codebase.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6367,7 +6367,7 @@ const qaData = [
     "id": 708,
     "category": "Company Wise QA",
     "question": "1 Can you please tell me about your project?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>1 Can you please tell me about your project?</strong></h3>\n  <p>I manage CI/CD pipelines and infrastructure as code using Terraform to deploy highly available microservices to Azure Kubernetes Service (AKS). My responsibilities include configuring networking (VNets, Application Gateways), securing pipelines, and managing container workloads.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>1 Can you please tell me about your project?</strong></h3>\n  <p>In Git, <code>fetch</code> downloads remote commits, branches, and tags without merging them into your local work. <code>pull</code> runs <code>git fetch</code> followed by <code>git merge</code>, automatically updating your active branch.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6385,7 +6385,7 @@ const qaData = [
     "id": 710,
     "category": "Company Wise QA",
     "question": "3 How many types of user-level access are there in Azure DevOps (ADO)?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>3 How many types of user-level access are there in Azure DevOps (ADO)?</strong></h3>\n  <p>Azure DevOps user-level access types are: 1. <strong>Basic</strong>: Access to most features (pipelines, boards, repos). 2. <strong>Stakeholder</strong>: Free access for work item tracking and viewing boards. 3. <strong>Visual Studio Subscription</strong>: Access based on the user's MSDN/VS subscription tier.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>3 How many types of user-level access are there in Azure DevOps (ADO)?</strong></h3>\n  <p>In Azure DevOps: Create a Group, add the user, and assign this group Reader/Contributor roles on the 3 specific projects. Ensure the other 7 projects have inheritance broken with no access for this group.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6403,7 +6403,7 @@ const qaData = [
     "id": 712,
     "category": "Company Wise QA",
     "question": "5 If you have to add more basic users in ADO, do you need to pay Microsoft? How much?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>5 If you have to add more basic users in ADO, do you need to pay Microsoft? How much?</strong></h3>\n  <p>In Azure DevOps, the first <strong>5 users</strong> in an organization get Basic access for free. For any additional basic users, your organization must pay Microsoft approximately <strong>$6 per user per month</strong>.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>5 If you have to add more basic users in ADO, do you need to pay Microsoft? How much?</strong></h3>\n  <p>We manage access permissions in Azure DevOps using Teams, custom security groups, project-level permissions (Contributor/Reader), repository branch policies, and service connection security controls.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6412,7 +6412,7 @@ const qaData = [
     "id": 713,
     "category": "Company Wise QA",
     "question": "6 How many agents are available in Azure DevOps to run pipelines?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>6 How many agents are available in Azure DevOps to run pipelines?</strong></h3>\n  <p>Azure DevOps provides Microsoft-hosted agents (managed by MS) and self-hosted agents (managed on your own VMs). Microsoft provides 1 free parallel job (hosted or self-hosted) with 1800 free minutes per month. Additional parallel jobs cost approximately <strong>$40/month</strong> for Microsoft-hosted and <strong>$15/month</strong> for self-hosted.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>6 How many agents are available in Azure DevOps to run pipelines?</strong></h3>\n  <p>We secure Azure DevOps by: configuring Entra ID MFA, limiting organization admin roles, removing inheritance on sensitive projects, scanning pipelines for secrets, and enforcing branch policies on main.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6430,7 +6430,7 @@ const qaData = [
     "id": 715,
     "category": "Company Wise QA",
     "question": "8 If Microsoft provides only one agent and you want to run 10 pipelines, how much money do you have to pay for additional agents?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>8 If Microsoft provides only one agent and you want to run 10 pipelines, how much money do you have to pay for additional agents?</strong></h3>\n  <p>Azure DevOps provides Microsoft-hosted agents (managed by MS) and self-hosted agents (managed on your own VMs). Microsoft provides 1 free parallel job (hosted or self-hosted) with 1800 free minutes per month. Additional parallel jobs cost approximately <strong>$40/month</strong> for Microsoft-hosted and <strong>$15/month</strong> for self-hosted.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💻 <strong>8 If Microsoft provides only one agent and you want to run 10 pipelines, how much money do you have to pay for additional agents?</strong></h3>\n  <p>Yes, I create Pull Requests templates to standardize description, checklists, linked boards issues, and require reviewers to sign off on unit tests, lints, and manual QA validations.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6448,7 +6448,7 @@ const qaData = [
     "id": 717,
     "category": "Company Wise QA",
     "question": "10 When a user enters the correct username and password but gets an invalid credential error, what could be the issue?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>10 When a user enters the correct username and password but gets an invalid credential error, what could be the issue?</strong></h3>\n  <p>In Azure DevOps Git checkouts, this usually happens when the user's Personal Access Token (PAT) has expired or lacks the correct 'Code Read/Write' scope, or when their local Git credential manager has cached outdated credentials.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>10 When a user enters the correct username and password but gets an invalid credential error, what could be the issue?</strong></h3>\n  <p>Go to Organization Settings -> Process -> Select inherited process -> Click Bug -> click New field -> Enter Name (e.g. root_cause), Type (e.g. text), and layout coordinates. Save changes.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6457,7 +6457,7 @@ const qaData = [
     "id": 718,
     "category": "Company Wise QA",
     "question": "11 Suppose you want to deploy an application to 2 VMs at the same time. How would you do that using Azure DevOps pipeline?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>11 Suppose you want to deploy an application to 2 VMs at the same time. How would you do that using Azure DevOps pipeline?</strong></h3>\n  <p>To deploy to multiple VMs simultaneously: 1. Configure the VMs inside an Azure DevOps <strong>Deployment Group</strong>. 2. Use a Deployment Group job in a Release pipeline targeting that group. 3. Alternatively, configure a multi-agent YAML pipeline running deployment tasks in parallel.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>11 Suppose you want to deploy an application to 2 VMs at the same time. How would you do that using Azure DevOps pipeline?</strong></h3>\n  <p>If the pipeline fails, I: 1. Review build logs. 2. Check for missing variable group link configurations. 3. Validate network connectivity of agents. 4. Verify API credentials and cloud quotas.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6529,7 +6529,7 @@ const qaData = [
     "id": 726,
     "category": "Terraform (IaC)",
     "question": "What are resource in Terraform? ​In Terraform, resources are the fundamental building blocks that define infrastructure components—such as virtual machines, storage buckets, DNS records, and more",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What are resource in Terraform? ​In Terraform, resources are the fundamental building blocks that define infrastructure components—such as virtual machines, storage buckets, DNS records, and more</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What are resource in Terraform? ​In Terraform, resources are the fundamental building blocks that define infrastructure components—such as virtual machines, storage buckets, DNS records, and more</strong></h3>\n  <p>Terraform Providers are plugins that act as translators between Terraform's engine and target APIs (Azure, AWS, Kubernetes), allowing Terraform to manage resources on those platforms.</p>\n</div>",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6574,7 +6574,7 @@ const qaData = [
     "id": 731,
     "category": "Terraform (IaC)",
     "question": "What is a backend in Terraform? a backend is the mechanism that defines where and how Terraform stores state—the record of what infrastructure it manages.",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is a backend in Terraform? a backend is the mechanism that defines where and how Terraform stores state—the record of what infrastructure it manages.</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is a backend in Terraform? a backend is the mechanism that defines where and how Terraform stores state—the record of what infrastructure it manages.</strong></h3>\n  <p>In Terraform, <code>terraform state list</code> lists all tracked resource addresses, while <code>terraform state show <address></code> displays the detailed attributes and values of a specific resource in the state.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6583,7 +6583,7 @@ const qaData = [
     "id": 732,
     "category": "Terraform (IaC)",
     "question": "What is a provider block, and why is it important? a provider block specifies the cloud provider, API, or service that Terraform will use to provision and manage resources.It enables API Access,Authentication and Configuration and can define multiplr provider.",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is a provider block, and why is it important? a provider block specifies the cloud provider, API, or service that Terraform will use to provision and manage resources.It enables API Access,Authentication and Configuration and can define multiplr provider.</strong></h3>\n  <p>Terraform providers are plugins that act as translators between the Terraform core engine and target cloud platform APIs (like AzureRM, AWS, or GCP). They translate declarative HCL configurations into actual API calls to create, update, or delete resources.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is a provider block, and why is it important? a provider block specifies the cloud provider, API, or service that Terraform will use to provision and manage resources.It enables API Access,Authentication and Configuration and can define multiplr provider.</strong></h3>\n  <p>Yes, I have migrated state files: 1. Update the <code>backend</code> block in Terraform to the new storage account configuration. 2. Run <code>terraform init -migrate-state</code> and confirm the migration prompt.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6610,7 +6610,7 @@ const qaData = [
     "id": 735,
     "category": "Terraform (IaC)",
     "question": "What is a Terraform module? A Terraform module is a set of reusable Terraform files that help you manage similar infrastructure in a clean and organized way. You can think of it like a function in programming—you write it once and use it many times.",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is a Terraform module? A Terraform module is a set of reusable Terraform files that help you manage similar infrastructure in a clean and organized way. You can think of it like a function in programming—you write it once and use it many times.</strong></h3>\n  <p>A Terraform module folder typically contains: <code>main.tf</code> (resource definitions), <code>variables.tf</code> (input variable declarations), and <code>outputs.tf</code> (output values). You structure them in a subfolder and call them using: module \"name\" { source = \"./modules/vnet\" ... }</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is a Terraform module? A Terraform module is a set of reusable Terraform files that help you manage similar infrastructure in a clean and organized way. You can think of it like a function in programming—you write it once and use it many times.</strong></h3>\n  <p>Call local modules using source paths: <code>source = \"./modules/network\"</code>. Call remote Git modules using Git URLs: <code>source = \"git::https://github.com/org/repo.git//subnet?ref=v1.0.0\"</code>.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6637,7 +6637,7 @@ const qaData = [
     "id": 738,
     "category": "Terraform (IaC)",
     "question": "What is the purpose of module.<name>.output? The purpose of module.<name>.output in Terraform is to access the output values that are defined inside a module. This allows you to retrieve information or results from a module and use it in other parts of your Terraform configuration.",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is the purpose of module.<name>.output? The purpose of module.<name>.output in Terraform is to access the output values that are defined inside a module. This allows you to retrieve information or results from a module and use it in other parts of your Terraform configuration.</strong></h3>\n  <p>The purpose of module outputs (module.<name>.<output_name>) is to expose specific resource attributes created within a child module to the parent configuration. This allows the parent workspace to reference and pass those attributes to other modules or resources.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is the purpose of module.<name>.output? The purpose of module.<name>.output in Terraform is to access the output values that are defined inside a module. This allows you to retrieve information or results from a module and use it in other parts of your Terraform configuration.</strong></h3>\n  <p>To structure module directories: create a <code>modules/</code> folder containing subdirectories for each service (e.g. <code>vpc/</code>, <code>compute/</code>), each containing <code>main.tf</code>, <code>variables.tf</code>, and <code>outputs.tf</code>.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6673,7 +6673,7 @@ const qaData = [
     "id": 742,
     "category": "Divyanshu Questions",
     "question": "2) where u store terraform code and from where u commiting and adding ur changes?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>2) where u store terraform code and from where u commiting and adding ur changes?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>2) where u store terraform code and from where u commiting and adding ur changes?</strong></h3>\n  <p>Detailed technical explanation for <strong>2) where u store terraform code and from where u commiting and adding ur changes</strong> in Terraform Infrastructure as Code (IaC):</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6682,7 +6682,7 @@ const qaData = [
     "id": 743,
     "category": "Divyanshu Questions",
     "question": "3)suppose we adding a file and we want to commit it how will you do that?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>3)suppose we adding a file and we want to commit it how will you do that?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🔀 <strong>3)suppose we adding a file and we want to commit it how will you do that?</strong></h3>\n  <p>Detailed technical explanation for <strong>3)suppose we adding a file and we want to commit it how will you do that</strong> in DevOps Engineering:</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6700,7 +6700,7 @@ const qaData = [
     "id": 745,
     "category": "Divyanshu Questions",
     "question": "7) which cicd tool u use?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>7) which cicd tool u use?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>7) which cicd tool u use?</strong></h3>\n  <p>Detailed technical explanation for <strong>7) which cicd tool u use</strong> in DevOps Engineering:</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6718,7 +6718,7 @@ const qaData = [
     "id": 747,
     "category": "Divyanshu Questions",
     "question": "2.What are the arguments in resource group?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>2.What are the arguments in resource group?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>2.What are the arguments in resource group?</strong></h3>\n  <p>Detailed technical explanation for <strong>2.What are the arguments in resource group</strong> in DevOps Engineering:</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6727,7 +6727,7 @@ const qaData = [
     "id": 748,
     "category": "Divyanshu Questions",
     "question": "3.What are the resources you are using while creating VM?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>3.What are the resources you are using while creating VM?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>3.What are the resources you are using while creating VM?</strong></h3>\n  <p>Detailed technical explanation for <strong>3.What are the resources you are using while creating VM</strong> in DevOps Engineering:</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6736,7 +6736,7 @@ const qaData = [
     "id": 749,
     "category": "Divyanshu Questions",
     "question": "2.How many containers can be created in a pod?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>2.How many containers can be created in a pod?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>2.How many containers can be created in a pod?</strong></h3>\n  <p>Detailed technical explanation for <strong>2.How many containers can be created in a pod</strong> in DevOps Engineering:</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6745,7 +6745,7 @@ const qaData = [
     "id": 750,
     "category": "Divyanshu Questions",
     "question": "3.How many stages/steps are there in a pod?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>3.How many stages/steps are there in a pod?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>3.How many stages/steps are there in a pod?</strong></h3>\n  <p>Detailed technical explanation for <strong>3.How many stages/steps are there in a pod</strong> in DevOps Engineering:</p>\n  <h4>🔹 Concept Definition</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Refers to a core architecture component used to manage, scale, and secure resources in cloud-native applications.</li>\n    <li>Enables teams to enforce consistent configurations, self-healing setups, and automated deployment paths.</li>\n  </ul>\n  <h4>🔹 Technical Workflow</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Interacts with APIs (such as Azure ARM or Kubernetes Control Plane) to deploy declarative code files.</li>\n    <li>Tracks resources in cloud states, allowing engineers to detect drift, run rolling updates, and deploy rolling updates.</li>\n  </ul>\n  <h4>🔹 Best Practices</h4>\n  <ul style=\"margin-left:1.2rem;\">\n    <li>Enforce strict security settings (like SSL termination, private endpoints, and Key Vault integration).</li>\n    <li>Set up alerts in monitoring systems to check logs and trigger alerts on anomaly thresholds.</li>\n  </ul>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6763,7 +6763,7 @@ const qaData = [
     "id": 752,
     "category": "Divyanshu Questions",
     "question": "5.If a pod is in pending stage/not working/not running, what would be the possible reasons?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>5.If a pod is in pending stage/not working/not running, what would be the possible reasons?</strong></h3>\n  <p>Common reasons for a Kubernetes pod remaining in Pending state: 1. <strong>Insufficient CPU/Memory resources</strong> on worker nodes. 2. <strong>Node selector/tolerations mismatch</strong> (tainted nodes). 3. <strong>Persistent Volume Claim (PVC) binding failures</strong>. 4. <strong>Image pull errors</strong> (incorrect registry credentials).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>5.If a pod is in pending stage/not working/not running, what would be the possible reasons?</strong></h3>\n  <p>Common worker node settings: OS swap disabled, container runtime (containerd) installed, ports open (10250), system hostnames unique, and kubeadm, kubelet, and kubectl packages installed.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6772,7 +6772,7 @@ const qaData = [
     "id": 753,
     "category": "Divyanshu HCL",
     "question": "8.⁠ ⁠Type Constraints in Terraform.?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>8.⁠ ⁠Type Constraints in Terraform.?</strong></h3>\n  <p>Terraform type constraints enforce input variable types. They include primitive types (string, number, bool) and complex types: collection types (list, map, set) and structural types (object, tuple).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>8.⁠ ⁠Type Constraints in Terraform.?</strong></h3>\n  <p>In Kubernetes, a pod represents the smallest deployable unit containing one or more containers sharing storage and network. A container is the run-time instance of an application image.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6790,7 +6790,7 @@ const qaData = [
     "id": 755,
     "category": "Divyanshu HCL",
     "question": "10.⁠ ⁠What is the move block in Terraform? Can you provide an example?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>10.⁠ ⁠What is the move block in Terraform? Can you provide an example?</strong></h3>\n  <p>The moved block in Terraform (introduced in v1.5.0) is a declarative way to rename or refactor resource addresses in your state file without destroying and recreating the actual physical cloud infrastructure. Example: moved { from = aws_instance.old_name to = aws_instance.new_name }.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>10.⁠ ⁠What is the move block in Terraform? Can you provide an example?</strong></h3>\n  <p>To expose a Kubernetes pod to external traffic, create a <strong>Service</strong> resource of type <code>LoadBalancer</code> or <code>NodePort</code>, or configure an <strong>Ingress Controller</strong> to route external URLs directly to the service.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6826,7 +6826,7 @@ const qaData = [
     "id": 759,
     "category": "Divyanshu HCL",
     "question": "15.⁠ ⁠Have you worked with task groups in Azure DevOps?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>15.⁠ ⁠Have you worked with task groups in Azure DevOps?</strong></h3>\n  <p>A Task Group in Azure DevOps (ADO) allows you to encapsulate a sequence of pipeline steps/tasks already defined in a build or release pipeline into a single reusable task. This simplifies pipeline configurations and ensures consistency across multiple pipelines.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>15.⁠ ⁠Have you worked with task groups in Azure DevOps?</strong></h3>\n  <p>Yes, I have worked extensively with Task Groups in Azure DevOps. A Task Group allows you to encapsulate a sequence of pipeline steps/tasks already defined in a build or release pipeline into a single reusable task. This simplifies pipeline configurations and ensures consistency across multiple pipelines.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6844,7 +6844,7 @@ const qaData = [
     "id": 761,
     "category": "Divyanshu HCL",
     "question": "17.⁠ ⁠If you’ve written a Terraform configuration to deploy a virtual machine using a custom image, and you later update the software in that image, what will happen if you run terraform apply again?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>17.⁠ ⁠If you’ve written a Terraform configuration to deploy a virtual machine using a custom image, and you later update the software in that image, what will happen if you run terraform apply again?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>17.⁠ ⁠If you’ve written a Terraform configuration to deploy a virtual machine using a custom image, and you later update the software in that image, what will happen if you run terraform apply again?</strong></h3>\n  <p>If you deploy a VM using a custom image and later update the software in that source image, running 'terraform apply' again will see no changes if the image reference (e.g. image ID or version tag) remains the same in your HCL code. If you want to update the VM with the new image, you must update the image reference in the configuration, which will trigger a recreation or re-imaging of the VM.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6862,7 +6862,7 @@ const qaData = [
     "id": 763,
     "category": "Divyanshu HCL",
     "question": "Qus .. Interviwer name shivam",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Qus .. Interviwer name shivam</strong></h3>\n  <p>In production, we focus on troubleshooting systems (logs, network ports), automating deployment pipelines, and managing cluster workloads.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>Qus .. Interviwer name shivam</strong></h3>\n  <p>This question refers to standard scenario-based interview questions. In technical rounds, I am asked about troubleshooting VM metrics, handling Docker container restarts, designing VNet peering topologies, and structuring multi-stage CI/CD pipelines.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6871,7 +6871,7 @@ const qaData = [
     "id": 764,
     "category": "Divyanshu HCL",
     "question": "What is linter in terraform",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is linter in terraform</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is linter in terraform</strong></h3>\n  <p>A linter in Terraform (like tflint) analyzes HCL configuration files to detect errors, deprecated syntax, security vulnerabilities, and adherence to cloud best practices before running a deployment plan.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6880,7 +6880,7 @@ const qaData = [
     "id": 765,
     "category": "Divyanshu HCL",
     "question": "What is task group",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is task group</strong></h3>\n  <p>A Task Group in Azure DevOps (ADO) allows you to encapsulate a sequence of pipeline steps/tasks already defined in a build or release pipeline into a single reusable task. This simplifies pipeline configurations and ensures consistency across multiple pipelines.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is task group</strong></h3>\n  <p>A Task Group in Azure DevOps is a reusable sequence of build or release pipeline tasks that are grouped together so they can be easily added to other pipelines, promoting consistency and reducing code duplication.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6889,7 +6889,7 @@ const qaData = [
     "id": 766,
     "category": "Divyanshu HCL",
     "question": "What is deployment group",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is deployment group</strong></h3>\n  <p>A Deployment Group in Azure DevOps is a logical set of target agent machines (VMs) that have physical agents installed. It allows you to define targets for deploying application packages in parallel or sequentially using release pipelines.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is deployment group</strong></h3>\n  <p>A Deployment Group in Azure DevOps is a logical set of target agent machines (VMs) with physical agents installed. It allows you to run deployment tasks in parallel or sequentially directly on those target environments.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6898,7 +6898,7 @@ const qaData = [
     "id": 767,
     "category": "Divyanshu HCL",
     "question": "What is ADO",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is ADO</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is ADO</strong></h3>\n  <p>ADO stands for Azure DevOps, a cloud-based collaboration platform by Microsoft that provides developer services: Azure Boards (agile planning), Azure Repos (Git source control), Azure Pipelines (CI/CD), Azure Test Plans (manual/exploratory testing), and Azure Artifacts (package management).</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6907,7 +6907,7 @@ const qaData = [
     "id": 768,
     "category": "Divyanshu HCL",
     "question": "What is sprint and work item",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is sprint and work item</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is sprint and work item</strong></h3>\n  <p>In Agile (Azure Boards), a <strong>Sprint</strong> is a time-boxed iteration (usually 2-4 weeks) during which a team completes a set amount of work. A <strong>Work Item</strong> is a database record tracking any piece of work, such as a User Story, Task, Bug, or Feature.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6925,7 +6925,7 @@ const qaData = [
     "id": 770,
     "category": "Divyanshu HCL",
     "question": "What is variable.tf and terraform.tf vars",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is variable.tf and terraform.tf vars</strong></h3>\n  <p>variable.tf is used to declare input variables, their types, descriptions, and default values. terraform.tfvars (and environment-specific files like dev.tfvars) is used to assign actual values to those variables. By default, terraform.tfvars is loaded automatically, while custom files must be passed via the -var-file flag.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is variable.tf and terraform.tf vars</strong></h3>\n  <p>In Terraform:</p>\n  <ul style=\"margin-left:1.2rem;\">\n    <li><code>variables.tf</code> is used to declare input variables, their types, descriptions, and optional default values.</li>\n    <li><code>terraform.tfvars</code> is used to assign the actual values to those declared variables. It is automatically loaded by Terraform during init/plan/apply.</li>\n  </ul>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6961,7 +6961,7 @@ const qaData = [
     "id": 774,
     "category": "Divyanshu HCL",
     "question": "What is statefile and where we will keep it",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is statefile and where we will keep it</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is statefile and where we will keep it</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud. It must be kept in a remote backend (like Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6979,7 +6979,7 @@ const qaData = [
     "id": 776,
     "category": "Divyanshu HCL",
     "question": "[12/5, 5:03 PM] Ms Yadav: 1st round HCL question...1.what is module?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>[12/5, 5:03 PM] Ms Yadav: 1st round HCL question...1.what is module?</strong></h3>\n  <p>A Terraform module is a package of reusable Terraform configuration files in a directory. It allows you to group related infrastructure components together (like a VM, disk, and NIC) and instantiate them multiple times across environments (dev, test, prod) with different inputs.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>[12/5, 5:03 PM] Ms Yadav: 1st round HCL question...1.what is module?</strong></h3>\n  <p>A Terraform module is a package of reusable HCL configuration files in a directory. It allows you to group related infrastructure components together (like a VM, disk, and NIC) and instantiate them multiple times across environments with different inputs.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6988,7 +6988,7 @@ const qaData = [
     "id": 777,
     "category": "Divyanshu HCL",
     "question": "2.what is provisioners?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>2.what is provisioners?</strong></h3>\n  <p>Terraform provisioners (local-exec, remote-exec) are used to execute scripts or commands on the local runner or remote VM during creation or destruction. In production, they should be used as a last resort because they are not tracked in Terraform state; using cloud-init or VM extensions is preferred.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>2.what is provisioners?</strong></h3>\n  <p>Terraform provisioners (local-exec, remote-exec) execute scripts or commands on the local runner or remote VM during creation or destruction. In production, they should be used as a last resort because they are not tracked in Terraform state; using cloud-init or VM extensions is preferred.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6997,7 +6997,7 @@ const qaData = [
     "id": 778,
     "category": "Divyanshu HCL",
     "question": "3.what is null resource?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>3.what is null resource?</strong></h3>\n  <p>The null_resource in Terraform implements the standard resource lifecycle but takes no actions on its own. It is commonly used to run local-exec or remote-exec provisioners (e.g. running a post-deployment script after a VM is ready) or to trigger actions using the triggers block when dependencies change.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>3.what is null resource?</strong></h3>\n  <p>The <code>null_resource</code> in Terraform implements the standard resource lifecycle but takes no actions on its own. It is commonly used to run local-exec or remote-exec provisioners (e.g. running an script after a VM is ready) or to trigger actions using the triggers block when dependencies change.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7006,7 +7006,7 @@ const qaData = [
     "id": 779,
     "category": "Divyanshu HCL",
     "question": "4.what is statefile?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>4.what is statefile?</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>4.what is statefile?</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that stores metadata and mapping of HCL configurations to actual cloud resources. It should be kept in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration and prevent state drift.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7024,7 +7024,7 @@ const qaData = [
     "id": 781,
     "category": "Divyanshu HCL",
     "question": "6.what is variable?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>6.what is variable?</strong></h3>\n  <p>Terraform variables can be declared in variable blocks with type constraints (string, number, bool, list, map, object) and stored/passed in terraform.tfvars files, environment variables (prefixed with TF_VAR_), or command line flags (-var=\"name=value\").</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>6.what is variable?</strong></h3>\n  <p>A variable in Terraform is used to parameterize HCL configurations, allowing you to pass values at runtime without hardcoding them. They are declared with type constraints (string, number, bool, list, map, object) and descriptions.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7033,7 +7033,7 @@ const qaData = [
     "id": 782,
     "category": "Divyanshu HCL",
     "question": "7.write a code with the help of module and for_each?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>7.write a code with the help of module and for_each?</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>7.write a code with the help of module and for_each?</strong></h3>\n  <p>To call a module with <code>for_each</code>:</p>\n  <pre style=\"background:#111;padding:.6rem;border-radius:.4rem;\"><code class=\"language-hcl\">module \"storage_accounts\" {\n  source   = \"./modules/storage\"\n  for_each = var.storage_map\n  name     = each.key\n  location = each.value.location\n}</code></pre>\n  <p>This dynamically instantiates the module once for each key-value pair in the map.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7060,7 +7060,7 @@ const qaData = [
     "id": 785,
     "category": "Divyanshu HCL",
     "question": "5- what is move block?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>5- what is move block?</strong></h3>\n  <p>The moved block in Terraform (introduced in v1.5.0) is a declarative way to rename or refactor resource addresses in your state file without destroying and recreating the actual physical cloud infrastructure. Example: moved { from = aws_instance.old_name to = aws_instance.new_name }.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>5- what is move block?</strong></h3>\n  <p>The <code>moved</code> block in Terraform (introduced in v1.5.0) is a declarative way to rename or refactor resource addresses in your state file without destroying and recreating the actual physical cloud infrastructure. Example:</p>\n  <pre style=\"background:#111;padding:.6rem;border-radius:.4rem;\"><code class=\"language-hcl\">moved {\n  from = aws_instance.old_name\n  to   = aws_instance.new_name\n}</code></pre>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7078,7 +7078,7 @@ const qaData = [
     "id": 787,
     "category": "Divyanshu HCL",
     "question": "What is pipeline or which pipeline u worked on like yaml plz expaln E2E flow",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is pipeline or which pipeline u worked on like yaml plz expaln E2E flow</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>What is pipeline or which pipeline u worked on like yaml plz expaln E2E flow</strong></h3>\n  <p>An end-to-end YAML pipeline in Azure DevOps automates both CI and CD. Triggered by a branch commit, it: 1. Lints/validates configurations. 2. Compiles code/builds docker images. 3. Runs unit tests. 4. Deploys infra via Terraform (plan/apply). 5. Promotes application packages to VMs/AKS with deployment gates and approvals.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7087,7 +7087,7 @@ const qaData = [
     "id": 788,
     "category": "Divyanshu HCL",
     "question": "What is state file and where we will keep it",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is state file and where we will keep it</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>What is state file and where we will keep it</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that stores metadata and mapping of HCL configurations to actual cloud resources. It should be kept in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration and prevent state drift.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7114,7 +7114,7 @@ const qaData = [
     "id": 791,
     "category": "Divyanshu HCL",
     "question": "[12/5, 6:32 PM] Anu DevOps G16: 1st round HCL question...1.what is module?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>[12/5, 6:32 PM] Anu DevOps G16: 1st round HCL question...1.what is module?</strong></h3>\n  <p>A Terraform module is a package of reusable Terraform configuration files in a directory. It allows you to group related infrastructure components together (like a VM, disk, and NIC) and instantiate them multiple times across environments (dev, test, prod) with different inputs.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>[12/5, 6:32 PM] Anu DevOps G16: 1st round HCL question...1.what is module?</strong></h3>\n  <p>A Terraform module is a set of reusable HCL files in a directory. It allows you to group related infrastructure components together (like a VM, disk, and NIC) and instantiate them multiple times across environments with different inputs.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7123,7 +7123,7 @@ const qaData = [
     "id": 792,
     "category": "Divyanshu HCL",
     "question": "4.what is state-file?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>4.what is state-file?</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>4.what is state-file?</strong></h3>\n  <p>The Terraform state file (<code>terraform.tfstate</code>) is a JSON database that stores metadata and mapping of HCL configurations to actual cloud resources. It should be kept in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration and prevent state drift.</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7132,7 +7132,7 @@ const qaData = [
     "id": 793,
     "category": "Divyanshu HCL",
     "question": "9.how is the process to setup the terraform??",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>9.how is the process to setup the terraform??</strong></h3>\n  <p>To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>9.how is the process to setup the terraform??</strong></h3>\n  <p>To setup and run Terraform: 1. Download and install the Terraform CLI binary. 2. Write HCL configurations (<code>main.tf</code>, <code>variables.tf</code>). 3. Run <code>terraform init</code> to download provider plugins. 4. Run <code>terraform plan</code> to preview changes. 5. Run <code>terraform apply</code> to provision the infrastructure.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7150,7 +7150,7 @@ const qaData = [
     "id": 795,
     "category": "Divyanshu HCL",
     "question": "11.what is data variable?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>11.what is data variable?</strong></h3>\n  <p>Data sources (declared via the 'data' block) allow Terraform to read-only query and import information about existing cloud resources created outside of the current Terraform configuration (e.g., retrieving an existing VNet ID to attach a subnet).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>💡 <strong>11.what is data variable?</strong></h3>\n  <p>A data variable (or data source) in Terraform is declared via the <code>data</code> block and is used to fetch read-only information about existing cloud resources created outside of the current Terraform workspace (e.g. fetching an existing VNet ID).</p>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7186,7 +7186,7 @@ const qaData = [
     "id": 799,
     "category": "Divyanshu HCL",
     "question": "Q2. Cluster roll binding ?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>Q2. Cluster roll binding ?</strong></h3>\n  <p>A ClusterRoleBinding in Kubernetes grants permissions defined in a ClusterRole to users, groups, or service accounts across the entire cluster, rather than restricting permissions to a single namespace (which is what a RoleBinding does).</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☸️ <strong>Q2. Cluster roll binding ?</strong></h3>\n  <p>A ClusterRoleBinding in Kubernetes grants permissions defined in a ClusterRole to users, groups, or service accounts across the entire cluster, rather than restricting permissions to a single namespace.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7321,7 +7321,7 @@ const qaData = [
     "id": 814,
     "category": "HCL Ashish",
     "question": "[5/16, 3:12 PM] B16_G2 Mahender singh: [4/3, 9:43 PM] Anu DevOps G16: 10. What is the move block in Terraform? Can you provide an example?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>[5/16, 3:12 PM] B16_G2 Mahender singh: [4/3, 9:43 PM] Anu DevOps G16: 10. What is the move block in Terraform? Can you provide an example?</strong></h3>\n  <p>The moved block in Terraform (introduced in v1.5.0) is a declarative way to rename or refactor resource addresses in your state file without destroying and recreating the actual physical cloud infrastructure. Example: moved { from = aws_instance.old_name to = aws_instance.new_name }.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>🏗️ <strong>[5/16, 3:12 PM] B16_G2 Mahender singh: [4/3, 9:43 PM] Anu DevOps G16: 10. What is the move block in Terraform? Can you provide an example?</strong></h3>\n  <p>The <code>moved</code> block in Terraform (introduced in v1.5.0) is a declarative way to rename or refactor resource addresses in your state file without destroying and recreating the actual physical cloud infrastructure. Example:</p>\n  <pre style=\"background:#111;padding:.6rem;border-radius:.4rem;\"><code class=\"language-hcl\">moved {\n  from = aws_instance.old_name\n  to   = aws_instance.new_name\n}</code></pre>\n</div>",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7357,7 +7357,7 @@ const qaData = [
     "id": 818,
     "category": "HCL Ashish",
     "question": "Have you worked with task groups in Azure DevOps?",
-    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Have you worked with task groups in Azure DevOps?</strong></h3>\n  <p>A Task Group in Azure DevOps (ADO) allows you to encapsulate a sequence of pipeline steps/tasks already defined in a build or release pipeline into a single reusable task. This simplifies pipeline configurations and ensures consistency across multiple pipelines.</p>\n</div>",
+    "answer": "<div class=\"answer-rich\">\n  <h3>☁️ <strong>Have you worked with task groups in Azure DevOps?</strong></h3>\n  <p>Yes, I have worked extensively with Task Groups in Azure DevOps. A Task Group allows you to encapsulate a sequence of pipeline steps/tasks already defined in a build or release pipeline into a single reusable task. This simplifies pipeline configurations and ensures consistency across multiple pipelines.</p>\n</div>",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
