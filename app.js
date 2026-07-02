@@ -637,44 +637,48 @@ function resetAllFilters() {
 function filterAndRenderQuestions() {
     let filtered = [...questions];
     
-    // 1. Search Filter (Strict Question & Category Matching with Smart Aliases)
+    // 1. Search Filter (Multi-Field Keyword Matching with Smart Aliases)
     if (filters.search.trim() !== '') {
         const query = filters.search.toLowerCase().trim();
+        const searchWords = query.split(/\s+/).filter(w => w.length > 0);
         
-        // Define smart keyword groups
-        let searchTerms = [query];
-        
-        // Kubernetes / AKS / K8s
-        if (['aks', 'k8s', 'kubernetes', 'kube'].some(term => query.includes(term))) {
-            searchTerms.push('kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster');
-        }
-        // Terraform / IaC / TF
-        else if (['terraform', 'tf', 'iac'].some(term => query.includes(term))) {
-            searchTerms.push('terraform', 'tf', 'iac', 'infrastructure as code');
-        }
-        // CI/CD / Pipelines
-        else if (['cicd', 'ci/cd', 'pipeline', 'pipelines', 'build', 'deploy'].some(term => query.includes(term))) {
-            searchTerms.push('pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment');
-        }
-        // Docker / Container
-        else if (['docker', 'container', 'image', 'dockerfile'].some(term => query.includes(term))) {
-            searchTerms.push('docker', 'container', 'image', 'dockerfile');
-        }
-        // Linux / Bash
-        else if (['linux', 'bash', 'shell', 'command', 'commands'].some(term => query.includes(term))) {
-            searchTerms.push('linux', 'bash', 'shell', 'command', 'commands');
-        }
-        // Git / GitHub
-        else if (['git', 'github', 'gitlab', 'repo', 'branch', 'commit'].some(term => query.includes(term))) {
-            searchTerms.push('git', 'github', 'gitlab', 'repo', 'branch', 'commit', 'version control');
-        }
+        // Define smart keyword groups for developer aliases
+        const aliasMap = {
+            'aks': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
+            'k8s': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
+            'kubernetes': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
+            'kube': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
+            'tf': ['terraform', 'tf', 'iac', 'infrastructure as code'],
+            'terraform': ['terraform', 'tf', 'iac', 'infrastructure as code'],
+            'iac': ['terraform', 'tf', 'iac', 'infrastructure as code'],
+            'cicd': ['pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment'],
+            'ci/cd': ['pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment'],
+            'pipeline': ['pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment'],
+            'pipelines': ['pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment'],
+            'docker': ['docker', 'container', 'image', 'dockerfile'],
+            'container': ['docker', 'container', 'image', 'dockerfile'],
+            'linux': ['linux', 'bash', 'shell', 'command', 'commands'],
+            'bash': ['linux', 'bash', 'shell', 'command', 'commands'],
+            'git': ['git', 'github', 'gitlab', 'repo', 'branch', 'commit', 'version control']
+        };
         
         filtered = filtered.filter(q => {
-            const qText = q.question.toLowerCase();
-            const catText = q.category.toLowerCase();
+            const searchableText = [
+                q.question || '',
+                q.answer || '',
+                q.category || '',
+                q.company || '',
+                q.source || '',
+                q.difficulty || ''
+            ].join(' ').toLowerCase();
             
-            // Match search terms against question text or category name only (not the long answer body)
-            return searchTerms.some(term => qText.includes(term) || catText.includes(term));
+            return searchWords.every(word => {
+                // Match search words against the question fields
+                if (aliasMap[word]) {
+                    return aliasMap[word].some(alias => searchableText.includes(alias));
+                }
+                return searchableText.includes(word);
+            });
         });
     }
     
@@ -1868,10 +1872,47 @@ function filterAndRenderCompanyQuestions() {
 
     let filtered = qaData.filter(q => q.category === 'Company Wise QA' && q.company === activeCompany);
 
-    // Search query match
+    // Search query match (Multi-Field Keyword Matching with Smart Aliases)
     if (companyFilters.search.trim() !== '') {
         const query = companyFilters.search.toLowerCase().trim();
-        filtered = filtered.filter(q => q.question.toLowerCase().includes(query) || q.answer.toLowerCase().includes(query));
+        const searchWords = query.split(/\s+/).filter(w => w.length > 0);
+        
+        const aliasMap = {
+            'aks': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
+            'k8s': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
+            'kubernetes': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
+            'kube': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
+            'tf': ['terraform', 'tf', 'iac', 'infrastructure as code'],
+            'terraform': ['terraform', 'tf', 'iac', 'infrastructure as code'],
+            'iac': ['terraform', 'tf', 'iac', 'infrastructure as code'],
+            'cicd': ['pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment'],
+            'ci/cd': ['pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment'],
+            'pipeline': ['pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment'],
+            'pipelines': ['pipeline', 'pipelines', 'cicd', 'ci/cd', 'build', 'deploy', 'deployment'],
+            'docker': ['docker', 'container', 'image', 'dockerfile'],
+            'container': ['docker', 'container', 'image', 'dockerfile'],
+            'linux': ['linux', 'bash', 'shell', 'command', 'commands'],
+            'bash': ['linux', 'bash', 'shell', 'command', 'commands'],
+            'git': ['git', 'github', 'gitlab', 'repo', 'branch', 'commit', 'version control']
+        };
+        
+        filtered = filtered.filter(q => {
+            const searchableText = [
+                q.question || '',
+                q.answer || '',
+                q.category || '',
+                q.company || '',
+                q.source || '',
+                q.difficulty || ''
+            ].join(' ').toLowerCase();
+            
+            return searchWords.every(word => {
+                if (aliasMap[word]) {
+                    return aliasMap[word].some(alias => searchableText.includes(alias));
+                }
+                return searchableText.includes(word);
+            });
+        });
     }
 
     // Difficulty match
