@@ -28,6 +28,10 @@
                     <i class="fa-solid fa-book-open"></i>
                     <span>Browse Questions</span>
                 </a>
+                <a href="#" class="menu-item" data-view="company-qa">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Company-wise Q&A</span>
+                </a>
                 <a href="#" class="menu-item" data-view="flashcards">
                     <i class="fa-solid fa-layer-group"></i>
                     <span>Flashcards</span>
@@ -205,6 +209,54 @@
                 </section>
             </div>
 
+            <!-- Company-wise Q&A Panel -->
+            <div class="content-panel" id="view-company-qa" style="display: none;">
+                <div class="panel-header">
+                    <div>
+                        <h1>Company-wise Interview Q&A</h1>
+                        <p class="subtitle">Select a company to browse actual technical interview questions asked by top IT and consulting firms.</p>
+                    </div>
+                </div>
+                
+                <!-- Main Grid listing all companies -->
+                <div class="company-grid-view" id="company-grid-view">
+                    <div class="company-cards-grid" id="company-cards-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
+                        <!-- Company cards loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Questions View (Initially hidden, shown when a company card is clicked) -->
+                <div class="company-questions-view" id="company-questions-view" style="display: none;">
+                    <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 16px;">
+                        <button class="btn btn-secondary" id="back-to-companies-btn" style="padding: 8px 16px; display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-arrow-left"></i> Back to Companies
+                        </button>
+                        <h2 id="selected-company-title" style="margin: 0; font-size: 1.5rem; color: var(--accent-primary);">Company Questions</h2>
+                    </div>
+
+                    <!-- Filter / Search row for company-specific questions -->
+                    <div class="filter-row" style="margin-bottom: 20px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                        <div class="search-container" style="flex: 1; min-width: 280px; max-width: 400px; position: relative;">
+                            <i class="fa-solid fa-magnifying-glass search-icon" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-secondary);"></i>
+                            <input type="text" id="company-search-input" placeholder="Search within company..." style="width: 100%; padding: 12px 16px 12px 48px; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text-primary);">
+                        </div>
+                        <div class="filter-group" style="margin: 0;">
+                            <div class="difficulty-filters" id="company-diff-filters">
+                                <button class="diff-btn active" data-diff="all">All</button>
+                                <button class="diff-btn" data-diff="Easy">Easy</button>
+                                <button class="diff-btn" data-diff="Medium">Medium</button>
+                                <button class="diff-btn" data-diff="Hard">Hard</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- List container for company questions -->
+                    <div class="qa-list" id="company-qa-list-container">
+                        <!-- Questions rendered dynamically -->
+                    </div>
+                </div>
+            </div>
+
             <!-- Flashcards Panel -->
             <div class="content-panel" id="view-flashcards" style="display: none;">
                 <div class="panel-header">
@@ -272,22 +324,40 @@
                 </div>
 
                 <div class="mock-container">
-                    <div class="mock-setup" id="mock-setup">
-                        <div class="mock-setup-card">
-                            <h3>DevOps & Azure DevOps MCQ Exam</h3>
-                            <p class="description">Test your knowledge with a multiple-choice exam. The set includes single-choice and multiple-select questions covering Terraform, Kubernetes, Azure DevOps, Linux, and general DevOps concepts. You will receive your detailed scorecard and answers with explanations after submitting.</p>
+                    <div class="mock-setup" id="mock-setup" style="max-width: 600px; margin: 0 auto; width: 100%;">
+                        <div class="mock-setup-card" style="width: 100%;">
+                            <h3>DevOps & Company Q&A Mock Interview</h3>
+                            <p class="description" style="margin-bottom: 24px;">Simulate a live technical interview. The simulator will pull randomly selected questions from the entire database (including standard technical categories and company-specific sheets) and shuffle them together. Read the question, think of your response, reveal the professional solution, and self-evaluate your performance.</p>
                             
+                            <!-- Pool Scope Selection -->
+                            <div class="form-group" style="margin-top: 24px; text-align: left;">
+                                <label class="filter-label" for="mock-pool-select">Select Question Pool</label>
+                                <select id="mock-pool-select" class="custom-select" style="width: 100%; margin-top: 10px; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary);">
+                                    <option value="all">All Questions (DevOps + Company Q&As)</option>
+                                    <option value="standard">Only Standard Technical Topics</option>
+                                    <option value="company-all">Only Company-wise Q&As (All Companies)</option>
+                                    <!-- Companies loaded dynamically -->
+                                </select>
+                            </div>
+
+                            <!-- Question Count Selection -->
                             <div class="form-group" style="margin-top: 24px; text-align: left;">
                                 <label class="filter-label">Select Number of Questions</label>
-                                <div class="radio-group" style="margin-top: 10px;">
-                                    <label class="radio-label"><input type="radio" name="mock-count" value="5"> 5 Questions</label>
-                                    <label class="radio-label"><input type="radio" name="mock-count" value="10" checked> 10 Questions</label>
-                                    <label class="radio-label"><input type="radio" name="mock-count" value="20"> 20 Questions</label>
+                                <div class="radio-group" style="margin-top: 10px; display: flex; gap: 16px;">
+                                    <label class="radio-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                        <input type="radio" name="mock-count" value="5"> 5 Questions
+                                    </label>
+                                    <label class="radio-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                        <input type="radio" name="mock-count" value="10" checked> 10 Questions
+                                    </label>
+                                    <label class="radio-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                        <input type="radio" name="mock-count" value="20"> 20 Questions
+                                    </label>
                                 </div>
                             </div>
 
                             <button class="btn btn-primary btn-lg" id="start-mock-btn" style="width: 100%; margin-top: 24px;">
-                                <i class="fa-solid fa-play"></i> Start Practice Exam
+                                <i class="fa-solid fa-play"></i> Start Mock Interview
                             </button>
                         </div>
                     </div>

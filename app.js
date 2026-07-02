@@ -12,6 +12,7 @@ let categories = [];
 const filters = {
     search: '',
     category: 'all',
+    company: 'all',
     difficulty: 'all',
     status: 'all',
     sortBy: 'default'
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load data from data.js (global qaData) and apply 12-hour stable shuffle
     if (typeof qaData !== 'undefined') {
         questions = get12HourShuffledQuestions();
-        categories = [...new Set(qaData.map(q => q.category))];
+        categories = [...new Set(qaData.map(q => q.category))].filter(cat => cat !== 'Company Wise QA');
     } else {
         console.error("qaData is not defined. Check data.js path.");
         return;
@@ -475,7 +476,10 @@ function setupEventListeners() {
     document.getElementById('flash-mastered-btn').addEventListener('click', () => markFlashcardStatus('mastered'));
 
     // Mock Interview Controls
-    document.getElementById('start-mock-btn').addEventListener('click', startMockInterview);
+    const startMockBtn = document.getElementById('start-mock-btn');
+    if (startMockBtn) {
+        startMockBtn.addEventListener('click', startMockInterview);
+    }
     document.getElementById('end-mock-early-btn').addEventListener('click', () => {
         if (confirm("Are you sure you want to quit the exam? Your progress will not be saved.")) {
             switchView('mock');
@@ -520,6 +524,33 @@ function setupEventListeners() {
         }
     });
     document.getElementById('action-study-weak').addEventListener('click', studyWeakTopics);
+
+    // Company Q&A Event Listeners
+    const backBtn = document.getElementById('back-to-companies-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            document.getElementById('company-grid-view').style.display = 'block';
+            document.getElementById('company-questions-view').style.display = 'none';
+        });
+    }
+
+    const companySearch = document.getElementById('company-search-input');
+    if (companySearch) {
+        companySearch.addEventListener('input', (e) => {
+            companyFilters.search = e.target.value;
+            filterAndRenderCompanyQuestions();
+        });
+    }
+
+    const companyDiffButtons = document.querySelectorAll('#company-diff-filters .diff-btn');
+    companyDiffButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            companyDiffButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            companyFilters.difficulty = btn.getAttribute('data-diff');
+            filterAndRenderCompanyQuestions();
+        });
+    });
 }
 
 function switchView(viewName) {
@@ -543,6 +574,8 @@ function switchView(viewName) {
             setupFlashcardSelection();
         } else if (viewName === 'mock' && !mockSession.active) {
             setupMockSelection();
+        } else if (viewName === 'company-qa') {
+            renderCompanyGridView();
         }
     }
 }
@@ -554,17 +587,19 @@ function renderCategoryPills() {
     const container = document.getElementById('category-pills-container');
     if (!container) return;
     
-    // Keep the "All" pill
     container.innerHTML = `<button class="category-pill active" data-category="all">All Topics</button>`;
     
-    categories.forEach(cat => {
+    // Sort categories alphabetically
+    const sortedCategories = [...categories].sort((a, b) => a.localeCompare(b));
+    
+    sortedCategories.forEach(cat => {
         const btn = document.createElement('button');
         btn.className = 'category-pill';
         btn.setAttribute('data-category', cat);
         btn.innerText = cat;
         
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
+            document.querySelectorAll('#category-pills-container .category-pill').forEach(pill => pill.classList.remove('active'));
             btn.classList.add('active');
             filters.category = cat;
             filterAndRenderQuestions();
@@ -585,7 +620,7 @@ function resetAllFilters() {
     document.getElementById('search-input').value = '';
     document.getElementById('sort-select').value = 'default';
     
-    document.querySelectorAll('.category-pill').forEach(p => {
+    document.querySelectorAll('#category-pills-container .category-pill').forEach(p => {
         p.classList.toggle('active', p.getAttribute('data-category') === 'all');
     });
     document.querySelectorAll('.diff-btn').forEach(b => {
@@ -643,7 +678,9 @@ function filterAndRenderQuestions() {
     }
     
     // 2. Category Filter
-    if (filters.category !== 'all') {
+    if (filters.category === 'all') {
+        filtered = filtered.filter(q => q.category !== 'Company Wise QA');
+    } else {
         filtered = filtered.filter(q => q.category === filters.category);
     }
     
@@ -700,7 +737,12 @@ function createQuestionCard(q) {
     
     // Category specific icon
     let iconClass = 'fa-solid fa-code';
-    if (q.category.includes('Terraform')) iconClass = 'fa-solid fa-cubes';
+    let categoryText = q.category;
+    
+    if (q.category === 'Company Wise QA') {
+        iconClass = 'fa-solid fa-building';
+        categoryText = q.company || 'Company QA';
+    } else if (q.category.includes('Terraform')) iconClass = 'fa-solid fa-cubes';
     else if (q.category.includes('Kubernetes')) iconClass = 'fa-solid fa-dharmachakra';
     else if (q.category.includes('Azure')) iconClass = 'fa-solid fa-cloud';
     else if (q.category.includes('Linux')) iconClass = 'fa-brands fa-linux';
@@ -709,7 +751,7 @@ function createQuestionCard(q) {
     card.innerHTML = `
         <div class="card-top">
             <div class="card-badges">
-                <span class="badge badge-info"><i class="${iconClass}"></i> ${q.category}</span>
+                <span class="badge badge-info"><i class="${iconClass}"></i> ${categoryText}</span>
                 <span class="difficulty-indicator diff-${q.difficulty.toLowerCase()}">
                     <span class="difficulty-dot"></span>
                     <span class="difficulty-text">${q.difficulty}</span>
@@ -928,35 +970,63 @@ function exitFlashcardSession() {
    MOCK INTERVIEW SIMULATOR
    ========================================================================== */
 function setupMockSelection() {
-    const grid = document.getElementById('mock-topics-grid');
-    if (!grid) return;
-    
-    grid.innerHTML = '';
-    categories.forEach(cat => {
-        const label = document.createElement('label');
-        label.className = 'checkbox-label';
-        label.innerHTML = `
-            <input type="checkbox" name="mock-topic" value="${cat}" checked>
-            <span>${cat}</span>
-        `;
-        grid.appendChild(label);
-    });
+    const poolSelect = document.getElementById('mock-pool-select');
+    if (poolSelect) {
+        // Clear dynamically loaded options first, keeping static ones
+        poolSelect.querySelectorAll('option[data-dynamic="true"]').forEach(el => el.remove());
+        
+        // Find unique companies
+        const companyCategories = [...new Set(qaData.filter(q => q.category === 'Company Wise QA').map(q => q.company))]
+            .filter(c => c)
+            .sort();
+            
+        companyCategories.forEach(company => {
+            const option = document.createElement('option');
+            option.value = company;
+            option.setAttribute('data-dynamic', 'true');
+            const count = qaData.filter(q => q.category === 'Company Wise QA' && q.company === company).length;
+            option.text = `Company: ${company} (${count} Questions)`;
+            poolSelect.appendChild(option);
+        });
+    }
 }
 
 function startMockInterview() {
-    if (typeof mcqData === 'undefined') {
-        alert("MCQ data is not loaded!");
-        return;
-    }
+    const poolSelect = document.getElementById('mock-pool-select');
+    if (!poolSelect) return;
     
-    // Get the selected question count (5, 10, or 20)
+    const pool = poolSelect.value;
     const countEl = document.querySelector('input[name="mock-count"]:checked');
     const mockCount = countEl ? parseInt(countEl.value, 10) : 10;
     
-    // Shuffle the 30 MCQ questions and select the requested number of questions
-    const shuffledMcqs = [...mcqData].sort(() => Math.random() - 0.5);
-    mockSession.list = shuffledMcqs.slice(0, Math.min(mockCount, shuffledMcqs.length));
+    let questionPool = [];
     
+    if (pool === 'all') {
+        // All Questions in the database (standard + company)
+        questionPool = [...qaData];
+    } else if (pool === 'standard') {
+        // Only Standard Technical Topics (excluding Company Wise QA)
+        questionPool = qaData.filter(q => q.category !== 'Company Wise QA');
+    } else if (pool === 'company-all') {
+        // Only Company-wise Questions (all companies)
+        questionPool = qaData.filter(q => q.category === 'Company Wise QA');
+    } else {
+        // A specific company selected
+        questionPool = qaData.filter(q => q.category === 'Company Wise QA' && q.company === pool);
+    }
+    
+    if (questionPool.length === 0) {
+        alert("Selected pool has no questions!");
+        return;
+    }
+    
+    // Shuffle the pool randomly
+    const shuffled = [...questionPool].sort(() => Math.random() - 0.5);
+    
+    // Take the requested count (5, 10, or 20)
+    mockSession.list = shuffled.slice(0, Math.min(mockCount, shuffled.length));
+    
+    mockSession.type = 'qa'; // Merged experience is a Subjective Q&A self-evaluation
     mockSession.currentIndex = 0;
     mockSession.userAnswers = {};
     mockSession.active = true;
@@ -965,9 +1035,8 @@ function startMockInterview() {
     document.getElementById('mock-active').style.display = 'block';
     document.getElementById('mock-results').style.display = 'none';
     
-    // Show the third stat card in results just in case it was hidden previously
     const thirdStat = document.querySelector('#mock-results .res-stat:nth-child(3)');
-    if (thirdStat) thirdStat.style.display = 'flex';
+    if (thirdStat) thirdStat.style.display = 'none';
     
     renderMockNav();
     showMockQuestion();
@@ -982,9 +1051,15 @@ function renderMockNav() {
     mockSession.list.forEach((q, idx) => {
         const div = document.createElement('div');
         
-        // We will show a dot or check icon on the nav item if it's answered
-        const isAnswered = mockSession.userAnswers[idx] && mockSession.userAnswers[idx].length > 0;
-        const statusClass = isAnswered ? 'answered-good' : ''; // use existing css class for green accent
+        let statusClass = '';
+        if (mockSession.type === 'qa') {
+            const ans = mockSession.userAnswers[idx];
+            if (ans === 'correct') statusClass = 'answered-good';
+            else if (ans === 'incorrect') statusClass = 'answered-bad';
+        } else {
+            const isAnswered = mockSession.userAnswers[idx] && mockSession.userAnswers[idx].length > 0;
+            statusClass = isAnswered ? 'answered-good' : '';
+        }
         
         div.className = `mock-nav-item ${idx === mockSession.currentIndex ? 'active' : ''} ${statusClass}`;
         div.setAttribute('data-idx', idx);
@@ -1007,63 +1082,136 @@ function showMockQuestion() {
     const idx = mockSession.currentIndex;
     const q = mockSession.list[idx];
     
-    // Update active nav item
     document.querySelectorAll('.mock-nav-item').forEach(item => {
         const itemIdx = parseInt(item.getAttribute('data-idx'), 10);
-        const isAnswered = mockSession.userAnswers[itemIdx] && mockSession.userAnswers[itemIdx].length > 0;
+        let isAnswered = false;
+        let isCorrect = false;
+        let isIncorrect = false;
+        
+        if (mockSession.type === 'qa') {
+            const ans = mockSession.userAnswers[itemIdx];
+            isAnswered = ans !== undefined;
+            isCorrect = ans === 'correct';
+            isIncorrect = ans === 'incorrect';
+        } else {
+            isAnswered = mockSession.userAnswers[itemIdx] && mockSession.userAnswers[itemIdx].length > 0;
+        }
         
         item.classList.toggle('active', itemIdx === idx);
-        item.classList.toggle('answered-good', isAnswered);
+        item.classList.toggle('answered-good', isCorrect || (mockSession.type !== 'qa' && isAnswered));
+        item.classList.toggle('answered-bad', isIncorrect);
     });
     
     document.getElementById('mock-q-category').innerText = q.category;
-    document.getElementById('mock-q-type').innerText = q.multipleSelect ? "Multiple Select" : "Single Choice";
+    document.getElementById('mock-q-type').innerText = mockSession.type === 'qa' ? "Subjective Q&A" : (q.multipleSelect ? "Multiple Select" : "Single Choice");
     document.getElementById('mock-q-index').innerText = `Question ${idx + 1} of ${mockSession.list.length}`;
     document.getElementById('mock-question-text').innerText = q.question;
     
-    // Render Options
     const optionsContainer = document.getElementById('mock-options-container');
     optionsContainer.innerHTML = '';
     
-    const selectedOptions = mockSession.userAnswers[idx] || [];
-    
-    q.options.forEach((opt, optIdx) => {
-        const label = document.createElement('label');
-        const isChecked = selectedOptions.includes(optIdx);
-        label.className = `mock-option-label ${isChecked ? 'selected' : ''}`;
+    if (mockSession.type === 'qa') {
+        const selectedEval = mockSession.userAnswers[idx];
         
-        const inputType = q.multipleSelect ? 'checkbox' : 'radio';
-        const inputName = `mock-option-${idx}`;
-        
-        label.innerHTML = `
-            <input type="${inputType}" name="${inputName}" value="${optIdx}" ${isChecked ? 'checked' : ''}>
-            <span class="option-letter">${String.fromCharCode(65 + optIdx)}</span>
-            <span class="option-text">${opt}</span>
+        optionsContainer.innerHTML = `
+            <div class="mock-qa-workspace" style="display: flex; flex-direction: column; gap: 20px; width: 100%; margin-top: 16px;">
+                <div class="mock-qa-prompt" style="padding: 16px; background-color: rgba(255,255,255,0.02); border: 1px dashed var(--border-color); border-radius: var(--radius-md); text-align: center; color: var(--text-secondary);">
+                    <p><i class="fa-regular fa-comment-dots" style="font-size: 1.5rem; margin-bottom: 8px; display: block;"></i> Think about your answer, then click below to reveal the recommended solution.</p>
+                </div>
+                
+                <div id="mock-qa-reveal-btn-container" style="text-align: center; ${selectedEval ? 'display: none;' : ''}">
+                    <button class="btn btn-primary" id="mock-reveal-answer-btn" style="background-color: var(--accent-primary); border-color: var(--accent-primary); color: white; padding: 10.5px 24px; font-weight: 600;">
+                        <i class="fa-solid fa-eye"></i> Reveal Recommended Answer
+                    </button>
+                </div>
+                
+                <div id="mock-qa-answer-container" style="${selectedEval ? 'display: block;' : 'display: none;'}">
+                    <h4 style="margin-bottom: 10px; color: var(--accent-primary); font-size: 1rem;"><i class="fa-solid fa-circle-check"></i> Recommended Answer:</h4>
+                    <div class="answer-box" style="padding: 20px; background-color: rgba(0,0,0,0.25); border-left: 4px solid var(--accent-primary); border-radius: var(--radius-md); white-space: pre-line; font-size: 0.95rem; color: var(--text-primary); line-height: 1.6; max-height: 300px; overflow-y: auto;">
+                        ${q.answer}
+                    </div>
+                    
+                    <div class="mock-qa-evaluation" style="margin-top: 24px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                        <h4 style="margin-bottom: 12px; text-align: center; font-size: 1rem;">Self-Evaluate: How did you do?</h4>
+                        <div style="display: flex; gap: 16px; justify-content: center;">
+                            <button class="btn ${selectedEval === 'correct' ? 'btn-success' : 'btn-success-outline'}" id="mock-eval-correct-btn" style="flex: 1; max-width: 200px;">
+                                <i class="fa-solid fa-thumbs-up"></i> I got it right!
+                            </button>
+                            <button class="btn ${selectedEval === 'incorrect' ? 'btn-danger' : 'btn-danger-outline'}" id="mock-eval-incorrect-btn" style="flex: 1; max-width: 200px;">
+                                <i class="fa-solid fa-thumbs-down"></i> I need to review this
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         `;
         
-        // Handle option change
-        const input = label.querySelector('input');
-        input.addEventListener('change', () => {
-            if (q.multipleSelect) {
-                const checkedInputs = Array.from(document.querySelectorAll(`input[name="${inputName}"]:checked`));
-                mockSession.userAnswers[idx] = checkedInputs.map(el => parseInt(el.value, 10));
-            } else {
-                mockSession.userAnswers[idx] = [optIdx];
-            }
+        const revealBtn = optionsContainer.querySelector('#mock-reveal-answer-btn');
+        const answerContainer = optionsContainer.querySelector('#mock-qa-answer-container');
+        const revealContainer = optionsContainer.querySelector('#mock-qa-reveal-btn-container');
+        
+        if (revealBtn) {
+            revealBtn.addEventListener('click', () => {
+                revealContainer.style.display = 'none';
+                answerContainer.style.display = 'block';
+            });
+        }
+        
+        const correctBtn = optionsContainer.querySelector('#mock-eval-correct-btn');
+        const incorrectBtn = optionsContainer.querySelector('#mock-eval-incorrect-btn');
+        
+        if (correctBtn) {
+            correctBtn.addEventListener('click', () => {
+                mockSession.userAnswers[idx] = 'correct';
+                showMockQuestion();
+                renderMockNav();
+            });
+        }
+        
+        if (incorrectBtn) {
+            incorrectBtn.addEventListener('click', () => {
+                mockSession.userAnswers[idx] = 'incorrect';
+                showMockQuestion();
+                renderMockNav();
+            });
+        }
+    } else {
+        const selectedOptions = mockSession.userAnswers[idx] || [];
+        
+        q.options.forEach((opt, optIdx) => {
+            const label = document.createElement('label');
+            const isChecked = selectedOptions.includes(optIdx);
+            label.className = `mock-option-label ${isChecked ? 'selected' : ''}`;
             
-            // Toggle visual selected state
-            document.querySelectorAll(`input[name="${inputName}"]`).forEach(inp => {
-                inp.parentElement.classList.toggle('selected', inp.checked);
+            const inputType = q.multipleSelect ? 'checkbox' : 'radio';
+            const inputName = `mock-option-${idx}`;
+            
+            label.innerHTML = `
+                <input type="${inputType}" name="${inputName}" value="${optIdx}" ${isChecked ? 'checked' : ''}>
+                <span class="option-letter">${String.fromCharCode(65 + optIdx)}</span>
+                <span class="option-text">${opt}</span>
+            `;
+            
+            const input = label.querySelector('input');
+            input.addEventListener('change', () => {
+                if (q.multipleSelect) {
+                    const checkedInputs = Array.from(document.querySelectorAll(`input[name="${inputName}"]:checked`));
+                    mockSession.userAnswers[idx] = checkedInputs.map(el => parseInt(el.value, 10));
+                } else {
+                    mockSession.userAnswers[idx] = [optIdx];
+                }
+                
+                document.querySelectorAll(`input[name="${inputName}"]`).forEach(inp => {
+                    inp.parentElement.classList.toggle('selected', inp.checked);
+                });
+                
+                renderMockNav();
             });
             
-            // Update nav item state
-            renderMockNav();
+            optionsContainer.appendChild(label);
         });
-        
-        optionsContainer.appendChild(label);
-    });
+    }
     
-    // Navigation buttons visibility
     const prevBtn = document.getElementById('mock-prev-btn');
     const nextBtn = document.getElementById('mock-next-btn');
     const submitBtn = document.getElementById('mock-submit-btn');
@@ -1093,10 +1241,16 @@ function navigateMock(dir) {
 
 function finishMockInterview() {
     const totalQ = mockSession.list.length;
-    const answeredCount = Object.keys(mockSession.userAnswers).filter(k => mockSession.userAnswers[k].length > 0).length;
+    
+    let answeredCount = 0;
+    if (mockSession.type === 'qa') {
+        answeredCount = Object.keys(mockSession.userAnswers).filter(k => mockSession.userAnswers[k] !== undefined).length;
+    } else {
+        answeredCount = Object.keys(mockSession.userAnswers).filter(k => mockSession.userAnswers[k].length > 0).length;
+    }
     
     if (answeredCount < totalQ) {
-        if (!confirm(`You have only answered ${answeredCount} out of ${totalQ} questions. Are you sure you want to submit?`)) {
+        if (!confirm(`You have only completed ${answeredCount} out of ${totalQ} questions. Are you sure you want to submit?`)) {
             return;
         }
     }
@@ -1111,14 +1265,16 @@ function finishMockInterview() {
     let wrongCount = 0;
     
     mockSession.list.forEach((q, idx) => {
-        const userAns = mockSession.userAnswers[idx] || [];
-        const correctAns = q.correctAnswer;
-        
-        // Sort arrays to compare
-        const userSorted = [...userAns].sort();
-        const correctSorted = [...correctAns].sort();
-        
-        const isCorrect = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
+        let isCorrect = false;
+        if (mockSession.type === 'qa') {
+            isCorrect = mockSession.userAnswers[idx] === 'correct';
+        } else {
+            const userAns = mockSession.userAnswers[idx] || [];
+            const correctAns = q.correctAnswer;
+            const userSorted = [...userAns].sort();
+            const correctSorted = [...correctAns].sort();
+            isCorrect = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
+        }
         
         if (isCorrect) {
             correctCount++;
@@ -1129,81 +1285,99 @@ function finishMockInterview() {
     
     const scorePct = Math.round((correctCount / totalQ) * 100);
     
-    // Update score cards
     document.getElementById('mock-score-pct').innerText = `${scorePct}%`;
-    document.getElementById('mock-total-answered').innerText = `Marks: ${correctCount} / ${totalQ} Correct`;
+    document.getElementById('mock-total-answered').innerText = `Score: ${correctCount} / ${totalQ} Correct`;
     document.getElementById('mock-perfect-count').innerText = correctCount;
     document.getElementById('mock-average-count').innerText = wrongCount;
     
-    // Change badges text
     document.querySelector('#mock-results .res-stat:nth-child(1) .res-lbl').innerText = "Correct";
-    document.querySelector('#mock-results .res-stat:nth-child(2) .res-lbl').innerText = "Wrong";
+    document.querySelector('#mock-results .res-stat:nth-child(2) .res-lbl').innerText = "Review Needed";
     
     const thirdStat = document.querySelector('#mock-results .res-stat:nth-child(3)');
     if (thirdStat) {
-        thirdStat.style.display = 'none'; // Hide the third stat card in MCQ mode
+        thirdStat.style.display = 'none';
     }
     
-    // Render detailed breakdown
     const breakdownContainer = document.getElementById('mock-results-breakdown');
     if (breakdownContainer) {
         breakdownContainer.innerHTML = '';
         mockSession.list.forEach((q, idx) => {
-            const userAns = mockSession.userAnswers[idx] || [];
-            const correctAns = q.correctAnswer;
-            
-            const userSorted = [...userAns].sort();
-            const correctSorted = [...correctAns].sort();
-            const isCorrect = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
+            let isCorrectFinal = false;
+            if (mockSession.type === 'qa') {
+                isCorrectFinal = mockSession.userAnswers[idx] === 'correct';
+            } else {
+                const uAns = mockSession.userAnswers[idx] || [];
+                const correctAns = q.correctAnswer;
+                const userSorted = [...uAns].sort();
+                const correctSorted = [...correctAns].sort();
+                isCorrectFinal = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
+            }
             
             const item = document.createElement('div');
-            item.className = `mock-breakdown-item mcq-breakdown ${isCorrect ? 'correct-border' : 'wrong-border'}`;
+            item.className = `mock-breakdown-item ${isCorrectFinal ? 'correct-border' : 'wrong-border'}`;
             
-            // Build Options HTML with check/cross marks
-            let optionsHtml = '<div class="mcq-results-options">';
-            q.options.forEach((opt, optIdx) => {
-                const isSelected = userAns.includes(optIdx);
-                const isCorr = correctAns.includes(optIdx);
-                
-                let optionClass = '';
-                let icon = '';
-                
-                if (isCorr) {
-                    optionClass = 'option-correct';
-                    icon = '<i class="fa-solid fa-circle-check option-result-icon text-success"></i>';
-                } else if (isSelected && !isCorr) {
-                    optionClass = 'option-wrong';
-                    icon = '<i class="fa-solid fa-circle-xmark option-result-icon text-danger"></i>';
-                }
-                
-                optionsHtml += `
-                    <div class="mcq-result-option-item ${optionClass} ${isSelected ? 'user-selected' : ''}">
-                        ${icon}
-                        <span class="option-letter">${String.fromCharCode(65 + optIdx)}</span>
-                        <span class="option-text">${opt}</span>
+            if (mockSession.type === 'qa') {
+                item.innerHTML = `
+                    <div class="mock-breakdown-q-row" style="cursor: pointer;">
+                        <span class="mock-breakdown-num ${isCorrectFinal ? 'bg-success' : 'bg-danger'}">${idx + 1}</span>
+                        <span class="mock-breakdown-question" style="white-space: normal; overflow: visible; text-overflow: clip;">${q.question}</span>
+                        <span class="badge ${isCorrectFinal ? 'badge-success' : 'badge-danger'}">
+                            ${isCorrectFinal ? '<i class="fa-solid fa-check"></i> Correct' : '<i class="fa-solid fa-xmark"></i> Incorrect'}
+                        </span>
+                    </div>
+                    <div class="mcq-breakdown-expanded-content" style="display: none; padding-top: 16px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
+                        <div class="mcq-explanation-box" style="margin-top: 8px; padding: 16px; background-color: rgba(0,0,0,0.2); border-radius: 8px; border-left: 4px solid var(--accent-primary);">
+                            <strong>Recommended Solution:</strong>
+                            <p style="margin-top: 8px; font-size: 0.95rem; color: var(--text-primary); white-space: pre-line; line-height: 1.6;">${q.answer}</p>
+                        </div>
                     </div>
                 `;
-            });
-            optionsHtml += '</div>';
-            
-            item.innerHTML = `
-                <div class="mock-breakdown-q-row" style="cursor: pointer;">
-                    <span class="mock-breakdown-num ${isCorrect ? 'bg-success' : 'bg-danger'}">${idx + 1}</span>
-                    <span class="mock-breakdown-question" style="white-space: normal; overflow: visible; text-overflow: clip;">${q.question}</span>
-                    <span class="badge ${isCorrect ? 'badge-success' : 'badge-danger'}">
-                        ${isCorrect ? '<i class="fa-solid fa-check"></i> Correct' : '<i class="fa-solid fa-xmark"></i> Incorrect'}
-                    </span>
-                </div>
-                <div class="mcq-breakdown-expanded-content" style="display: none; padding-top: 16px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
-                    ${optionsHtml}
-                    <div class="mcq-explanation-box" style="margin-top: 16px; padding: 16px; background-color: rgba(0,0,0,0.2); border-radius: 8px; border-left: 4px solid var(--accent-primary);">
-                        <strong>Explanation:</strong>
-                        <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-secondary);">${q.explanation}</p>
+            } else {
+                let optionsHtml = '<div class="mcq-results-options">';
+                q.options.forEach((opt, optIdx) => {
+                    const uAns = mockSession.userAnswers[idx] || [];
+                    const isSelected = uAns.includes(optIdx);
+                    const isCorr = q.correctAnswer.includes(optIdx);
+                    
+                    let optionClass = '';
+                    let icon = '';
+                    
+                    if (isCorr) {
+                        optionClass = 'option-correct';
+                        icon = '<i class="fa-solid fa-circle-check option-result-icon text-success"></i>';
+                    } else if (isSelected && !isCorr) {
+                        optionClass = 'option-wrong';
+                        icon = '<i class="fa-solid fa-circle-xmark option-result-icon text-danger"></i>';
+                    }
+                    
+                    optionsHtml += `
+                        <div class="mcq-result-option-item ${optionClass} ${isSelected ? 'user-selected' : ''}">
+                            ${icon}
+                            <span class="option-letter">${String.fromCharCode(65 + optIdx)}</span>
+                            <span class="option-text">${opt}</span>
+                        </div>
+                    `;
+                });
+                optionsHtml += '</div>';
+                
+                item.innerHTML = `
+                    <div class="mock-breakdown-q-row" style="cursor: pointer;">
+                        <span class="mock-breakdown-num ${isCorrectFinal ? 'bg-success' : 'bg-danger'}">${idx + 1}</span>
+                        <span class="mock-breakdown-question" style="white-space: normal; overflow: visible; text-overflow: clip;">${q.question}</span>
+                        <span class="badge ${isCorrectFinal ? 'badge-success' : 'badge-danger'}">
+                            ${isCorrectFinal ? '<i class="fa-solid fa-check"></i> Correct' : '<i class="fa-solid fa-xmark"></i> Incorrect'}
+                        </span>
                     </div>
-                </div>
-            `;
+                    <div class="mcq-breakdown-expanded-content" style="display: none; padding-top: 16px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
+                        ${optionsHtml}
+                        <div class="mcq-explanation-box" style="margin-top: 16px; padding: 16px; background-color: rgba(0,0,0,0.2); border-radius: 8px; border-left: 4px solid var(--accent-primary);">
+                            <strong>Explanation:</strong>
+                            <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-secondary);">${q.explanation}</p>
+                        </div>
+                    </div>
+                `;
+            }
             
-            // Add click handler to toggle expand
             const headerRow = item.querySelector('.mock-breakdown-q-row');
             headerRow.addEventListener('click', () => {
                 const exp = item.querySelector('.mcq-breakdown-expanded-content');
@@ -1576,4 +1750,139 @@ function escapeHTML(str) {
             '"': '&quot;'
         }[tag] || tag)
     );
+}
+
+// Company-wise Q&A View Variables & Logic
+let activeCompany = '';
+const companyFilters = {
+    search: '',
+    difficulty: 'all'
+};
+
+function renderCompanyGridView() {
+    // Show grid, hide detail list
+    const gridView = document.getElementById('company-grid-view');
+    const questionsView = document.getElementById('company-questions-view');
+    if (gridView) gridView.style.display = 'block';
+    if (questionsView) questionsView.style.display = 'none';
+
+    const container = document.getElementById('company-cards-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    // Get unique companies list
+    const companyCategories = [...new Set(qaData.filter(q => q.category === 'Company Wise QA').map(q => q.company))]
+        .filter(c => c)
+        .sort();
+
+    companyCategories.forEach(company => {
+        const count = qaData.filter(q => q.category === 'Company Wise QA' && q.company === company).length;
+
+        const card = document.createElement('div');
+        card.className = 'company-card';
+        card.style.cssText = `
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        `;
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-4px)';
+            card.style.borderColor = 'var(--accent-primary)';
+            card.style.boxShadow = 'var(--shadow-md)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.borderColor = 'var(--border-color)';
+            card.style.boxShadow = 'var(--shadow-sm)';
+        });
+
+        card.innerHTML = `
+            <div style="width: 48px; height: 48px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem;">
+                <i class="fa-solid fa-building"></i>
+            </div>
+            <div>
+                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">${company}</h3>
+                <span style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; display: inline-block;">${count} Questions</span>
+            </div>
+            <div style="margin-top: auto; display: flex; align-items: center; gap: 8px; color: var(--accent-primary); font-weight: 600; font-size: 0.9rem;">
+                <span>Explore Q&A</span> <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+        `;
+
+        card.addEventListener('click', () => {
+            showCompanyQuestions(company);
+        });
+
+        container.appendChild(card);
+    });
+}
+
+function showCompanyQuestions(company) {
+    activeCompany = company;
+    companyFilters.search = '';
+    companyFilters.difficulty = 'all';
+
+    const searchInput = document.getElementById('company-search-input');
+    if (searchInput) searchInput.value = '';
+
+    document.querySelectorAll('#company-diff-filters .diff-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-diff') === 'all');
+    });
+
+    const titleEl = document.getElementById('selected-company-title');
+    if (titleEl) titleEl.innerText = `${company} Questions`;
+
+    const gridView = document.getElementById('company-grid-view');
+    const questionsView = document.getElementById('company-questions-view');
+    if (gridView) gridView.style.display = 'none';
+    if (questionsView) questionsView.style.display = 'block';
+
+    filterAndRenderCompanyQuestions();
+}
+
+function filterAndRenderCompanyQuestions() {
+    const container = document.getElementById('company-qa-list-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    let filtered = qaData.filter(q => q.category === 'Company Wise QA' && q.company === activeCompany);
+
+    // Search query match
+    if (companyFilters.search.trim() !== '') {
+        const query = companyFilters.search.toLowerCase().trim();
+        filtered = filtered.filter(q => q.question.toLowerCase().includes(query) || q.answer.toLowerCase().includes(query));
+    }
+
+    // Difficulty match
+    if (companyFilters.difficulty !== 'all') {
+        filtered = filtered.filter(q => q.difficulty === companyFilters.difficulty);
+    }
+
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div class="no-results" style="text-align: center; padding: 48px; color: var(--text-secondary);">
+                <i class="fa-solid fa-magnifying-glass-blur" style="font-size: 3rem; margin-bottom: 16px; display: block; color: var(--border-color);"></i>
+                <h3>No questions found</h3>
+                <p>Try adjusting your search terms or filters.</p>
+            </div>
+        `;
+        return;
+    }
+
+    filtered.forEach(q => {
+        const card = createQuestionCard(q);
+        container.appendChild(card);
+    });
 }
