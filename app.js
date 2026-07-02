@@ -33,41 +33,8 @@ let mockSession = {
 
 // Helper function to get 12-hour stable shuffled questions
 function get12HourShuffledQuestions() {
-    const now = Date.now();
-    const savedTime = localStorage.getItem('devops_hub_shuffle_time');
-    const savedOrder = localStorage.getItem('devops_hub_shuffle_order');
-    
-    // 12 hours in milliseconds = 12 * 60 * 60 * 1000 = 43200000
-    const twelveHours = 43200000;
-    
-    if (savedTime && savedOrder && (now - parseInt(savedTime, 10) < twelveHours)) {
-        try {
-            const orderIds = JSON.parse(savedOrder);
-            const idMap = new Map(qaData.map(q => [q.id, q]));
-            
-            // Reconstruct the array based on the saved order of IDs
-            const orderedQuestions = orderIds
-                .map(id => idMap.get(id))
-                .filter(q => q !== undefined); // filter out any deleted/undefined ones
-            
-            // If there are new questions added that weren't in the saved order, append them at the end
-            const currentIds = new Set(orderIds);
-            const newQuestions = qaData.filter(q => !currentIds.has(q.id));
-            
-            return [...orderedQuestions, ...newQuestions];
-        } catch (e) {
-            console.error("Error parsing saved shuffle order, re-shuffling", e);
-        }
-    }
-    
-    // Create a new shuffle if no cache exists or it has expired (12+ hours)
-    const shuffled = [...qaData].sort(() => Math.random() - 0.5);
-    const orderIds = shuffled.map(q => q.id);
-    
-    localStorage.setItem('devops_hub_shuffle_time', now.toString());
-    localStorage.setItem('devops_hub_shuffle_order', JSON.stringify(orderIds));
-    
-    return shuffled;
+    // Return a fresh random shuffle on every load/refresh
+    return [...qaData].sort(() => Math.random() - 0.5);
 }
 
 // Initialize the Application
@@ -390,6 +357,71 @@ window.copyCodeBlock = function(btn) {
    NAVIGATION & VIEW SWITCHING
    ========================================================================== */
 function setupEventListeners() {
+    // Global Reshuffle All Button
+    const globalReshuffleBtn = document.getElementById('global-reshuffle-btn');
+    if (globalReshuffleBtn) {
+        globalReshuffleBtn.addEventListener('click', () => {
+            // Reshuffle Q&As
+            questions = [...qaData].sort(() => Math.random() - 0.5);
+            
+            // Reshuffle MCQs if loaded
+            if (typeof mcqData !== 'undefined') {
+                mcqData.sort(() => Math.random() - 0.5);
+            }
+            
+            // Clear mock session used history to reset available questions pool
+            mockSession.usedQuestionIds = [];
+            
+            // Trigger visual feedback (rotate shuffle icon)
+            const icon = globalReshuffleBtn.querySelector('i');
+            if (icon) {
+                icon.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                icon.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    icon.style.transition = 'none';
+                    icon.style.transform = 'none';
+                }, 600);
+            }
+            
+            // Re-render current active view
+            if (currentView === 'browse') {
+                filterAndRenderQuestions();
+            } else if (currentView === 'company-qa') {
+                filterAndRenderCompanyQuestions();
+            } else if (currentView === 'flashcards') {
+                startFlashcards();
+            } else if (currentView === 'mock') {
+                if (!mockSession.active) {
+                    setupMockSelection();
+                }
+            }
+            console.log("Reshuffled all 830+ Q&As and 20 MCQs successfully!");
+        });
+    }
+
+    // Local Reshuffle Button (on Browse Questions page)
+    const localReshuffleBtn = document.getElementById('local-reshuffle-btn');
+    if (localReshuffleBtn) {
+        localReshuffleBtn.addEventListener('click', () => {
+            // Reshuffle Q&As
+            questions = [...qaData].sort(() => Math.random() - 0.5);
+            
+            // Trigger visual feedback (rotate shuffle icon)
+            const icon = localReshuffleBtn.querySelector('i');
+            if (icon) {
+                icon.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                icon.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    icon.style.transition = 'none';
+                    icon.style.transform = 'none';
+                }, 600);
+            }
+            
+            filterAndRenderQuestions();
+            console.log("Reshuffled Q&As locally!");
+        });
+    }
+
     // Logo Click to go Home
     const logoLink = document.getElementById('logo-link');
     if (logoLink) {

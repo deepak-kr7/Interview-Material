@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.0.2">
 </head>
 <body class="dark-theme">
     <div class="app-container">
@@ -79,6 +79,10 @@
                     <input type="text" id="search-input" placeholder="Search questions, answers, concepts (e.g. Terraform, AKS)...">
                 </div>
                 <div class="top-actions">
+                    <button id="global-reshuffle-btn" class="stats-badge" title="Reshuffle All Questions & MCQs">
+                        <i class="fa-solid fa-shuffle"></i>
+                        <span>Reshuffle All</span>
+                    </button>
                     <div class="stats-badge">
                         <i class="fa-solid fa-fire"></i>
                         <span id="streak-counter">0 Day Streak</span>
@@ -196,7 +200,10 @@
                 <section class="questions-section">
                     <div class="results-meta">
                         <span id="results-count">Showing 0 questions</span>
-                        <button id="reset-filters" class="text-btn">Clear All Filters</button>
+                        <div style="display: flex; gap: 16px; align-items: center;">
+                            <button id="local-reshuffle-btn" class="text-btn" style="color: var(--accent-primary); font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-solid fa-shuffle"></i> Reshuffle</button>
+                            <button id="reset-filters" class="text-btn">Clear All Filters</button>
+                        </div>
                     </div>
                     <div class="questions-grid" id="questions-grid">
                         <!-- Q&A Cards will be dynamically injected here -->
@@ -594,8 +601,8 @@
     </div>
 
     <!-- Load scripts. data.js MUST be loaded first as it contains the questions data. -->
-    <script src="data.js?v=1.0.1"></script>
-    <script src="mcq_data.js?v=1.0.1"></script>
-    <script src="app.js?v=1.0.1"></script>
+    <script src="data.js?v=1.0.2"></script>
+    <script src="mcq_data.js?v=1.0.2"></script>
+    <script src="app.js?v=1.0.2"></script>
 </body>
 </html>

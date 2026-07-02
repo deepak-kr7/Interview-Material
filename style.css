@@ -2410,6 +2410,24 @@ body {
     color: #ffffff;
 }
 
+/* Global Reshuffle Button styles */
+#global-reshuffle-btn {
+    cursor: pointer;
+    background: rgba(var(--accent-primary-rgb), 0.1);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.3);
+    color: var(--accent-primary);
+    outline: none;
+    transition: all var(--transition-fast) ease;
+}
+#global-reshuffle-btn:hover {
+    background: rgba(var(--accent-primary-rgb), 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb), 0.15);
+}
+#global-reshuffle-btn:active {
+    transform: translateY(0);
+}
+
 
 
 
