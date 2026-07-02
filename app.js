@@ -640,7 +640,8 @@ function filterAndRenderQuestions() {
     // 1. Search Filter (Multi-Field Keyword Matching with Smart Aliases)
     if (filters.search.trim() !== '') {
         const query = filters.search.toLowerCase().trim();
-        const searchWords = query.split(/\s+/).filter(w => w.length > 0);
+        // Split words and strip common punctuation like ? , . ! /
+        const searchWords = query.split(/\s+/).filter(w => w.length > 0).map(w => w.replace(/[?.,!/]/g, ''));
         
         // Define smart keyword groups for developer aliases
         const aliasMap = {
@@ -663,13 +664,14 @@ function filterAndRenderQuestions() {
         };
         
         filtered = filtered.filter(q => {
+            // Strip punctuation from question text or metadata to make it match clean search words
             const searchableText = [
                 q.question || '',
                 q.category || '',
                 q.company || '',
                 q.source || '',
                 q.difficulty || ''
-            ].join(' ').toLowerCase();
+            ].join(' ').toLowerCase().replace(/[?.,!/]/g, ' ');
             
             return searchWords.every(word => {
                 // Match search words against the question fields
@@ -683,7 +685,10 @@ function filterAndRenderQuestions() {
     
     // 2. Category Filter
     if (filters.category === 'all') {
-        filtered = filtered.filter(q => q.category !== 'Company Wise QA');
+        // If search is active, we search the entire database (including Company Wise QA)
+        if (filters.search.trim() === '') {
+            filtered = filtered.filter(q => q.category !== 'Company Wise QA');
+        }
     } else {
         filtered = filtered.filter(q => q.category === filters.category);
     }
@@ -1874,7 +1879,8 @@ function filterAndRenderCompanyQuestions() {
     // Search query match (Multi-Field Keyword Matching with Smart Aliases)
     if (companyFilters.search.trim() !== '') {
         const query = companyFilters.search.toLowerCase().trim();
-        const searchWords = query.split(/\s+/).filter(w => w.length > 0);
+        // Split words and strip common punctuation like ? , . ! /
+        const searchWords = query.split(/\s+/).filter(w => w.length > 0).map(w => w.replace(/[?.,!/]/g, ''));
         
         const aliasMap = {
             'aks': ['kubernetes', 'aks', 'k8s', 'kube', 'pod', 'cluster'],
@@ -1902,7 +1908,7 @@ function filterAndRenderCompanyQuestions() {
                 q.company || '',
                 q.source || '',
                 q.difficulty || ''
-            ].join(' ').toLowerCase();
+            ].join(' ').toLowerCase().replace(/[?.,!/]/g, ' ');
             
             return searchWords.every(word => {
                 if (aliasMap[word]) {
