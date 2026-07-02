@@ -1,0 +1,178 @@
+ID: 289 | Category: Terraform (IaC) | Question: You want to use custom images for VM deployment in Azure. How would you reference them in Terraform?
+ID: 330 | Category: DevOps General | Question: Have u work with AFD and APM?
+ID: 333 | Category: Company Wise QA | Question: Terraform Taint?
+ID: 345 | Category: Company Wise QA | Question: Have you written automation script?
+ID: 408 | Category: Docker & Kubernetes | Question: What is Demonset, stateful set?
+ID: 412 | Category: Docker & Kubernetes | Question: Sidecar Container?
+ID: 427 | Category: Company Wise QA | Question: In linux which flavour you have worked?
+ID: 431 | Category: Company Wise QA | Question: Scipting language you have worked on?
+ID: 436 | Category: Company Wise QA | Question: Are you using build and release pipeline both?
+ID: 440 | Category: Company Wise QA | Question: Command to check logs, running container?
+ID: 444 | Category: Company Wise QA | Question: Suppose you have a single file with 1000 lines of code and you need to run only one resource (e.g., a VNet). How would you do that?
+ID: 448 | Category: Company Wise QA | Question: How can you prevent the accidental deletion of a resource in Terraform?
+ID: 449 | Category: Company Wise QA | Question: What is the process of provisioning infrastructure using Terraform?
+ID: 451 | Category: Company Wise QA | Question: have you done security hardening in linux machine ?
+ID: 452 | Category: Company Wise QA | Question: What is the basic structure of a Terraform configuration?
+ID: 454 | Category: Company Wise QA | Question: Which operating systems have you worked on — Ubuntu or RHEL?
+ID: 460 | Category: Company Wise QA | Question: How can you access secrets stored in Azure Key Vault to access a application or on resources?
+ID: 461 | Category: Company Wise QA | Question: You have modules for 3 environments. If you rename npr.tfvars, will Terraform still execute it?
+ID: 462 | Category: Company Wise QA | Question: How many IPs are available in the 192.168.1.0/32 ?
+ID: 466 | Category: Company Wise QA | Question: Which Azure services have you worked with in your application?
+ID: 476 | Category: Company Wise QA | Question: questions -
+ID: 498 | Category: Company Wise QA | Question: what is metrics
+ID: 501 | Category: Company Wise QA | Question: why we need Grafana
+ID: 505 | Category: Company Wise QA | Question: what are terraform provider?
+ID: 508 | Category: Company Wise QA | Question: have you worked on Grafana and Prometheus and how it works?
+ID: 510 | Category: Company Wise QA | Question: can you tell me about any networking issues?
+ID: 511 | Category: Company Wise QA | Question: have you worked on Linux or windows machine?
+ID: 516 | Category: Company Wise QA | Question: you have a playbook and need to run a single task, how can you run ?
+ID: 521 | Category: Company Wise QA | Question: prerequsite on setting of worker node and and master node?
+ID: 523 | Category: Company Wise QA | Question: how will you check reliability of your infrastructure?
+ID: 526 | Category: Company Wise QA | Question: if customer want to change the version of terraform how will you assess/estimate the changes?
+ID: 533 | Category: Company Wise QA | Question: What is the use of CMD in Docker?
+ID: 534 | Category: Company Wise QA | Question: What does the output block in Terraform do?
+ID: 544 | Category: Company Wise QA | Question: have you used function app?
+ID: 545 | Category: Company Wise QA | Question: what is role of azure function app?
+ID: 546 | Category: Company Wise QA | Question: which resource we can use to distrubte the content static & dynamic?
+ID: 548 | Category: Company Wise QA | Question: did you worked with aws? what all resources you have used in aws?
+ID: 549 | Category: Company Wise QA | Question: have you worked on gcp? what all resources you have used in gcp?
+ID: 550 | Category: Company Wise QA | Question: how many years of experience you have in terraform?
+ID: 551 | Category: Company Wise QA | Question: did you used terraform taint?
+ID: 553 | Category: Company Wise QA | Question: I have created a resources in azure and want to keep the state file in aws?
+ID: 554 | Category: Company Wise QA | Question: have you encoured any errors in terraform?
+ID: 555 | Category: Company Wise QA | Question: what happeens when we run terraform init?
+ID: 557 | Category: Company Wise QA | Question: can you write a code for virtual machine in terraform?
+ID: 558 | Category: Company Wise QA | Question: have you also used modules, can you explain the folder structure of modules?
+ID: 559 | Category: Company Wise QA | Question: why you're using for_each, did you also used count?
+ID: 561 | Category: Company Wise QA | Question: you have also worked on azure devops?
+ID: 563 | Category: Company Wise QA | Question: do you remeember az cli command to create app registrations?
+ID: 565 | Category: Company Wise QA | Question: what are the steps in ci pipeline as you know there is code commit?
+ID: 566 | Category: Company Wise QA | Question: what is steps to generate artifacts?
+ID: 567 | Category: Company Wise QA | Question: which package types you have used in your CD pipelines?
+ID: 568 | Category: Company Wise QA | Question: which langauges are you well versed with?
+ID: 570 | Category: Company Wise QA | Question: What is the Hub and Spoke network topology in Azure?
+ID: 572 | Category: Company Wise QA | Question: Can you describe some firewall rules you have configured or worked on in Azure?
+ID: 575 | Category: Company Wise QA | Question: What is PIM (Privileged Identity Management), and why is it important?
+ID: 576 | Category: Company Wise QA | Question: If a user is assigned access at the Management Group level, can they access all subscriptions under it? How can we restrict access to specific subscriptions?
+ID: 577 | Category: Company Wise QA | Question: Suppose there are three VNets: A, B, and C. VNet A is peered with VNet B, and VNet B is peered with VNet C. Can VNet A communicate directly with VNet C?
+ID: 579 | Category: Company Wise QA | Question: Suppose you have two instances. How can you transfer a file from one instance to another?
+ID: 580 | Category: Company Wise QA | Question: How can you transfer files between two instances without using SFTP or SCP?
+ID: 581 | Category: Company Wise QA | Question: Have you performed any migration tasks (e.g., on-premises to cloud, one tenant to another, or between subscription IDs)?
+ID: 583 | Category: Company Wise QA | Question: How can a user log in to a Linux machine using Entra ID credentials?
+ID: 585 | Category: Company Wise QA | Question: What is the name of the file where network configurations are stored and managed in Linux?
+ID: 589 | Category: Company Wise QA | Question: Experience with Kubernetes?
+ID: 595 | Category: Company Wise QA | Question: How will you integrate sonarqube using scripting
+ID: 596 | Category: Company Wise QA | Question: In a self-hosted agent scenario with multiple VMs, how can I ensure that only one specific VM is used for executing the tasks out of multiple vm's, instead of using all the VMs?
+ID: 597 | Category: Company Wise QA | Question: Why blue green deployment -- whats rollback?
+ID: 600 | Category: Company Wise QA | Question: How will you integrate azure key vault into pipeline with scripting?
+ID: 601 | Category: Company Wise QA | Question: Do you know any scripting language?
+ID: 603 | Category: Company Wise QA | Question: 6-What is the Terraform state file and why is it important?
+ID: 604 | Category: Company Wise QA | Question: 7- What r some challenges u faced while using Terraform and how did u solve them?
+ID: 605 | Category: Company Wise QA | Question: 8-What is DSC in PowerShell?
+ID: 606 | Category: Company Wise QA | Question: 9-Tell me about a recent PowerShell script you wrote and what was it about?
+ID: 607 | Category: Company Wise QA | Question: 10-Why did u leave your previous company, and why hve u made frequent job changes? r u planning to leave this company as well within the next year?
+ID: 612 | Category: Company Wise QA | Question: How can you schedule a Bash script to run at specific intervals using cron?
+ID: 615 | Category: Company Wise QA | Question: What are the key benefits of using Infrastructure as Code in DevOps?
+ID: 616 | Category: Company Wise QA | Question: Which IaC tools have you used (e.g., Terraform, ARM Templates, Bicep, Pulumi), and what was your experience?
+ID: 619 | Category: Company Wise QA | Question: what is this job for ? why you fit for this job ?
+ID: 621 | Category: Company Wise QA | Question: Did you tell about your present role in operation and automation ?
+ID: 622 | Category: Company Wise QA | Question: what are the roles in cloudops ( operation ) ?
+ID: 624 | Category: Company Wise QA | Question: what is the process of patch you deploy the production ?
+ID: 625 | Category: Company Wise QA | Question: have you experinced in bash script ? explain ?
+ID: 626 | Category: Company Wise QA | Question: troubleshooting ? give only exact command ?
+ID: 628 | Category: Company Wise QA | Question: what is host ?
+ID: 629 | Category: Company Wise QA | Question: where are you using yaml files ? why we used yaml files ?
+ID: 630 | Category: Company Wise QA | Question: what resources you created in azure ?
+ID: 632 | Category: Company Wise QA | Question: Give some examples for the sop ? explain ?
+ID: 633 | Category: Company Wise QA | Question: when you do the release ? what are the challenges you faced ?
+ID: 636 | Category: Company Wise QA | Question: what you want do in next 5 years ?
+ID: 637 | Category: Company Wise QA | Question: In past years what skills you have added to yourself ?
+ID: 638 | Category: Company Wise QA | Question: Why you are looking for the change ? what are the repetitive task you doing ?
+ID: 639 | Category: Company Wise QA | Question: how many types of declare & stored the variable?
+ID: 641 | Category: Company Wise QA | Question: what is Ansible, why we use?
+ID: 643 | Category: Company Wise QA | Question: New feature which is not present in terraform how would you provisioning them in azure portal through Terraform?
+ID: 645 | Category: Company Wise QA | Question: Terraform backend, terraform statefile management?
+ID: 646 | Category: Company Wise QA | Question: if we want to validate our terraform code, is we need to execute terraform init commands?
+ID: 647 | Category: Company Wise QA | Question: What are artifacts?
+ID: 648 | Category: Company Wise QA | Question: What is the purpose of ci/cd?
+ID: 649 | Category: Company Wise QA | Question: Have you work on Azure monitor or logs?
+ID: 651 | Category: Company Wise QA | Question: What is keyvalut and their usecase?
+ID: 653 | Category: Company Wise QA | Question: Have you use variables in ci/cd?
+ID: 655 | Category: Company Wise QA | Question: What is azure policy & why we use in ci/cd?
+ID: 658 | Category: Company Wise QA | Question: 3-What is Ansible and why we use it?
+ID: 664 | Category: Company Wise QA | Question: What is Ingress in K8s?
+ID: 665 | Category: Company Wise QA | Question: - Ansible aata hai?
+ID: 667 | Category: Company Wise QA | Question: - powershell you know?
+ID: 668 | Category: Company Wise QA | Question: Could you explain the key components of the Kubernetes control plane and their respective roles?
+ID: 671 | Category: Company Wise QA | Question: In what scenarios would you choose a StatefulSet over a Deployment, and why?
+ID: 675 | Category: Company Wise QA | Question: What deployment strategies do you recommend to ensure zero downtime during application releases?
+ID: 677 | Category: Company Wise QA | Question: If a pipeline's unit tests fail immediately after a commit, what steps would you take to identify and resolve the issue efficiently?
+ID: 678 | Category: Company Wise QA | Question: What methods do you use to pass artifacts or variables between stages in a CI/CD pipeline?
+ID: 680 | Category: Company Wise QA | Question: Do you have ID about AKS?
+ID: 685 | Category: Company Wise QA | Question: What If I remove the vm instance  from the state file and run terraform apply?
+ID: 687 | Category: Company Wise QA | Question: What is smallest components in aks?
+ID: 688 | Category: Linux & Git | Question: What is Git?
+ID: 689 | Category: Linux & Git | Question: What is a Git repository?
+ID: 692 | Category: Linux & Git | Question: What is a commit in Git?
+ID: 695 | Category: Linux & Git | Question: What is the purpose of the .gitignore file?
+ID: 700 | Category: Linux & Git | Question: What is the purpose of the git stash command?
+ID: 705 | Category: Linux & Git | Question: What is the purpose of git cherry-pick?
+ID: 708 | Category: Company Wise QA | Question: 1 Can you please tell me about your project?
+ID: 710 | Category: Company Wise QA | Question: 3 How many types of user-level access are there in Azure DevOps (ADO)?
+ID: 712 | Category: Company Wise QA | Question: 5 If you have to add more basic users in ADO, do you need to pay Microsoft? How much?
+ID: 713 | Category: Company Wise QA | Question: 6 How many agents are available in Azure DevOps to run pipelines?
+ID: 715 | Category: Company Wise QA | Question: 8 If Microsoft provides only one agent and you want to run 10 pipelines, how much money do you have to pay for additional agents?
+ID: 717 | Category: Company Wise QA | Question: 10 When a user enters the correct username and password but gets an invalid credential error, what could be the issue?
+ID: 718 | Category: Company Wise QA | Question: 11 Suppose you want to deploy an application to 2 VMs at the same time. How would you do that using Azure DevOps pipeline?
+ID: 726 | Category: Terraform (IaC) | Question: What are resource in Terraform? ​In Terraform, resources are the fundamental building blocks that define infrastructure components—such as virtual machines, storage buckets, DNS records, and more
+ID: 731 | Category: Terraform (IaC) | Question: What is a backend in Terraform? a backend is the mechanism that defines where and how Terraform stores state—the record of what infrastructure it manages.
+ID: 732 | Category: Terraform (IaC) | Question: What is a provider block, and why is it important? a provider block specifies the cloud provider, API, or service that Terraform will use to provision and manage resources.It enables API Access,Authentication and Configuration and can define multiplr provider.
+ID: 735 | Category: Terraform (IaC) | Question: What is a Terraform module? A Terraform module is a set of reusable Terraform files that help you manage similar infrastructure in a clean and organized way. You can think of it like a function in programming—you write it once and use it many times.
+ID: 738 | Category: Terraform (IaC) | Question: What is the purpose of module.<name>.output? The purpose of module.<name>.output in Terraform is to access the output values that are defined inside a module. This allows you to retrieve information or results from a module and use it in other parts of your Terraform configuration.
+ID: 742 | Category: Divyanshu Questions | Question: 2) where u store terraform code and from where u commiting and adding ur changes?
+ID: 743 | Category: Divyanshu Questions | Question: 3)suppose we adding a file and we want to commit it how will you do that?
+ID: 745 | Category: Divyanshu Questions | Question: 7) which cicd tool u use?
+ID: 747 | Category: Divyanshu Questions | Question: 2.What are the arguments in resource group?
+ID: 748 | Category: Divyanshu Questions | Question: 3.What are the resources you are using while creating VM?
+ID: 749 | Category: Divyanshu Questions | Question: 2.How many containers can be created in a pod?
+ID: 750 | Category: Divyanshu Questions | Question: 3.How many stages/steps are there in a pod?
+ID: 752 | Category: Divyanshu Questions | Question: 5.If a pod is in pending stage/not working/not running, what would be the possible reasons?
+ID: 753 | Category: Divyanshu HCL | Question: 8.⁠ ⁠Type Constraints in Terraform.?
+ID: 755 | Category: Divyanshu HCL | Question: 10.⁠ ⁠What is the move block in Terraform? Can you provide an example?
+ID: 759 | Category: Divyanshu HCL | Question: 15.⁠ ⁠Have you worked with task groups in Azure DevOps?
+ID: 761 | Category: Divyanshu HCL | Question: 17.⁠ ⁠If you’ve written a Terraform configuration to deploy a virtual machine using a custom image, and you later update the software in that image, what will happen if you run terraform apply again?
+ID: 763 | Category: Divyanshu HCL | Question: Qus .. Interviwer name shivam
+ID: 764 | Category: Divyanshu HCL | Question: What is linter in terraform
+ID: 765 | Category: Divyanshu HCL | Question: What is task group
+ID: 766 | Category: Divyanshu HCL | Question: What is deployment group
+ID: 767 | Category: Divyanshu HCL | Question: What is ADO
+ID: 768 | Category: Divyanshu HCL | Question: What is sprint and work item
+ID: 770 | Category: Divyanshu HCL | Question: What is variable.tf and terraform.tf vars
+ID: 774 | Category: Divyanshu HCL | Question: What is statefile and where we will keep it
+ID: 776 | Category: Divyanshu HCL | Question: [12/5, 5:03 PM] Ms Yadav: 1st round HCL question...1.what is module?
+ID: 777 | Category: Divyanshu HCL | Question: 2.what is provisioners?
+ID: 778 | Category: Divyanshu HCL | Question: 3.what is null resource?
+ID: 779 | Category: Divyanshu HCL | Question: 4.what is statefile?
+ID: 781 | Category: Divyanshu HCL | Question: 6.what is variable?
+ID: 782 | Category: Divyanshu HCL | Question: 7.write a code with the help of module and for_each?
+ID: 785 | Category: Divyanshu HCL | Question: 5- what is move block?
+ID: 787 | Category: Divyanshu HCL | Question: What is pipeline or which pipeline u worked on like yaml plz expaln E2E flow
+ID: 788 | Category: Divyanshu HCL | Question: What is state file and where we will keep it
+ID: 791 | Category: Divyanshu HCL | Question: [12/5, 6:32 PM] Anu DevOps G16: 1st round HCL question...1.what is module?
+ID: 792 | Category: Divyanshu HCL | Question: 4.what is state-file?
+ID: 793 | Category: Divyanshu HCL | Question: 9.how is the process to setup the terraform??
+ID: 794 | Category: Divyanshu HCL | Question: 10.what is file provisioners?
+ID: 795 | Category: Divyanshu HCL | Question: 11.what is data variable?
+ID: 799 | Category: Divyanshu HCL | Question: Q2. Cluster roll binding ?
+ID: 800 | Category: Divyanshu HCL | Question: Q3. can you write is Yaml File and explain?
+ID: 801 | Category: Divyanshu HCL | Question: Q4.terraform function ? "Terraform functions are built-in helpers that let me manipulate data like strings, numbers, and lists. I commonly use functions like length(), join(), upper(), and file() to cleanly manage dynamic values in my Terraform code."
+ID: 803 | Category: Divyanshu HCL | Question: Q6.what is the deployment gate in ADO? "Deployment gates in Azure DevOps are automated checks that run before or after deploying to an environment. They help ensure the release meets all required conditions like monitoring status, external approvals, or integration validations before proceeding to the next stage."
+ID: 804 | Category: Divyanshu HCL | Question: Q7.what is pool ? "In Azure DevOps, a pool is a group of agents that run pipeline jobs. I use Microsoft-hosted pools for general tasks and self-hosted pools when I need custom tools, network access, or better performance."
+ID: 814 | Category: HCL Ashish | Question: [5/16, 3:12 PM] B16_G2 Mahender singh: [4/3, 9:43 PM] Anu DevOps G16: 10. What is the move block in Terraform? Can you provide an example?
+ID: 818 | Category: HCL Ashish | Question: Have you worked with task groups in Azure DevOps?
+ID: 822 | Category: HCL Ashish | Question: Type Constraints in Terraform.?
+ID: 823 | Category: HCL Ashish | Question: When Will the State File Be Created?
+ID: 827 | Category: HCL Ashish | Question: Q4.terraform function ?
+ID: 828 | Category: HCL Ashish | Question: Q6.what is the deployment gate in ADO?
+ID: 829 | Category: HCL Ashish | Question: Q7.what is pool ?
+ID: 830 | Category: HCL Ashish | Question: Q8. What is peering ?

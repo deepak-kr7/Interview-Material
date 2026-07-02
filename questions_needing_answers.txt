@@ -1,0 +1,452 @@
+22. [] How to delete resources in terraform
+24. [] 1. You need to provision a virtual network and multiple subnets in Azure. How would you structure your Terraform code to ensure modularity and reusability?
+25. [] 2. Your organization wants to manage secrets securely in Terraform while deploying to Azure. What are the best practices to use Azure Key Vault with Terraform?
+26. [] 3. How can you implement environment-specific deployments (dev, test, prod) using Terraform with Azure?
+27. [] 4. You are deploying a VM in Azure using Terraform. How do you ensure the VM is created only after the network and security group are successfully deployed?
+28. [] 5. What is the best way to manage remote state in Azure Terraform projects, and how do you secure it?
+29. [] 6. How do you handle Terraform state locking in Azure during CI/CD deployments?
+30. [] 7. If your deployment fails midway due to a timeout or API error, how do you recover or clean up the partial infrastructure created in Azure?
+31. [] 8. How would you use Terraform to tag resources consistently across different Azure services?
+32. [] 9. How do you roll back an infrastructure change in Azure when using Terraform if something goes wrong in production?
+33. [] 10. How can you control resource naming conventions dynamically using Terraform variables and locals in Azure?
+34. [] 11. How can you manage multiple Azure subscriptions using a single Terraform workspace or project?
+35. [] 12. How do you integrate Terraform deployments with Azure DevOps pipelines?
+36. [] 13. What strategies can you use to prevent accidental deletion or recreation of critical Azure resources in Terraform?
+37. [] 14. How would you use Terraform to scale an Azure App Service Plan based on different workloads?
+38. [] 15. How do you manage Terraform modules for teams working on different components (e.g., networking, compute, storage) in Azure?
+39. [] 16. How would you create an Azure Kubernetes Service (AKS) cluster with Terraform and manage its node pools?
+40. [] 17. How do you perform drift detection in Azure resources managed by Terraform?
+41. [] 18. You want to use custom images for VM deployment in Azure. How would you reference them in Terraform?
+42. [] 19. How do you handle conditional resource creation (e.g., only create a public IP if enable_public_ip = true) in Terraform for Azure?
+43. [] 20. What are the Terraform security considerations when working with Azure service principals?
+61. [] Question:- Explain about Aks load experience ?
+62. [] 2. Question:-How to Configure network policy ?
+63. [] 3. Question:-Different type of cluster storage, how to configure cluster storage ?
+64. [] 4. Question:-What best practice manages identity control in cluster policy ?
+65. [] 5. Question:-Difference in Azure CNI AND KUBERNESTES ?
+66. [] 6. Question:-Explain about Logs ?
+67. [] 7. Question:-Devops side – Azure Devops with other services – how to interact ?
+68. [] 8. Question:-What is Deployment approval and gate approvals ?
+69. [] 9. Question:-How to Design CICCD pipeIine using Azure  methodology ?
+70. [] 10. Question:-Explain about Microservice key concern ?
+71. [] 11. Question:-What is Scaling ?
+73. [] 15. Question:-What is Multiple tenants ?
+74. [] 16. Question:-What is ESC Tools ?
+75. [] 17. Question:-What is AKS patch management ?
+76. [] 18. Question:-Regular expression – for redirection tolls ?
+77. [] 19. Question:-What are the troubleshooting steps ?
+78. [] 20. Question:-What is difference between in CNI and cluster ?
+79. [] 21. Question:-How do u configure policies of cluster ?
+80. [] 22. Question:-EKS Cluster ?
+81. [] 23. Question:-Creating the cluster ?
+82. [] 24. Question:-What is VNET pairing ?
+83. [] 25. Question:-Have u work with AFD and APM?
+84. [] 1. How to upgrade the OS Patch, tell command for ubuntu and RedHat?
+85. [] 2. Do you know about Ansible, puppet?
+86. [] 3. Terraform Taint?
+87. [] 4. What is Traffic Manager?
+88. [] 5. What is application Gateway?
+89. [] 6. How to comminicate to database?
+90. [] 7. How you are using Prometheus in cluster?
+91. [] 8. How Grafana is working?
+92. [] 9. If you have to restart webserver tomcat or nginx how you do that?
+94. [] 12. How you use Maven in your pipeline?
+95. [] 13. Write script for checking OS in the 10 different web apps?
+96. [] 14. What is POM file?
+97. [] 15. What is pakage manager in ubuntu and Redhat?
+98. [] 16. Have you written automation script?
+99. [] 17. What is Private DNS in Azure and use case?
+102. [] - why did you left your last company?
+104. [] Q. how we use variables and apply policy on pipelines?
+105. [] Q. How we check security in terraform code and what do you mean by app and infra pipelines
+106. [] Q. How you call multiple images from docker
+107. [] Q. How we run kubernetes and maintain container
+108. [] Q. What is terraform
+109. [] Q. What is service and private endpoints
+111. [] Can you tell me about your projects that you have worked on ?
+112. [] What services have you used of azure ?
+113. [] How do you connect your VM with private IP?
+114. [] What is Vnet peering?
+115. [] Difference between route table and NSG?
+116. [] How application gateway is different from load balancer?
+117. [] How do you patch your VM ?
+118. [] If vendor pushes a patch while developer is working on a VM ,how will you handle this delta patching?
+119. [] What is swap space in respect to your Linux VM ?
+120. [] Suppose microsoft is announcing some new updates regarding azure services in future ,where will you get those updates? Which page of which website?
+121. [] How have you configured your backups?
+122. [] Where are your VMs located? Which location?
+123. [] Where is your DR servers located?
+124. [] How have you configured your DR?
+125. [] How have you setup monitoring for VMs?
+126. [] Suppose your VM goes above 80% cpu utilization, how will you get notified?
+127. [] How will you configure that in azure using service like azure monitor?
+128. [] What is difference between automation account and function app?
+129. [] How will you horizontally scale your app services ?
+130. [] How do you access storage account? How it is configured securely?
+131. [] How do you manage your state file in Terraform?
+132. [] How do you access the state file from your local machine cli ?
+134. [] 1. What is Terraform Lifecycle Block?
+135. [] 2. What is Terraform null resource?
+136. [] 3. What is terraform dynamic block and how you use that in code?
+137. [] 4. How you manage your state file?
+138. [] 5. How to bring state file from remote to local system, explain procedure?
+139. [] 6. How to migrate state file from one storage to other storage account?
+140. [] 7. How you manage you cicd pipeline?
+141. [] 8. Tell me about SAST tool you have worked on?
+142. [] 9. What is application gateway and why we use it?
+143. [] 10. WHat are Load balancing available in Azure?
+144. [] 11. Name DAST tool you have worked on?
+145. [] 12. How to manage multiple agent in azure pipeline?
+146. [] 13. If you have to access one vm without use of internet and vnet how you access that?
+147. [] 14. One application is running in a azure vm, suddenly it stops responding, how you troubleshoot this?
+148. [] 15. Which scripting language you are comfortable?
+149. [] 16. Difference between Self hosted agent and microsoft hosted agent?
+151. [] 1. Where does PV exist in kuberenetes?
+152. [] 2. Ingress vs services difference?
+153. [] 3. Difference between Replica Set and Deployment?
+154. [] 4. Difference between Ingress and LB?
+155. [] 5. Explain SSL certificate setup through LB?
+156. [] 6. How to end HTTPs on LB?
+157. [] 7. How to create certificate?
+158. [] 8. Tell stages of Maven?
+159. [] 9. Versions of kuberenetes you have worked?
+160. [] 10. PV vs PVC difference?
+161. [] 11. What is Demonset, stateful set?
+162. [] 12. How to write deployment file?
+163. [] 13. How POD comminicate across diff namespaces? How to enable and disable communication between POD?
+164. [] 14. How to make sure existing pods are distributed across all the nodes uniformaly?
+165. [] 15. Sidecar Container?
+166. [] 16. Different deployment strategy in k8s?
+167. [] 17. How to grant access to developer in aks cluster for a single log?
+169. [] each pod different name?
+170. [] 20. What is Kubernetes and why we required it if docker is serving the purpose?
+171. [] 21. What is Docker and container?
+172. [] 22. I have one container running, made some changes in that, now how we can create an new container with that?
+173. [] 23. Tell me about Docker networking?
+174. [] 24. What is POD affinity and Node affinity?
+175. [] 25. How to troubleshoot docker container?
+177. [] >What monitoring tools you have used?
+178. [] >If u r using VMSS/autoscaling and it is not working how do you troubleshoot this?
+179. [] 2. What is middleware for Windows apart from IIS?
+180. [] 3. In linux which flavour you have worked?
+181. [] 4. If you have to migrate a Apache bassed system to azure, what would be your step?
+182. [] 5. What are security measoures available in Azure?
+183. [] 6. How to create a HA for Tomcat bassed server?
+185. [] 9 If you have to move file with the same permission from source to destination, how you will do that?
+186. [] 10. How to access server using authentication key apart from username and password?
+187. [] 11. How you manage backup in azure for Terraform and VM data?
+188. [] 12. How you setup pipeline in ADO?
+189. [] 13. Are you using build and release pipeline both?
+190. [] 14. If you have to install Tomcat, how you would do using pipeline?
+191. [] 15. Load balancer and Application gateway?
+192. [] 16. WHat are docker file and if you have to write for Tomcat bassed application tell the steps in docker file?
+193. [] 17. Command to check logs, running container?
+194. [] 18. If we have to create access method where we do not need to provide credentials, how to do that?
+195. [] 19. What is windows ADO?
+196. [] Hi all , Today i have attended and interview sharing you questions . What is the difference between a workspace and an environment in Terraform?
+197. [] Suppose you have a single file with 1000 lines of code and you need to run only one resource (e.g., a VNet). How would you do that?
+198. [] If you have created resources manually through the portal, how can you store them in a Terraform state file?
+199. [] What is the architecture of the meta-argument in Terraform?
+200. [] What is the use of the terraform import command?
+201. [] How can you prevent the accidental deletion of a resource in Terraform?
+203. [] What do you understand by version control? What tools have you used for it?
+204. [] have you done security hardening in linux machine ?
+205. [] What is the basic structure of a Terraform configuration?
+206. [] What is the use of terraform fmt?
+207. [] Which operating systems have you worked on — Ubuntu or RHEL?
+208. [] Have you written Ansible playbooks for managing AKS?
+209. [] Have you worked with the Datadog monitoring tool?
+210. [] How did you receive alerts using Prometheus and Grafana?
+211. [] Can you deploy an migrate from Azure to AWS? If yes or no, how and why?
+212. [] How can you store VM credentials in Azure Key Vault using terraform ?
+213. [] How can you access secrets stored in Azure Key Vault to access a application or on resources?
+214. [] You have modules for 3 environments. If you rename npr.tfvars, will Terraform still execute it?
+215. [] How many IPs are available in the 192.168.1.0/32 ?
+216. [] i have taken 16 ip in a subnet, how many  IP addresses can be use?
+217. [] You created an Azure Key Vault. what type of access will see in rbac ?
+219. [] Which Azure services have you worked with in your application?
+220. [] write  Terraform syntax to create an Azure Storage Account?
+221. [] What is a backend in Terraform and why is it used?
+223. [] have you worked on github action ?
+226. [] 7. Have you worked on Docker and Kubernetes ?
+227. [] 8. How you will integrate ACS/AKS in the infrastructure using terraform so that application et hosted and run on pods ?
+231. [] 1- what's your current profile and day to day activities?
+232. [] 2- started with GCP IAM?
+233. [] 3- I have two resources one in vpc A and one in VPC B but the organisation has different how can I communicate from A to B resources despite having in different orgs?
+234. [] 4- hierarchy architecture in GCP?
+235. [] 5- I am having owner role in project and having object viewer on GCP object which will have precedence?
+236. [] 6- helm charts in kubernetes?
+237. [] 7- deployment type in application terms like blue green canary recreate?? How do you define and what we use when?
+238. [] 8- like I deploy one pod but that went in pending state I am having resource capacity in node....how will you troubleshoot and what is possible causes for this happeing?
+240. [] 18- for best practices I have put db creds in secret manager in GCP or key vault in azure how will you integrate with terraform and pipeline?
+245. [] how to attach voulume to container
+248. [] how do you handle conflicts means any issue occurs then how you will communicate with you client and how u will manage
+249. [] what is terraform module
+251. [] what is metrics
+252. [] how to configure Grafana and Prometheus
+253. [] how Grafana uses Prometheus
+255. [] what is alert manager and are u using it?
+256. [] what are the monitoring tool you used and how do you use it?
+258. [] what are terraform provider?
+259. [] how do you manage state file?
+260. [] how you manage secrets in terraform?
+263. [] can you tell me about any networking issues?
+264. [] have you worked on Linux or windows machine?
+266. [] what is modules in ansible
+267. [] what is use of roles ?
+268. [] Why we use roles as we have plybook to automate task
+269. [] you have a playbook and need to run a single task, how can you run ?
+270. [] how to run playbook on single server ?
+271. [] user of handlers ?
+272. [] what is modules in ansible ?
+273. [] how to run third party application using ansible  ?
+274. [] prerequsite on setting of worker node and and master node?
+276. [] 3. how will you check reliability of your infrastructure?
+278. [] 7. have you worked on Grafana and Prometheus?
+279. [] 8. if customer want to change the version of terraform how will you assess/estimate the changes?
+280. [] What are the types of load balancers?
+281. [] What is the difference between ASG and NSG?
+282. [] What is Azure Firewall?
+283. [] What is the lifecycle of Terraform?
+284. [] How do you maintain different workspaces in Terraform?
+285. [] Can we implement NSG on VNet, Subnet, or at Virtual Machine level?
+286. [] How do you reduce the size of a Dockerfile?
+287. [] What is the use of CMD in Docker?
+288. [] What does the output block in Terraform do?
+290. [] how we can connect to vpn securely ?
+291. [] how you applied nsg in your network?
+292. [] did you implement firewall with nsg?
+293. [] did you added any load balancer in your architecture?
+295. [] can you tell me different between service endpoints and private endpoints?
+296. [] can you explain me the role of azure bastian in network security?
+297. [] can you elobrate on availability zones in azure?
+298. [] have you used function app?
+299. [] what is role of azure function app?
+300. [] which resource we can use to distrubte the content static & dynamic?
+301. [] have you used azure app service?
+302. [] did you worked with aws? what all resources you have used in aws?
+303. [] have you worked on gcp? what all resources you have used in gcp?
+304. [] how many years of experience you have in terraform?
+305. [] did you used terraform taint?
+306. [] did you get the chance to use terraform import?
+307. [] I have created a resources in azure and want to keep the state file in aws?
+309. [] what happeens when we run terraform init?
+310. [] can you write a code for application gateway in terraform?
+311. [] can you write a code for virtual machine in terraform?
+312. [] have you also used modules, can you explain the folder structure of modules?
+313. [] why you're using for_each, did you also used count?
+314. [] how you call the modules in terraform?
+315. [] you have also worked on azure devops?
+316. [] can you explain the end to end flow how to deploy terraform in your pipeline?
+319. [] what are the steps in ci pipeline as you know there is code commit?
+320. [] what is steps to generate artifacts?
+322. [] which langauges are you well versed with?
+323. [] What are the differences between a Managed Identity and a Service Principal in Azure?
+324. [] What is the Hub and Spoke network topology in Azure?
+325. [] Is it possible to connect a Hub to a Spoke without using VNet Peering?
+326. [] Can you describe some firewall rules you have configured or worked on in Azure?
+327. [] What is the Application Layer (Layer 7), and how does it function?
+328. [] Why do we use an Application Load Balancer like Azure Application Gateway?
+329. [] What is PIM (Privileged Identity Management), and why is it important?
+330. [] If a user is assigned access at the Management Group level, can they access all subscriptions under it? How can we restrict access to specific subscriptions?
+331. [] Suppose there are three VNets: A, B, and C. VNet A is peered with VNet B, and VNet B is peered with VNet C. Can VNet A communicate directly with VNet C?
+332. [] How do you configure NFS (Network File System)?
+333. [] Suppose you have two instances. How can you transfer a file from one instance to another?
+334. [] How can you transfer files between two instances without using SFTP or SCP?
+335. [] Have you performed any migration tasks (e.g., on-premises to cloud, one tenant to another, or between subscription IDs)?
+336. [] What is the difference between Active Directory and Entra ID?
+337. [] How can a user log in to a Linux machine using Entra ID credentials?
+338. [] How do you configure DNS on a Linux server?
+339. [] What is the name of the file where network configurations are stored and managed in Linux?
+340. [] Suppose you have two users, A and B. How do you create their user accounts, and what types of access can you provide?
+341. [] 1. Use of Terraform import?
+342. [] 2. Write a docker file?
+343. [] 3. Experience with Kubernetes?
+344. [] 4. How you manage your secrets in terraform?
+345. [] 5. How you secure your terraform?
+346. [] 6. Do you know about drift condition?
+348. [] Can you explain how you used custom scripting to integrate tools like TruffleHog, Checkov, in your CI/CD pipeline?
+349. [] How will you integrate sonarqube using scripting
+350. [] In a self-hosted agent scenario with multiple VMs, how can I ensure that only one specific VM is used for executing the tasks out of multiple vm's, instead of using all the VMs?
+351. [] Why blue green deployment -- whats rollback?
+352. [] How to use  API in a pipeline to  interact with services?
+354. [] How will you integrate azure key vault into pipeline with scripting?
+355. [] Do you know any scripting language?
+357. [] 6-What is the Terraform state file and why is it important?
+358. [] 7- What r some challenges u faced while using Terraform and how did u solve them?
+359. [] 8-What is DSC in PowerShell?
+360. [] 9-Tell me about a recent PowerShell script you wrote and what was it about?
+361. [] 10-Why did u leave your previous company, and why hve u made frequent job changes? r u planning to leave this company as well within the next year?
+364. [] How do you handle error handling in Bash scripts?
+365. [] What is the difference between "$@" and "$*" in Bash?
+366. [] How can you schedule a Bash script to run at specific intervals using cron?
+367. [] Can you write a script that monitors disk space and sends an alert if usage exceeds 80%?
+368. [] Explain the difference between a function and a script block in PowerShell.
+369. [] What are the key benefits of using Infrastructure as Code in DevOps?
+370. [] Which IaC tools have you used (e.g., Terraform, ARM Templates, Bicep, Pulumi), and what was your experience?
+372. [] How do you ensure high availability and disaster recovery in your Azure infrastructure setup?
+373. [] what is this job for ? why you fit for this job ?
+374. [] Tell me the style of the work ? how you work ?
+375. [] Did you tell about your present role in operation and automation ?
+376. [] what are the roles in cloudops ( operation ) ?
+377. [] how you do the patching ?
+378. [] what is the process of patch you deploy the production ?
+379. [] have you experinced in bash script ? explain ?
+380. [] troubleshooting ? give only exact command ?
+381. [] you have experience in azure monitoring ? how you do that ?
+382. [] what is host ?
+383. [] where are you using yaml files ? why we used yaml files ?
+384. [] what resources you created in azure ?
+385. [] how you do the team collaboration ? how you handle the team ?
+386. [] Give some examples for the sop ? explain ?
+387. [] when you do the release ? what are the challenges you faced ?
+388. [] can you troubleshoot the dns ? suppose vikram.com page is not showing in the google ? how you troubleshoot?
+389. [] which users are allow to use the subscription ? list down the user ? how you give the user access ?
+390. [] what you want do in next 5 years ?
+391. [] In past years what skills you have added to yourself ?
+392. [] Why you are looking for the change ? what are the repetitive task you doing ?
+393. [] 1. how many types of declare & stored the variable?
+394. [] 2. What is Provisioners block, How Many types and when you used tell with example?
+395. [] 3. what is Ansible, why we use?
+396. [] 4. tell the use case combination of terraform and Ansible?
+397. [] 5. New feature which is not present in terraform how would you provisioning them in azure portal through Terraform?
+398. [] 6. manually created 10 VM in different-different RG's and then automation request comes to do it same thing mange it terraforms, how you do (basically how we update our statefile for existing resources)?
+399. [] 7. Terraform backend, terraform statefile management?
+400. [] 8. if we want to validate our terraform code, is we need to execute terraform init commands?
+401. [] What are artifacts?
+402. [] What is the purpose of ci/cd?
+403. [] Have you work on Azure monitor or logs?
+404. [] How you search a word in file from Linux command?
+405. [] What is keyvalut and their usecase?
+406. [] What is difference b/w infra vs App pipeline?
+407. [] Have you use variables in ci/cd?
+408. [] Have you worked on grafanaand Prometheus?
+409. [] What is azure policy & why we use in ci/cd?
+415. [] 1. How do we connect Azure Monitor with Grafana?
+416. [] 2. Difference between Grafana and Kibana?
+417. [] 3. What are various data sources available in Grafana?
+422. [] Could you explain the key components of the Kubernetes control plane and their respective roles?
+424. [] What is the standard approach to performing a rolling update in Kubernetes while minimizing service disruption?
+425. [] In what scenarios would you choose a StatefulSet over a Deployment, and why?
+426. [] What is the purpose of kube-proxy in a Kubernetes cluster, and how does it function?
+427. [] Can you describe the role of Ingress in Kubernetes and how it differs from a standard Service?
+428. [] How would you systematically troubleshoot a pod that is stuck in a CrashLoopBackOff state?
+429. [] What deployment strategies do you recommend to ensure zero downtime during application releases?
+430. [] How do you typically structure a CI/CD pipeline to support multiple environments such as development, QA, staging, and production?
+431. [] If a pipeline's unit tests fail immediately after a commit, what steps would you take to identify and resolve the issue efficiently?
+434. [] 4. Do you have ID about AKS?
+435. [] 5. How should we keep our storage accounts, private or public?
+437. [] 10. Do you know about ACR?
+441. [] 4. What is smallest components in aks?
+442. [] What is Git?
+443. [] What is a Git repository?
+444. [] What is the difference between Git and GitHub?
+445. [] How do you initialize a Git repository?
+446. [] What is a commit in Git?
+447. [] How do you create a new branch in Git?
+448. [] How do you switch between branches in Git?
+449. [] What is the purpose of the .gitignore file?
+450. [] What is the difference between git pull and git fetch?
+451. [] How do you view the commit history in Git?
+452. [] What is a merge conflict in Git, and how do you resolve it?
+453. [] What is the difference between git reset and git revert?
+454. [] What is the purpose of the git stash command?
+455. [] How do you undo the last commit in Git?
+456. [] What is the difference between git merge and git rebase?
+457. [] What is a Git submodule, and how do you use it?
+458. [] How do you handle large files in Git?
+459. [] What is the purpose of git cherry-pick?
+460. [] How do you rename a branch in Git?
+461. [] What is the difference between git pull --rebase and git pull?
+462. [] 1 Can you please tell me about your project?
+463. [] 2 Suppose in your organisation there are 10 projects but a new developer joined. You want to give access only to 3 projects. How do you do that?
+464. [] 3 How many types of user-level access are there in Azure DevOps (ADO)?
+465. [] 4 What is the difference between basic level and stakeholder level access in ADO?
+466. [] 5 If you have to add more basic users in ADO, do you need to pay Microsoft? How much?
+467. [] 6 How many agents are available in Azure DevOps to run pipelines?
+468. [] 7 What is the difference between Microsoft-hosted agents and self-hosted agents?
+469. [] 8 If Microsoft provides only one agent and you want to run 10 pipelines, how much money do you have to pay for additional agents?
+470. [] 9 How do you add a new field in the Bug template in Azure DevOps?
+471. [] 10 When a user enters the correct username and password but gets an invalid credential error, what could be the issue?
+472. [] 11 Suppose you want to deploy an application to 2 VMs at the same time. How would you do that using Azure DevOps pipeline?
+473. [] 12 What is a service connection in Azure DevOps and how do you use it for VM deployments?
+474. [] 13 Is it possible to share the same service connection across multiple projects in the same organization? How?
+476. [] 16 Suppose you have 2 containers and the second container should run only after the first one has started. How do you achieve that in Docker Compose?
+477. [] 17 If all secrets (like DB name, username, passwords) are stored in Azure Key Vault, how do you fetch those in the pipeline while building a Docker image?
+478. [] 18 What is the difference between COPY and ADD commands in Dockerfile?
+479. [] How does Terraform handle infrastructure as code? Terraform handles Infrastructure as Code (IaC) by enabling the definition, provisioning, and management of infrastructure through declarative configuration files. This approach treats infrastructure setup and management as software development tasks, promoting automation, consistency, and collaboration.
+480. [] What are resource in Terraform? ​In Terraform, resources are the fundamental building blocks that define infrastructure components—such as virtual machines, storage buckets, DNS records, and more
+483. [] How do you remove a resource from the state file? ​To remove a resource from Terraform's state file without affecting the actual infrastructure, you can use the terraform state rm command or using removed block
+484. [] How do you enable debugging in Terraform? To enable debugging in Terraform, you can set specific environment variables that control the logging level and output location.Terraform uses the TF_LOG environment variable to control logging verbosity.
+485. [] What is a backend in Terraform? a backend is the mechanism that defines where and how Terraform stores state—the record of what infrastructure it manages.
+486. [] What is a provider block, and why is it important? a provider block specifies the cloud provider, API, or service that Terraform will use to provision and manage resources.It enables API Access,Authentication and Configuration and can define multiplr provider.
+487. [] How do you lock Terraform provider versions? You can lock Terraform provider versions using the required_providers block inside the terraform block of your configuration. This ensures your project always uses a specific version  of a provider
+488. [] How do you import existing infrastructure into Terraform? By using the terraform import command,terraform import RESOURCE_ID
+490. [] How do you call a module from a remote Git repository? To call a Terraform module from a remote Git repository, use the source argument in the module block with the Git URL.
+491. [] How do you pass variables to a module? To pass variables to a Terraform module, you provide them as arguments in the module block, just like passing parameters to a function.
+492. [] What is the purpose of module.<name>.output? The purpose of module.<name>.output in Terraform is to access the output values that are defined inside a module. This allows you to retrieve information or results from a module and use it in other parts of your Terraform configuration.
+493. [] How can you organize Terraform modules for reusability? To organize Terraform modules for reusability,use a Clear Directory Structure,keep Modules Focused,Parameterize Modules with Variables & define Outputs for Reusability
+494. [] How do you use count and for_each in a module? The count parameter is used to create multiple instances of a module based on a numeric value on the other hand for_each parameter is used to iterate over a map or set of values and create a module instance for each value.
+495. [] 1) I want to rename a branch , how to do that?
+496. [] 2) where u store terraform code and from where u commiting and adding ur changes?
+497. [] 3)suppose we adding a file and we want to commit it how will you do that?
+499. [] 7) which cicd tool u use?
+501. [] 2.What are the arguments in resource group?
+503. [] 2.How many containers can be created in a pod?
+504. [] 3.How many stages/steps are there in a pod?
+505. [] 4.If pod is not running,how you can debug the same?
+507. [] 8.⁠ ⁠Type Constraints in Terraform.?
+509. [] 10.⁠ ⁠What is the move block in Terraform? Can you provide an example?
+510. [] 12.⁠ ⁠When integrating Snowflake with Azure DevOps to trigger a pipeline, which authentication method should you use?
+511. [] 13.⁠ ⁠What methodology do you follow in Azure Boards? What is a sprint, and how does it differ from a work item?
+512. [] 14.⁠ ⁠What is the difference between a push and a commit in version control systems?
+513. [] 15.⁠ ⁠Have you worked with task groups in Azure DevOps?
+514. [] 16.⁠ ⁠If you have a multi-stage pipeline in Azure DevOps and, upon execution, only one pipeline runs even though there are no dependencies between stages, how would you troubleshoot the issue?
+517. [] Qus .. Interviwer name shivam
+518. [] What is linter in terraform
+519. [] What is task group
+520. [] What is deployment group
+521. [] What is ADO
+522. [] What is sprint and work item
+523. [] How you can secure ado "By combining strong identity management, access controls, secure secrets handling, and continuous monitoring, Azure DevOps can be secured effectively."
+524. [] What is variable.tf and terraform.tf vars
+526. [] What is pipeline or which pipeline u worked on like yaml plz expaln E2E flow "A pipeline is an automated process that helps build, test, and deploy code or infrastructure in a reliable and repeatable manner. I have worked primarily on YAML-based pipelines in Azure DevOps to automate both application and infrastructure deployments." "I’ve built end-to-end Azure DevOps YAML pipelines that automate infrastructure provisioning using Terraform, capture dynamic outputs like IPs, and deploy apps with proper validation and approvals. This ensures full CI/CD automation with infrastructure-as-code."
+528. [] What is statefile and where we will keep it
+530. [] [12/5, 5:03 PM] Ms Yadav: 1st round HCL question...1.what is module?
+531. [] 2.what is provisioners?
+532. [] 3.what is null resource?
+533. [] 4.what is statefile?
+534. [] 5.what is state locking in terraform?
+535. [] 6.what is variable?
+536. [] 7.write a code with the help of module and for_each?
+537. [] 8.what is providers and write a code?
+539. [] 5- what is move block?
+540. [] 6> is it will imapct our current infra structure or not ?
+541. [] What is pipeline or which pipeline u worked on like yaml plz expaln E2E flow
+542. [] What is state file and where we will keep it
+545. [] [12/5, 6:32 PM] Anu DevOps G16: 1st round HCL question...1.what is module?
+546. [] 4.what is state-file?
+547. [] 9.how is the process to setup the terraform??
+548. [] 10.what is file provisioners?
+552. [] Q1. I want to manage a set of PVs say in ns "lab" using a SA "testsa".
+553. [] Q2. Cluster roll binding ?
+554. [] Q3. can you write is Yaml File and explain?
+555. [] Q4.terraform function ? "Terraform functions are built-in helpers that let me manipulate data like strings, numbers, and lists. I commonly use functions like length(), join(), upper(), and file() to cleanly manage dynamic values in my Terraform code."
+556. [] Q5.how to maintain Kubernetes cluster ?
+557. [] Q6.what is the deployment gate in ADO? "Deployment gates in Azure DevOps are automated checks that run before or after deploying to an environment. They help ensure the release meets all required conditions like monitoring status, external approvals, or integration validations before proceeding to the next stage."
+558. [] Q7.what is pool ? "In Azure DevOps, a pool is a group of agents that run pipeline jobs. I use Microsoft-hosted pools for general tasks and self-hosted pools when I need custom tools, network access, or better performance."
+559. [] Q8. What is peering ? "VNet Peering allows secure and private communication between two virtual networks in Azure. I use it to connect different environments or regions without using the internet. It's fast and cost-effective since traffic stays inside Azure’s private backbone."
+560. [] Q.9 difference between provider and provisioners ?
+568. [] [5/16, 3:12 PM] B16_G2 Mahender singh: [4/3, 9:43 PM] Anu DevOps G16: 10. What is the move block in Terraform? Can you provide an example?
+569. [] 12. When integrating Snowflake with Azure DevOps to trigger a pipeline, which authentication method should you use?
+570. [] 13. What methodology do you follow in Azure Boards? What is a sprint, and how does it differ from a work item?
+571. [] 14. What is the difference between a push and a commit in version control systems?
+572. [] 15. Have you worked with task groups in Azure DevOps?
+573. [] 16. If you have a multi-stage pipeline in Azure DevOps and, upon execution, only one pipeline runs even though there are no dependencies between stages, how would you troubleshoot the issue?
+576. [] Type Constraints in Terraform.?
+577. [] When Will the State File Be Created?
+579. [] How you can secure ado
+581. [] Q4.terraform function ?
+582. [] Q6.what is the deployment gate in ADO?
+583. [] Q7.what is pool ?
+584. [] Q8. What is peering ?
