@@ -977,11 +977,16 @@ function startMockInterview() {
     const countEl = document.querySelector('input[name="mock-count"]:checked');
     const mockCount = countEl ? parseInt(countEl.value, 10) : 10;
     
-    // Shuffles all questions in data.js (both standard DevOps and Company Q&A)
-    const shuffled = [...qaData].sort(() => Math.random() - 0.5);
+    if (typeof mcqData === 'undefined') {
+        alert("MCQ data is not loaded!");
+        return;
+    }
+    
+    // Shuffles all MCQ questions in mcq_data.js
+    const shuffled = [...mcqData].sort(() => Math.random() - 0.5);
     mockSession.list = shuffled.slice(0, Math.min(mockCount, shuffled.length));
     
-    mockSession.type = 'qa';
+    mockSession.type = 'mcq';
     mockSession.currentIndex = 0;
     mockSession.userAnswers = {};
     mockSession.active = true;
@@ -992,7 +997,7 @@ function startMockInterview() {
     
     const thirdStat = document.querySelector('#mock-results .res-stat:nth-child(3)');
     if (thirdStat) {
-        thirdStat.style.display = 'none';
+        thirdStat.style.display = 'flex';
     }
     
     renderMockNav();
