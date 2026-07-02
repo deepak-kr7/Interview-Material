@@ -665,7 +665,6 @@ function filterAndRenderQuestions() {
         filtered = filtered.filter(q => {
             const searchableText = [
                 q.question || '',
-                q.answer || '',
                 q.category || '',
                 q.company || '',
                 q.source || '',
@@ -1899,7 +1898,6 @@ function filterAndRenderCompanyQuestions() {
         filtered = filtered.filter(q => {
             const searchableText = [
                 q.question || '',
-                q.answer || '',
                 q.category || '',
                 q.company || '',
                 q.source || '',
