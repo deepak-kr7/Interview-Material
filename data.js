@@ -4090,7 +4090,7 @@ const qaData = [
     "id": 455,
     "category": "Company Wise QA",
     "question": "Have you written Ansible playbooks for managing AKS?",
-    "answer": "Ansible is an agentless configuration management and automation tool that uses SSH/WinRM to push tasks defined in declarative YAML playbooks.",
+    "answer": "Yes, Ansible can be used to manage Kubernetes and AKS clusters:\n1. **Workload Management**: We write playbooks utilizing the `kubernetes.core.k8s` collection to define and apply resources like namespaces, ConfigMaps, Secrets, Deployments, and Services.\n2. **Helm Deployments**: We utilize the `kubernetes.core.helm` module to deploy and upgrade Helm charts (like Ingress Controllers or Prometheus agents) directly into AKS.\n3. **Post-Provisioning Configurations**: While Terraform is used to provision AKS clusters, Ansible is used to configure node VM parameters or run setup scripts inside the cluster once it is active.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -5773,7 +5773,7 @@ const qaData = [
     "id": 642,
     "category": "Company Wise QA",
     "question": "tell the use case combination of terraform and Ansible?",
-    "answer": "Ansible is an agentless configuration management and automation tool that uses SSH/WinRM to push tasks defined in declarative YAML playbooks.",
+    "answer": "Terraform and Ansible are highly complementary in infrastructure pipelines:\n1. **Provisioning vs Configuration**: We use Terraform (IaC) first to provision the infrastructure (VNets, VMs, AKS, and Storage Accounts). Then, we invoke Ansible (Configuration Management) to log into those VM nodes to install software packages, run configurations, and copy application binaries.\n2. **Pipeline Integration**: In the build pipeline, Terraform provisions resources and outputs the IP addresses. The pipeline then dynamically passes these IPs to the Ansible dynamic inventory to kick off configuration playbooks automatically.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
