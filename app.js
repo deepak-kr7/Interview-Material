@@ -1014,11 +1014,81 @@ function setupMockSelection() {
     // No dynamic setup needed for unified Q&A pool
 }
 
+function generateDynamicMCQs() {
+    if (typeof qaData === 'undefined') return [];
+    
+    // Filter for clean, concise Q&As that make good MCQs
+    const eligible = qaData.filter(q => {
+        return q.answer && 
+               !q.answer.includes('```') && 
+               q.answer.length > 20 && 
+               q.answer.length < 400 && 
+               q.category !== 'Behavioral';
+    });
+    
+    const dynamicMCQs = eligible.map(q => {
+        // Find other questions in the same category to use as distractors
+        let sameCat = eligible.filter(other => other.category === q.category && other.id !== q.id);
+        if (sameCat.length < 3) {
+            // Fallback to any other category if same category has too few questions
+            sameCat = eligible.filter(other => other.id !== q.id);
+        }
+        
+        // Pick 3 unique random distractors
+        const distractors = [];
+        const chosenIndices = new Set();
+        while (distractors.length < 3 && chosenIndices.size < sameCat.length) {
+            const randIdx = Math.floor(Math.random() * sameCat.length);
+            if (!chosenIndices.has(randIdx)) {
+                chosenIndices.add(randIdx);
+                const distractorAns = sameCat[randIdx].answer;
+                // Make sure distractor is not identical to correct answer and not already selected
+                if (distractorAns !== q.answer && !distractors.includes(distractorAns)) {
+                    distractors.push(distractorAns);
+                }
+            }
+        }
+        
+        // Fallbacks if we still don't have enough distractors
+        while (distractors.length < 3) {
+            distractors.push("This task is managed via cloud policy configurations or custom CI/CD pipeline automation scripts.");
+        }
+        
+        // Combine correct answer and distractors
+        const options = [q.answer, ...distractors];
+        
+        // Shuffle options
+        const shuffledOptions = [...options].sort(() => Math.random() - 0.5);
+        
+        // Find correct index
+        const correctIndex = shuffledOptions.indexOf(q.answer);
+        
+        return {
+            id: 10000 + q.id, // Offset ID to avoid conflicts with static MCQs
+            category: q.category,
+            question: q.question,
+            options: shuffledOptions,
+            correctAnswer: [correctIndex],
+            multipleSelect: false,
+            explanation: `The correct answer is: "${q.answer}"`
+        };
+    });
+    
+    return dynamicMCQs;
+}
+
+function getAllMcqs() {
+    const staticMcqs = typeof mcqData !== 'undefined' ? mcqData : [];
+    const dynamicMcqs = generateDynamicMCQs();
+    return [...staticMcqs, ...dynamicMcqs];
+}
+
 function startMockInterview() {
     const countEl = document.querySelector('input[name="mock-count"]:checked');
     const mockCount = countEl ? parseInt(countEl.value, 10) : 10;
     
-    if (typeof mcqData === 'undefined') {
+    const allMcqs = getAllMcqs();
+    if (allMcqs.length === 0) {
         alert("MCQ data is not loaded!");
         return;
     }
@@ -1029,12 +1099,12 @@ function startMockInterview() {
     }
     
     // Filter out already used question IDs
-    let available = mcqData.filter(q => !mockSession.usedQuestionIds.includes(q.id));
+    let available = allMcqs.filter(q => !mockSession.usedQuestionIds.includes(q.id));
     
     // If not enough questions left, reset history
     if (available.length < mockCount) {
         mockSession.usedQuestionIds = [];
-        available = [...mcqData];
+        available = [...allMcqs];
     }
     
     // Shuffles MCQ questions
