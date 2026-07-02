@@ -328,30 +328,6 @@
                         <div class="mock-setup-card" style="width: 100%;">
                             <h3>DevOps & Company Q&A Mock Interview</h3>
                             <p class="description" style="margin-bottom: 24px;">Simulate a live technical interview. The simulator will pull randomly selected questions from the entire database (including standard technical categories and company-specific sheets) and shuffle them together. Read the question, think of your response, reveal the professional solution, and self-evaluate your performance.</p>
-                            
-                            <!-- Mock Mode Selection -->
-                            <div class="form-group" style="margin-top: 24px; text-align: left;">
-                                <label class="filter-label">Select Mock Mode</label>
-                                <div class="radio-group" style="margin-top: 10px; display: flex; gap: 24px;">
-                                    <label class="radio-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                        <input type="radio" name="mock-type" value="mcq" checked> MCQ Practice Exam
-                                    </label>
-                                    <label class="radio-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                        <input type="radio" name="mock-type" value="qa"> Subjective Q&A Interview
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Pool Scope Selection (Toggled via JS) -->
-                            <div class="form-group" id="mock-pool-group" style="margin-top: 24px; text-align: left; display: none;">
-                                <label class="filter-label" for="mock-pool-select">Select Question Pool</label>
-                                <select id="mock-pool-select" class="custom-select" style="width: 100%; margin-top: 10px; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary);">
-                                    <option value="all">All Questions (DevOps + Company Q&As)</option>
-                                    <option value="standard">Only Standard Technical Topics</option>
-                                    <option value="company-all">Only Company-wise Q&As (All Companies)</option>
-                                    <!-- Companies loaded dynamically -->
-                                </select>
-                            </div>
 
                             <!-- Question Count Selection -->
                             <div class="form-group" style="margin-top: 24px; text-align: left;">

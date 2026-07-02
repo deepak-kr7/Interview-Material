@@ -480,14 +480,6 @@ function setupEventListeners() {
     if (startMockBtn) {
         startMockBtn.addEventListener('click', startMockInterview);
     }
-    document.querySelectorAll('input[name="mock-type"]').forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            const poolGroup = document.getElementById('mock-pool-group');
-            if (poolGroup) {
-                poolGroup.style.display = e.target.value === 'qa' ? 'block' : 'none';
-            }
-        });
-    });
     document.getElementById('end-mock-early-btn').addEventListener('click', () => {
         if (confirm("Are you sure you want to quit the exam? Your progress will not be saved.")) {
             switchView('mock');
@@ -978,67 +970,18 @@ function exitFlashcardSession() {
    MOCK INTERVIEW SIMULATOR
    ========================================================================== */
 function setupMockSelection() {
-    const poolSelect = document.getElementById('mock-pool-select');
-    if (poolSelect) {
-        // Clear dynamically loaded options first, keeping static ones
-        poolSelect.querySelectorAll('option[data-dynamic="true"]').forEach(el => el.remove());
-        
-        // Find unique companies
-        const companyCategories = [...new Set(qaData.filter(q => q.category === 'Company Wise QA').map(q => q.company))]
-            .filter(c => c)
-            .sort();
-            
-        companyCategories.forEach(company => {
-            const option = document.createElement('option');
-            option.value = company;
-            option.setAttribute('data-dynamic', 'true');
-            const count = qaData.filter(q => q.category === 'Company Wise QA' && q.company === company).length;
-            option.text = `Company: ${company} (${count} Questions)`;
-            poolSelect.appendChild(option);
-        });
-    }
+    // No dynamic setup needed for unified Q&A pool
 }
 
 function startMockInterview() {
-    const typeEl = document.querySelector('input[name="mock-type"]:checked');
-    const mockType = typeEl ? typeEl.value : 'mcq';
-    
     const countEl = document.querySelector('input[name="mock-count"]:checked');
     const mockCount = countEl ? parseInt(countEl.value, 10) : 10;
     
-    if (mockType === 'mcq') {
-        if (typeof mcqData === 'undefined') {
-            alert("MCQ data is not loaded!");
-            return;
-        }
-        const shuffledMcqs = [...mcqData].sort(() => Math.random() - 0.5);
-        mockSession.list = shuffledMcqs.slice(0, Math.min(mockCount, shuffledMcqs.length));
-        mockSession.type = 'mcq';
-    } else {
-        const poolSelect = document.getElementById('mock-pool-select');
-        const pool = poolSelect ? poolSelect.value : 'all';
-        
-        let questionPool = [];
-        if (pool === 'all') {
-            questionPool = [...qaData];
-        } else if (pool === 'standard') {
-            questionPool = qaData.filter(q => q.category !== 'Company Wise QA');
-        } else if (pool === 'company-all') {
-            questionPool = qaData.filter(q => q.category === 'Company Wise QA');
-        } else {
-            questionPool = qaData.filter(q => q.category === 'Company Wise QA' && q.company === pool);
-        }
-        
-        if (questionPool.length === 0) {
-            alert("Selected pool has no questions!");
-            return;
-        }
-        
-        const shuffled = [...questionPool].sort(() => Math.random() - 0.5);
-        mockSession.list = shuffled.slice(0, Math.min(mockCount, shuffled.length));
-        mockSession.type = 'qa';
-    }
+    // Shuffles all questions in data.js (both standard DevOps and Company Q&A)
+    const shuffled = [...qaData].sort(() => Math.random() - 0.5);
+    mockSession.list = shuffled.slice(0, Math.min(mockCount, shuffled.length));
     
+    mockSession.type = 'qa';
     mockSession.currentIndex = 0;
     mockSession.userAnswers = {};
     mockSession.active = true;
@@ -1049,7 +992,7 @@ function startMockInterview() {
     
     const thirdStat = document.querySelector('#mock-results .res-stat:nth-child(3)');
     if (thirdStat) {
-        thirdStat.style.display = mockSession.type === 'mcq' ? 'flex' : 'none';
+        thirdStat.style.display = 'none';
     }
     
     renderMockNav();
