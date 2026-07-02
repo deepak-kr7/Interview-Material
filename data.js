@@ -2596,7 +2596,7 @@ const qaData = [
     "id": 289,
     "category": "Terraform (IaC)",
     "question": "You want to use custom images for VM deployment in Azure. How would you reference them in Terraform?",
-    "answer": "Reference custom images using the `source_image_id` parameter in the `azurerm_linux_virtual_machine` resource, passing the resource ID of the image from your Azure Compute Gallery: `source_image_id = \"/subscriptions/.../providers/Microsoft.Compute/galleries/.../images/...\"`.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -2605,7 +2605,7 @@ const qaData = [
     "id": 290,
     "category": "Terraform (IaC)",
     "question": "How do you handle conditional resource creation (e.g., only create a public IP if enable_public_ip = true) in Terraform for Azure?",
-    "answer": "In Terraform, conditional resource creation is handled using the `count` parameter combined with a conditional expression (ternary operator):\n\n```hcl\nvariable \"enable_public_ip\" {\n  type    = bool\n  default = true\n}\n\nresource \"azurerm_public_ip\" \"pip\" {\n  count               = var.enable_public_ip ? 1 : 0\n  name                = \"my-public-ip\"\n  resource_group_name = azurerm_resource_group.rg.name\n  location            = azurerm_resource_group.rg.location\n  allocation_method   = \"Static\"\n  sku                 = \"Standard\"\n}\n```\n\nIf `var.enable_public_ip` is `true`, `count` is `1` and the resource is created. If `false`, `count` is `0` and it is omitted.",
+    "answer": "Production implementation guide for: **Handle Conditional Resource Creation (E.G., Only Create A Public Ip If Enable_Public_Ip = True) In Terraform For Azure** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -2929,7 +2929,7 @@ const qaData = [
     "id": 326,
     "category": "DevOps General",
     "question": "How do u configure policies of cluster ?",
-    "answer": "In Kubernetes, cluster policies are configured using native resources and tools:\n\n1. **Network Policies**: Restrict pod-to-pod ingress/egress network traffic using firewall-like rules in YAML.\n2. **Kubernetes RBAC**: Restrict actions (verbs) on API objects using Roles, ClusterRoles, and bindings.\n3. **Policy Engines (OPA Gatekeeper / Kyverno)**: Enforce compliance (e.g., block pods without CPU limits, restrict image registries, require specific labels). Here is an example Kyverno policy:\n\n```yaml\napiVersion: kyverno.io/v1\nkind: ClusterPolicy\nmetadata:\n  name: require-labels\nspec:\n  validationFailureAction: Enforce\n  rules:\n  - name: check-team-label\n    match:\n      any:\n      - resources:\n          kinds: [Pod]\n    validate:\n      message: \"Label 'team' is required.\"\n      pattern:\n        metadata:\n          labels:\n            team: \"?*\"\n```",
+    "answer": "Production implementation guide for: **How Do U Configure Policies Of Cluster** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -2965,7 +2965,7 @@ const qaData = [
     "id": 330,
     "category": "DevOps General",
     "question": "Have u work with AFD and APM?",
-    "answer": "Yes, I have worked with Azure Front Door (AFD) as a global entry point, HTTP load balancer, and CDN for applications, and Application Insights (APM) for full-stack monitoring, exception tracking, and performance analytics.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -2992,7 +2992,7 @@ const qaData = [
     "id": 333,
     "category": "Company Wise QA",
     "question": "Terraform Taint?",
-    "answer": "`terraform taint` is a legacy command (replaced by the `-replace` flag in `terraform apply`) used to manually mark a resource in the state file as degraded or damaged, forcing Terraform to destroy and recreate it during the next run.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "LTI Mindtree"
@@ -3100,7 +3100,7 @@ const qaData = [
     "id": 345,
     "category": "Company Wise QA",
     "question": "Have you written automation script?",
-    "answer": "Yes, I write automation scripts regularly: Bash scripts for OS patching and log rotation, Python scripts for calling REST APIs and parsing JSON, and PowerShell scripts for Azure automation tasks.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "LTI Mindtree"
@@ -3667,7 +3667,7 @@ const qaData = [
     "id": 408,
     "category": "Docker & Kubernetes",
     "question": "What is Demonset, stateful set?",
-    "answer": "- **DaemonSet**: Ensures that a copy of a specific Pod runs on all (or selected) Nodes in a cluster (useful for logs/monitoring agents like Fluentd or Prometheus Node Exporter).\n- **StatefulSet**: Manages stateful applications, providing stable, unique network identifiers and persistent storage for each Pod (useful for databases like PostgreSQL or Elasticsearch).",
+    "answer": "Use a Deployment for stateless workloads where replica pods are identical and interchangeable (e.g. web servers). Use a StatefulSet for stateful applications (e.g. databases like PostgreSQL) requiring unique, persistent identities, stable network hostnames, and dedicated persistent volume storage for each pod replica.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -3703,7 +3703,7 @@ const qaData = [
     "id": 412,
     "category": "Docker & Kubernetes",
     "question": "Sidecar Container?",
-    "answer": "The Sidecar pattern runs a helper container alongside the main application container in the same Pod. Since they share the network (localhost) and storage volumes, the sidecar can collect logs (e.g., Fluentd), manage service mesh proxies (e.g., Envoy), or sync secrets without changing the main application code.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -3838,7 +3838,7 @@ const qaData = [
     "id": 427,
     "category": "Company Wise QA",
     "question": "In linux which flavour you have worked?",
-    "answer": "I have worked primarily with **Ubuntu Server** (Debian-based) and **Red Hat Enterprise Linux (RHEL)** (Fedora-based) in production environments, managing systemd services, users, permissions, and network configurations.",
+    "answer": "Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3874,7 +3874,7 @@ const qaData = [
     "id": 431,
     "category": "Company Wise QA",
     "question": "Scipting language you have worked on?",
-    "answer": "I have worked extensively with **Bash** (for shell scripting and task automation in Linux), **Python** (for calling REST APIs, scripting complex logic, and parsing files), and **PowerShell** (for Azure automation and scripting on Windows servers).",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3910,7 +3910,7 @@ const qaData = [
     "id": 435,
     "category": "Company Wise QA",
     "question": "How you setup pipeline in ADO?",
-    "answer": "Setting up a pipeline in Azure DevOps (ADO) is typically done using YAML pipelines:\n\n1. **Create Service Connection**: Set up an ARM Service Connection (using Workload Identity Federation / OIDC) to grant ADO access to Azure.\n2. **Write `azure-pipelines.yml`**:\n```yaml\ntrigger:\n  branches:\n    include: [main]\n\npool:\n  vmImage: 'ubuntu-latest'\n\nstages:\n- stage: Build\n  jobs:\n  - job: BuildJob\n    steps:\n    - script: npm install && npm run build\n- stage: Deploy\n  dependsOn: Build\n  jobs:\n  - deployment: DeployJob\n    environment: 'Prod'\n    strategy:\n      runOnce:\n        deploy:\n          steps:\n          - task: AzureCLI@2\n            inputs:\n              azureSubscription: 'MyServiceConnection'\n              scriptType: 'bash'\n              inlineScript: |\n                az group create --name my-rg --location eastus\n```\n3. **Configure in Portal**: Go to Pipelines -> New Pipeline -> Select repository -> Point to the YAML file -> Run.",
+    "answer": "Production implementation guide for: **Setup Pipeline In Ado** in CI/CD Pipeline Automation:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3919,7 +3919,7 @@ const qaData = [
     "id": 436,
     "category": "Company Wise QA",
     "question": "Are you using build and release pipeline both?",
-    "answer": "Yes, I use both. The **Build pipeline (CI)** handles compiling code, running tests, scanning security (SonarQube/Checkov), and generating immutable packages/images. The **Release pipeline (CD)** deploys these packages sequentially to environments (Dev, QA, Prod) with approval gates.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3955,7 +3955,7 @@ const qaData = [
     "id": 440,
     "category": "Company Wise QA",
     "question": "Command to check logs, running container?",
-    "answer": "- **Check logs**: `kubectl logs <pod-name>` (Kubernetes) or `docker logs <container-id>` (Docker).\n- **Check running containers**: `kubectl get pods` (Kubernetes) or `docker ps` (Docker).",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3964,7 +3964,7 @@ const qaData = [
     "id": 441,
     "category": "Company Wise QA",
     "question": "If we have to create access method where we do not need to provide credentials, how to do that?",
-    "answer": "To access cloud resources from pipelines or other services without managing or hardcoding long-lived credentials (like passwords, keys, or client secrets), use:\n\n1. **OIDC (OpenID Connect) Federation**: Establishing a trust relationship between Azure Entra ID and your pipeline (Azure DevOps or GitHub Actions). The pipeline requests a short-lived token from the Identity Provider and exchanges it for a temporary Azure token.\n2. **Managed Identities (for Azure resources)**: \n   - **System-Assigned Managed Identity**: Tied directly to the lifecycle of the Azure resource. Once enabled, the code on the VM or App Service uses the Azure SDK to fetch tokens automatically from the local metadata endpoint without any credentials in the configuration.\n   - **User-Assigned Managed Identity**: Created as a standalone Azure resource and can be shared across multiple resources.",
+    "answer": "Production implementation guide for: **If We Have To Create Access Method Where We Do Not Need To Provide Credentials,  Do That** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -3991,7 +3991,7 @@ const qaData = [
     "id": 444,
     "category": "Company Wise QA",
     "question": "Suppose you have a single file with 1000 lines of code and you need to run only one resource (e.g., a VNet). How would you do that?",
-    "answer": "Use the `-target` flag with `terraform plan` or `terraform apply` to limit execution to a specific resource address:\n`terraform apply -target=azurerm_virtual_network.vnet`\n*Note: Use this only for troubleshooting or recovery, as it can cause state inconsistencies.*",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4027,7 +4027,7 @@ const qaData = [
     "id": 448,
     "category": "Company Wise QA",
     "question": "How can you prevent the accidental deletion of a resource in Terraform?",
-    "answer": "1. **Prevent Destroy Block**: Add a `lifecycle` block with `prevent_destroy = true` inside the resource configuration.\n2. **Azure Resource Locks**: Apply a Delete Lock (`CanNotDelete`) on the resource group or resource in Azure using Terraform (`azurerm_management_lock`).",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4036,7 +4036,7 @@ const qaData = [
     "id": 449,
     "category": "Company Wise QA",
     "question": "What is the process of provisioning infrastructure using Terraform?",
-    "answer": "1. **`terraform init`**: Initializes directory, downloads providers/modules.\n2. **`terraform plan`**: Compares code with cloud state, outputs proposed changes.\n3. **`terraform apply`**: Executes proposed changes via cloud APIs and updates the state file.\n4. **`terraform destroy`**: Deletes all resources managed by the configuration.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4054,7 +4054,7 @@ const qaData = [
     "id": 451,
     "category": "Company Wise QA",
     "question": "have you done security hardening in linux machine ?",
-    "answer": "Yes, security hardening tasks include: disabling root login in SSH config (`PermitRootLogin no`), configuring a UFW or iptables firewall to only open necessary ports, using SSH keys instead of passwords, setting up automatic security updates (`unattended-upgrades`), and enforcing password policies in `/etc/login.defs`.",
+    "answer": "Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4063,7 +4063,7 @@ const qaData = [
     "id": 452,
     "category": "Company Wise QA",
     "question": "What is the basic structure of a Terraform configuration?",
-    "answer": "A standard Terraform configuration includes:\n- `providers.tf`: Provider configurations (Azure, AWS).\n- `main.tf`: Core resource definitions.\n- `variables.tf`: Input variable declarations.\n- `outputs.tf`: Output values to display or share.\n- `terraform.tfvars`: Environment-specific variable values.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4081,7 +4081,7 @@ const qaData = [
     "id": 454,
     "category": "Company Wise QA",
     "question": "Which operating systems have you worked on — Ubuntu or RHEL?",
-    "answer": "I have experience with both. I use **Ubuntu Server** for general container workloads, microservices, and CI/CD runners, and **RHEL** for enterprise databases and legacy application hosts.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "BEE Solver Tech"
@@ -4135,7 +4135,7 @@ const qaData = [
     "id": 460,
     "category": "Company Wise QA",
     "question": "How can you access secrets stored in Azure Key Vault to access a application or on resources?",
-    "answer": "1. Assign a **Managed Identity** (System or User-Assigned) to the VM or service resource.\n2. Configure an Access Policy or Azure RBAC role (e.g. Key Vault Secrets User) on Key Vault for the Identity.\n3. Reference the secret in your code or resource configuration without credentials using the Azure SDK or CLI.",
+    "answer": "Azure Key Vault is a secure secrets management service. We use it to store passwords, client secrets, and certificates. In pipelines, we link Key Vault secrets dynamically to variable groups so they are injected at runtime without hardcoding.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4144,7 +4144,7 @@ const qaData = [
     "id": 461,
     "category": "Company Wise QA",
     "question": "You have modules for 3 environments. If you rename npr.tfvars, will Terraform still execute it?",
-    "answer": "No, Terraform does not read custom-named `.tfvars` files automatically. You must pass it explicitly using the `-var-file` argument:\n`terraform plan -var-file=\"npr.tfvars\"`\n*Only `terraform.tfvars` or `*.auto.tfvars` files are loaded automatically.*",
+    "answer": "A Terraform module is a package of reusable Terraform configuration files in a directory. It allows you to group related infrastructure components together (like a VM, disk, and NIC) and instantiate them multiple times across environments (dev, test, prod) with different inputs.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4153,7 +4153,7 @@ const qaData = [
     "id": 462,
     "category": "Company Wise QA",
     "question": "How many IPs are available in the 192.168.1.0/32 ?",
-    "answer": "In a `/32` subnet range (e.g. `192.168.1.0/32`), only **1 IP address** is available. This CIDR block represents a single host, not a range.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4189,7 +4189,7 @@ const qaData = [
     "id": 466,
     "category": "Company Wise QA",
     "question": "Which Azure services have you worked with in your application?",
-    "answer": "I work with core Azure services: AKS (Kubernetes), App Services, Azure Functions, Virtual Networks (VNets), Azure SQL, Key Vault, Application Gateway, Azure Monitor/Log Analytics, and Azure Container Registry (ACR).",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4261,7 +4261,7 @@ const qaData = [
     "id": 474,
     "category": "Company Wise QA",
     "question": "How you will integrate ACS/AKS in the infrastructure using terraform so that application et hosted and run on pods ?",
-    "answer": "Integrating Azure Kubernetes Service (AKS) using Terraform and deploying workloads:\n\n1. **Terraform Configuration**:\n```hcl\nresource \"azurerm_kubernetes_cluster\" \"aks\" {\n  name                = \"my-aks-cluster\"\n  location            = azurerm_resource_group.rg.location\n  resource_group_name = azurerm_resource_group.rg.name\n  dns_prefix          = \"myaks\"\n\n  default_node_pool {\n    name       = \"default\"\n    node_count = 2\n    vm_size    = \"Standard_DS2_v2\"\n    vnet_subnet_id = azurerm_subnet.subnet.id\n  }\n\n  identity {\n    type = \"SystemAssigned\"\n  }\n}\n```\n2. **Deploy Application**: Connect using `az aks get-credentials` and deploy pods using a manifest:\n```yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: web-app\nspec:\n  replicas: 2\n  selector:\n    matchLabels:\n      app: web-app\n  template:\n    metadata:\n      labels:\n        app: web-app\n    spec:\n      containers:\n      - name: web\n        image: mcr.microsoft.com/azuredocs/aci-helloworld:latest\n        ports:\n        - containerPort: 80\n```",
+    "answer": "Production implementation guide for: **Will Integrate Acs/Aks In The Infrastructure Using Terraform So That Application Et Hosted And Run On Pods** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4279,7 +4279,7 @@ const qaData = [
     "id": 476,
     "category": "Company Wise QA",
     "question": "questions -",
-    "answer": "DevOps practices revolve around continuous integration (CI), continuous delivery (CD), infrastructure as code (IaC), monitoring, collaboration, and automated security scans.",
+    "answer": "We manage production deployments by configuring automated pipelines, implementing Infrastructure as Code templates, and enforcing security practices.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Hexaware"
@@ -4351,7 +4351,7 @@ const qaData = [
     "id": 484,
     "category": "Company Wise QA",
     "question": "7- deployment type in application terms like blue green canary recreate?? How do you define and what we use when?",
-    "answer": "Deployment strategies in application rollout:\n\n1. **Recreate**: Terminate all version A instances first, then spin up version B. Causes downtime but avoids version mismatch issues.\n2. **Rolling Update**: Gradually replace instances of version A with version B. Ensures zero downtime, but both versions run simultaneously.\n3. **Blue-Green**: Maintain two identical environments (Blue and Green). Deploy version B to Green, test it, then switch router/DNS traffic from Blue to Green. Allows instant rollbacks but doubles cost.\n4. **Canary**: Route a small percentage of production traffic (e.g., 5%) to version B (canary) to monitor error rates and logs. If stable, gradually route 100% of traffic to version B, minimizing the blast radius of potential bugs.",
+    "answer": "Production implementation guide for: **7- Deployment Type In Application Terms Like Blue Green Canary Recreate  Define And What We Use When** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Sapient"
@@ -4477,7 +4477,7 @@ const qaData = [
     "id": 498,
     "category": "Company Wise QA",
     "question": "what is metrics",
-    "answer": "Metrics are quantitative measurements of system performance and resource utilization over time, such as CPU usage percentage, memory usage, network packets in/out, disk IOPS, and API request count/latency.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Deloitte"
@@ -4504,7 +4504,7 @@ const qaData = [
     "id": 501,
     "category": "Company Wise QA",
     "question": "why we need Grafana",
-    "answer": "Grafana is needed to visualize metrics and logs. It connects to data sources like Prometheus, Azure Monitor, or Elasticsearch, allowing teams to build real-time, interactive, and customizable dashboards for system monitoring and alerting.",
+    "answer": "Prometheus scrapes performance metrics from target servers and stores them as time-series data. Grafana connects to Prometheus as a data source and queries the metrics to display them on real-time, interactive dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Deloitte"
@@ -4540,7 +4540,7 @@ const qaData = [
     "id": 505,
     "category": "Company Wise QA",
     "question": "what are terraform provider?",
-    "answer": "Terraform providers are plugins that act as translators between Terraform's core engine and target APIs (such as AWS, Azure, Google Cloud, or Kubernetes), allowing Terraform to manage resources on those platforms.",
+    "answer": "Terraform providers are plugins that act as translators between the Terraform core engine and target cloud platform APIs (like AzureRM, AWS, or GCP). They translate declarative HCL configurations into actual API calls to create, update, or delete resources.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4549,7 +4549,7 @@ const qaData = [
     "id": 506,
     "category": "Company Wise QA",
     "question": "how do you manage state file?",
-    "answer": "Terraform state files must be managed using a Remote Backend to enable collaboration and security:\n\n1. **Remote Backend**: Store state files in Azure Blob Storage or AWS S3 instead of local disk.\n2. **State Locking**: Lock the state using Blob Storage Lease (or DynamoDB) to prevent concurrent updates from corrupting state data.\n3. **Encryption**: Enforce encryption at rest and in transit.\n4. **Access Control**: Restrict IAM permissions on the storage container to CI/CD pipelines and authorized admins.\n\n```hcl\nterraform {\n  backend \"azurerm\" {\n    resource_group_name  = \"tfstate-rg\"\n    storage_account_name = \"mystorageaccount\"\n    container_name       = \"tfstate\"\n    key                  = \"prod.terraform.tfstate\"\n  }\n}\n```",
+    "answer": "Production implementation guide for: **Manage State File** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4558,7 +4558,7 @@ const qaData = [
     "id": 507,
     "category": "Company Wise QA",
     "question": "how you manage secrets in terraform?",
-    "answer": "Managing secrets in Terraform:\n\n1. **Avoid Hardcoding**: Never write passwords, tokens, or keys in clear text.\n2. **Sensitive Variables**: Use `sensitive = true` on variables to prevent secrets from being printed to the console output:\n```hcl\nvariable \"db_password\" {\n  type      = string\n  sensitive = true\n}\n```\n3. **Cloud Secret Managers**: Retrieve secrets dynamically from Azure Key Vault or AWS Secrets Manager using data sources:\n```hcl\ndata \"azurerm_key_vault_secret\" \"db_password\" {\n  name         = \"db-password\"\n  key_vault_id = data.azurerm_key_vault.main.id\n}\n```\n4. **Environment Variables**: Pass values using variables prefixed with `TF_VAR_` (e.g. `export TF_VAR_db_password=\"secret\"`).\n5. **Secure State Backend**: Ensure the remote backend is encrypted and protected by RBAC, as Terraform state files store sensitive inputs in clear text.",
+    "answer": "Production implementation guide for: **Manage Secrets In Terraform** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4567,7 +4567,7 @@ const qaData = [
     "id": 508,
     "category": "Company Wise QA",
     "question": "have you worked on Grafana and Prometheus and how it works?",
-    "answer": "Prometheus scrapes and stores performance metrics (CPU, RAM, custom app metrics) as time-series data at regular intervals. Grafana connects to Prometheus as a data source and queries those metrics using PromQL to visualize them on dashboards.",
+    "answer": "Prometheus scrapes performance metrics from target servers and stores them as time-series data. Grafana connects to Prometheus as a data source and queries the metrics to display them on real-time, interactive dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4585,7 +4585,7 @@ const qaData = [
     "id": 510,
     "category": "Company Wise QA",
     "question": "can you tell me about any networking issues?",
-    "answer": "Common networking issues include IP address exhaustion in subnets, incorrect NSG (Network Security Group) rules blocking ports, DNS resolution failures (both internal and external), and missing routes in Route Tables for peered VNets.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4594,7 +4594,7 @@ const qaData = [
     "id": 511,
     "category": "Company Wise QA",
     "question": "have you worked on Linux or windows machine?",
-    "answer": "I work primarily with **Linux machines** (Ubuntu/RHEL) for running applications, containers, and pipelines. I also configure Windows Server machines if active directory domain services or IIS hosting is required.",
+    "answer": "Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4603,7 +4603,7 @@ const qaData = [
     "id": 512,
     "category": "Company Wise QA",
     "question": "how you can do monitoring on Linux machine?",
-    "answer": "Monitoring resource usage on a Linux machine:\n\n1. **CPU & RAM**: Use `top` or `htop` for interactive process tracking, and `free -m` to check free/used memory.\n2. **Disk I/O**: Use `df -h` to check disk space and `iotop` or `iostat` to check active disk read/write throughput.\n3. **Network**: Use `ss -tuln` or `netstat -tuln` to verify open ports and active connections.\n4. **Logs**: Check `/var/log` or use `journalctl -u service_name` to view systemd service logs.\n5. **Agents**: Install Prometheus `node_exporter` (exposes metrics on port 9100 for Grafana) or the Azure Monitor Agent (AMA) to send logs/metrics to Log Analytics.",
+    "answer": "Production implementation guide for: **Can Do Monitoring On Linux Machine** in Linux Systems Administration:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4639,7 +4639,7 @@ const qaData = [
     "id": 516,
     "category": "Company Wise QA",
     "question": "you have a playbook and need to run a single task, how can you run ?",
-    "answer": "Use the `--tags` flag to run only the task marked with that tag:\n`ansible-playbook -i inventory.ini site.yml --tags \"task_tag\"`\nAlternatively, use `--start-at-task=\"Task Name\"` to run the playbook starting from that specific task.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4648,7 +4648,7 @@ const qaData = [
     "id": 517,
     "category": "Company Wise QA",
     "question": "how to run playbook on single server ?",
-    "answer": "To execute an Ansible playbook on a single target server:\n\n1. **Limit Flag**: Restrict execution using `-l` or `--limit`:\n   `ansible-playbook -i inventory.ini site.yml --limit \"webserver1\"`\n2. **Direct Inline connection**: Pass the target IP directly with a trailing comma (Ansible treats it as an inline host list):\n   `ansible-playbook -i \"192.168.1.50,\" site.yml --private-key=~/.ssh/id_rsa -u ubuntu`\n3. **Localhost Execution**: Run on the local machine:\n   `ansible-playbook -i \"localhost,\" site.yml --connection=local`",
+    "answer": "Production implementation guide for: **Run Playbook On Single Server** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4675,7 +4675,7 @@ const qaData = [
     "id": 520,
     "category": "Company Wise QA",
     "question": "how to run third party application using ansible  ?",
-    "answer": "To install and run a third-party application via Ansible:\n\n1. **Download & Extract**: Use `get_url` or `github_release` to download the package, and `unarchive` to extract it.\n2. **Install Dependencies**: Use package manager modules (`apt` or `yum`) to install requirements.\n3. **Service Management**: Create a systemd service file using the `copy` or `template` module:\n```yaml\n- name: Create Systemd Service File\n  copy:\n    dest: /etc/systemd/system/myapp.service\n    content: |\n      [Unit]\n      Description=My Third-Party App\n      After=network.target\n\n      [Service]\n      ExecStart=/usr/local/bin/myapp --config=/etc/myapp.conf\n      Restart=always\n\n      [Install]\n      WantedBy=multi-user.target\n```\n4. **Enable & Start**: Reload daemon and start using the `systemd` module:\n```yaml\n- name: Start Service\n  systemd:\n    name: myapp\n    daemon_reload: yes\n    state: started\n    enabled: yes\n```",
+    "answer": "Production implementation guide for: **Run Third Party Application Using Ansible** in Ansible Configuration Management:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4684,7 +4684,7 @@ const qaData = [
     "id": 521,
     "category": "Company Wise QA",
     "question": "prerequsite on setting of worker node and and master node?",
-    "answer": "- **Master (Control Plane) Node**: Needs minimum 2 vCPUs, 2GB RAM, swap space disabled (`swapoff -a`), and specific ports open (6443, 2379-2380, 10250).\n- **Worker Node**: Needs swap space disabled, container runtime (like containerd) installed, kubeadm, kubelet, and kubectl installed, and network access to the master node.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4702,7 +4702,7 @@ const qaData = [
     "id": 523,
     "category": "Company Wise QA",
     "question": "how will you check reliability of your infrastructure?",
-    "answer": "Infrastructure reliability is checked by: running automated integration and load tests, implementing synthetic transaction monitoring, performing regular chaos engineering experiments, verifying failovers, and analyzing uptime SLA/SLO metrics.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4729,7 +4729,7 @@ const qaData = [
     "id": 526,
     "category": "Company Wise QA",
     "question": "if customer want to change the version of terraform how will you assess/estimate the changes?",
-    "answer": "1. Check the Terraform release notes and changelog for breaking changes.\n2. Run `terraform init -upgrade` to download updated providers.\n3. Run `terraform validate` and `terraform plan` to catch syntax changes, deprecated resources, or recreation triggers.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4792,7 +4792,7 @@ const qaData = [
     "id": 533,
     "category": "Company Wise QA",
     "question": "What is the use of CMD in Docker?",
-    "answer": "The `CMD` instruction in a Dockerfile sets the default command and parameters to execute when a container is run. It can be overridden by passing arguments to `docker run`. If `ENTRYPOINT` is defined, `CMD` acts as arguments to `ENTRYPOINT`.",
+    "answer": "Docker is a platform for building, running, and shipping containers. It packages applications and their dependencies into immutable container images, ensuring consistency across development and production environments.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4801,7 +4801,7 @@ const qaData = [
     "id": 534,
     "category": "Company Wise QA",
     "question": "What does the output block in Terraform do?",
-    "answer": "The output block in Terraform defines values that are displayed on the command line after running `terraform apply`, or can be queried and shared with other configurations using remote state data sources.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Persistent"
@@ -4891,7 +4891,7 @@ const qaData = [
     "id": 544,
     "category": "Company Wise QA",
     "question": "have you used function app?",
-    "answer": "Yes, I use Azure Function Apps to run serverless, event-driven tasks, such as automated database backups, clean-up scripts, log parsing, and triggering webhooks based on system alerts.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4900,7 +4900,7 @@ const qaData = [
     "id": 545,
     "category": "Company Wise QA",
     "question": "what is role of azure function app?",
-    "answer": "Azure Function App is a serverless compute service that runs code in response to events (e.g. HTTP requests, blob storage updates, timer triggers) without managing underlying VMs. It automatically scales and charges only for execution time.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4909,7 +4909,7 @@ const qaData = [
     "id": 546,
     "category": "Company Wise QA",
     "question": "which resource we can use to distrubte the content static & dynamic?",
-    "answer": "**Azure Application Gateway** or **Azure Front Door** can be used. They support path-based routing (e.g. routing `/static/*` to Azure Storage Blobs and `/api/*` to backend VMs/containers) to optimize content distribution.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4927,7 +4927,7 @@ const qaData = [
     "id": 548,
     "category": "Company Wise QA",
     "question": "did you worked with aws? what all resources you have used in aws?",
-    "answer": "Yes, I have experience with AWS, managing resources like EC2 (virtual servers), S3 (object storage), VPC (networking), RDS (databases), IAM (access control), EKS (Kubernetes), and CloudWatch (monitoring).",
+    "answer": "AWS (Amazon Web Services) is a public cloud provider. I use core services like EC2 (compute), S3 (object storage), VPC (networking), IAM (access control), EKS (Kubernetes), and CloudWatch (monitoring).",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4936,7 +4936,7 @@ const qaData = [
     "id": 549,
     "category": "Company Wise QA",
     "question": "have you worked on gcp? what all resources you have used in gcp?",
-    "answer": "Yes, I have worked with GCP, utilizing resources such as Compute Engine (VMs), Cloud Storage, Google Kubernetes Engine (GKE), VPC networks, Cloud SQL, and IAM roles for identity management.",
+    "answer": "GCP (Google Cloud Platform) is a public cloud provider. I use services like Compute Engine (VMs), GKE (Kubernetes), Cloud Storage, VPC networks, and IAM roles.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4945,7 +4945,7 @@ const qaData = [
     "id": 550,
     "category": "Company Wise QA",
     "question": "how many years of experience you have in terraform?",
-    "answer": "I have over 3 years of hands-on experience using Terraform to provision, manage, and scale cloud infrastructure in Azure, AWS, and Kubernetes environments.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4954,7 +4954,7 @@ const qaData = [
     "id": 551,
     "category": "Company Wise QA",
     "question": "did you used terraform taint?",
-    "answer": "Yes, I have used `terraform taint` to mark resources (like a misconfigured VM) for recreation. In modern Terraform, I use the `-replace` flag with plan/apply instead: `terraform apply -replace=\"azurerm_linux_virtual_machine.vm\"`.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4972,7 +4972,7 @@ const qaData = [
     "id": 553,
     "category": "Company Wise QA",
     "question": "I have created a resources in azure and want to keep the state file in aws?",
-    "answer": "Yes, configure your Terraform provider for Azure (`azurerm`), but configure your remote backend settings to use an AWS S3 bucket: `backend \"s3\" { bucket = \"my-s3-bucket\" key = \"path/state\" region = \"us-east-1\" }`.",
+    "answer": "The Terraform state file is created automatically when you run 'terraform apply' for the first time and successfully provision resources. Running 'terraform init' or 'terraform plan' does not create a state file (except in remote backends where an empty state reference may be initialized).",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4981,7 +4981,7 @@ const qaData = [
     "id": 554,
     "category": "Company Wise QA",
     "question": "have you encoured any errors in terraform?",
-    "answer": "Common Terraform errors include: `StateLocked` (concurrency issue resolved by waiting or unlocking), cyclic dependencies (resolved by adjusting variable references), authentication timeouts, and resource-specific API schema failures.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -4990,7 +4990,7 @@ const qaData = [
     "id": 555,
     "category": "Company Wise QA",
     "question": "what happeens when we run terraform init?",
-    "answer": "`terraform init` initializes the current working directory. It reads the code, downloads necessary provider plugins (e.g., AzureRM) and modules, configures the backend for state tracking, and creates the `.terraform/` folder.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5008,7 +5008,7 @@ const qaData = [
     "id": 557,
     "category": "Company Wise QA",
     "question": "can you write a code for virtual machine in terraform?",
-    "answer": "A simple Terraform VM block:\n```hcl\nresource \"azurerm_linux_virtual_machine\" \"vm\" {\n  name                = \"web-vm\"\n  resource_group_name = azurerm_resource_group.rg.name\n  location            = azurerm_resource_group.rg.location\n  size                = \"Standard_B2s\"\n  admin_username      = \"adminuser\"\n  network_interface_ids = [azurerm_network_interface.nic.id]\n  admin_ssh_key {\n    username   = \"adminuser\"\n    public_key = file(\"~/.ssh/id_rsa.pub\")\n  }\n  os_disk {\n    caching              = \"ReadWrite\"\n    storage_account_type = \"Standard_LRS\"\n  }\n  source_image_reference {\n    publisher = \"Canonical\"\n    offer     = \"0001-com-ubuntu-server-jammy\"\n    sku       = \"22_04-lts\"\n    version   = \"latest\"\n  }\n}\n```",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5017,7 +5017,7 @@ const qaData = [
     "id": 558,
     "category": "Company Wise QA",
     "question": "have you also used modules, can you explain the folder structure of modules?",
-    "answer": "Terraform modules group multiple resources together. A standard module folder structure is:\n```text\n├── main.tf        # Resources\n├── variables.tf   # Module inputs\n├── outputs.tf     # Module outputs\n└── README.md      # Usage instructions\n```\nThey are called from the root configuration using `module \"name\" { source = \"./path\" }`.",
+    "answer": "A Terraform module folder typically contains: `main.tf` (resource definitions), `variables.tf` (input variable declarations), and `outputs.tf` (output values). You structure them in a subfolder and call them using: module \"name\" { source = \"./modules/vnet\" ... }",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5026,7 +5026,7 @@ const qaData = [
     "id": 559,
     "category": "Company Wise QA",
     "question": "why you're using for_each, did you also used count?",
-    "answer": "- Use `for_each` (takes a map/set) when managing collections of distinct, independent resources. If an item is added or removed, it only affects that resource.\n- Use `count` (takes a number) for simple toggles (e.g., `count = var.create_rg ? 1 : 0`) or identical resource lists where index shifts are acceptable.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5035,7 +5035,7 @@ const qaData = [
     "id": 560,
     "category": "Company Wise QA",
     "question": "how you call the modules in terraform?",
-    "answer": "Call modules in Terraform using the `module` block, specifying the directory path or Git URL in the `source` argument:\n\n```hcl\nmodule \"vnet\" {\n  source              = \"./modules/network\"\n  vnet_name           = \"production-vnet\"\n  address_space       = [\"10.0.0.0/16\"]\n  resource_group_name = \"prod-rg\"\n}\n```\nRun `terraform init` to download and initialize the module. Access outputs of the module using the syntax `module.<MODULE_NAME>.<OUTPUT_NAME>` (e.g., `module.vnet.vnet_id`).",
+    "answer": "Production implementation guide for: **Call The Modules In Terraform** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5044,7 +5044,7 @@ const qaData = [
     "id": 561,
     "category": "Company Wise QA",
     "question": "you have also worked on azure devops?",
-    "answer": "Yes, I configure CI/CD pipelines in Azure DevOps, using YAML pipelines to build, test, and deploy applications to Azure Kubernetes Service, App Services, and VM scale sets.",
+    "answer": "DevOps is a set of practices combining software development (Dev) and IT operations (Ops) to shorten the systems development lifecycle and provide continuous delivery of high-quality software.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5053,7 +5053,7 @@ const qaData = [
     "id": 562,
     "category": "Company Wise QA",
     "question": "can you explain the end to end flow how to deploy terraform in your pipeline?",
-    "answer": "An end-to-end Terraform deployment pipeline:\n\n1. **Pull Request (Verification Phase)**:\n   - Developer submits code changes.\n   - Pipeline triggers and runs static analysis: `terraform fmt -check`, `terraform validate`, and scans with security scanners (`checkov` or `tfsec`).\n   - Run `terraform plan` to generate a dry-run log of changes. Publish plan details to the PR comments for review.\n2. **Merge to Main (Deployment Phase)**:\n   - PR is approved and merged into `main`.\n   - Pipeline authenticates to the cloud using OIDC Workload Identity.\n   - Run `terraform apply -auto-approve` to execute updates. The state file is updated automatically in remote Blob storage.\n3. **Post-Deployment**:\n   - Run verification tests to check resource availability and send success/fail notifications to Slack/Teams.",
+    "answer": "Production implementation guide for: **Can You Explain The End To End Flow  Deploy Terraform In Your Pipeline** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5062,7 +5062,7 @@ const qaData = [
     "id": 563,
     "category": "Company Wise QA",
     "question": "do you remeember az cli command to create app registrations?",
-    "answer": "Yes, use the command:\n`az ad app create --display-name \"my-app-registration\"`\nTo retrieve credential details, run:\n`az ad sp create-for-rbac --name \"my-app-registration\"`",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5080,7 +5080,7 @@ const qaData = [
     "id": 565,
     "category": "Company Wise QA",
     "question": "what are the steps in ci pipeline as you know there is code commit?",
-    "answer": "Standard steps in a CI pipeline: 1. Code Commit trigger. 2. Fetch dependencies. 3. Code linting and formatting verification. 4. Run unit and integration tests. 5. Static Code Analysis (SonarQube) / Security scans. 6. Build and package application artifacts/container images. 7. Publish/upload artifacts.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5089,7 +5089,7 @@ const qaData = [
     "id": 566,
     "category": "Company Wise QA",
     "question": "what is steps to generate artifacts?",
-    "answer": "To generate and store artifacts in Azure Pipelines, use the `PublishPipelineArtifact@1` task in your YAML:\n```yaml\n- task: PublishPipelineArtifact@1\n  inputs:\n    targetPath: '$(Build.ArtifactStagingDirectory)'\n    artifact: 'drop'\n    publishLocation: 'pipeline'\n```",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5098,7 +5098,7 @@ const qaData = [
     "id": 567,
     "category": "Company Wise QA",
     "question": "which package types you have used in your CD pipelines?",
-    "answer": "I use standard package formats in CD pipelines: **Zip archives** (for Azure App Services/Node.js), **Docker images** (for Kubernetes/AKS), **NuGet/NPM packages** (for internal libraries), and **Terraform tar packages** (for infrastructure configurations).",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5107,7 +5107,7 @@ const qaData = [
     "id": 568,
     "category": "Company Wise QA",
     "question": "which langauges are you well versed with?",
-    "answer": "I am well-versed in **Python** (for automation, REST APIs, and utilities), **Bash/Shell** (for OS automation and pipeline scripts), **YAML/JSON** (for configuration and pipeline manifests), and basic **SQL**.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "EY"
@@ -5125,7 +5125,7 @@ const qaData = [
     "id": 570,
     "category": "Company Wise QA",
     "question": "What is the Hub and Spoke network topology in Azure?",
-    "answer": "The **Hub and Spoke network topology** in Azure is a hub-and-spoke model where:\n- The **Hub** VNet acts as a central point of connectivity for shared services (like Azure Firewall, ExpressRoute/VPN Gateways, and private DNS zones).\n- The **Spoke** VNets peer with the Hub VNet and isolate workloads. Traffic between spokes can be routed through the Hub's firewall.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5143,7 +5143,7 @@ const qaData = [
     "id": 572,
     "category": "Company Wise QA",
     "question": "Can you describe some firewall rules you have configured or worked on in Azure?",
-    "answer": "I have configured firewall rules in **Azure Firewall** and **Network Security Groups (NSGs)**, such as blocking all inbound traffic by default, permitting SSH (22) or HTTP (80/443) only from trusted CIDR blocks, and restricting outbound access from private subnets to specific endpoints (FQDNs).",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5152,7 +5152,7 @@ const qaData = [
     "id": 573,
     "category": "Company Wise QA",
     "question": "What is the Application Layer (Layer 7), and how does it function?",
-    "answer": "The **Application Layer (Layer 7)** is the highest layer of the OSI model:\n\n- **Function**: It interacts directly with application software (browsers, email clients) and supports protocols for network services. Unlike lower layers that handle data packets or connections, Layer 7 understands the actual content of HTTP/HTTPS requests.\n- **Common Protocols**: HTTP, HTTPS, DNS, SMTP, SSH, FTP, DHCP.\n- **L7 Load Balancing**: An L7 load balancer (e.g., Azure Application Gateway, NGINX Ingress) makes routing decisions based on request content: URL paths (routing `/api` to one backend and `/images` to another), HTTP headers, cookies, or query parameters.",
+    "answer": "Production implementation guide for: **What Is The Application Layer (Layer 7), And How Does It Function** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5170,7 +5170,7 @@ const qaData = [
     "id": 575,
     "category": "Company Wise QA",
     "question": "What is PIM (Privileged Identity Management), and why is it important?",
-    "answer": "**Privileged Identity Management (PIM)** is a service in Microsoft Entra ID that manages, controls, and monitors access to important resources. It provides **Just-In-Time (JIT)** access, requiring approval, multi-factor authentication, and justification for activating admin roles for a limited duration, preventing permanent admin privileges.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5179,7 +5179,7 @@ const qaData = [
     "id": 576,
     "category": "Company Wise QA",
     "question": "If a user is assigned access at the Management Group level, can they access all subscriptions under it? How can we restrict access to specific subscriptions?",
-    "answer": "Yes, by default, child resource groups and subscriptions inherit access from the parent Management Group. To restrict access, you must assign permissions at the individual subscription/resource group level, or use Azure Policy at the Management Group scope to block resource creation or deny actions.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5188,7 +5188,7 @@ const qaData = [
     "id": 577,
     "category": "Company Wise QA",
     "question": "Suppose there are three VNets: A, B, and C. VNet A is peered with VNet B, and VNet B is peered with VNet C. Can VNet A communicate directly with VNet C?",
-    "answer": "No, VNet Peering is not transitive. If VNet A is peered with VNet B, and VNet B is peered with VNet C, VNet A cannot communicate with VNet C. To enable communication, you must peer VNet A directly with VNet C, or route traffic through a VPN Gateway / Azure Firewall in VNet B using User Defined Routes (UDRs).",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Global Logic"
@@ -5197,7 +5197,7 @@ const qaData = [
     "id": 578,
     "category": "Company Wise QA",
     "question": "How do you configure NFS (Network File System)?",
-    "answer": "Configuring a Network File System (NFS) to share folders:\n\n1. **NFS Server Setup**:\n   - Install server utility: `sudo apt update && sudo apt install nfs-kernel-server -y`\n   - Create directory and adjust owner: `sudo mkdir -p /var/nfs/shared && sudo chown nobody:nogroup /var/nfs/shared`\n   - Export directory in `/etc/exports`:\n     `/var/nfs/shared 10.0.0.0/24(rw,sync,no_subtree_check)`\n   - Apply configurations and restart: `sudo exportfs -a && sudo systemctl restart nfs-kernel-server`\n2. **NFS Client Setup**:\n   - Install client: `sudo apt install nfs-common -y`\n   - Create local mount point: `sudo mkdir -p /mnt/nfs`\n   - Mount share: `sudo mount 10.0.0.10:/var/nfs/shared /mnt/nfs`\n   - Persistent mount in `/etc/fstab`:\n     `10.0.0.10:/var/nfs/shared /mnt/nfs nfs defaults,_netdev 0 0`",
+    "answer": "Production implementation guide for: **Configure Nfs (Network File System)** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5206,7 +5206,7 @@ const qaData = [
     "id": 579,
     "category": "Company Wise QA",
     "question": "Suppose you have two instances. How can you transfer a file from one instance to another?",
-    "answer": "To transfer a file between two Linux instances: 1. Use `scp` command: `scp -i key.pem file.txt user@destination_ip:/path`. 2. Use `rsync` (faster for directories): `rsync -avz -e \"ssh -i key.pem\" file.txt user@destination_ip:/path`. 3. Set up an NFS or SMB shared storage mount on both instances.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5215,7 +5215,7 @@ const qaData = [
     "id": 580,
     "category": "Company Wise QA",
     "question": "How can you transfer files between two instances without using SFTP or SCP?",
-    "answer": "If SSH/SFTP ports are blocked, you can: 1. Host the file temporarily on an HTTP server (e.g. `python3 -m http.server 8000`) and download using `wget`/`curl` from the other instance. 2. Upload the file to an intermediate cloud store (like Azure Blob or AWS S3) and download it. 3. Use netcat: receiver runs `nc -l 9000 > file.txt` and sender runs `nc target_ip 9000 < file.txt`.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5224,7 +5224,7 @@ const qaData = [
     "id": 581,
     "category": "Company Wise QA",
     "question": "Have you performed any migration tasks (e.g., on-premises to cloud, one tenant to another, or between subscription IDs)?",
-    "answer": "Yes, I have performed migration tasks: migrating workloads from on-premises VMs to Azure VMs, migrating database schemas, moving Azure resources between subscriptions, and transferring dockerized workloads to AKS clusters.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5242,7 +5242,7 @@ const qaData = [
     "id": 583,
     "category": "Company Wise QA",
     "question": "How can a user log in to a Linux machine using Entra ID credentials?",
-    "answer": "1. Install the Microsoft Entra ID login extension on the Linux VM: `az vm extension set --publisher Microsoft.Azure.ActiveDirectory --name AADSSHLoginForLinux`.\n2. Assign the 'Virtual Machine Administrator Login' or 'Virtual Machine User Login' role to the Entra ID user.\n3. The user logs in via CLI: `az ssh vm --resource-group rg --name vm`.",
+    "answer": "Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5251,7 +5251,7 @@ const qaData = [
     "id": 584,
     "category": "Company Wise QA",
     "question": "How do you configure DNS on a Linux server?",
-    "answer": "Configuring DNS on a Linux server:\n\n1. **Resolver Client Configuration**:\n   - Set up the client-side DNS resolver IPs by updating Netplan (in modern Ubuntu `/etc/netplan/*.yaml`):\n     ```yaml\n     nameservers:\n       addresses: [8.8.8.8, 1.1.1.1]\n     ```\n     Apply changes: `sudo netplan apply`\n   - Or configure `/etc/resolv.conf` directly: `nameserver 8.8.8.8`.\n2. **DNS Server Setup (using BIND9)**:\n   - Install BIND: `sudo apt install bind9 -y`\n   - Add upstream DNS forwarders in `/etc/bind/named.conf.options`:\n     ```text\n     forwarders {\n         8.8.8.8;\n         1.1.1.1;\n     };\n     ```\n   - Define custom forward/reverse lookup zones in `/etc/bind/named.conf.local` and restart the service: `sudo systemctl restart bind9`.",
+    "answer": "Production implementation guide for: **Configure Dns On A Linux Server** in Linux Systems Administration:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5260,7 +5260,7 @@ const qaData = [
     "id": 585,
     "category": "Company Wise QA",
     "question": "What is the name of the file where network configurations are stored and managed in Linux?",
-    "answer": "In Linux, network configurations are stored in different paths depending on the distribution:\n- **Ubuntu (Netplan)**: `/etc/netplan/*.yaml`\n- **RHEL / CentOS**: `/etc/sysconfig/network-scripts/ifcfg-<interface>` (older) or NetworkManager keyfiles in `/etc/NetworkManager/system-connections/` (newer).\n- **Hosts file**: `/etc/hosts` for local DNS mapping.",
+    "answer": "Linux is an open-source operating system kernel. I work with Debian-based (Ubuntu Server) and Red Hat-based (RHEL) distributions, configuring services, managing package installations (apt/dnf), and writing automation scripts.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5269,7 +5269,7 @@ const qaData = [
     "id": 586,
     "category": "Company Wise QA",
     "question": "Suppose you have two users, A and B. How do you create their user accounts, and what types of access can you provide?",
-    "answer": "Creating and managing user access:\n\n1. **Linux OS User Management**:\n   - Create accounts: `sudo useradd -m -s /bin/bash userA` and `sudo useradd -m -s /bin/bash userB`\n   - Set passwords: `sudo passwd userA`\n   - **Access Types**:\n     - **Administrative Access**: Add `userA` to the sudo group: `sudo usermod -aG sudo userA`\n     - **Restricted Access**: Add `userB` to specific groups (e.g. `docker`, `www-data`) and restrict home folder permissions: `sudo chmod 700 /home/userB`\n2. **Cloud/Azure Entra ID User Management**:\n   - Create users in Microsoft Entra ID via Portal or CLI:\n     `az ad user create --display-name \"User A\" --user-principal-name \"userA@domain.com\" --password \"TempPass123!\"`\n   - **Access Types**: Assign Role-Based Access Control (RBAC) roles: Reader, Contributor, Owner, or custom roles targeting specific Azure Resource Group or Subscription scopes.",
+    "answer": "Production implementation guide for: **Suppose You Have Two Users, A And B.  Create Their User Accounts, And What Types Of Access Can You Provide** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5296,7 +5296,7 @@ const qaData = [
     "id": 589,
     "category": "Company Wise QA",
     "question": "Experience with Kubernetes?",
-    "answer": "I have over 2 years of experience with Kubernetes (primarily AKS and local minikube), deploying applications, managing service routing, autoscaling (HPA), persistent volumes, ConfigMaps, Secrets, namespaces, and Helm charts.",
+    "answer": "Kubernetes is an open-source container orchestration platform that automates deployment, scaling, management, and networking of containerized workloads.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5305,7 +5305,7 @@ const qaData = [
     "id": 590,
     "category": "Company Wise QA",
     "question": "How you manage your secrets in terraform?",
-    "answer": "Managing secrets in Terraform:\n\n1. **Avoid Hardcoding**: Never write passwords, tokens, or keys in clear text.\n2. **Sensitive Variables**: Use `sensitive = true` on variables to prevent secrets from being printed to the console output:\n```hcl\nvariable \"db_password\" {\n  type      = string\n  sensitive = true\n}\n```\n3. **Cloud Secret Managers**: Retrieve secrets dynamically from Azure Key Vault or AWS Secrets Manager using data sources:\n```hcl\ndata \"azurerm_key_vault_secret\" \"db_password\" {\n  name         = \"db-password\"\n  key_vault_id = data.azurerm_key_vault.main.id\n}\n```\n4. **Environment Variables**: Pass values using variables prefixed with `TF_VAR_` (e.g. `export TF_VAR_db_password=\"secret\"`).\n5. **Secure State Backend**: Ensure the remote backend is encrypted and protected by RBAC, as Terraform state files store sensitive inputs in clear text.",
+    "answer": "Production implementation guide for: **Manage Your Secrets In Terraform** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5314,7 +5314,7 @@ const qaData = [
     "id": 591,
     "category": "Company Wise QA",
     "question": "How you secure your terraform?",
-    "answer": "Securing Terraform configurations and pipelines:\n\n1. **Encrypt Remote State**: Configure remote backends (like Azure Blob or AWS S3) with Server-Side Encryption (SSE) and strict access controls. Block public access.\n2. **State Locking**: Enable state locking to prevent parallel executions from corrupting state data.\n3. **OIDC Authentication**: Authenticate pipelines to Azure using Workload Identity Federation (OIDC) instead of saving long-lived admin keys.\n4. **Secrets Management**: Retrieve secrets dynamically from cloud secret managers and mark variables as `sensitive = true`.\n5. **IaC Security Scans**: Integrate tools like `checkov`, `tfsec`, or `trivy` in pipelines to scan configuration files for security vulnerabilities before deployment.",
+    "answer": "Production implementation guide for: **Secure Your Terraform** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5332,7 +5332,7 @@ const qaData = [
     "id": 593,
     "category": "Company Wise QA",
     "question": "How do you integrate pods in a CI/CD pipeline?\"",
-    "answer": "Integrating Kubernetes pods into a CI/CD pipeline:\n\n1. **Build container image**: Package application code and dependencies into a container image:\n   `docker build -t myacr.azurecr.io/myapp:${{ github.sha }} .`\n2. **Push to Container Registry**: Log in and push image to a secure registry (like Azure Container Registry):\n   `docker push myacr.azurecr.io/myapp:${{ github.sha }}`\n3. **Update Kubernetes Manifest**: Substitute the image tag in the deployment YAML using a tool like `kustomize` or `sed`:\n   `sed -i \"s|image: myapp:placeholder|image: myacr.azurecr.io/myapp:${{ github.sha }}|g\" deployment.yaml`\n4. **Apply Deployment**: Apply the updated manifest:\n   `kubectl apply -f deployment.yaml`\n5. **Rollout Verification**: Monitor the deployment rollout status to ensure new pods start successfully:\n   `kubectl rollout status deployment/myapp --timeout=120s`",
+    "answer": "Production implementation guide for: **Integrate Pods In A Ci/Cd Pipeline\"** in CI/CD Pipeline Automation:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5341,7 +5341,7 @@ const qaData = [
     "id": 594,
     "category": "Company Wise QA",
     "question": "Can you explain how you used custom scripting to integrate tools like TruffleHog, Checkov, in your CI/CD pipeline?",
-    "answer": "To scan code for vulnerabilities and leaked secrets before deployment, integrate Checkov and TruffleHog in CI/CD pipeline scripts:\n\n**Pipeline Task Example**:\n```yaml\nsteps:\n- bash: |\n    echo \"=== Running TruffleHog (Secret Scanning) ===\"\n    # Download and run TruffleHog\n    curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin\n    trufflehog git file://$(System.DefaultWorkingDirectory) --fail\n  displayName: 'Secrets Scanning'\n\n- bash: |\n    echo \"=== Running Checkov (IaC Scan) ===\"\n    # Install checkov and scan Terraform files\n    pip install checkov\n    checkov -d $(System.DefaultWorkingDirectory) --framework terraform\n  displayName: 'Checkov Compliance Scanning'\n  continueOnError: false\n```\nThe pipeline fails automatically if TruffleHog finds raw credentials in Git history, or if Checkov finds critical security policy violations (e.g. unencrypted S3 buckets).",
+    "answer": "Production implementation guide for: **Can You Explain  Used Custom Scripting To Integrate Tools Like Trufflehog, Checkov, In Your Ci/Cd Pipeline** in CI/CD Pipeline Automation:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5350,7 +5350,7 @@ const qaData = [
     "id": 595,
     "category": "Company Wise QA",
     "question": "How will you integrate sonarqube using scripting",
-    "answer": "1. Install the SonarQube Scanner CLI on the pipeline agent.\n2. In your pipeline script (Bash/YAML), run the scanner targeting your source directory, passing the SonarQube URL and authentication token:\n`sonar-scanner -Dsonar.projectKey=myapp -Dsonar.sources=. -Dsonar.host.url=http://sonarqube.local -Dsonar.login=$SONAR_TOKEN`.",
+    "answer": "SonarQube is a static application security testing (SAST) tool that scans code quality, measuring bugs, smells, security vulnerabilities, and test coverage to fail builds if quality gates are not met.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5359,7 +5359,7 @@ const qaData = [
     "id": 596,
     "category": "Company Wise QA",
     "question": "In a self-hosted agent scenario with multiple VMs, how can I ensure that only one specific VM is used for executing the tasks out of multiple vm's, instead of using all the VMs?",
-    "answer": "Use **Agent Demands / Demands** in your YAML pipeline configuration. Assign a unique capability (tag) to the specific VM agent in the project settings, then reference it under the `demands` block in your YAML job:\n```yaml\npool:\n  name: MySelfHostedPool\n  demands: AgentName -equals my-specific-vm\n```",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5368,7 +5368,7 @@ const qaData = [
     "id": 597,
     "category": "Company Wise QA",
     "question": "Why blue green deployment -- whats rollback?",
-    "answer": "- **Blue-Green Deployment**: A strategy where you run two identical environments (Blue is production, Green is new release). Once Green is verified, route all traffic to Green.\n- **Rollback**: If an error is detected in Green, you immediately redirect the router/load balancer traffic back to Blue, restoring service instantly with zero downtime.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5377,7 +5377,7 @@ const qaData = [
     "id": 598,
     "category": "Company Wise QA",
     "question": "How to use  API in a pipeline to  interact with services?",
-    "answer": "Using APIs in pipelines to automate tasks and communicate with external services:\n\n1. **Slack Notifications**: Send build statuses to a Slack channel using incoming webhooks and `curl`:\n```yaml\n- bash: |\n    curl -X POST -H 'Content-type: application/json' \\\n    --data '{\"text\":\"Deployment succeeded for Build '$(Build.BuildId)'!\"}' \\\n    $(SLACK_WEBHOOK_URL)\n  displayName: 'Notify Slack'\n```\n2. **Triggering Service APIs**: Automate Azure DevOps releases via REST API:\n```bash\ncurl -X POST -u \":$SYSTEM_ACCESSTOKEN\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\"definitionId\": 5}' \\\nhttps://vsrm.dev.azure.com/myorg/myproject/_apis/release/releases?api-version=6.0\n```",
+    "answer": "Production implementation guide for: **Use  Api In A Pipeline To  Interact With Services** in CI/CD Pipeline Automation:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5386,7 +5386,7 @@ const qaData = [
     "id": 599,
     "category": "Company Wise QA",
     "question": "how do you securely manage secrets used in your CI/CD pipelines?",
-    "answer": "Securely managing secrets in CI/CD pipelines:\n\n1. **Secret Variables**: Define passwords and keys in masked variables in Azure DevOps (Variable Groups) or GitHub (Actions Secrets). Locked secrets are hidden from pipeline output logs.\n2. **Key Vault Integration**: Reference secret strings directly from Azure Key Vault by linking the key vault to a pipeline variable group.\n3. **Avoid Script Logging**: Do not print or echo secret variables inside custom pipeline scripts.\n4. **OIDC Workload Identity**: Use passwordless OpenID Connect federation to authenticate pipelines with Azure, eliminating the need to store long-lived service principal client secrets.",
+    "answer": "Production implementation guide for: **Securely Manage Secrets Used In Your Ci/Cd Pipelines** in CI/CD Pipeline Automation:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5395,7 +5395,7 @@ const qaData = [
     "id": 600,
     "category": "Company Wise QA",
     "question": "How will you integrate azure key vault into pipeline with scripting?",
-    "answer": "1. Authorize the pipeline service principal (managed identity) in Azure Key Vault's Access Policies or RBAC (Secrets User).\n2. In the pipeline script, call the Azure CLI task to fetch secrets dynamically:\n`az keyvault secret show --name \"mySecret\" --vault-name \"myVault\" --query \"value\" -o tsv`.",
+    "answer": "Azure Key Vault is a secure secrets management service. We use it to store passwords, client secrets, and certificates. In pipelines, we link Key Vault secrets dynamically to variable groups so they are injected at runtime without hardcoding.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5404,7 +5404,7 @@ const qaData = [
     "id": 601,
     "category": "Company Wise QA",
     "question": "Do you know any scripting language?",
-    "answer": "Yes, I work with **Bash/Shell** for general Linux task automation and command sequencing, and **Python** for complex logic, calling REST APIs, and parsing JSON/XML data.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5422,7 +5422,7 @@ const qaData = [
     "id": 603,
     "category": "Company Wise QA",
     "question": "6-What is the Terraform state file and why is it important?",
-    "answer": "The Terraform state file (`terraform.tfstate`) is a local or remote JSON database that keeps track of the metadata and IDs of the actual infrastructure resources created, mapping them directly to your code configurations so Terraform can plan updates.",
+    "answer": "The Terraform state file (`terraform.tfstate`) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5431,7 +5431,7 @@ const qaData = [
     "id": 604,
     "category": "Company Wise QA",
     "question": "7- What r some challenges u faced while using Terraform and how did u solve them?",
-    "answer": "A key challenge was managing parallel deployments causing state file locks. We solved this by migrating to Azure Blob Storage remote backend with native state locking. Another challenge was importing legacy untracked resources, which we solved using the new `import` block introduced in Terraform 1.5.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5440,7 +5440,7 @@ const qaData = [
     "id": 605,
     "category": "Company Wise QA",
     "question": "8-What is DSC in PowerShell?",
-    "answer": "PowerShell Desired State Configuration (DSC) is a management platform in PowerShell that enables deploying and managing configuration data for software services and managing the environment in which these services run. It uses a declarative syntax to define the state of an operating system or application.",
+    "answer": "PowerShell is a cross-platform task automation and configuration management framework. In DevOps, it is extensively used for writing automation scripts, managing Azure resources via Az PowerShell modules, and configuring systems using Desired State Configuration (DSC).",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5449,7 +5449,7 @@ const qaData = [
     "id": 606,
     "category": "Company Wise QA",
     "question": "9-Tell me about a recent PowerShell script you wrote and what was it about?",
-    "answer": "I recently wrote a PowerShell script to automate the rotation of expired Azure AD application registrations client secrets, creating new secrets, updating them in Key Vault, and notifying the team via Slack webhook.",
+    "answer": "PowerShell is a cross-platform task automation and configuration management framework. In DevOps, it is extensively used for writing automation scripts, managing Azure resources via Az PowerShell modules, and configuring systems using Desired State Configuration (DSC).",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5458,7 +5458,7 @@ const qaData = [
     "id": 607,
     "category": "Company Wise QA",
     "question": "10-Why did u leave your previous company, and why hve u made frequent job changes? r u planning to leave this company as well within the next year?",
-    "answer": "I changed jobs to seek new challenges, expand my technical skillset (such as working with Kubernetes/AKS and advanced GitOps pipelines), and work on larger-scale infrastructures. I am looking for a long-term position where I can contribute my automation skills, grow with the team, and establish a stable role within the organization.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Capgemini"
@@ -5485,7 +5485,7 @@ const qaData = [
     "id": 610,
     "category": "Company Wise QA",
     "question": "How do you handle error handling in Bash scripts?",
-    "answer": "Handling error management in Bash scripts:\n\n1. **Fail Immediately (`set -e`)**: Add `set -e` at the top of the script so it exits immediately if any command returns a non-zero exit code.\n2. **Pipeline Fail Check (`set -o pipefail`)**: Ensures that pipe commands fail if any command in the sequence fails, rather than just returning the status of the last command.\n3. **Variable Check (`set -u`)**: Exits if any uninitialized variable is referenced.\n4. **Exit Code Checks (`$?`)**: Inspect the exit code of critical commands:\n```bash\ncp source.txt backup/\nif [ $? -ne 0 ]; then\n  echo \"Backup failed!\"\n  exit 1\nfi\n```\n5. **Trap commands**: Register cleanup functions to run on script termination:\n   `trap 'rm -rf \"$TEMP_DIR\"' EXIT`",
+    "answer": "Production implementation guide for: **Handle Error Handling In Bash Scripts** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5503,7 +5503,7 @@ const qaData = [
     "id": 612,
     "category": "Company Wise QA",
     "question": "How can you schedule a Bash script to run at specific intervals using cron?",
-    "answer": "Use `crontab -e` to edit cron jobs. Add a line using the five-field format (minute hour day-of-month month day-of-week). For example, to run a script every day at midnight:\n`0 0 * * * /usr/local/bin/backup.sh >> /var/log/backup.log 2>&1`.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5530,7 +5530,7 @@ const qaData = [
     "id": 615,
     "category": "Company Wise QA",
     "question": "What are the key benefits of using Infrastructure as Code in DevOps?",
-    "answer": "Key benefits of IaC: 1. **Consistency**: Eliminates human error and drift. 2. **Speed**: Rapid provisioning of environments. 3. **Traceability**: Changes are tracked in Git. 4. **Reusability**: Modular templates can be shared. 5. **Cost Savings**: Spin down test environments when idle.",
+    "answer": "DevOps is a set of practices combining software development (Dev) and IT operations (Ops) to shorten the systems development lifecycle and provide continuous delivery of high-quality software.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5539,7 +5539,7 @@ const qaData = [
     "id": 616,
     "category": "Company Wise QA",
     "question": "Which IaC tools have you used (e.g., Terraform, ARM Templates, Bicep, Pulumi), and what was your experience?",
-    "answer": "I work primarily with **Terraform** for multi-cloud infrastructure and **Azure Bicep** for Azure-native resources. Terraform provides a unified syntax and remote state management across diverse providers, while Bicep offers faster deployments and zero-day support for Azure services.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5548,7 +5548,7 @@ const qaData = [
     "id": 617,
     "category": "Company Wise QA",
     "question": "Explain how you would handle secrets management in an IaC workflow.",
-    "answer": "Managing secrets in Infrastructure as Code (IaC) workflows:\n\n1. **External Vault Stores**: Keep secrets in Azure Key Vault or AWS Secrets Manager. Never hardcode them in `.tf` files.\n2. **Dynamic Data Fetching**: Retrieve secrets inside Terraform configurations using data sources at runtime:\n```hcl\ndata \"azurerm_key_vault_secret\" \"db_password\" {\n  name         = \"db-password\"\n  key_vault_id = data.azurerm_key_vault.main.id\n}\n```\n3. **Sensitive Attribute**: Mark input variables as `sensitive = true` to mask secrets in console logs.\n4. **Encrypted State Backend**: Store state files in encrypted remote storage with restricted access, as Terraform state holds copy values of secrets in clear text.\n5. **Local Pre-commit Scans**: Use `gitleaks` or `git-secrets` to block commits with exposed credentials from being pushed to remote repos.",
+    "answer": "Production implementation guide for: **Explain  Would Handle Secrets Management In An Iac Workflow.** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5566,7 +5566,7 @@ const qaData = [
     "id": 619,
     "category": "Company Wise QA",
     "question": "what is this job for ? why you fit for this job ?",
-    "answer": "I fit this role because of my strong hands-on experience in Azure, Kubernetes (AKS), and Infrastructure as Code (Terraform), combined with my background in automating pipelines, debugging systems, and enforcing security practices.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5575,7 +5575,7 @@ const qaData = [
     "id": 620,
     "category": "Company Wise QA",
     "question": "Tell me the style of the work ? how you work ?",
-    "answer": "My DevOps working style revolves around **Automation-First**, **GitOps**, and **Collaboration**:\n\n1. **Automation-First**: Focus on replacing manual configurations with code (Terraform, Ansible, Bash scripts) to ensure reproducibility.\n2. **Version Control & Peer Reviews**: Treat infrastructure changes exactly like application code. Every change is peer-reviewed via Pull Requests.\n3. **CI/CD Driven**: Enforce linting, security scans, and dry-run tests inside pipelines before applying changes.\n4. **Agile Framework**: Plan tasks in sprints using boards, communicate clearly, and write clear documentation in READMEs and Wikis to share knowledge.",
+    "answer": "Production implementation guide for: **Tell Me The Style Of The Work   Work** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5584,7 +5584,7 @@ const qaData = [
     "id": 621,
     "category": "Company Wise QA",
     "question": "Did you tell about your present role in operation and automation ?",
-    "answer": "Yes, in my current role, I manage active operations (alerts, scaling, container restarts) and build automations: writing Terraform for infrastructure updates and creating CI/CD templates in Azure DevOps to automate code packaging and scanning.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5593,7 +5593,7 @@ const qaData = [
     "id": 622,
     "category": "Company Wise QA",
     "question": "what are the roles in cloudops ( operation ) ?",
-    "answer": "CloudOps roles include: provisioning cloud resources, managing network security (firewalls, NSGs), monitoring application uptime and metrics, configuring alerts, patching virtual machines, and coordinating disaster recovery backups.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5611,7 +5611,7 @@ const qaData = [
     "id": 624,
     "category": "Company Wise QA",
     "question": "what is the process of patch you deploy the production ?",
-    "answer": "In production: 1. Test patches in a staging environment. 2. Schedule a maintenance window. 3. Back up critical VM volumes and databases. 4. Drain traffic from target nodes using a load balancer. 5. Apply OS updates and restart VM. 6. Verify health and restore traffic.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5620,7 +5620,7 @@ const qaData = [
     "id": 625,
     "category": "Company Wise QA",
     "question": "have you experinced in bash script ? explain ?",
-    "answer": "Yes, I write Bash scripts for automation tasks such as log rotation, cleaning temporary directory contents, health check scripts that curl local web servers and alert on 5xx codes, and system config modifications.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5629,7 +5629,7 @@ const qaData = [
     "id": 626,
     "category": "Company Wise QA",
     "question": "troubleshooting ? give only exact command ?",
-    "answer": "- Check logs: `journalctl -u nginx` or `tail -n 100 /var/log/syslog`.\n- Check CPU: `top -b -n 1 | head -n 20`.\n- Check memory: `free -m`.\n- Check network: `ss -tuln`.\n- Check disk: `df -h`.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5638,7 +5638,7 @@ const qaData = [
     "id": 627,
     "category": "Company Wise QA",
     "question": "you have experience in azure monitoring ? how you do that ?",
-    "answer": "Azure Monitoring is set up using the following stack:\n\n1. **Log Analytics Workspace**: The central database where VM logs, AKS logs, and diagnostic telemetry are collected. We query data using **Kusto Query Language (KQL)**.\n2. **Application Insights**: APM tool used to trace response times, exceptions, and request rates in live applications.\n3. **Azure Monitor Agent (AMA)**: Installed on VMs to collect system logs and metrics and forward them to Log Analytics.\n4. **Container Insights**: Monitors AKS node and container CPU/RAM and logs.\n5. **Alerts & Action Groups**: Configure rules (e.g. CPU > 90% for 5 mins) to trigger automated emails, SMS, or webhook calls to PagerDuty or Slack.\n6. **Grafana Integration**: Connect Grafana dashboards to Azure Monitor to visualize infrastructure state.",
+    "answer": "Production implementation guide for: **You Have Experience In Azure Monitoring   Do That** in Microsoft Azure Cloud Services:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5647,7 +5647,7 @@ const qaData = [
     "id": 628,
     "category": "Company Wise QA",
     "question": "what is host ?",
-    "answer": "A host refers to any computer or device connected to a computer network that can send or receive data, host applications, or store files (e.g. an Azure VM, a physical server, or a container node).",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5656,7 +5656,7 @@ const qaData = [
     "id": 629,
     "category": "Company Wise QA",
     "question": "where are you using yaml files ? why we used yaml files ?",
-    "answer": "YAML files are used for configuring Kubernetes manifests, Ansible playbooks, and GitHub/Azure Pipelines. We use YAML because it is human-readable, supports hierarchical structuring, and is standard across DevOps tools.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5665,7 +5665,7 @@ const qaData = [
     "id": 630,
     "category": "Company Wise QA",
     "question": "what resources you created in azure ?",
-    "answer": "I have provisioned Virtual Networks (VNets), subnets, network security groups (NSGs), virtual machines (VMs), App Service plans, Azure Container Registries (ACR), AKS clusters, Key Vaults, and Azure SQL databases.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5674,7 +5674,7 @@ const qaData = [
     "id": 631,
     "category": "Company Wise QA",
     "question": "how you do the team collaboration ? how you handle the team ?",
-    "answer": "Team collaboration practices in DevOps:\n\n1. **Agile Board Planning**: Work in sprints using Jira or Azure Boards, tracking tasks, bugs, and velocity, and participate in daily standups.\n2. **Strict Git Workflow**: Enforce branch policies requiring Pull Request reviews, approval from at least one senior engineer, and passing CI pipeline checks (tests, lints, security scans) before merging to the main branch.\n3. **Shared Documentation**: Maintain updated deployment runbooks, architecture designs, and post-mortems in shared wikis or repository Markdown documents.\n4. **ChatOps**: Integrate pipelines with Slack/Teams to feed build status alerts and incident notifications to shared channels.",
+    "answer": "Production implementation guide for: **Do The Team Collaboration   Handle The Team** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5683,7 +5683,7 @@ const qaData = [
     "id": 632,
     "category": "Company Wise QA",
     "question": "Give some examples for the sop ? explain ?",
-    "answer": "Standard Operating Procedures (SOPs) include: steps to restore database backups, procedures for VM disk expansion, checklist for manual production deployments, and diagnostic steps for network connectivity failures.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5692,7 +5692,7 @@ const qaData = [
     "id": 633,
     "category": "Company Wise QA",
     "question": "when you do the release ? what are the challenges you faced ?",
-    "answer": "We run releases during low-traffic maintenance windows. Challenges faced include database migration locks and API integration failures. We resolved these by implementing blue-green deployments for instant rollbacks and backward-compatible database schema updates.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5710,7 +5710,7 @@ const qaData = [
     "id": 635,
     "category": "Company Wise QA",
     "question": "which users are allow to use the subscription ? list down the user ? how you give the user access ?",
-    "answer": "Managing Azure subscription access:\n\n1. **Review Existing Access**: Navigate to Subscriptions -> Access Control (IAM) -> Role Assignments in the Azure Portal, or execute:\n   `az role assignment list --scope \"/subscriptions/<subscription-id>\"`\n2. **Grant Access**:\n   - Assign built-in RBAC roles (Owner, Contributor, Reader) or specific custom roles at the narrowest scope possible (Resource Group instead of Subscription).\n   - Assign roles to **Microsoft Entra Groups** rather than individual users.\n3. **Just-In-Time Access**: Use **Azure Privileged Identity Management (PIM)** to configure time-bound, approved administrative access, avoiding permanent admin allocations.",
+    "answer": "Production implementation guide for: **Which Users Are Allow To Use The Subscription  List Down The User   Give The User Access** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5719,7 +5719,7 @@ const qaData = [
     "id": 636,
     "category": "Company Wise QA",
     "question": "what you want do in next 5 years ?",
-    "answer": "In the next 5 years, I aim to deepen my expertise in cloud architecture, master security-focused DevSecOps pipelines, design highly scalable Kubernetes architectures, and lead DevOps engineering teams.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5728,7 +5728,7 @@ const qaData = [
     "id": 637,
     "category": "Company Wise QA",
     "question": "In past years what skills you have added to yourself ?",
-    "answer": "In the past year, I have mastered Kubernetes cluster administration, added Azure Bicep to my IaC skills, learned OPA Gatekeeper for policy-as-code enforcement, and automated secret rotations in pipelines.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5737,7 +5737,7 @@ const qaData = [
     "id": 638,
     "category": "Company Wise QA",
     "question": "Why you are looking for the change ? what are the repetitive task you doing ?",
-    "answer": "I am looking for a change to work on larger-scale Kubernetes environments and design advanced DevSecOps pipelines. Repetitive tasks in my current role (like VM provisioning or certificate renewals) have all been automated.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Railyatri & Citius"
@@ -5746,7 +5746,7 @@ const qaData = [
     "id": 639,
     "category": "Company Wise QA",
     "question": "how many types of declare & stored the variable?",
-    "answer": "In Terraform, variables can be declared inside `variables.tf` as inputs, defined in `terraform.tfvars`, passed as command line arguments (`-var`), or set as environment variables (`TF_VAR_name`).",
+    "answer": "Terraform variables can be declared in variable blocks with type constraints (string, number, bool, list, map, object) and stored/passed in terraform.tfvars files, environment variables (prefixed with TF_VAR_), or command line flags (-var=\"name=value\").",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5764,7 +5764,7 @@ const qaData = [
     "id": 641,
     "category": "Company Wise QA",
     "question": "what is Ansible, why we use?",
-    "answer": "Ansible is an open-source IT automation tool for configuration management and application deployment. It is agentless, meaning it connects to target hosts over SSH or WinRM without installing agent software on the targets.",
+    "answer": "Ansible is an open-source, agentless configuration management and automation tool. It connects to target nodes via SSH or WinRM and executes tasks defined in YAML playbooks, eliminating the need to install and maintain agent software on target servers.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5782,7 +5782,7 @@ const qaData = [
     "id": 643,
     "category": "Company Wise QA",
     "question": "New feature which is not present in terraform how would you provisioning them in azure portal through Terraform?",
-    "answer": "Use the `azurerm_resource_group_template_deployment` resource in Terraform to deploy an ARM template containing the new resource, or run a `local-exec` provisioner executing an Azure CLI command.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5800,7 +5800,7 @@ const qaData = [
     "id": 645,
     "category": "Company Wise QA",
     "question": "Terraform backend, terraform statefile management?",
-    "answer": "Terraform remote backends (like Azure Blob) store the state file securely. State locking prevents multiple users from executing deployments simultaneously, preventing file corruption and deployment conflicts.",
+    "answer": "The Terraform state file (`terraform.tfstate`) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5809,7 +5809,7 @@ const qaData = [
     "id": 646,
     "category": "Company Wise QA",
     "question": "if we want to validate our terraform code, is we need to execute terraform init commands?",
-    "answer": "No, `terraform validate` does not strictly require `terraform init` to have completed, but it is highly recommended because validate needs provider plugins and schemas downloaded by init to verify resource definitions.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5818,7 +5818,7 @@ const qaData = [
     "id": 647,
     "category": "Company Wise QA",
     "question": "What are artifacts?",
-    "answer": "Artifacts are the compiled, packaged outputs of a CI pipeline (e.g. a zip file, jar file, or container image) that are stored and deployed to target environments by the CD pipeline.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5827,7 +5827,7 @@ const qaData = [
     "id": 648,
     "category": "Company Wise QA",
     "question": "What is the purpose of ci/cd?",
-    "answer": "The purpose of CI/CD is to automate the integration and deployment of code changes, ensuring rapid feedback, reducing manual deployment errors, and allowing teams to release features frequently and reliably.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5836,7 +5836,7 @@ const qaData = [
     "id": 649,
     "category": "Company Wise QA",
     "question": "Have you work on Azure monitor or logs?",
-    "answer": "Yes, I use Azure Monitor to track system performance metrics and Log Analytics to collect logs. I query logs using Kusto Query Language (KQL) to build dashboards and configure alert notifications.",
+    "answer": "Azure Monitor collects and analyzes telemetry data (metrics, logs) from cloud resources. I write Kusto Query Language (KQL) queries in Log Analytics workspaces to create performance dashboards and trigger alert notifications on Slack/PagerDuty.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5845,7 +5845,7 @@ const qaData = [
     "id": 650,
     "category": "Company Wise QA",
     "question": "How you search a word in file from Linux command?",
-    "answer": "To search for a word inside files from the Linux command line:\n\n1. **Standard `grep`**:\n   - Basic search: `grep \"word\" filename.txt`\n   - Case-insensitive: `grep -i \"word\" filename.txt`\n   - Show line numbers: `grep -n \"word\" filename.txt`\n   - Search recursively inside all files in a directory:\n     `grep -r \"word\" /path/to/directory`\n2. **Using `ripgrep` (`rg`)** (Faster modern alternative):\n   `rg \"word\" /path/to/directory`\n3. **Find files and search**: Search inside files matching specific extensions:\n   `find . -name \"*.log\" -exec grep -H \"ERROR\" {} \\;`",
+    "answer": "Production implementation guide for: **Search A Word In File From Linux Command** in Linux Systems Administration:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5854,7 +5854,7 @@ const qaData = [
     "id": 651,
     "category": "Company Wise QA",
     "question": "What is keyvalut and their usecase?",
-    "answer": "Azure Key Vault is a secure cloud service for storing secrets (passwords, connection strings), keys (encryption keys), and certificates. Its use case is to prevent hardcoding sensitive credentials in source code.",
+    "answer": "Azure Key Vault is a secure secrets management service. We use it to store passwords, client secrets, and certificates. In pipelines, we link Key Vault secrets dynamically to variable groups so they are injected at runtime without hardcoding.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5872,7 +5872,7 @@ const qaData = [
     "id": 653,
     "category": "Company Wise QA",
     "question": "Have you use variables in ci/cd?",
-    "answer": "Yes, I use variables in CI/CD pipelines to parameterize configurations (like target resource groups, environments, and build version tags), separating code from environment-specific values.",
+    "answer": "Terraform variables can be declared in variable blocks with type constraints (string, number, bool, list, map, object) and stored/passed in terraform.tfvars files, environment variables (prefixed with TF_VAR_), or command line flags (-var=\"name=value\").",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5881,7 +5881,7 @@ const qaData = [
     "id": 654,
     "category": "Company Wise QA",
     "question": "Have you worked on grafanaand Prometheus?",
-    "answer": "We secure pipelines by: using OIDC Workload Identity, applying least-privilege RBAC on service connections, scanning code for secrets (TruffleHog), checking IaC for compliance (Checkov), and requiring peer approvals.",
+    "answer": "Here is a breakdown of the key concepts:\n• Prometheus is an open-source monitoring tool that scrapes metrics from target endpoints, stores time-series data, and triggers alerts via Alertmanager.\n• Grafana is an open-source visualization dashboard that connects to time-series databases like Prometheus or Azure Monitor to display real-time metrics.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5890,7 +5890,7 @@ const qaData = [
     "id": 655,
     "category": "Company Wise QA",
     "question": "What is azure policy & why we use in ci/cd?",
-    "answer": "SonarQube is a static code analysis tool used in CI pipelines to scan code quality. It detects code smells, bugs, security vulnerabilities, and measures code coverage, blocking builds if quality gates are not met.",
+    "answer": "Azure Policy is a service that enforces organizational standards and assesses compliance. In CI/CD, we run policy compliance checks (e.g. verifying that storage accounts have public access disabled or resource tags exist) before allowing resource creation.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "HCL"
@@ -5899,7 +5899,7 @@ const qaData = [
     "id": 656,
     "category": "Company Wise QA",
     "question": "What is Kubernetes and explain the different services in Kubernetes. 1-How many types of declare & store the variable in Terraform?",
-    "answer": "Kubernetes namespaces partition a single cluster into virtual clusters, allowing teams to isolate environments (e.g., dev, test, prod) or microservices within the same hardware infrastructure.",
+    "answer": "Types: string, number, bool, list, map, object, tuple.\nDeclaration: In variables.tf file using variable block.\nStorage: Values can be passed via default value, terraform.tfvars, CLI using -var, or environment variables.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5908,7 +5908,7 @@ const qaData = [
     "id": 657,
     "category": "Company Wise QA",
     "question": "2-What is Provisioners block in Terraform?",
-    "answer": "In Git, rebasing re-writes commit history by moving a sequence of commits to a new base commit, creating a clean linear path. Merging combines branches with a merge commit, preserving historical branches.",
+    "answer": "Used to execute scripts or commands on a resource after it’s created.\nTypes: local-exec (runs locally), remote-exec (runs on resource like VM).\nExample:\nprovisioner \"remote-exec\" {\ninline = [\"sudo apt-get update\"]\n}\nUse Case: Install software on VM right after provisioning.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5917,7 +5917,7 @@ const qaData = [
     "id": 658,
     "category": "Company Wise QA",
     "question": "3-What is Ansible and why we use it?",
-    "answer": "Git GitFlow is a branching model using: a `main` branch (production), a `develop` branch (integration), `feature/` branches for new changes, `release/` branches for preparation, and `hotfix/` branches for urgent fixes.",
+    "answer": "Ansible is an open-source, agentless configuration management and automation tool. It connects to target nodes via SSH or WinRM and executes tasks defined in YAML playbooks, eliminating the need to install and maintain agent software on target servers.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5926,7 +5926,7 @@ const qaData = [
     "id": 659,
     "category": "Company Wise QA",
     "question": "Why: It's agentless, simple YAML-based syntax, and supports multiple OS.",
-    "answer": "To configure GitFlow: 1. Install GitFlow CLI. 2. Run `git flow init` in the repo directory. 3. Specify main and develop branches. 4. Start features: `git flow feature start my-feature`.",
+    "answer": "4-Terraform + Ansible Use Case:\nUse Terraform to provision infra (like VM), then use Ansible to install software/configure those VMs.\nExample: Terraform creates VM > Ansible installs Nginx and configures firewall.\n5-New Feature Not Present in Terraform:\nIf Terraform doesn't support a resource yet:\nUse null_resource + local-exec to run CLI commands.\nOr use ARM template/REST API call from Terraform.\nExample:\nresource \"null_resource\" \"custom\" {\nprovisioner \"local-exec\" {\ncommand = \"az resource create ...\"\n}\n}\n6-How to Manage Already Created Resources with Terraform (Manually Created VMs):\nUse terraform import to bring existing resources into state.\nExample:\nterraform import azurerm_virtual_machine.vm1 /subscriptions/xxx/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1\nThen write matching Terraform code.\n8-Terraform Backend & Statefile Management:\nBackend: Controls how state is loaded and where it's stored (e.g., Azure Blob Storage).\nBenefits: Remote team access, locking, security.\nExample backend config:\nterraform {\nbackend \"azurerm\" {\nresource_group_name  = \"tfstate-rg\"\nstorage_account_name = \"tfstorageacc\"\ncontainer_name       = \"tfstate\"\nkey                  = \"terraform.tfstate\"\n}\n}",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5935,7 +5935,7 @@ const qaData = [
     "id": 660,
     "category": "Company Wise QA",
     "question": "7--Do we need terraform init to validate code?",
-    "answer": "Azure Active Directory (now Microsoft Entra ID) is a cloud-based identity and access management service used for user authentication, SSO, managing enterprise applications, and cloud resource access (RBAC).",
+    "answer": "Yes, terraform init is needed before terraform validate.\ninit downloads providers/modules; validate only works after that.\nALTEMIRK",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5944,7 +5944,7 @@ const qaData = [
     "id": 661,
     "category": "Company Wise QA",
     "question": "How do we connect Azure Monitor with Grafana?",
-    "answer": "Connecting Azure Monitor to Grafana:\n\n1. **Azure Configuration (Credentials)**:\n   - Create a service principal in Microsoft Entra ID:\n     `az ad sp create-for-rbac --name \"grafana-sp\" --role \"Monitoring Reader\" --scopes \"/subscriptions/<sub-id>\"`\n   - Record Client ID, Tenant ID, and Client Secret.\n2. **Grafana Settings**:\n   - In the Grafana portal, go to Data Sources -> Add data source -> Search for **Azure Monitor**.\n   - Input Client ID, Tenant ID, Client Secret, and Subscription ID.\n   - Click \"Save & test\".\n3. **Alternative**: If using Azure Managed Grafana, connection to Azure Monitor is configured automatically using system-assigned Managed Identity with \"Monitoring Reader\" privileges.",
+    "answer": "Production implementation guide for: **How Do We Connect Azure Monitor With Grafana** in Microsoft Azure Cloud Services:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5953,7 +5953,7 @@ const qaData = [
     "id": 662,
     "category": "Company Wise QA",
     "question": "Difference between Grafana and Kibana?",
-    "answer": "In Azure VMs: 1. Deploy the VM with the Azure Monitor Agent extension. 2. Create a Data Collection Rule (DCR) to capture system performance metrics and syslog. 3. Target logs to a central Log Analytics Workspace.",
+    "answer": "Comparing **Erence  Grafana** and **Kibana** in Grafana Observability contexts:\n\n1. **Core Architecture**:\n   * **Erence  Grafana**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Kibana**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Grafana** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Kibana** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5962,7 +5962,7 @@ const qaData = [
     "id": 663,
     "category": "Company Wise QA",
     "question": "What are various data sources available in Grafana?",
-    "answer": "Azure Traffic Manager is a DNS-based traffic load balancer that distributes incoming requests across global Azure regions using routing methods like performance, priority, geographic, or subnet routing.",
+    "answer": "Grafana is an open-source visualization dashboard that connects to time-series databases like Prometheus or Azure Monitor to display real-time metrics.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5971,7 +5971,7 @@ const qaData = [
     "id": 664,
     "category": "Company Wise QA",
     "question": "What is Ingress in K8s?",
-    "answer": "Yes, I have configured Application Gateway rules: path-based routing (routing `/images` to storage and `/api` to VM scale sets), listener configurations (Port 80/443), and SSL certificate bindings.",
+    "answer": "An Ingress in Kubernetes is an API object that manages external access to the services in a cluster, typically HTTP/HTTPS. It provides load balancing, SSL termination, and name-based virtual hosting, routing traffic to backend Pods via an Ingress Controller.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5980,7 +5980,7 @@ const qaData = [
     "id": 665,
     "category": "Company Wise QA",
     "question": "- Ansible aata hai?",
-    "answer": "Common database connection issues include: incorrect connection strings, database firewall blocking VM/pod IPs, database service being offline, and missing or expired client certificate credentials.",
+    "answer": "Ansible is an open-source, agentless configuration management and automation tool. It connects to target nodes via SSH or WinRM and executes tasks defined in YAML playbooks, eliminating the need to install and maintain agent software on target servers.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5989,7 +5989,7 @@ const qaData = [
     "id": 666,
     "category": "Company Wise QA",
     "question": "- we have 1 Vnet having 2 subnets, one is public, other is private subnet with which virtual machine is connected, firewall is open, tell me how you access that virtual machine?",
-    "answer": "To access a Virtual Machine with a private IP address located in a private subnet (with no public IP):\n\n1. **Azure Bastion (Recommended)**: Deploy Azure Bastion inside the VNet. Connect to the private VM's SSH or RDP interface directly from the Azure Portal over SSL (Port 443), with no public IP required on the target VM.\n2. **Jumpbox (Bastion Host VM)**:\n   - Deploy a small, hardened VM (Jumpbox) inside the public subnet with a public IP.\n   - Restrict the Jumpbox NSG rules to only accept SSH/RDP connections from your trusted IP.\n   - SSH/RDP into the Jumpbox, then establish a secondary SSH/RDP connection from the Jumpbox to the private VM using its internal VNet IP address.\n3. **VPN Gateway or ExpressRoute**: Set up a Point-to-Site or Site-to-Site VPN from your network to Azure, putting your local workstation onto the VNet to reach private IPs directly.",
+    "answer": "Production implementation guide for: **- We Have 1 Vnet Having 2 Subnets, One Is Public, Other Is Private Subnet With Which Virtual Machine Is Connected, Firewall Is Open, Tell Me  Access That Virtual Machine** in Azure Virtual Network (VNET):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -5998,7 +5998,7 @@ const qaData = [
     "id": 667,
     "category": "Company Wise QA",
     "question": "- powershell you know?",
-    "answer": "To resolve database connectivity issues: 1. Ping the DB server or use `nc -zv <db_ip> 1433` (SQL Server) to check port connectivity. 2. Verify virtual network peering and check database firewall rule settings.",
+    "answer": "PowerShell is a cross-platform task automation and configuration management framework. In DevOps, it is extensively used for writing automation scripts, managing Azure resources via Az PowerShell modules, and configuring systems using Desired State Configuration (DSC).",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "ParentPay"
@@ -6007,7 +6007,7 @@ const qaData = [
     "id": 668,
     "category": "Company Wise QA",
     "question": "Could you explain the key components of the Kubernetes control plane and their respective roles?",
-    "answer": "Kubernetes Helm is a package manager that uses YAML templates called 'charts' to bundle Kubernetes resources (Deployments, Services, ConfigMaps) so they can be versioned, customized, and deployed easily.",
+    "answer": "The Kubernetes Control Plane consists of: kube-apiserver (exposes the API), etcd (consistent key-value storage), kube-scheduler (assigns pods to nodes), kube-controller-manager (runs controller processes), and cloud-controller-manager (integrates with cloud APIs).",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6016,7 +6016,7 @@ const qaData = [
     "id": 669,
     "category": "Company Wise QA",
     "question": "How would you differentiate between a Pod, a ReplicaSet, and a Deployment in Kubernetes?",
-    "answer": "To write a Helm chart: 1. Run `helm create mychart`. 2. Define default variables in `values.yaml`. 3. Replace hardcoded values in templates/ files with template directives (e.g., `{{ .Values.replicaCount }}`).",
+    "answer": "Difference between ReplicaSet and Deployment in Kubernetes:\n1. **ReplicaSet**: Ensures that a specified number of pod replicas are running at any given time. Lacks rolling updates/rollback features.\n2. **Deployment**: A higher-level resource that manages ReplicaSets. Supports rolling updates (zero downtime), rollback to historical revisions, and declarative resource definitions.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6025,7 +6025,7 @@ const qaData = [
     "id": 670,
     "category": "Company Wise QA",
     "question": "What is the standard approach to performing a rolling update in Kubernetes while minimizing service disruption?",
-    "answer": "A Kubernetes Service is a networking abstraction that exposes a set of running Pods as a network service with a stable IP address (ClusterIP) and DNS name, routing and load-balancing traffic to active pod replicas.",
+    "answer": "Kubernetes Services expose pods to network traffic using stable IPs:\n1. **ClusterIP**: Exposes the service internally within the cluster (default).\n2. **NodePort**: Opens a static port on each node's IP to expose the service externally.\n3. **LoadBalancer**: Provisions a cloud public load balancer to route external traffic directly to nodes.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6034,7 +6034,7 @@ const qaData = [
     "id": 671,
     "category": "Company Wise QA",
     "question": "In what scenarios would you choose a StatefulSet over a Deployment, and why?",
-    "answer": "I have configured: 1. **ClusterIP** (internal exposure). 2. **NodePort** (exposes service on a static port on each Node). 3. **LoadBalancer** (provisions a cloud load balancer). 4. **Headless** (ClusterIP set to None for stateful apps).",
+    "answer": "Use a Deployment for stateless workloads where replica pods are identical and interchangeable (e.g. web servers). Use a StatefulSet for stateful applications (e.g. databases like PostgreSQL) requiring unique, persistent identities, stable network hostnames, and dedicated persistent volume storage for each pod replica.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6043,7 +6043,7 @@ const qaData = [
     "id": 672,
     "category": "Company Wise QA",
     "question": "What is the purpose of kube-proxy in a Kubernetes cluster, and how does it function?",
-    "answer": "**kube-proxy** is a network proxy running on each node in a Kubernetes cluster:\n\n- **Purpose**: It implements the Kubernetes **Service** abstraction, maintaining network routing rules to load-balance traffic sent to a Service's virtual IP (ClusterIP) across backend pods.\n- **How it Functions**:\n  1. It monitors the API server for changes to Service and Endpoint objects.\n  2. It writes routing rules to the node's network layer.\n  3. **Modes**:\n     - **iptables mode (Default)**: Uses netfilter rules to redirect traffic. Rules are checked sequentially.\n     - **IPVS mode**: Uses IP Virtual Server rules (Layer 4 load balancing) which perform faster in large clusters with thousands of services.",
+    "answer": "Production implementation guide for: **What Is The Purpose Of Kube-Proxy In A Kubernetes Cluster, And How Does It Function** in Kubernetes Orchestration:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6052,7 +6052,7 @@ const qaData = [
     "id": 673,
     "category": "Company Wise QA",
     "question": "Can you describe the role of Ingress in Kubernetes and how it differs from a standard Service?",
-    "answer": "In Kubernetes, a Node represents a worker machine (VM or physical server) that runs containers, while a Cluster is the complete group of nodes managed by the control plane working together as a single system.",
+    "answer": "Kubernetes Services expose pods to network traffic using stable IPs:\n1. **ClusterIP**: Exposes the service internally within the cluster (default).\n2. **NodePort**: Opens a static port on each node's IP to expose the service externally.\n3. **LoadBalancer**: Provisions a cloud public load balancer to route external traffic directly to nodes.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6061,7 +6061,7 @@ const qaData = [
     "id": 674,
     "category": "Company Wise QA",
     "question": "How would you systematically troubleshoot a pod that is stuck in a CrashLoopBackOff state?",
-    "answer": "To manage cluster node scaling: 1. Use the **Cluster Autoscaler** to add/remove nodes based on pending pod demands. 2. Configure Node Pools in AKS/EKS to manage different VM sizes for varying workloads.",
+    "answer": "Troubleshooting involves diagnosing system issues by checking resource statuses (`describe`), reviewing logs, and running network tests.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6070,7 +6070,7 @@ const qaData = [
     "id": 675,
     "category": "Company Wise QA",
     "question": "What deployment strategies do you recommend to ensure zero downtime during application releases?",
-    "answer": "Kubernetes Cluster upgrades are scheduled to maintain security patches and stability. Before upgrading, check version compatibility with plugins (CNI, CSI) and update kubeadm, control plane nodes, and worker nodes sequentially.",
+    "answer": "To ensure zero downtime, use: 1. **Blue-Green Deployments**: Maintain two identical environments, route traffic to the new one after successful verification. 2. **Canary Deployments**: Route a small percentage of traffic to the new version before rolling out to everyone. 3. **Rolling Updates**: Gradually replace old pod instances with new ones in a rolling fashion.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6079,7 +6079,7 @@ const qaData = [
     "id": 676,
     "category": "Company Wise QA",
     "question": "How do you typically structure a CI/CD pipeline to support multiple environments such as development, QA, staging, and production?",
-    "answer": "Structuring a CI/CD pipeline to support multiple environments:\n\n1. **Build Once (Immutable Artifacts)**: Compile code or build container images in a single build stage, tagging them with the commit SHA. Push them to a registry (ACR/DockerHub) to be reused across all environments.\n2. **Environment Parameterization**: Keep application settings and secrets separate from the build artifact. Use Environment Variables, Azure Key Vault, or Variable Groups linked to each specific stage.\n3. **Sequential Pipeline Stages**:\n   - **Dev**: Deploy automatically on code push. Run smoke tests.\n   - **QA/Staging**: Deploy after Dev success. Run automated regression/integration tests.\n   - **Production**: Lock behind **Manual Approvals** and automated monitoring checks (e.g. check error rate alerts before continuing rollout).",
+    "answer": "Production implementation guide for: **Typically Structure A Ci/Cd Pipeline To Support Multiple Environments Such As Development, Qa, Staging, And Production** in CI/CD Pipeline Automation:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6088,7 +6088,7 @@ const qaData = [
     "id": 677,
     "category": "Company Wise QA",
     "question": "If a pipeline's unit tests fail immediately after a commit, what steps would you take to identify and resolve the issue efficiently?",
-    "answer": "Yes, I have configured Prometheus metrics: CPU/memory usage, node disk IOPS, HTTP request latency, active container counts, and custom business metrics exposed by applications on `/metrics`.",
+    "answer": "If unit tests fail after a commit: 1. Review the pipeline build logs to locate the failing test case. 2. Verify that local dependencies match the pipeline runner environment. 3. Run the tests locally in your workspace. 4. Check for code syntax errors or missing environment configurations.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6097,7 +6097,7 @@ const qaData = [
     "id": 678,
     "category": "Company Wise QA",
     "question": "What methods do you use to pass artifacts or variables between stages in a CI/CD pipeline?",
-    "answer": "Grafana works by adding data sources (like Prometheus or Azure Monitor), writing queries (using PromQL or KQL) to fetch metrics, and creating dashboards with charts, graphs, and alert thresholds.",
+    "answer": "Terraform variables can be declared in variable blocks with type constraints (string, number, bool, list, map, object) and stored/passed in terraform.tfvars files, environment variables (prefixed with TF_VAR_), or command line flags (-var=\"name=value\").",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6106,7 +6106,7 @@ const qaData = [
     "id": 679,
     "category": "Company Wise QA",
     "question": "Can we make changes to the running docker container?",
-    "answer": "To restart a web server: \n- NGINX: `sudo systemctl restart nginx` or `sudo nginx -s reload` (zero-downtime config reload).\n- Tomcat: Run `catalina.sh stop` then `catalina.sh start`, or `sudo systemctl restart tomcat`.",
+    "answer": "3. Different networking types in docker\nAzure service\n1. Storage accounts\n2. Load balancer\n3. How we can access a vm having private ip address",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6115,7 +6115,7 @@ const qaData = [
     "id": 680,
     "category": "Company Wise QA",
     "question": "Do you have ID about AKS?",
-    "answer": "Tomcat configuration is managed by editing XML files under `/etc/tomcat/conf/` (or equivalent path): `server.xml` for ports and connectors, `web.xml` for defaults, and `context.xml` for database resources.",
+    "answer": "Azure Kubernetes Service (AKS) is a managed container orchestration service that simplifies Kubernetes deployment, management, and operations by offloading the control plane management to Microsoft, charging only for active worker node VMs.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6124,7 +6124,7 @@ const qaData = [
     "id": 681,
     "category": "Company Wise QA",
     "question": "How should we keep our storage accounts, private or public?",
-    "answer": "Tomcat log directories are located under `/var/log/tomcat/` or `/opt/tomcat/logs/`. Key log files include `catalina.out` (standard output/error), `localhost.log`, and `manager.log`.",
+    "answer": "Azure Storage Account: Secure cloud storage for blobs/files. Secured via Private Endpoints, SAS tokens, RBAC, and firewalls.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6133,7 +6133,7 @@ const qaData = [
     "id": 682,
     "category": "Company Wise QA",
     "question": "Have you worked with Key Vault?",
-    "answer": "Yes, I use Maven inside Jenkins or Azure DevOps pipelines to compile Java applications, run unit tests, package them into JAR/WAR files, and publish them to artifact registries like Nexus.",
+    "answer": "7. What is service principal and managed identity\n8. Do you have any idea about the least privileged access\n9. Do you know about availability set and availability zones",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6142,7 +6142,7 @@ const qaData = [
     "id": 683,
     "category": "Company Wise QA",
     "question": "Do you know about ACR?",
-    "answer": "A Maven POM (`pom.xml`) is the Project Object Model configuration file containing project metadata, dependency lists, build plugin settings, and compilation profiles.",
+    "answer": "Azure Container Registry (ACR) is a private container registry service:\n1. **Image Registry**: Stores and manages Docker container images, Helm charts, and OCI artifacts.\n2. **Integrations**: Integrates with AKS via Azure RBAC (AcrPull permissions assigned to AKS managed identity), supports image vulnerability scanning (via Defender), and geo-replication.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6151,7 +6151,7 @@ const qaData = [
     "id": 684,
     "category": "Company Wise QA",
     "question": "Different replication types in azure?",
-    "answer": "Package managers: \n- **Ubuntu / Debian**: `apt` (Advanced Package Tool) using `.deb` packages.\n- **Red Hat / CentOS**: `dnf` or `yum` (Yellowdog Updater, Modified) using `.rpm` packages.",
+    "answer": "Terraform\n1. Can you explain to me your module structure\n2. Can you write a vm code? Virtual network tak likha n he stopped me",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6160,7 +6160,7 @@ const qaData = [
     "id": 685,
     "category": "Company Wise QA",
     "question": "What If I remove the vm instance  from the state file and run terraform apply?",
-    "answer": "In Linux, packages are installed using command CLI: \n- Ubuntu: `sudo apt update && sudo apt install <package-name>`\n- RHEL: `sudo dnf install <package-name>`.",
+    "answer": "If you remove a resource from the state file (e.g. using 'terraform state rm') and run 'terraform apply', Terraform will think the resource no longer exists in your infrastructure and will attempt to recreate it. If you want to delete a resource, you should delete its HCL code configuration and run 'terraform apply'.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6169,7 +6169,7 @@ const qaData = [
     "id": 686,
     "category": "Company Wise QA",
     "question": "Which branching strategy do you have used?",
-    "answer": "To create an automated backup script: 1. Write a Bash script containing compression commands (`tar -czf`). 2. Upload archive to Azure Storage (`az storage blob upload`). 3. Schedule the script using `cron`.",
+    "answer": "3. What are environment variables in Pipeline\n4. How you manage secrets in pipeline\n5. Can you tell me about service connections\n6. Do you have idea on agent pool\n7. Can you walk me through basic components of your azure pipelines\nOthers\n1. Do you have working knowledge with Ansible\n2. How you check the pod status\n3. How much should be ideal ratio of pod to container",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6178,7 +6178,7 @@ const qaData = [
     "id": 687,
     "category": "Company Wise QA",
     "question": "What is smallest components in aks?",
-    "answer": "To upgrade the OS: \n- **Ubuntu**: `sudo apt update && sudo apt upgrade -y`\n- **RHEL**: `sudo dnf update -y`.",
+    "answer": "The smallest deployable component in Azure Kubernetes Service (AKS) or any Kubernetes cluster is a **Pod**, which represents a single instance of a running process and can contain one or more containers.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Infosys"
@@ -6187,7 +6187,7 @@ const qaData = [
     "id": 688,
     "category": "Linux & Git",
     "question": "What is Git?",
-    "answer": "To check OS version: \n- Ubuntu: `lsb_release -a` or `cat /etc/os-release`\n- RHEL: `cat /etc/redhat-release`.",
+    "answer": "Git is a distributed version control system used to track changes in source code. A Git Repository is the storage space (local or remote) that tracks all project files and commit histories. A commit represents a saved snapshot of staged changes in the project history.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6196,7 +6196,7 @@ const qaData = [
     "id": 689,
     "category": "Linux & Git",
     "question": "What is a Git repository?",
-    "answer": "A script to fetch OS information from multiple hosts: \n```bash\nfor host in $(cat hosts.txt); do\n  ssh -i key.pem user@$host \"uname -a; cat /etc/os-release | grep PRETTY_NAME\" \ndone\n```",
+    "answer": "Git is a distributed version control system used to track changes in source code. A Git Repository is the storage space (local or remote) that tracks all project files and commit histories. A commit represents a saved snapshot of staged changes in the project history.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6205,7 +6205,7 @@ const qaData = [
     "id": 690,
     "category": "Linux & Git",
     "question": "What is the difference between Git and GitHub?",
-    "answer": "Yes, I have worked with Ansible for configuration management and Puppet for declarative state enforcement. Ansible is preferred in our pipelines because of its agentless, YAML-driven design.",
+    "answer": "Comparing **Erence  Git** and **Github** in Git Version Control contexts:\n\n1. **Core Architecture**:\n   * **Erence  Git**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Github**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Git** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Github** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6214,7 +6214,7 @@ const qaData = [
     "id": 691,
     "category": "Linux & Git",
     "question": "How do you initialize a Git repository?",
-    "answer": "To initialize a Git repository:\n\n1. Navigate to the project directory:\n   `cd /path/to/my-project`\n2. Run the initialization command:\n   `git init`\n   *(Creates a hidden `.git` metadata folder to track changes)*\n3. Add files to the staging area:\n   `git add .`\n4. Create the initial commit:\n   `git commit -m \"initial commit\"`\n5. (Optional) Link to remote repository:\n   `git remote add origin https://github.com/user/repo.git`\n   `git push -u origin main`",
+    "answer": "Production implementation guide for: **Initialize A Git Repository** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6223,7 +6223,7 @@ const qaData = [
     "id": 692,
     "category": "Linux & Git",
     "question": "What is a commit in Git?",
-    "answer": "Azure Private DNS manages domain names within a virtual network without public internet resolution. Use case: resolving internal VM/database names securely within peered VNets (e.g. `db.internal.cloud`).",
+    "answer": "Git is a distributed version control system used to track changes in source code. A Git Repository is the storage space (local or remote) that tracks all project files and commit histories. A commit represents a saved snapshot of staged changes in the project history.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6232,7 +6232,7 @@ const qaData = [
     "id": 693,
     "category": "Linux & Git",
     "question": "How do you create a new branch in Git?",
-    "answer": "To create a new branch in Git:\n\n1. **Create and Switch (Recommended)**:\n   `git checkout -b feature-branch`\n   *Or in modern Git versions*:\n   `git switch -c feature-branch`\n2. **Create branch but stay on current branch**:\n   `git branch feature-branch`\n3. Push new branch to remote:\n   `git push -u origin feature-branch`",
+    "answer": "Production implementation guide for: **Create A New Branch In Git** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6241,7 +6241,7 @@ const qaData = [
     "id": 694,
     "category": "Linux & Git",
     "question": "How do you switch between branches in Git?",
-    "answer": "To switch between branches in Git:\n\n1. **Modern Switch Command**:\n   `git switch branch-name`\n2. **Legacy Checkout Command**:\n   `git checkout branch-name`\n3. **Return to Previous Branch**:\n   `git switch -`\nBefore switching, commit your active changes or run `git stash` to store them temporarily, preventing Git from blocking the branch transition.",
+    "answer": "Production implementation guide for: **Switch Between Branches In Git** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6250,7 +6250,7 @@ const qaData = [
     "id": 695,
     "category": "Linux & Git",
     "question": "What is the purpose of the .gitignore file?",
-    "answer": "In Git, staging area (`git add`) prepares changes to be committed, while committing (`git commit`) records those staged changes permanently in the local repository history.",
+    "answer": "The .gitignore file specifies untracked files or folders (e.g., node_modules/, local secrets, logs, or pycache) that Git should ignore and never commit to the remote repository.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6259,7 +6259,7 @@ const qaData = [
     "id": 696,
     "category": "Linux & Git",
     "question": "What is the difference between git pull and git fetch?",
-    "answer": "To view changes in Git: \n- Working directory vs Staging: `git diff`\n- Staged changes vs Commit history: `git diff --staged` or `git diff --cached`.",
+    "answer": "Comparing **Erence  Git Pull** and **Git Fetch** in Git Version Control contexts:\n\n1. **Core Architecture**:\n   * **Erence  Git Pull**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Git Fetch**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Git Pull** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Git Fetch** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6268,7 +6268,7 @@ const qaData = [
     "id": 697,
     "category": "Linux & Git",
     "question": "How do you view the commit history in Git?",
-    "answer": "To view commit logs and history in Git:\n\n1. **Standard Log View**: `git log`\n2. **Condensed View**: `git log --oneline`\n3. **Visual Graph layout**: `git log --oneline --graph --all`\n4. **Limit Output Count**: `git log -n 5`\n5. **View diffs per commit**: `git log -p`",
+    "answer": "Production implementation guide for: **View The Commit History In Git** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6277,7 +6277,7 @@ const qaData = [
     "id": 698,
     "category": "Linux & Git",
     "question": "What is a merge conflict in Git, and how do you resolve it?",
-    "answer": "A **merge conflict** occurs when Git cannot automatically reconcile changes (e.g. same line modified differently on two branches):\n\n**Resolution**:\n1. Identify conflicted files: `git status`\n2. Open files and locate conflict markers:\n   ```text\n   <<<<<<< HEAD\n   Current changes on main\n   =======\n   Incoming changes from feature-branch\n   >>>>>>> feature-branch\n   ```\n3. Edit the file manually to keep the desired code and remove the markers.\n4. Stage the files: `git add <filename>`\n5. Complete the merge: `git commit`",
+    "answer": "Production implementation guide for: **What Is A Merge Conflict In Git, And  Resolve It** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6286,7 +6286,7 @@ const qaData = [
     "id": 699,
     "category": "Linux & Git",
     "question": "What is the difference between git reset and git revert?",
-    "answer": "Yes, I have worked on Git merge conflicts. I identify conflicted files using `git status`, edit them to resolve the conflicting markers (`<<<<<<<` / `>>>>>>>`), stage files with `git add`, and run `git commit`.",
+    "answer": "Comparing **Erence  Git Reset** and **Git Revert** in Git Version Control contexts:\n\n1. **Core Architecture**:\n   * **Erence  Git Reset**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Git Revert**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Git Reset** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Git Revert** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6295,7 +6295,7 @@ const qaData = [
     "id": 700,
     "category": "Linux & Git",
     "question": "What is the purpose of the git stash command?",
-    "answer": "Git tags are labels pointing to specific points in Git history, usually used for release versions (e.g., `v1.2.0`). Create a tag: `git tag -a v1.2.0 -m \"release message\"` and push: `git push origin v1.2.0`.",
+    "answer": "The 'git stash' command temporarily shelves (stashes) uncommitted changes in your working directory, allowing you to switch branches or run pulls on a clean working directory, and re-apply the changes later using 'git stash pop'.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6304,7 +6304,7 @@ const qaData = [
     "id": 701,
     "category": "Linux & Git",
     "question": "How do you undo the last commit in Git?",
-    "answer": "To undo the last commit in Git:\n\n1. **Keep Changes Staged**: Remove the commit but keep files modified in the staging area:\n   `git reset --soft HEAD~1`\n2. **Discard All Changes**: Completely erase the commit and reset files:\n   `git reset --hard HEAD~1`\n3. **Safe Revert (Already Pushed)**: Create a new commit that applies the exact opposite changes to preserve Git history:\n   `git revert HEAD`",
+    "answer": "Production implementation guide for: **Undo The Last Commit In Git** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6313,7 +6313,7 @@ const qaData = [
     "id": 702,
     "category": "Linux & Git",
     "question": "What is the difference between git merge and git rebase?",
-    "answer": "Use `git cherry-pick <commit-hash>` to apply the exact changes introduced by a specific commit from another branch onto your current branch.",
+    "answer": "Comparing **Erence  Git Merge** and **Git Rebase** in Git Version Control contexts:\n\n1. **Core Architecture**:\n   * **Erence  Git Merge**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Git Rebase**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Git Merge** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Git Rebase** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6322,7 +6322,7 @@ const qaData = [
     "id": 703,
     "category": "Linux & Git",
     "question": "What is a Git submodule, and how do you use it?",
-    "answer": "A **Git Submodule** allows you to keep a Git repository as a subdirectory of another Git repository:\n\n- **Add Submodule**:\n  `git submodule add https://github.com/user/lib.git path/to/submodule`\n- **Clone with Submodules**:\n  `git clone --recurse-submodules https://github.com/user/main-repo.git`\n- **Fetch/Initialize Submodules**:\n  `git submodule update --init --recursive`",
+    "answer": "Production implementation guide for: **What Is A Git Submodule, And  Use It** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6331,7 +6331,7 @@ const qaData = [
     "id": 704,
     "category": "Linux & Git",
     "question": "How do you handle large files in Git?",
-    "answer": "Handling large files in Git:\n\n1. **Git LFS (Large File Storage) (Recommended)**:\n   - Install LFS: `git lfs install`\n   - Track file types: `git lfs track \"*.psd\"` (updates `.gitattributes`)\n   - Add/commit as normal. Git LFS replaces files with text pointers in Git, storing actual binaries on a remote server.\n2. **`.gitignore`**: Block large directory items or logs from tracking:\n   `echo \"logs/\" >> .gitignore`\n3. **History Cleanup**: Use `git-filter-repo` to purge large files from commit history to shrink repository size.",
+    "answer": "Production implementation guide for: **Handle Large Files In Git** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6340,7 +6340,7 @@ const qaData = [
     "id": 705,
     "category": "Linux & Git",
     "question": "What is the purpose of git cherry-pick?",
-    "answer": "A Git repository is a database tracking file changes. A Git branch is a lightweight pointer to a specific commit, allowing developers to isolate changes and work in parallel without affecting main codebase.",
+    "answer": "'git cherry-pick' is a command that allows you to select a specific commit from one branch and apply its changes as a new commit onto your current active branch.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6349,7 +6349,7 @@ const qaData = [
     "id": 706,
     "category": "Linux & Git",
     "question": "How do you rename a branch in Git?",
-    "answer": "To rename a branch in Git:\n\n1. **Rename Current Branch**:\n   `git branch -m new-branch-name`\n2. **Rename Different Branch**:\n   `git branch -m old-branch-name new-branch-name`\n3. **Rename Remote Branch**:\n   `git push origin -u new-branch-name`\n   `git push origin --delete old-branch-name`",
+    "answer": "Production implementation guide for: **Rename A Branch In Git** in Git Version Control:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6358,7 +6358,7 @@ const qaData = [
     "id": 707,
     "category": "Linux & Git",
     "question": "What is the difference between git pull --rebase and git pull?",
-    "answer": "Use a `.gitignore` file in the root of the repository to list file patterns or directories (e.g., `node_modules/`, `*.log`, `.env`) that Git should not track or commit.",
+    "answer": "Comparing **Erence  Git Pull --Rebase** and **Git Pull** in Git Version Control contexts:\n\n1. **Core Architecture**:\n   * **Erence  Git Pull --Rebase**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Git Pull**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Git Pull --Rebase** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Git Pull** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6367,7 +6367,7 @@ const qaData = [
     "id": 708,
     "category": "Company Wise QA",
     "question": "1 Can you please tell me about your project?",
-    "answer": "In Git, `fetch` downloads remote commits, branches, and tags without merging them into your local work. `pull` runs `git fetch` followed by `git merge`, automatically updating your active branch.",
+    "answer": "I manage CI/CD pipelines and infrastructure as code using Terraform to deploy highly available microservices to Azure Kubernetes Service (AKS). My responsibilities include configuring networking (VNets, Application Gateways), securing pipelines, and managing container workloads.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6376,7 +6376,7 @@ const qaData = [
     "id": 709,
     "category": "Company Wise QA",
     "question": "2 Suppose in your organisation there are 10 projects but a new developer joined. You want to give access only to 3 projects. How do you do that?",
-    "answer": "To restrict access so a developer only accesses 3 out of 10 projects:\n\n1. **Azure DevOps**: Create a custom Group (e.g. \"Project-Beta-Group\"), add the user, and assign that Group permissions only on the 3 specific projects.\n2. **GitHub**: Create a Team under organization settings, add the developer, and assign the Team read/write access to only those 3 repositories.\n3. **Azure Subscriptions**: Grant the developer Contributor permissions at the Resource Group scope of the 3 specific projects rather than the subscription scope.",
+    "answer": "Production implementation guide for: **2 Suppose In Your Organisation There Are 10 Projects But A New Developer Joined. You Want To Give Access Only To 3 Projects.  Do That** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6385,7 +6385,7 @@ const qaData = [
     "id": 710,
     "category": "Company Wise QA",
     "question": "3 How many types of user-level access are there in Azure DevOps (ADO)?",
-    "answer": "In Azure DevOps: Create a Group, add the user, and assign this group Reader/Contributor roles on the 3 specific projects. Ensure the other 7 projects have inheritance broken with no access for this group.",
+    "answer": "Azure DevOps user-level access types are: 1. **Basic**: Access to most features (pipelines, boards, repos). 2. **Stakeholder**: Free access for work item tracking and viewing boards. 3. **Visual Studio Subscription**: Access based on the user's MSDN/VS subscription tier.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6394,7 +6394,7 @@ const qaData = [
     "id": 711,
     "category": "Company Wise QA",
     "question": "4 What is the difference between basic level and stakeholder level access in ADO?",
-    "answer": "Yes, I have managed Azure deployments containing up to 12 subscriptions. We handle access using distinct Terraform workspaces or directory structures linked to separate Azure Service Principals.",
+    "answer": "Comparing **Erence  Basic Level** and **Stakeholder Level Access In Ado** in DevOps Engineering contexts:\n\n1. **Core Architecture**:\n   * **Erence  Basic Level**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Stakeholder Level Access In Ado**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Basic Level** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Stakeholder Level Access In Ado** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6403,7 +6403,7 @@ const qaData = [
     "id": 712,
     "category": "Company Wise QA",
     "question": "5 If you have to add more basic users in ADO, do you need to pay Microsoft? How much?",
-    "answer": "We manage access permissions in Azure DevOps using Teams, custom security groups, project-level permissions (Contributor/Reader), repository branch policies, and service connection security controls.",
+    "answer": "In Azure DevOps, the first **5 users** in an organization get Basic access for free. For any additional basic users, your organization must pay Microsoft approximately **$6 per user per month**.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6412,7 +6412,7 @@ const qaData = [
     "id": 713,
     "category": "Company Wise QA",
     "question": "6 How many agents are available in Azure DevOps to run pipelines?",
-    "answer": "We secure Azure DevOps by: configuring Entra ID MFA, limiting organization admin roles, removing inheritance on sensitive projects, scanning pipelines for secrets, and enforcing branch policies on main.",
+    "answer": "Azure DevOps provides Microsoft-hosted agents (managed by MS) and self-hosted agents (managed on your own VMs). Microsoft provides 1 free parallel job (hosted or self-hosted) with 1800 free minutes per month. Additional parallel jobs cost approximately **$40/month** for Microsoft-hosted and **$15/month** for self-hosted.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6421,7 +6421,7 @@ const qaData = [
     "id": 714,
     "category": "Company Wise QA",
     "question": "7 What is the difference between Microsoft-hosted agents and self-hosted agents?",
-    "answer": "Yes, I use Git branch policies on the `main` branch: requiring Pull Requests, mandatory approvals from at least one reviewer, successful CI pipeline builds, and resolved comments before merging.",
+    "answer": "Comparing **Erence  Microsoft-Hosted Agents** and **Self-Hosted Agents** in DevOps Engineering contexts:\n\n1. **Core Architecture**:\n   * **Erence  Microsoft-Hosted Agents**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Self-Hosted Agents**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Microsoft-Hosted Agents** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Self-Hosted Agents** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6430,7 +6430,7 @@ const qaData = [
     "id": 715,
     "category": "Company Wise QA",
     "question": "8 If Microsoft provides only one agent and you want to run 10 pipelines, how much money do you have to pay for additional agents?",
-    "answer": "Yes, I create Pull Requests templates to standardize description, checklists, linked boards issues, and require reviewers to sign off on unit tests, lints, and manual QA validations.",
+    "answer": "Azure DevOps provides Microsoft-hosted agents (managed by MS) and self-hosted agents (managed on your own VMs). Microsoft provides 1 free parallel job (hosted or self-hosted) with 1800 free minutes per month. Additional parallel jobs cost approximately **$40/month** for Microsoft-hosted and **$15/month** for self-hosted.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6439,7 +6439,7 @@ const qaData = [
     "id": 716,
     "category": "Company Wise QA",
     "question": "9 How do you add a new field in the Bug template in Azure DevOps?",
-    "answer": "Adding a custom field to the Bug template in Azure DevOps (ADO):\n\n1. Go to Organization Settings -> Process.\n2. Click on the parent process (e.g., Scrum) and select **Create inherited process** (default templates cannot be modified directly).\n3. Under the inherited process, click on the **Bug** work item type.\n4. Click **New field** -> Enter the Field Name, Type (Text, Picklist, Integer), and Description. Set placement layout and click Save.\n5. Change the target Project's process to point to the new inherited process.",
+    "answer": "Production implementation guide for: **9  Add A New Field In The Bug Template In Azure Devops** in Microsoft Azure Cloud Services:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6448,7 +6448,7 @@ const qaData = [
     "id": 717,
     "category": "Company Wise QA",
     "question": "10 When a user enters the correct username and password but gets an invalid credential error, what could be the issue?",
-    "answer": "Go to Organization Settings -> Process -> Select inherited process -> Click Bug -> click New field -> Enter Name (e.g. root_cause), Type (e.g. text), and layout coordinates. Save changes.",
+    "answer": "In Azure DevOps Git checkouts, this usually happens when the user's Personal Access Token (PAT) has expired or lacks the correct 'Code Read/Write' scope, or when their local Git credential manager has cached outdated credentials.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6457,7 +6457,7 @@ const qaData = [
     "id": 718,
     "category": "Company Wise QA",
     "question": "11 Suppose you want to deploy an application to 2 VMs at the same time. How would you do that using Azure DevOps pipeline?",
-    "answer": "If the pipeline fails, I: 1. Review build logs. 2. Check for missing variable group link configurations. 3. Validate network connectivity of agents. 4. Verify API credentials and cloud quotas.",
+    "answer": "To deploy to multiple VMs simultaneously: 1. Configure the VMs inside an Azure DevOps **Deployment Group**. 2. Use a Deployment Group job in a Release pipeline targeting that group. 3. Alternatively, configure a multi-agent YAML pipeline running deployment tasks in parallel.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6466,7 +6466,7 @@ const qaData = [
     "id": 719,
     "category": "Company Wise QA",
     "question": "12 What is a service connection in Azure DevOps and how do you use it for VM deployments?",
-    "answer": "We use Microsoft-Hosted agents for standard container builds and security scans, and Self-Hosted agents (VMs on VNet) for deployments requiring internal database access or custom compiler software.",
+    "answer": "Service Connections in Azure DevOps connect pipelines to external services:\n1. **Role**: Establishes a secure connection to Azure subscriptions, AWS accounts, Docker registries, or SonarQube instances without exposing secrets.\n2. **Security**: Typically authenticated using an Azure Service Principal (using client secrets or federated credentials) with strict access bounds.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6475,7 +6475,7 @@ const qaData = [
     "id": 720,
     "category": "Company Wise QA",
     "question": "13 Is it possible to share the same service connection across multiple projects in the same organization? How?",
-    "answer": "If an agent is offline: 1. Log into the VM host. 2. Verify the agent service status: `sudo ./config.sh status`. 3. Check connectivity to Azure DevOps endpoints. 4. Restart service: `sudo ./svc.sh start`.",
+    "answer": "Here is a breakdown of the key concepts:\n• Kubernetes Service: Abstract way to expose an application running on a set of Pods as a network service with a stable IP.\n• ACR stores private Docker container images securely in Azure, integrating with AKS using managed identities.\n• Service Connection: Secure configurations in Azure DevOps to access cloud subscriptions or external APIs.\n• DevOps Projects: Building automated pipelines, provisioning infrastructure via IaC, and monitoring services.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6484,7 +6484,7 @@ const qaData = [
     "id": 721,
     "category": "Company Wise QA",
     "question": "14 How do you handle different environment deployments (DEV, QA, PROD) in pipelines with different credentials?",
-    "answer": "I have experience with: **SonarQube** (static analysis), **Trivy** & **Checkov** (vulnerability and IaC scanning), and basic **OWASP ZAP** (DAST) configurations in pipelines.",
+    "answer": "Comparing **Erent Environment Deployments (Dev, Qa, Prod) In Pipelines With** and **Second Option** in CI/CD Pipeline Automation contexts:\n\n1. **Core Architecture**:\n   * **Erent Environment Deployments (Dev, Qa, Prod) In Pipelines With**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Second Option**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erent Environment Deployments (Dev, Qa, Prod) In Pipelines With** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Second Option** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6493,7 +6493,7 @@ const qaData = [
     "id": 722,
     "category": "Company Wise QA",
     "question": "16 Suppose you have 2 containers and the second container should run only after the first one has started. How do you achieve that in Docker Compose?",
-    "answer": "We run Trivy and Checkov inside CI pipelines via CLI tasks. If any critical vulnerabilities or insecure configurations (e.g. open admin ports) are found, the script exits with code 1, breaking the build.",
+    "answer": "Here is a breakdown of the key concepts:\n• Docker is a containerization platform that packages applications and dependencies into isolated container images sharing the host OS kernel.\n• Docker Compose: A tool for defining and running multi-container applications using a single YAML configuration file.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6502,7 +6502,7 @@ const qaData = [
     "id": 723,
     "category": "Company Wise QA",
     "question": "17 If all secrets (like DB name, username, passwords) are stored in Azure Key Vault, how do you fetch those in the pipeline while building a Docker image?",
-    "answer": "Yes, I run SonarQube in the CI pipeline. It scans source code for bugs and smells. If the code coverage is below 80% or critical vulnerabilities are found, the SonarQube Quality Gate fails the build.",
+    "answer": "Docker is a containerization platform that packages applications and dependencies into isolated container images sharing the host OS kernel.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6511,7 +6511,7 @@ const qaData = [
     "id": 724,
     "category": "Company Wise QA",
     "question": "18 What is the difference between COPY and ADD commands in Dockerfile?",
-    "answer": "To integrate SonarQube with DevOps: 1. Configure SonarQube service connection in Project Settings. 2. Add SonarQube Prepare, Run Analysis, and Publish Quality Gate tasks in the YAML pipeline file.",
+    "answer": "Comparing **Erence  Copy** and **Add Comm** in Docker Containerization contexts:\n\n1. **Core Architecture**:\n   * **Erence  Copy**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Add Comm**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Copy** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Add Comm** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": "Exceedence"
@@ -6520,7 +6520,7 @@ const qaData = [
     "id": 725,
     "category": "Terraform (IaC)",
     "question": "How does Terraform handle infrastructure as code? Terraform handles Infrastructure as Code (IaC) by enabling the definition, provisioning, and management of infrastructure through declarative configuration files. This approach treats infrastructure setup and management as software development tasks, promoting automation, consistency, and collaboration.",
-    "answer": "Terraform manages Infrastructure as Code (IaC) by translating declarative configuration files (written in HashiCorp Configuration Language - HCL) into actual API calls to cloud providers:\n\n1. **Desired State**: Developers define resources in `.tf` files.\n2. **Providers**: Plugins translate HCL instructions into cloud-specific API requests.\n3. **State File**: Terraform records metadata mapping code resources to actual cloud resources in `terraform.tfstate`.\n4. **Execution Plan**: Running `terraform plan` compares the code against the actual infrastructure state, showing what will be created, updated, or destroyed.\n5. **Apply**: Running `terraform apply` implements changes to align infrastructure with configuration.",
+    "answer": "Production implementation guide for: **How Does Terraform Handle Infrastructure As Code Terraform Handles Infrastructure As Code (Iac) By Enabling The Definition, Provisioning, And Management Of Infrastructure Through Declarative Configuration Files. This Approach Treats Infrastructure Setup And Management As Software Development Tasks, Promoting Automation, Consistency, And Collaboration.** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6529,7 +6529,7 @@ const qaData = [
     "id": 726,
     "category": "Terraform (IaC)",
     "question": "What are resource in Terraform? ​In Terraform, resources are the fundamental building blocks that define infrastructure components—such as virtual machines, storage buckets, DNS records, and more",
-    "answer": "Terraform Providers are plugins that act as translators between Terraform's engine and target APIs (Azure, AWS, Kubernetes), allowing Terraform to manage resources on those platforms.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6538,7 +6538,7 @@ const qaData = [
     "id": 727,
     "category": "Terraform (IaC)",
     "question": "What are data sources in Terraform? In Terraform, data sources are read-only entities that allow you to retrieve and utilize information from external systems or other Terraform configurations,data sources are used to fetch existing data that can be referenced elsewhere in your Terraform configuration.",
-    "answer": "A Terraform Provider block specifies source, version, and credentials:\n```hcl\nprovider \"azurerm\" {\n  features {}\n  subscription_id = var.sub_id\n}\n```",
+    "answer": "Files & Syntax\n.tf file They define the desired state of your infrastructure, specifying resources, providers, variables, and outputs.\nOutputs in terraform ​In Terraform, output values are used to display or export information about your infrastructure after applying your configuration. They serve as a way to expose useful data, such as resource IDs or IP addresses, to users or other configurations.\nDiff. btw input and output variables Input Variables: Allow you to customize your infrastructure setup without changing the core code.                                                                                                                Output Variables:Expose information about the infrastructure after deployment, facilitating data sharing between modules or external systems.​",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6547,7 +6547,7 @@ const qaData = [
     "id": 728,
     "category": "Terraform (IaC)",
     "question": "How do you reference one resource from another? Referencing one resource from another makes the infrastructure interdependent so to achieve this we use Module block which helps in referecing by another resource by calling modules",
-    "answer": "Yes, I lock provider versions inside the `required_providers` block:\n```hcl\nterraform {\n  required_providers {\n    azurerm = {\n      source = \"hashicorp/azurerm\"\n      version = \"~> 3.90.0\"\n    }\n  }\n}\n```\nThis ensures environment consistency.",
+    "answer": "Local block The locals block allows you to define named values or expressions that can be reused throughout your Terraform configuration. This helps in avoiding repetition and makes your code cleaner and easier to maintain.e.g, region,tags etc.\nTerraform CLI Basics\nTerraform refresh the terraform refresh command is used to update Terraform's state file to reflect the actual state of your infrastructure",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6556,7 +6556,7 @@ const qaData = [
     "id": 729,
     "category": "Terraform (IaC)",
     "question": "How do you remove a resource from the state file? ​To remove a resource from Terraform's state file without affecting the actual infrastructure, you can use the terraform state rm command or using removed block",
-    "answer": "To stop tracking a resource in Terraform without destroying it in the cloud:\n\n1. **Command Line Method**: Remove the resource address from the state:\n   `terraform state rm azurerm_public_ip.pip`\n   *(This removes it from `terraform.tfstate`, but does not trigger deletion of the public IP in Azure).*\n2. **Removed Block Method (Terraform 1.7+)**:\n   ```hcl\n   removed {\n     from = azurerm_public_ip.pip\n     lifecycle {\n       destroy = false\n     }\n   }\n   ```\n   Apply configurations and then safely delete the resource code block.",
+    "answer": "Production implementation guide for: **Remove A Resource From The State File ​To Remove A Resource From Terraform'S State File Without Affecting The Actual Infrastructure, You Can Use The Terraform State Rm Command Or Using Removed Block** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6565,7 +6565,7 @@ const qaData = [
     "id": 730,
     "category": "Terraform (IaC)",
     "question": "How do you enable debugging in Terraform? To enable debugging in Terraform, you can set specific environment variables that control the logging level and output location.Terraform uses the TF_LOG environment variable to control logging verbosity.",
-    "answer": "To enable verbose debugging logs in Terraform, set the `TF_LOG` environment variable:\n\n1. **Log Level**: Set `TF_LOG` to one of `TRACE` (most detailed), `DEBUG`, `INFO`, `WARN`, or `ERROR`:\n   - macOS/Linux: `export TF_LOG=\"DEBUG\"`\n   - Windows (PowerShell): `$env:TF_LOG=\"DEBUG\"`\n2. **Log File**: Save logs to a specific file:\n   `export TF_LOG_PATH=\"terraform-debug.log\"`\n3. **Disable Log**: Clear variables: `unset TF_LOG`.",
+    "answer": "Production implementation guide for: **Enable Debugging In Terraform To Enable Debugging In Terraform, You Can Set Specific Environment Variables That Control The Logging Level And Output Location.Terraform Uses The Tf_Log Environment Variable To Control Logging Verbosity.** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6574,7 +6574,7 @@ const qaData = [
     "id": 731,
     "category": "Terraform (IaC)",
     "question": "What is a backend in Terraform? a backend is the mechanism that defines where and how Terraform stores state—the record of what infrastructure it manages.",
-    "answer": "In Terraform, `terraform state list` lists all tracked resource addresses, while `terraform state show <address>` displays the detailed attributes and values of a specific resource in the state.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6583,7 +6583,7 @@ const qaData = [
     "id": 732,
     "category": "Terraform (IaC)",
     "question": "What is a provider block, and why is it important? a provider block specifies the cloud provider, API, or service that Terraform will use to provision and manage resources.It enables API Access,Authentication and Configuration and can define multiplr provider.",
-    "answer": "Yes, I have migrated state files: 1. Update the `backend` block in Terraform to the new storage account configuration. 2. Run `terraform init -migrate-state` and confirm the migration prompt.",
+    "answer": "Terraform providers are plugins that act as translators between the Terraform core engine and target cloud platform APIs (like AzureRM, AWS, or GCP). They translate declarative HCL configurations into actual API calls to create, update, or delete resources.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6592,7 +6592,7 @@ const qaData = [
     "id": 733,
     "category": "Terraform (IaC)",
     "question": "How do you lock Terraform provider versions? You can lock Terraform provider versions using the required_providers block inside the terraform block of your configuration. This ensures your project always uses a specific version  of a provider",
-    "answer": "Locking Terraform provider versions ensures configuration consistency across different environments:\n\n1. **`required_providers` Block**: Specify constraints inside the `terraform` block:\n   ```hcl\n   terraform {\n     required_providers {\n       azurerm = {\n         source  = \"hashicorp/azurerm\"\n         version = \"~> 3.90.0\" # locks major release, allows patch/minor updates\n       }\n     }\n   }\n   ```\n2. **Dependency Lock File (`.terraform.lock.hcl`)**: Generated automatically when running `terraform init`. It contains binary checksum hashes. Commit this file to Git to ensure everyone uses the same provider version.",
+    "answer": "Production implementation guide for: **Lock Terraform Provider Versions You Can Lock Terraform Provider Versions Using The Required_Providers Block Inside The Terraform Block Of Your Configuration. This Ensures Your Project Always Uses A Specific Version  Of A Provider** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6601,7 +6601,7 @@ const qaData = [
     "id": 734,
     "category": "Terraform (IaC)",
     "question": "How do you import existing infrastructure into Terraform? By using the terraform import command,terraform import RESOURCE_ID",
-    "answer": "To import existing infrastructure into Terraform:\n\n1. **Modern Import Block (Recommended - TF 1.5+)**:\n   - Write an `import` block mapping the resource to its cloud ID:\n     ```hcl\n     import {\n       to = azurerm_resource_group.rg\n       id = \"/subscriptions/.../resourceGroups/my-rg\"\n     }\n     ```\n   - Generate code: `terraform plan -generate-config-out=generated.tf`\n2. **Legacy CLI Command**:\n   - Write an empty resource block: `resource \"azurerm_resource_group\" \"rg\" {}`\n   - Run command: `terraform import azurerm_resource_group.rg /subscriptions/.../resourceGroups/my-rg`\n   - Run plan and manually adjust code until configuration matches state.",
+    "answer": "Production implementation guide for: **Import Existing Infrastructure Into Terraform By Using The Terraform Import Command,Terraform Import Resource_Id** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6610,7 +6610,7 @@ const qaData = [
     "id": 735,
     "category": "Terraform (IaC)",
     "question": "What is a Terraform module? A Terraform module is a set of reusable Terraform files that help you manage similar infrastructure in a clean and organized way. You can think of it like a function in programming—you write it once and use it many times.",
-    "answer": "Call local modules using source paths: `source = \"./modules/network\"`. Call remote Git modules using Git URLs: `source = \"git::https://github.com/org/repo.git//subnet?ref=v1.0.0\"`.",
+    "answer": "A Terraform module folder typically contains: `main.tf` (resource definitions), `variables.tf` (input variable declarations), and `outputs.tf` (output values). You structure them in a subfolder and call them using: module \"name\" { source = \"./modules/vnet\" ... }",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6619,7 +6619,7 @@ const qaData = [
     "id": 736,
     "category": "Terraform (IaC)",
     "question": "How do you call a module from a remote Git repository? To call a Terraform module from a remote Git repository, use the source argument in the module block with the Git URL.",
-    "answer": "To call a Terraform module from a remote Git repository, use the `source` argument inside the module block:\n\n```hcl\nmodule \"storage_account\" {\n  source = \"git::https://github.com/my-org/tf-modules.git//storage-module?ref=v1.2.0\"\n  storage_name = \"prodstore55\"\n}\n```\nUse the `ref` parameter to lock the module to a specific release tag, commit SHA, or branch for build reproducibility. Double slash `//` is used to specify subfolders inside the Git repository.",
+    "answer": "Production implementation guide for: **Call A Module From A Remote Git Repository To Call A Terraform Module From A Remote Git Repository, Use The Source Argument In The Module Block With The Git Url.** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6628,7 +6628,7 @@ const qaData = [
     "id": 737,
     "category": "Terraform (IaC)",
     "question": "How do you pass variables to a module? To pass variables to a Terraform module, you provide them as arguments in the module block, just like passing parameters to a function.",
-    "answer": "Yes, I have written multiple Terraform modules for Networking, VM Scale Sets, Storage, and AKS to promote reusable, standardized configurations across development teams.",
+    "answer": "In Terraform, variables and outputs are defined to achieve modularity and clean parameterization:\n1. **variables.tf**: Defines input variables that allow users to customize the module behavior (e.g., VM size, environment name, network IP ranges) dynamically when calling the module.\n2. **outputs.tf**: Specifies outputs that expose internal resource attributes (e.g., private IP, subnet ID, resource ID) to other configurations or the root module.\n3. **Usage**: In the root configuration, you call the module and pass values for its input variables. Once applied, you can reference the module's output attributes using `module.<module_name>.<output_name>`.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6637,7 +6637,7 @@ const qaData = [
     "id": 738,
     "category": "Terraform (IaC)",
     "question": "What is the purpose of module.<name>.output? The purpose of module.<name>.output in Terraform is to access the output values that are defined inside a module. This allows you to retrieve information or results from a module and use it in other parts of your Terraform configuration.",
-    "answer": "To structure module directories: create a `modules/` folder containing subdirectories for each service (e.g. `vpc/`, `compute/`), each containing `main.tf`, `variables.tf`, and `outputs.tf`.",
+    "answer": "The purpose of module outputs (module.<name>.<output_name>) is to expose specific resource attributes created within a child module to the parent configuration. This allows the parent workspace to reference and pass those attributes to other modules or resources.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6646,7 +6646,7 @@ const qaData = [
     "id": 739,
     "category": "Terraform (IaC)",
     "question": "How can you organize Terraform modules for reusability? To organize Terraform modules for reusability,use a Clear Directory Structure,keep Modules Focused,Parameterize Modules with Variables & define Outputs for Reusability",
-    "answer": "Call a module using the `module` block, specifying input variable values:\n```hcl\nmodule \"vnet\" {\n  source    = \"./modules/vnet\"\n  vnet_name = \"prod-vnet\"\n}\n```\nOutputs are referenced as `module.vnet.vnet_id`.",
+    "answer": "In Terraform, variables and outputs are defined to achieve modularity and clean parameterization:\n1. **variables.tf**: Defines input variables that allow users to customize the module behavior (e.g., VM size, environment name, network IP ranges) dynamically when calling the module.\n2. **outputs.tf**: Specifies outputs that expose internal resource attributes (e.g., private IP, subnet ID, resource ID) to other configurations or the root module.\n3. **Usage**: In the root configuration, you call the module and pass values for its input variables. Once applied, you can reference the module's output attributes using `module.<module_name>.<output_name>`.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6655,7 +6655,7 @@ const qaData = [
     "id": 740,
     "category": "Terraform (IaC)",
     "question": "How do you use count and for_each in a module? The count parameter is used to create multiple instances of a module based on a numeric value on the other hand for_each parameter is used to iterate over a map or set of values and create a module instance for each value.",
-    "answer": "Directives `count` and `for_each` can be applied to module blocks (Terraform 0.13+) to instantiate them dynamically:\n\n1. **Using `count`** (Numeric creation):\n   ```hcl\n   module \"web_servers\" {\n     source = \"./modules/server\"\n     count  = 3\n     name   = \"web-${count.index}\"\n   }\n   ```\n2. **Using `for_each`** (Map/Set creation - Recommended):\n   ```hcl\n   module \"databases\" {\n     source   = \"./modules/db\"\n     for_each = var.db_instances\n     db_name  = each.key\n     sku      = each.value.sku\n   }\n   ```",
+    "answer": "Production implementation guide for: **Use Count And For_Each In A Module The Count Parameter Is Used To Create Multiple Instances Of A Module Based On A Numeric Value On The Other Hand For_Each Parameter Is Used To Iterate Over A Map Or Set Of Values And Create A Module Instance For Each Value.** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6664,7 +6664,7 @@ const qaData = [
     "id": 741,
     "category": "Divyanshu Questions",
     "question": "1) I want to rename a branch , how to do that?",
-    "answer": "To rename a branch in Git:\n\n1. **Rename Current Branch**:\n   `git branch -m new-branch-name`\n2. **Rename Different Branch**:\n   `git branch -m old-branch-name new-branch-name`\n3. **Rename Remote Branch**:\n   `git push origin -u new-branch-name`\n   `git push origin --delete old-branch-name`",
+    "answer": "Production implementation guide for: **1) I Want To Rename A Branch ,  Do That** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6673,7 +6673,7 @@ const qaData = [
     "id": 742,
     "category": "Divyanshu Questions",
     "question": "2) where u store terraform code and from where u commiting and adding ur changes?",
-    "answer": "Terraform code is stored in secure remote Git repositories (such as Azure Repos or GitHub). Developers clone the repository locally to their workstation, make changes in a feature branch, and push/commit their changes from their local terminal to the remote repository.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6682,7 +6682,7 @@ const qaData = [
     "id": 743,
     "category": "Divyanshu Questions",
     "question": "3)suppose we adding a file and we want to commit it how will you do that?",
-    "answer": "To add and commit a file in Git:\n1. Stage the file: `git add filename.tf`\n2. Commit the file: `git commit -m \"Add new resource configuration\"`\n3. Push to remote: `git push origin feature-branch`",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6700,7 +6700,7 @@ const qaData = [
     "id": 745,
     "category": "Divyanshu Questions",
     "question": "7) which cicd tool u use?",
-    "answer": "I primarily use **Azure Pipelines** (Azure DevOps) and **GitHub Actions** for CI/CD pipeline configuration. I have also worked with **Jenkins** in legacy projects to compile and package Java applications.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6718,7 +6718,7 @@ const qaData = [
     "id": 747,
     "category": "Divyanshu Questions",
     "question": "2.What are the arguments in resource group?",
-    "answer": "In the `azurerm_resource_group` resource in Terraform, the core arguments are:\n- `name` (Required): The name of the resource group.\n- `location` (Required): The Azure region where the resource group should exist.\n- `tags` (Optional): A mapping of key-value tags to assign to the resource.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6727,7 +6727,7 @@ const qaData = [
     "id": 748,
     "category": "Divyanshu Questions",
     "question": "3.What are the resources you are using while creating VM?",
-    "answer": "To create a Virtual Machine in Azure using Terraform, you typically declare the following resources:\n1. `azurerm_resource_group` (Resource Group)\n2. `azurerm_virtual_network` (VNet)\n3. `azurerm_subnet` (Subnet)\n4. `azurerm_public_ip` (Public IP - if public access is needed)\n5. `azurerm_network_security_group` (NSG)\n6. `azurerm_network_interface` (NIC)\n7. `azurerm_linux_virtual_machine` or `azurerm_windows_virtual_machine` (VM instance)",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6736,7 +6736,7 @@ const qaData = [
     "id": 749,
     "category": "Divyanshu Questions",
     "question": "2.How many containers can be created in a pod?",
-    "answer": "Technically, there is no hard-coded limit on the number of containers in a single Kubernetes Pod. However, practically, you should run only one main container per pod, plus occasional helper (sidecar/init) containers (usually 1-3 containers in total) to ensure efficient scaling and resource management.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6745,7 +6745,7 @@ const qaData = [
     "id": 750,
     "category": "Divyanshu Questions",
     "question": "3.How many stages/steps are there in a pod?",
-    "answer": "A Pod's lifecycle consists of several phases: **Pending** (scheduling and downloading images), **Running** (containers active), **Succeeded** (completed tasks), **Failed** (error termination), and **Unknown**. Within containers, there are steps: **Init Containers** run to completion first, followed by **PostStart** hooks, the main container execution, and **PreStop** hooks on termination.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6754,7 +6754,7 @@ const qaData = [
     "id": 751,
     "category": "Divyanshu Questions",
     "question": "4.If pod is not running,how you can debug the same?",
-    "answer": "Debugging a Kubernetes Pod that fails to start:\n\n1. **Check Status**: Run `kubectl get pods` to identify if the pod is in `ImagePullBackOff`, `Pending`, or `CrashLoopBackOff`.\n2. **Check Events**: Run `kubectl describe pod <pod-name>` and check the **Events** section at the bottom for image pull issues, scheduling failures, or volume mount errors.\n3. **Check Logs**: Run `kubectl logs <pod-name>` to read standard output. If the container keeps crashing, inspect the logs from the previous instance:\n   `kubectl logs <pod-name> --previous`\n4. **Debug Shell**: If the pod starts but behaves incorrectly, open an interactive terminal:\n   `kubectl exec -it <pod-name> -- /bin/bash`\n5. **Ephemeral Debugging**: For distroless/minimal images, attach a debug container:\n   `kubectl debug -it <pod-name> --image=busybox`",
+    "answer": "Production implementation guide for: **4.If Pod Is Not Running, Can Debug The Same** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6763,7 +6763,7 @@ const qaData = [
     "id": 752,
     "category": "Divyanshu Questions",
     "question": "5.If a pod is in pending stage/not working/not running, what would be the possible reasons?",
-    "answer": "Common worker node settings: OS swap disabled, container runtime (containerd) installed, ports open (10250), system hostnames unique, and kubeadm, kubelet, and kubectl packages installed.",
+    "answer": "Common reasons for a Kubernetes pod remaining in Pending state: 1. **Insufficient CPU/Memory resources** on worker nodes. 2. **Node selector/tolerations mismatch** (tainted nodes). 3. **Persistent Volume Claim (PVC) binding failures**. 4. **Image pull errors** (incorrect registry credentials).",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6772,7 +6772,7 @@ const qaData = [
     "id": 753,
     "category": "Divyanshu HCL",
     "question": "8.⁠ ⁠Type Constraints in Terraform.?",
-    "answer": "In Kubernetes, a pod represents the smallest deployable unit containing one or more containers sharing storage and network. A container is the run-time instance of an application image.",
+    "answer": "Terraform type constraints enforce input variable types. They include primitive types (string, number, bool) and complex types: collection types (list, map, set) and structural types (object, tuple).",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6781,7 +6781,7 @@ const qaData = [
     "id": 754,
     "category": "Divyanshu HCL",
     "question": "9.⁠ ⁠When Will the State File Be Created?",
-    "answer": "To deploy an application in Kubernetes, write a Deployment manifest YAML defining the container image and replica count, and run: `kubectl apply -f deployment.json`.",
+    "answer": "10.⁠ ⁠What is linting? - TFLint\n11.⁠ ⁠Git push and git commit.\n12.⁠ ⁠Process for PR. (Pull request)\n13.⁠ ⁠Deployment group and task group\n14.⁠ ⁠Service connection\n15.⁠ ⁠Security best practices of pipeline\n1.⁠ ⁠What is linter\n2.⁠ ⁠what is provisioner\n3.⁠ ⁠what is dependances in terraform\n4.⁠ ⁠what is modules\n5.⁠ ⁠what is service connection\n6.⁠ ⁠what is sprint.\n7.⁠ ⁠what is work item\n8.⁠ ⁠difference between sprint and work item\n9.⁠ ⁠difference between variable.tf and terraform.tfvars\n10.⁠ ⁠how can we save sensitive data in state file",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6790,7 +6790,7 @@ const qaData = [
     "id": 755,
     "category": "Divyanshu HCL",
     "question": "10.⁠ ⁠What is the move block in Terraform? Can you provide an example?",
-    "answer": "To expose a Kubernetes pod to external traffic, create a **Service** resource of type `LoadBalancer` or `NodePort`, or configure an **Ingress Controller** to route external URLs directly to the service.",
+    "answer": "The moved block in Terraform (introduced in v1.5.0) is a declarative way to rename or refactor resource addresses in your state file without destroying and recreating the actual physical cloud infrastructure. Example: moved { from = aws_instance.old_name to = aws_instance.new_name }.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6799,7 +6799,7 @@ const qaData = [
     "id": 756,
     "category": "Divyanshu HCL",
     "question": "12.⁠ ⁠When integrating Snowflake with Azure DevOps to trigger a pipeline, which authentication method should you use?",
-    "answer": "Yes, I configure horizontal pod autoscaling (HPA) to scale pods based on CPU/RAM usage. I also configure AKS cluster node autoscaling to scale VMs based on pending pod schedules.",
+    "answer": "Pipeline triggers automate the execution of build and release pipelines:\n1. **CI Trigger**: Starts a pipeline run automatically when code is pushed to specific branches (e.g. `main`, `develop`).\n2. **PR Trigger**: Runs build tests when a Pull Request is opened to validate code merging.\n3. **Scheduled Trigger**: Runs on a recurring time window (cron style) for daily test runs.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6808,7 +6808,7 @@ const qaData = [
     "id": 757,
     "category": "Divyanshu HCL",
     "question": "13.⁠ ⁠What methodology do you follow in Azure Boards? What is a sprint, and how does it differ from a work item?",
-    "answer": "Kubernetes namespaces isolate resources and applications. We use them to partition a single cluster into logical environments like development, staging, testing, and production.",
+    "answer": "Comparing **Er From A Work Item** and **Second Option** in Microsoft Azure Cloud Services contexts:\n\n1. **Core Architecture**:\n   * **Er From A Work Item**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Second Option**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Er From A Work Item** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Second Option** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6817,7 +6817,7 @@ const qaData = [
     "id": 758,
     "category": "Divyanshu HCL",
     "question": "14.⁠ ⁠What is the difference between a push and a commit in version control systems?",
-    "answer": "In Kubernetes: \n- **ConfigMaps**: Store non-confidential configuration data as key-value pairs.\n- **Secrets**: Store sensitive variables like passwords or keys in a base64-encoded format.",
+    "answer": "Version control tracks and manages changes to software code over time:\n1. **Benefits**: Enables multi-developer collaboration, code reviews, audit history, and easy rollbacks of faulty code.\n2. **Git**: The industry standard distributed version control tool.\n3. **Platforms**: Remote platforms like GitHub, GitLab, and Azure Repos provide hosting, pull request workflows, and pipeline integrations.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6826,7 +6826,7 @@ const qaData = [
     "id": 759,
     "category": "Divyanshu HCL",
     "question": "15.⁠ ⁠Have you worked with task groups in Azure DevOps?",
-    "answer": "Yes, I write custom Helm charts: 1. Run `helm create`. 2. Define default variables in `values.yaml`. 3. Replace hardcoded values in manifests with `{{ .Values.varName }}` expressions.",
+    "answer": "A Task Group in Azure DevOps (ADO) allows you to encapsulate a sequence of pipeline steps/tasks already defined in a build or release pipeline into a single reusable task. This simplifies pipeline configurations and ensures consistency across multiple pipelines.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6835,7 +6835,7 @@ const qaData = [
     "id": 760,
     "category": "Divyanshu HCL",
     "question": "16.⁠ ⁠If you have a multi-stage pipeline in Azure DevOps and, upon execution, only one pipeline runs even though there are no dependencies between stages, how would you troubleshoot the issue?",
-    "answer": "I have configured: 1. **ClusterIP** (default internal access). 2. **NodePort** (exposes on host port). 3. **LoadBalancer** (provisions cloud firewall entry). 4. **Headless** (ClusterIP set to None).",
+    "answer": "Troubleshooting involves diagnosing system issues by checking resource statuses (`describe`), reviewing logs, and running network tests.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6844,7 +6844,7 @@ const qaData = [
     "id": 761,
     "category": "Divyanshu HCL",
     "question": "17.⁠ ⁠If you’ve written a Terraform configuration to deploy a virtual machine using a custom image, and you later update the software in that image, what will happen if you run terraform apply again?",
-    "answer": "To upgrade the control plane node: 1. Upgrade kubeadm: `apt-get install kubeadm=v1.x`. 2. Run `kubeadm upgrade plan` & `kubeadm upgrade apply v1.x`. 3. Upgrade kubelet and restart service.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6853,7 +6853,7 @@ const qaData = [
     "id": 762,
     "category": "Divyanshu HCL",
     "question": "How to create 10 storage account in 10 subscription with single pipeline",
-    "answer": "Upgrade worker nodes by: 1. Draining the node: `kubectl drain <node>`. 2. Log in and upgrade kubeadm & kubelet. 3. Run `kubeadm upgrade node`. 4. Uncordon the node: `kubectl uncordon <node>`.",
+    "answer": "To deploy 10 storage accounts across 10 different subscriptions using a single Azure DevOps pipeline, we implement the following approach:\n1. **Dynamic Parameterization**: Define a configuration list (e.g. YAML variable map or a configuration file) detailing the subscription IDs, resource group names, and storage account names.\n2. **Management Group Level Service Connection**: Set up a Service Connection (using Service Principal or Managed Identity) that has access (e.g. 'Contributor' role) at the parent Management Group level, allowing it to authorize deployments across all child subscriptions.\n3. **Pipeline Loop or Matrix Strategy**: Use the Azure Pipelines YAML `matrix` syntax to trigger target jobs in parallel for all subscriptions, passing target subscription parameters dynamically. Within the Terraform code, configure the provider to dynamically reference the target `subscription_id` parameter.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6862,7 +6862,7 @@ const qaData = [
     "id": 763,
     "category": "Divyanshu HCL",
     "question": "Qus .. Interviwer name shivam",
-    "answer": "Yes, I configure Prometheus dashboards to display cluster performance metrics (node CPU/RAM, disk IOPS) and configure Grafana to query Prometheus databases to visualize them.",
+    "answer": "In production, we focus on troubleshooting systems (logs, network ports), automating deployment pipelines, and managing cluster workloads.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6871,7 +6871,7 @@ const qaData = [
     "id": 764,
     "category": "Divyanshu HCL",
     "question": "What is linter in terraform",
-    "answer": "Yes, I have configured Prometheus metrics: pod restart counts, API request latencies, system CPU load, memory usage, and custom application metrics published on `/metrics` endpoints.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6880,7 +6880,7 @@ const qaData = [
     "id": 765,
     "category": "Divyanshu HCL",
     "question": "What is task group",
-    "answer": "Yes, I query metrics in Prometheus using PromQL (Prometheus Query Language) to write dashboards and alert rules, such as querying memory rates: `sum(container_memory_usage_bytes) by (pod)`.",
+    "answer": "A Task Group in Azure DevOps (ADO) allows you to encapsulate a sequence of pipeline steps/tasks already defined in a build or release pipeline into a single reusable task. This simplifies pipeline configurations and ensures consistency across multiple pipelines.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6889,7 +6889,7 @@ const qaData = [
     "id": 766,
     "category": "Divyanshu HCL",
     "question": "What is deployment group",
-    "answer": "Yes, I configure Grafana alerts (e.g. CPU > 85% for 10 mins) to notify our operations team via webhooks sent directly to our Slack channels or PagerDuty schedules.",
+    "answer": "A Deployment Group in Azure DevOps is a logical set of target agent machines (VMs) that have physical agents installed. It allows you to define targets for deploying application packages in parallel or sequentially using release pipelines.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6898,7 +6898,7 @@ const qaData = [
     "id": 767,
     "category": "Divyanshu HCL",
     "question": "What is ADO",
-    "answer": "To check logs: \n- Linux system logs: `tail -n 100 /var/log/syslog` or `journalctl`.\n- NGINX: `tail -f /var/log/nginx/access.log`\n- Tomcat: `tail -f /opt/tomcat/logs/catalina.out`.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6907,7 +6907,7 @@ const qaData = [
     "id": 768,
     "category": "Divyanshu HCL",
     "question": "What is sprint and work item",
-    "answer": "To monitor CPU/RAM in real-time, run `top` or `htop`. Run `free -m` to inspect memory, and `df -h` to verify disk space.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6916,7 +6916,7 @@ const qaData = [
     "id": 769,
     "category": "Divyanshu HCL",
     "question": "How you can secure ado \"By combining strong identity management, access controls, secure secrets handling, and continuous monitoring, Azure DevOps can be secured effectively.\"",
-    "answer": "To verify port listening, run `ss -tuln` or `netstat -tuln` to check which processes are bound to ports (e.g., 80, 443, 8080).",
+    "answer": "Monitoring: Setting up metrics and logging collection (e.g., Azure Monitor, AMA agent, Log Analytics) to track resource health.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6925,7 +6925,7 @@ const qaData = [
     "id": 770,
     "category": "Divyanshu HCL",
     "question": "What is variable.tf and terraform.tf vars",
-    "answer": "To locate files in Linux: \n- Find file by name: `find / -name \"config.json\"`\n- Find files containing text: `grep -rn \"search_term\" /path/to/search/`.",
+    "answer": "variable.tf is used to declare input variables, their types, descriptions, and default values. terraform.tfvars (and environment-specific files like dev.tfvars) is used to assign actual values to those variables. By default, terraform.tfvars is loaded automatically, while custom files must be passed via the -var-file flag.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6934,7 +6934,7 @@ const qaData = [
     "id": 771,
     "category": "Divyanshu HCL",
     "question": "What is output block and how you will pass this into pipeline \"Output blocks expose Terraform resource data after deployment, and by capturing these outputs in the pipeline, you can pass resource info between pipeline steps for further automation.\"",
-    "answer": "To restart a web server: \n- NGINX: `sudo systemctl restart nginx`\n- Apache: `sudo systemctl restart apache2`\n- Tomcat: `sudo systemctl restart tomcat` or execute `catalina.sh` scripts.",
+    "answer": "If I have a terraform code till vm or I applied terraform plan and apply but I what vm result in json format , what will be the command for it , tell me the command only terraform output -json/terraform output -json > output.json\n1> which tools used for pipeline\n2> provisoners in terraform\n3> if you mark a varibale as sensative in terraform , if while doing tef state so how you will see this variable ....? Sensitive variables are hidden in CLI outputs but stored in the state file. To see their values, you can check the raw state file or use terraform output -json carefully, keeping security in mind.\"\n4> 2nd if you passes the value hardcoded in vm so it will show in plan or not Yes, hardcoded values inside the resource block will show up in the terraform plan output.\n5- what is move block? A moved block in Terraform is used to tell Terraform that a resource has been renamed or moved to a new address, so it doesn't try to destroy and recreate it.\"\n6> is it will imapct our current infra structure or not ? \"No, a moved block does not impact the actual infrastructure. It only updates the Terraform state to reflect a renamed or relocated resource — without destroying or recreating anything.\"",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6943,7 +6943,7 @@ const qaData = [
     "id": 772,
     "category": "Divyanshu HCL",
     "question": "What is pipeline or which pipeline u worked on like yaml plz expaln E2E flow \"A pipeline is an automated process that helps build, test, and deploy code or infrastructure in a reliable and repeatable manner. I have worked primarily on YAML-based pipelines in Azure DevOps to automate both application and infrastructure deployments.\" \"I’ve built end-to-end Azure DevOps YAML pipelines that automate infrastructure provisioning using Terraform, capture dynamic outputs like IPs, and deploy apps with proper validation and approvals. This ensures full CI/CD automation with infrastructure-as-code.\"",
-    "answer": "Yes, I write automated backup scripts in Bash that run `tar` to archive files, run `mysqldump` to back up databases, and upload files to Azure Storage, scheduled via `cron`.",
+    "answer": "Implementing deployment approvals and release gates in Azure DevOps:\n1. **Manual Approvals**: Pauses the pipeline stage and notifies reviewers. Deployment only continues once approved.\n2. **Release Gates**: Automated checks that evaluate criteria (e.g., query Azure Monitor alerts, call REST APIs, check active incidents) before allowing the deployment to proceed to the next stage (e.g. Production).",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6952,7 +6952,7 @@ const qaData = [
     "id": 773,
     "category": "Divyanshu HCL",
     "question": "What's is stateless and statefull in k8",
-    "answer": "To automate OS patching: \n- Ubuntu: Configure the `unattended-upgrades` package.\n- RHEL: Schedule a cron job running `yum update -y` or use Ansible automation playbooks.",
+    "answer": "If any pod is in pending state so how u will trouble shoot and identify\nYou know about docker\nCan you explain where we are keeping our docker image",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6961,7 +6961,7 @@ const qaData = [
     "id": 774,
     "category": "Divyanshu HCL",
     "question": "What is statefile and where we will keep it",
-    "answer": "To check OS version: \n- Ubuntu: `lsb_release -a`\n- RHEL: `cat /etc/redhat-release`\n- Universal: `cat /etc/os-release`.",
+    "answer": "The Terraform state file (`terraform.tfstate`) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6970,7 +6970,7 @@ const qaData = [
     "id": 775,
     "category": "Divyanshu HCL",
     "question": "What is volume in docker",
-    "answer": "To execute commands on multiple remote servers in parallel, write a Bash script using a loop with SSH running in the background: `ssh user@$host \"cmd\" &` or use Ansible host lists.",
+    "answer": "Have u worked on any scripting like bash and powrshell\n** Second round HCL Interview  ***\n1.⁠ ⁠Give me a example of recently you may upgraded templates in terraform\n2.⁠ ⁠what are the data types are you familiar in terraform.\n3.⁠ ⁠after which command state file will create.\n4.⁠ ⁠what is stage terraform download module and providers\n5.⁠ ⁠what are backends you familiar with\n6.⁠ ⁠how do you encrypt the state file\n7.⁠ ⁠you are creating variable in terraform and you need to provide it's default value. what argument will you declare provide the default value\n8.⁠ ⁠I have a vm that created through terraform and install the Microsoft office after create vm. and now i run command terraform apply again. what will happen. Microsoft office will remove or will be there\n9.⁠ ⁠what are lifecycle rules in terraform. which are declared within resource block in terraform\n10.⁠ ⁠what is dependances in terraform\n11.⁠ ⁠what are the gates in azure devops\n12.⁠ ⁠is macOS supported as agent pool\n13.⁠ ⁠in azure what is availability set",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6979,7 +6979,7 @@ const qaData = [
     "id": 776,
     "category": "Divyanshu HCL",
     "question": "[12/5, 5:03 PM] Ms Yadav: 1st round HCL question...1.what is module?",
-    "answer": "To upgrade the OS: \n- Ubuntu: `sudo apt update && sudo apt upgrade -y`\n- RHEL: `sudo dnf update -y`.",
+    "answer": "A Terraform module is a package of reusable Terraform configuration files in a directory. It allows you to group related infrastructure components together (like a VM, disk, and NIC) and instantiate them multiple times across environments (dev, test, prod) with different inputs.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6988,7 +6988,7 @@ const qaData = [
     "id": 777,
     "category": "Divyanshu HCL",
     "question": "2.what is provisioners?",
-    "answer": "Yes, I write automation playbooks in Ansible. I prefer Ansible because it is agentless, uses SSH, and configurations are written in simple YAML files.",
+    "answer": "Terraform provisioners (local-exec, remote-exec) are used to execute scripts or commands on the local runner or remote VM during creation or destruction. In production, they should be used as a last resort because they are not tracked in Terraform state; using cloud-init or VM extensions is preferred.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -6997,7 +6997,7 @@ const qaData = [
     "id": 778,
     "category": "Divyanshu HCL",
     "question": "3.what is null resource?",
-    "answer": "Yes, I have worked with Puppet. I prefer Ansible because Puppet requires installing client agents on all hosts and uses a complex custom Ruby-like language.",
+    "answer": "The null_resource in Terraform implements the standard resource lifecycle but takes no actions on its own. It is commonly used to run local-exec or remote-exec provisioners (e.g. running a post-deployment script after a VM is ready) or to trigger actions using the triggers block when dependencies change.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7006,7 +7006,7 @@ const qaData = [
     "id": 779,
     "category": "Divyanshu HCL",
     "question": "4.what is statefile?",
-    "answer": "Ansible is agentless configuration tool. It uses SSH or WinRM to execute tasks, whereas Puppet uses client-server architecture requiring agent software on hosts.",
+    "answer": "The Terraform state file (`terraform.tfstate`) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7015,7 +7015,7 @@ const qaData = [
     "id": 780,
     "category": "Divyanshu HCL",
     "question": "5.what is state locking in terraform?",
-    "answer": "Yes, I run playbooks on single hosts by: 1. Using `-l` flag: `ansible-playbook site.yml -l host1`. 2. Specifying target host in play: `hosts: host1`.",
+    "answer": "State locking in Azure CI/CD deployments ensures concurrency control:\n1. **Lease Lock**: When a pipeline run triggers `terraform apply`, Terraform requests a lease lock on the Azure Blob storage state file. Other parallel runs are blocked until the lock is released.\n2. **Unlock Command**: If a pipeline terminates unexpectedly, leaving the lock active, you can force release it using the command: `terraform force-unlock <lock-id>` after verifying no other process is active.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7024,7 +7024,7 @@ const qaData = [
     "id": 781,
     "category": "Divyanshu HCL",
     "question": "6.what is variable?",
-    "answer": "Yes, I have written playbooks to install Tomcat, deploy WAR files, configure firewall rules, set up Prometheus Node Exporters, and configure local users.",
+    "answer": "Terraform variables can be declared in variable blocks with type constraints (string, number, bool, list, map, object) and stored/passed in terraform.tfvars files, environment variables (prefixed with TF_VAR_), or command line flags (-var=\"name=value\").",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7033,7 +7033,7 @@ const qaData = [
     "id": 782,
     "category": "Divyanshu HCL",
     "question": "7.write a code with the help of module and for_each?",
-    "answer": "Yes, I have run playbooks locally on the runner machine: `ansible-playbook site.yml -i \"localhost,\" --connection=local`.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7042,7 +7042,7 @@ const qaData = [
     "id": 783,
     "category": "Divyanshu HCL",
     "question": "8.what is providers and write a code?",
-    "answer": "Yes, I have configured: 1. **System-Assigned Managed Identities** (tied to VM resource lifecycle). 2. **User-Assigned Managed Identities** (standalone resource shared across VMs).",
+    "answer": "9.how is the process to setup the terraform?? \"To set up Terraform, I install the CLI, configure the provider, write reusable code, and use commands like init, plan, and apply. I also use remote backends for secure state management and often modularize the code for better scalability.\"\n10.what is file provisioners? File provisioners in Terraform are used to copy files from local to remote machines. I’ve used them in test setups to upload shell scripts or configs to VMs, but in production I prefer more scalable approaches like cloud-init or pipelines.\"\n11.what is data variable? \"Data sources in Terraform let me read information about existing resources or infrastructure, which helps integrate Terraform with resources created outside or in different configurations, making the infrastructure more flexible and consistent.\n[12/5, 5:03 PM] Ms Yadav: 1. What is linter\n2.⁠ ⁠what is provisioner\n3.⁠ ⁠what is dependances in terraform\n4.⁠ ⁠what is modules\n5.⁠ ⁠what is service connection\n6.⁠ ⁠what is splinter\n7.⁠ ⁠what is work item\n8.⁠ ⁠difference between splinter and work item\n9.⁠ ⁠difference between variable.tf and terraform.tfvars\n10.⁠ ⁠how can we save sensitive data in state file\n[12/5, 5:03 PM] Ms Yadav: 1> which tools used for pipeline\n2> provisoners in terraform",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7051,7 +7051,7 @@ const qaData = [
     "id": 784,
     "category": "Divyanshu HCL",
     "question": "3> if ypu mark a varibale as sensative in terraform , if while doing tef state so how you will see this variable ....?",
-    "answer": "Marking a variable as sensitive (`sensitive = true`) hides it from standard terminal logs during plan/apply executions. However, **it is still stored as plain text inside the state file (`terraform.tfstate`)**.\n\nTo view the sensitive variable:\n1. Open the raw `terraform.tfstate` file in a text editor or query it using `jq`.\n2. Dump state in JSON format using Terraform CLI:\n   `terraform show -json`\n3. If assigned to an output, query the outputs:\n   `terraform output -json`",
+    "answer": "Production implementation guide for: **3> If Ypu Mark A Varibale As Sensative In Terraform , If While Doing Tef State So  Will See This Variable ....** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7060,7 +7060,7 @@ const qaData = [
     "id": 785,
     "category": "Divyanshu HCL",
     "question": "5- what is move block?",
-    "answer": "Azure Private DNS resolves names in virtual networks. Use case: resolving internal VM/database names securely within peered VNets without exposing names to the public internet.",
+    "answer": "The moved block in Terraform (introduced in v1.5.0) is a declarative way to rename or refactor resource addresses in your state file without destroying and recreating the actual physical cloud infrastructure. Example: moved { from = aws_instance.old_name to = aws_instance.new_name }.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7069,7 +7069,7 @@ const qaData = [
     "id": 786,
     "category": "Divyanshu HCL",
     "question": "6> is it will imapct our current infra structure or not ?",
-    "answer": "To lock provider version: specify exact constraints inside the `required_providers` block of your `terraform` configuration block, e.g. `version = \"~> 3.90.0\"`.",
+    "answer": "[12/5, 5:03 PM] Ms Yadav: 1. Give me a example of recently you may upgraded templates in terraform\n2.⁠ ⁠what are the data types are you familiar in terraform\n3.⁠ ⁠after which command state file will command\n4.⁠ ⁠what is stage terraform download module and providers\n5.⁠ ⁠what are backends you familiar with\n6.⁠ ⁠how do you encrypt the state file\n7.⁠ ⁠you are creating variable in terraform and you need to provide it's default value. what argument will you declare provide the default value\n8.⁠ ⁠I have a vm that created through terraform and install the Microsoft office after create vm. and now i run command terraform apply again. what will happen. Microsoft office will remove or will be there\n9.⁠ ⁠what are lifecycle rules in terraform. which are declared within resource block in terraform\n10.⁠ ⁠what is dependances in terraform\n11.⁠ ⁠what are the gates in azure devops\n12.⁠ ⁠is macOS supported as agent pool\n13.⁠ ⁠in azure what is availability set\n[12/5, 6:31 PM] Anu DevOps G16:",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7078,7 +7078,7 @@ const qaData = [
     "id": 787,
     "category": "Divyanshu HCL",
     "question": "What is pipeline or which pipeline u worked on like yaml plz expaln E2E flow",
-    "answer": "To import resources: create an empty resource block in code and run `terraform import <address> <cloud_id>`. In TF 1.5+, write an `import` block and run plan generation.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7087,7 +7087,7 @@ const qaData = [
     "id": 788,
     "category": "Divyanshu HCL",
     "question": "What is state file and where we will keep it",
-    "answer": "To call remote Git module: specify Git repository URL in module source: `source = \"git::https://github.com/org/repo.git//vnet?ref=v1.0.0\"`.",
+    "answer": "The Terraform state file (`terraform.tfstate`) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7096,7 +7096,7 @@ const qaData = [
     "id": 789,
     "category": "Divyanshu HCL",
     "question": "3> if you mark a variable as sensitive in terraform , if while doing tef state so how you will see this variable ....?",
-    "answer": "Marking a variable as sensitive (`sensitive = true`) hides it from standard terminal logs during plan/apply executions. However, **it is still stored as plain text inside the state file (`terraform.tfstate`)**.\n\nTo view the sensitive variable:\n1. Open the raw `terraform.tfstate` file in a text editor or query it using `jq`.\n2. Dump state in JSON format using Terraform CLI:\n   `terraform show -json`\n3. If assigned to an output, query the outputs:\n   `terraform output -json`",
+    "answer": "Production implementation guide for: **3> If You Mark A Variable As Sensitive In Terraform , If While Doing Tef State So  Will See This Variable ....** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7105,7 +7105,7 @@ const qaData = [
     "id": 790,
     "category": "Divyanshu HCL",
     "question": "6> is it will impact our current infra structure or not ?",
-    "answer": "To call local module: specify relative folder path in source: `source = \"./modules/vnet\"`.",
+    "answer": "1.⁠ ⁠Give me a example of recently you may upgraded templates in terraform\n2.⁠ ⁠what are the data types are you familiar in terraform\n3.⁠ ⁠after which command state file will command\n4.⁠ ⁠what is stage terraform download module and providers\n5.⁠ ⁠what are backends you familiar with\n6.⁠ ⁠how do you encrypt the state file\n7.⁠ ⁠you are creating variable in terraform and you need to provide it's default value. what argument will you declare provide the default value\n8.⁠ ⁠I have a vm that created through terraform and install the Microsoft office after create vm. and now i run command terraform apply again. what will happen. Microsoft office will remove or will be there\n9.⁠ ⁠what are lifecycle rules in terraform. which are declared within resource block in terraform\n10.⁠ ⁠what is dependences in terraform\n11.⁠ ⁠what are the gates in azure devops\n12.⁠ ⁠is macOS supported as agent pool\n13.⁠ ⁠in azure what is availability set",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7114,7 +7114,7 @@ const qaData = [
     "id": 791,
     "category": "Divyanshu HCL",
     "question": "[12/5, 6:32 PM] Anu DevOps G16: 1st round HCL question...1.what is module?",
-    "answer": "Yes, I write custom modules for VMs, network security groups, storage accounts, and databases to promote reusable, consistent infrastructure configurations.",
+    "answer": "A Terraform module is a package of reusable Terraform configuration files in a directory. It allows you to group related infrastructure components together (like a VM, disk, and NIC) and instantiate them multiple times across environments (dev, test, prod) with different inputs.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7123,7 +7123,7 @@ const qaData = [
     "id": 792,
     "category": "Divyanshu HCL",
     "question": "4.what is state-file?",
-    "answer": "To structure module directory: create folders `main.tf`, `variables.tf`, and `outputs.tf` under a subdirectory, then reference that folder as module source.",
+    "answer": "The Terraform state file (`terraform.tfstate`) is a JSON database that maps your declarative HCL configuration resources to the actual infrastructure deployed in your cloud provider. It should be stored in a secure remote backend (such as Azure Blob Storage or AWS S3 with state locking enabled) to ensure team collaboration, access controls, and security.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7132,7 +7132,7 @@ const qaData = [
     "id": 793,
     "category": "Divyanshu HCL",
     "question": "9.how is the process to setup the terraform??",
-    "answer": "Call module using the `module` block and provide required inputs:\n```hcl\nmodule \"s3\" {\n  source = \"./modules/s3\"\n  bucket_name = \"my-bucket\"\n}\n```\nReference outputs as `module.s3.arn`.",
+    "answer": "To automate and manage infrastructure, we write modular Terraform configurations, configure secure remote state backends, build continuous integration pipelines, and configure real-time metrics dashboards.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7141,7 +7141,7 @@ const qaData = [
     "id": 794,
     "category": "Divyanshu HCL",
     "question": "10.what is file provisioners?",
-    "answer": "Terraform Lifecycle block controls resource behavior: `create_before_destroy` (creates new before destroying old), `prevent_destroy` (blocks deletions), and `ignore_changes` (ignores drift).",
+    "answer": "The file provisioner in Terraform is used to copy files or directories from the local machine executing Terraform to a newly created remote VM. It requires SSH or WinRM access to be configured on the target resource.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7150,7 +7150,7 @@ const qaData = [
     "id": 795,
     "category": "Divyanshu HCL",
     "question": "11.what is data variable?",
-    "answer": "Terraform null resource executes provisioners (like running local/remote scripts) without creating any cloud infrastructure resources.",
+    "answer": "Data sources (declared via the 'data' block) allow Terraform to read-only query and import information about existing cloud resources created outside of the current Terraform configuration (e.g., retrieving an existing VNet ID to attach a subnet).",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7159,7 +7159,7 @@ const qaData = [
     "id": 796,
     "category": "Divyanshu HCL",
     "question": "3> if ypu mark a variable as sensitive in terraform , if while doing tef state so how you will see this variable ....?",
-    "answer": "Marking a variable as sensitive (`sensitive = true`) hides it from standard terminal logs during plan/apply executions. However, **it is still stored as plain text inside the state file (`terraform.tfstate`)**.\n\nTo view the sensitive variable:\n1. Open the raw `terraform.tfstate` file in a text editor or query it using `jq`.\n2. Dump state in JSON format using Terraform CLI:\n   `terraform show -json`\n3. If assigned to an output, query the outputs:\n   `terraform output -json`",
+    "answer": "Production implementation guide for: **3> If Ypu Mark A Variable As Sensitive In Terraform , If While Doing Tef State So  Will See This Variable ....** in Terraform Infrastructure as Code (IaC):\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7168,7 +7168,7 @@ const qaData = [
     "id": 797,
     "category": "Divyanshu HCL",
     "question": "7.⁠ ⁠What is life cycle block give 2-3 argument,can it work on storage account scenario?",
-    "answer": "Terraform Dynamic blocks construct nested blocks inside resources dynamically from list/map variables, e.g. creating multiple ingress security rules based on a port list variable.",
+    "answer": "In Terraform, the **`lifecycle`** block is a nested block within a resource declaration used to customize resource creation, modification, and destruction behaviors:\n1. **`prevent_destroy` (Boolean)**: Prevents accidental deletion of critical resources. If set to `true`, Terraform will reject any plans that destroy the resource.\n2. **`create_before_destroy` (Boolean)**: Reverses replacement ordering. It creates the replacement resource first, then destroys the old resource, minimizing downtime.\n3. **`ignore_changes` (List of attributes)**: Ignores specific attributes that might be altered by external processes (like compliance tags or autoscale settings).\n\n**Storage Account Scenario**:\n* Yes, it works perfectly. For example, setting `prevent_destroy = true` on a production Storage Account acts as a guardrail to prevent any accidental data loss, while `ignore_changes = [tags]` prevents drift checks if dynamic compliance taggers alter the resource.",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7177,7 +7177,7 @@ const qaData = [
     "id": 798,
     "category": "Divyanshu HCL",
     "question": "Q1. I want to manage a set of PVs say in ns \"lab\" using a SA \"testsa\".",
-    "answer": "To bring state from remote to local: 1. Update the `backend` block to `local`. 2. Run `terraform init -migrate-state` to download the state file locally.",
+    "answer": "PersistentVolume (PV): A cluster-level storage resource provisioned by an administrator or StorageClass mapped to physical cloud disks.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7186,7 +7186,7 @@ const qaData = [
     "id": 799,
     "category": "Divyanshu HCL",
     "question": "Q2. Cluster roll binding ?",
-    "answer": "To migrate state: 1. Modify remote `backend` configuration settings to target the new storage container. 2. Run `terraform init -migrate-state` and approve transfer.",
+    "answer": "A ClusterRoleBinding in Kubernetes grants permissions defined in a ClusterRole to users, groups, or service accounts across the entire cluster, rather than restricting permissions to a single namespace (which is what a RoleBinding does).",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7195,7 +7195,7 @@ const qaData = [
     "id": 800,
     "category": "Divyanshu HCL",
     "question": "Q3. can you write is Yaml File and explain?",
-    "answer": "We manage multiple Azure subscriptions in Terraform by configuring multiple `provider \"azurerm\"` blocks with unique `alias` names, then referencing the alias in resources.",
+    "answer": "YAML is a human-readable data serialization language. Example of a Kubernetes Pod manifest in YAML:\n```yaml\napiVersion: v1\nkind: Pod\nmetadata:\n  name: my-app\nspec:\n  containers:\n  - name: web\n    image: nginx:latest\n```",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7204,7 +7204,7 @@ const qaData = [
     "id": 801,
     "category": "Divyanshu HCL",
     "question": "Q4.terraform function ? \"Terraform functions are built-in helpers that let me manipulate data like strings, numbers, and lists. I commonly use functions like length(), join(), upper(), and file() to cleanly manage dynamic values in my Terraform code.\"",
-    "answer": "Yes, I use SAST (Static Application Security Testing) tools like **SonarQube** and **Veracode** inside pipelines to scan code quality and identify bugs.",
+    "answer": "Terraform has built-in functions to transform and combine values (custom functions are not supported). Examples include: string functions (join, upper), collection functions (lookup, merge), and IP network functions (cidrsubnet).",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7213,7 +7213,7 @@ const qaData = [
     "id": 802,
     "category": "Divyanshu HCL",
     "question": "Q5.how to maintain Kubernetes cluster ?",
-    "answer": "Maintaining a production Kubernetes cluster includes:\n\n1. **Regular Node Upgrades**: Keep worker nodes and control plane nodes updated to patch security issues.\n2. **Etcd Database Backups**: Frequently save snapshots of the etcd database:\n   `ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 --cacert=... --cert=... --key=... snapshot save /backups/etcd.db`\n3. **Resource Limits**: Enforce LimitRanges and ResourceQuotas to prevent individual applications from resource-starving cluster nodes.\n4. **Alerts & Monitoring**: Set up Prometheus & Grafana to watch for node memory saturation, pending pods, and disk space.\n5. **Certificate Management**: Review and renew TLS certificates: `kubeadm certs renew all`.",
+    "answer": "Production implementation guide for: **Q5. Maintain Kubernetes Cluster** in Kubernetes Orchestration:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7222,7 +7222,7 @@ const qaData = [
     "id": 803,
     "category": "Divyanshu HCL",
     "question": "Q6.what is the deployment gate in ADO? \"Deployment gates in Azure DevOps are automated checks that run before or after deploying to an environment. They help ensure the release meets all required conditions like monitoring status, external approvals, or integration validations before proceeding to the next stage.\"",
-    "answer": "Azure Application Gateway is a Layer 7 load balancer that handles HTTP/HTTPS routing, SSL termination, cookie-based session affinity, and Web Application Firewall (WAF) services.",
+    "answer": "Deployment Gates in Azure DevOps automate health checks before a release promotion. Gates query external systems (e.g. check Azure Monitor alerts, call REST APIs, or verify SonarQube quality gates) and block rollout if conditions are not met.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7231,7 +7231,7 @@ const qaData = [
     "id": 804,
     "category": "Divyanshu HCL",
     "question": "Q7.what is pool ? \"In Azure DevOps, a pool is a group of agents that run pipeline jobs. I use Microsoft-hosted pools for general tasks and self-hosted pools when I need custom tools, network access, or better performance.\"",
-    "answer": "Load balancers in Azure: 1. **Azure Load Balancer** (Layer 4 TCP/UDP). 2. **Application Gateway** (Layer 7 HTTP/HTTPS). 3. **Azure Front Door** (Layer 7 Global routing & CDN). 4. **Traffic Manager** (DNS routing).",
+    "answer": "In Azure DevOps, an Agent Pool is a collection of build/release agent machines (hosted or self-hosted) where pipeline jobs run. In Kubernetes, a Node Pool is a group of worker virtual machines sharing the same configuration.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7240,7 +7240,7 @@ const qaData = [
     "id": 805,
     "category": "Divyanshu HCL",
     "question": "Q8. What is peering ? \"VNet Peering allows secure and private communication between two virtual networks in Azure. I use it to connect different environments or regions without using the internet. It's fast and cost-effective since traffic stays inside Azure’s private backbone.\"",
-    "answer": "Yes, I have worked with DAST (Dynamic Application Security Testing) tools like **OWASP ZAP** and **Veracode Dynamic Scan** to test running applications for vulnerabilities.",
+    "answer": "VNET Peering securely connects two Azure Virtual Networks (VNETs):\n1. **Private Routing**: Communication flows over Microsoft's private global backbone using private IP addresses. Traffic never goes over the public internet.\n2. **Setup**: Requires configuring two uni-directional peering links (VNET-A to VNET-B, and VNET-B to VNET-A) with Gateway Transit options for shared resources.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7249,7 +7249,7 @@ const qaData = [
     "id": 806,
     "category": "Divyanshu HCL",
     "question": "Q.9 difference between provider and provisioners ?",
-    "answer": "To manage multiple agents: configure agent pools in Azure DevOps project settings, and reference the pool name in YAML: `pool: MyAgentPool`.",
+    "answer": "Comparing **Erence  Provider** and **Provisioners** in DevOps Engineering contexts:\n\n1. **Core Architecture**:\n   * **Erence  Provider**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Provisioners**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Provider** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Provisioners** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7258,7 +7258,7 @@ const qaData = [
     "id": 807,
     "category": "Divyanshu HCL",
     "question": "Q10.how to upgrade kubernets cluster?",
-    "answer": "Upgrading a Kubernetes cluster sequentially (e.g. v1.28 to v1.29) using `kubeadm`:\n\n1. **Upgrade Control Plane Node**:\n   - Upgrade kubeadm: `sudo apt-get install kubeadm=1.29.0-00`\n   - Run plan: `sudo kubeadm upgrade plan` and apply: `sudo kubeadm upgrade apply v1.29.0`\n   - Drain control plane node: `kubectl drain <control-plane-node> --ignore-daemonsets`\n   - Upgrade kubelet/kubectl and restart: `sudo apt-get install kubelet=1.29.0-00 kubectl=1.29.0-00 && sudo systemctl restart kubelet`\n   - Uncordon: `kubectl uncordon <control-plane-node>`\n2. **Upgrade Worker Nodes (One-by-One)**:\n   - Drain worker node: `kubectl drain <worker-node> --ignore-daemonsets`\n   - Log into worker node, upgrade kubeadm and kubelet:\n     `sudo apt-get install kubeadm=1.29.0-00 kubelet=1.29.0-00`\n   - Upgrade node configuration: `sudo kubeadm upgrade node`\n   - Restart kubelet: `sudo systemctl restart kubelet`\n   - From control plane, uncordon worker: `kubectl uncordon <worker-node>`",
+    "answer": "Production implementation guide for: **Q10. Upgrade Kubernets Cluster** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7267,7 +7267,7 @@ const qaData = [
     "id": 808,
     "category": "Divyanshu HCL",
     "question": "2.if you are creating data block it will be part of state file ?",
-    "answer": "To access a private VM: 1. Use **Azure Bastion** directly in the portal. 2. Connect via a public **Jumpbox VM** on the VNet. 3. Use an active VPN gateway connection.",
+    "answer": "3.⁠ ⁠What are data type in Terraform\n4.⁠ ⁠I need to create 10 storage account what type of data type should you used.\n5.⁠ ⁠Diff b/w for each and count.\n6.⁠ ⁠is count only work on integers ?, why deleting in count is difficult",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7276,7 +7276,7 @@ const qaData = [
     "id": 809,
     "category": "Divyanshu HCL",
     "question": "what is provisioners",
-    "answer": "A private subnet does not have direct route outbound to internet or a public IP. A public subnet has a route to an Internet Gateway (AWS) or public IP allocations.",
+    "answer": "Service connections\ngates\nTerraform dependencies\nDiff between count and for each\nDiff between list and map\nPower shell/ bash scripting idea -\nGit Hub Action Idea - working or not, basic question like event and syntax \"GitHub Actions allows us to automate workflows based on events like push or pull request. The workflow file is written in YAML and defines jobs and steps to execute. It's fully integrated with GitHub and great for CI/CD pipelines.\"\nMicro services basics \"Microservices break down an application into small, independent services. Each service handles a specific function and communicates with others over APIs. This architecture makes development faster, more scalable, and easier to maintain — though it comes with challenges like network overhead and complexity.\"",
     "difficulty": "Hard",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7285,7 +7285,7 @@ const qaData = [
     "id": 810,
     "category": "Divyanshu HCL",
     "question": "What is life cycle block",
-    "answer": "Route Table defines where network traffic is routed (e.g. routing 0.0.0.0/0 to firewall). NSG acts as a firewall filtering traffic at subnet or NIC level.",
+    "answer": "if 2 team have same repo Access on ADO and how do you set for Auto PR raise when ever any changes done in the code. \"In Azure DevOps, when multiple teams are working on the same repo, I configure a pipeline to automatically create a PR whenever a feature branch is updated. The pipeline triggers on push and uses Azure CLI with az repos pr create to raise a pull request to the develop branch. This helps streamline collaboration and enforces structured code reviews.\"",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7294,7 +7294,7 @@ const qaData = [
     "id": 811,
     "category": "Divyanshu HCL",
     "question": "How you can prevent a user in ADO from azure board , user can only access pipeline and repo \"Maine Azure Boards ke Area Path me 'View work item' permission ko Deny kiya, aur user ko Repos aur Pipelines ke liye proper contributor rights diye — isse user sirf required sections me kaam kar sakta hai.\"",
-    "answer": "Azure Bastion is a fully managed service that allows secure SSH/RDP access to virtual machines directly through the Azure portal over SSL, without exposing public IPs.",
+    "answer": "Managing security permissions during file migrations:\n1. **Linux Permissions**: Preserving user-owner (`chown`) and read/write execution permissions (`chmod`) using the `rsync -ahP` transfer tool.\n2. **Windows Permissions**: Preserving NTFS Access Control Lists (ACLs) using `robocopy <source> <dest> /E /COPY:DATS` where `S` represents Security/ACLs.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7303,7 +7303,7 @@ const qaData = [
     "id": 812,
     "category": "Divyanshu HCL",
     "question": "How federation works in ADO (Ans- Service connection details) \"Federation in Azure DevOps is done through Microsoft Entra ID, where external users are authenticated using their own Azure AD. We set up cross-tenant trust and invite them via B2B. This enables SSO and secure access without managing multiple accounts.\"",
-    "answer": "To configure backup: 1. Create a Recovery Services Vault. 2. Define backup policy (frequency, retention). 3. Associate VMs or databases with the policy.",
+    "answer": "Service Connections in Azure DevOps connect pipelines to external services:\n1. **Role**: Establishes a secure connection to Azure subscriptions, AWS accounts, Docker registries, or SonarQube instances without exposing secrets.\n2. **Security**: Typically authenticated using an Azure Service Principal (using client secrets or federated credentials) with strict access bounds.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7312,7 +7312,7 @@ const qaData = [
     "id": 813,
     "category": "Divyanshu HCL",
     "question": "How we can stop all outgoing traffic from azure VM without NSG (Ans - by firewall and route table) \"To block all outbound traffic from a VM without using NSG, I’d create a Route Table with a 0.0.0.0/0 prefix and set the next hop to None. By associating this route with the VM's subnet, all egress traffic is dropped at the routing layer.\"",
-    "answer": "My production VMs are located in **East US** and **West US** regions to ensure geographic redundancy.",
+    "answer": "A **Network Security Group (NSG)** acts as a Layer 3/4 firewall in Azure:\n1. **Traffic Control**: It contains security rules that allow or deny inbound and outbound traffic to Azure resources.\n2. **Rules Criteria**: Rules are evaluated by priority (lowest number first) based on Source IP, Source Port, Destination IP, Destination Port, and Protocol (TCP/UDP/Any).\n3. **Association**: Can be associated directly to virtual machine Network Interfaces (NICs) or Subnets. Association at the Subnet level is recommended for consistency.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7321,7 +7321,7 @@ const qaData = [
     "id": 814,
     "category": "HCL Ashish",
     "question": "[5/16, 3:12 PM] B16_G2 Mahender singh: [4/3, 9:43 PM] Anu DevOps G16: 10. What is the move block in Terraform? Can you provide an example?",
-    "answer": "My Disaster Recovery (DR) servers are located in **West US** (paired region for East US) to support failover scenarios.",
+    "answer": "The moved block in Terraform (introduced in v1.5.0) is a declarative way to rename or refactor resource addresses in your state file without destroying and recreating the actual physical cloud infrastructure. Example: moved { from = aws_instance.old_name to = aws_instance.new_name }.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7330,7 +7330,7 @@ const qaData = [
     "id": 815,
     "category": "HCL Ashish",
     "question": "When integrating Snowflake with Azure DevOps to trigger a pipeline, which authentication method should you use?",
-    "answer": "We configure DR by setting up **Azure Site Recovery (ASR)** to replicate virtual machines, and configuring replication for SQL databases to a secondary region.",
+    "answer": "Pipeline triggers automate the execution of build and release pipelines:\n1. **CI Trigger**: Starts a pipeline run automatically when code is pushed to specific branches (e.g. `main`, `develop`).\n2. **PR Trigger**: Runs build tests when a Pull Request is opened to validate code merging.\n3. **Scheduled Trigger**: Runs on a recurring time window (cron style) for daily test runs.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7339,7 +7339,7 @@ const qaData = [
     "id": 816,
     "category": "HCL Ashish",
     "question": "What methodology do you follow in Azure Boards? What is a sprint, and how does it differ from a work item?",
-    "answer": "To configure DR: 1. Create target recovery vaults. 2. Enable replication on source VMs. 3. Test failovers periodically using Azure recovery plans.",
+    "answer": "Comparing **Er From A Work Item** and **Second Option** in Microsoft Azure Cloud Services contexts:\n\n1. **Core Architecture**:\n   * **Er From A Work Item**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Second Option**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Er From A Work Item** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Second Option** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7348,7 +7348,7 @@ const qaData = [
     "id": 817,
     "category": "HCL Ashish",
     "question": "What is the difference between a push and a commit in version control systems?",
-    "answer": "We set up VM monitoring by installing the **Azure Monitor Agent (AMA)** on VMs to send logs and performance metrics to a central Log Analytics Workspace.",
+    "answer": "Version control tracks and manages changes to software code over time:\n1. **Benefits**: Enables multi-developer collaboration, code reviews, audit history, and easy rollbacks of faulty code.\n2. **Git**: The industry standard distributed version control tool.\n3. **Platforms**: Remote platforms like GitHub, GitLab, and Azure Repos provide hosting, pull request workflows, and pipeline integrations.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7357,7 +7357,7 @@ const qaData = [
     "id": 818,
     "category": "HCL Ashish",
     "question": "Have you worked with task groups in Azure DevOps?",
-    "answer": "Create an **Azure Monitor Alert** on the target VM resource. Define metric condition: CPU Utilization Average > 80% for 5 minutes. Set Action Group to notify via email/Slack.",
+    "answer": "A Task Group in Azure DevOps (ADO) allows you to encapsulate a sequence of pipeline steps/tasks already defined in a build or release pipeline into a single reusable task. This simplifies pipeline configurations and ensures consistency across multiple pipelines.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7366,7 +7366,7 @@ const qaData = [
     "id": 819,
     "category": "HCL Ashish",
     "question": "If you have a multi-stage pipeline in Azure DevOps and, upon execution, only one pipeline runs even though there are no dependencies between stages, how would you troubleshoot the issue?",
-    "answer": "In Azure Portal, search for Azure Monitor -> Alerts -> New Alert Rule. Select target VM metric, set threshold to 80%, and link a notification Action Group.",
+    "answer": "Troubleshooting involves diagnosing system issues by checking resource statuses (`describe`), reviewing logs, and running network tests.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7375,7 +7375,7 @@ const qaData = [
     "id": 820,
     "category": "HCL Ashish",
     "question": "If you’ve written a Terraform configuration to deploy a virtual machine using a custom image, and you later update the software in that image, what will happen if you run terraform apply again?",
-    "answer": "- **Automation Account**: Used for managing processes, OS updates, and running PowerShell runbooks.\n- **Function App**: Event-driven serverless compute platform used to run code in response to API/event triggers.",
+    "answer": "[4/3, 9:43 PM] Anu DevOps G16: 1. What is linter\n2. what is provisioner\n3. what is dependances in terraform\n4. what is modules\n5. what is service connection\n6. what is splinter\n7. what is work item\n8. difference between splinter and work item\n9. difference between variable.tf and terraform.tfvars\n10. how can we save sensitive data in state file\nye amit ka hn\nIntroduce your self\nStatefile management\nMove block",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7384,7 +7384,7 @@ const qaData = [
     "id": 821,
     "category": "HCL Ashish",
     "question": "Difference between variable.tf and tfvars",
-    "answer": "Go to App Service Plan -> Scale out (App Service plan) -> configure autoscale rule based on metric thresholds (e.g., scale out by 1 instance if average CPU > 70%).",
+    "answer": "Comparing **Erence  Variable.Tf** and **Tfvars** in DevOps Engineering contexts:\n\n1. **Core Architecture**:\n   * **Erence  Variable.Tf**: Configures low-level direct bindings, local resource properties, or direct traffic paths.\n   * **Tfvars**: Manages higher-level group abstractions, horizontal scaling, or distributed state boundaries.\n\n2. **Functional Differences & Control**:\n   * **Routing & State**: One operates statelessly at the node boundary, whereas the other preserves persistent identity state.\n   * **Security Policies**: One applies strict host access controls while the other handles routing, routing maps, or API authorization rules.\n\n3. **Interview Recommendation**:\n   * Choose **Erence  Variable.Tf** when targeting single-host boundaries, simple regional services, or stateless services.\n   * Choose **Tfvars** for automated orchestration, multi-zone recovery, and high availability systems.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7393,7 +7393,7 @@ const qaData = [
     "id": 822,
     "category": "HCL Ashish",
     "question": "Type Constraints in Terraform.?",
-    "answer": "Storage Accounts are configured securely by: disabling public access, enabling 'Secure transfer required' (HTTPS), setting up Private Endpoints, and rotating access keys.",
+    "answer": "Terraform type constraints enforce input variable types. They include primitive types (string, number, bool) and complex types: collection types (list, map, set) and structural types (object, tuple).",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7402,7 +7402,7 @@ const qaData = [
     "id": 823,
     "category": "HCL Ashish",
     "question": "When Will the State File Be Created?",
-    "answer": "The Terraform state file (`terraform.tfstate`) is created automatically when you first run **`terraform apply`** and create infrastructure resources. If you run `terraform init` or `terraform plan` without applying, the state file is not generated (except in remote backends where an empty state reference may be initialized).",
+    "answer": "The Terraform state file is created automatically when you run 'terraform apply' for the first time and successfully provision resources. Running 'terraform init' or 'terraform plan' does not create a state file (except in remote backends where an empty state reference may be initialized).",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7420,7 +7420,7 @@ const qaData = [
     "id": 825,
     "category": "HCL Ashish",
     "question": "How you can secure ado",
-    "answer": "Securing Azure DevOps (ADO) configurations:\n\n1. **Enforce Entra ID MFA**: Protect user logins by restricting organization access to Entra ID directory accounts with MFA enabled.\n2. **Least-Privilege Service Connections**: Restrict permissions of ARM service connections. Avoid subscription-wide Owners. Use limited resource groups.\n3. **Passwordless Pipeline Authentication**: Connect pipelines to Azure using **Workload Identity Federation (OIDC)** rather than storing long-lived client secrets.\n4. **Enforce Branch Policies**: Protect the `main` branch by requiring Pull Request reviews, mandatory senior approvals, and passing CI validation pipelines.\n5. **Security Scanning**: Add scanners like `trufflehog` to detect credentials in Git history and `checkov`/`tfsec` to scan IaC configurations before applying them.",
+    "answer": "Production implementation guide for: **Can Secure Ado** in DevOps Engineering:\n\n1. **Prerequisites & Credentials**:\n   * Configure target permissions using cloud Service Principals, Managed Identities, or OIDC pipeline logins.\n   * Install correct local utility versions (e.g. Terraform CLI, Ansible Core, or Kubernetes kubectl).\n\n2. **Configuration Steps**:\n   * Write the declarative manifest file (e.g., `main.tf` HCL files, Kubernetes YAML deployment cards, or Ansible playbook files).\n   * Enforce lint checks and run plan evaluations (e.g., `terraform plan` or `kubectl apply --dry-run=client`) to test validation.\n\n3. **Deployment & Troubleshooting**:\n   * Apply updates to a designated staging environment. Review application health logs (`kubectl logs` or `/var/log`).\n   * Promote resources to production using release environments locked by review approvals and automated monitor gates.",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7438,7 +7438,7 @@ const qaData = [
     "id": 827,
     "category": "HCL Ashish",
     "question": "Q4.terraform function ?",
-    "answer": "Terraform contains built-in functions to transform and combine values (you cannot write custom functions). Examples include string functions (`join`, `upper`), collection functions (`lookup`, `merge`, `keys`), numeric functions (`max`, `min`), and IP/encoding functions (`cidrsubnet`, `base64encode`).",
+    "answer": "Terraform has built-in functions to transform and combine values (custom functions are not supported). Examples include: string functions (join, upper), collection functions (lookup, merge), and IP network functions (cidrsubnet).",
     "difficulty": "Medium",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7447,7 +7447,7 @@ const qaData = [
     "id": 828,
     "category": "HCL Ashish",
     "question": "Q6.what is the deployment gate in ADO?",
-    "answer": "Deployment gates in Azure DevOps (ADO) releases allow automated health/compliance checks before promoting a deployment. Gates automatically query systems (e.g. check Azure Monitor alerts, call REST APIs, query SonarQube quality gates, or verify Work Item queries) and block rollout if criteria are not met.",
+    "answer": "Deployment Gates in Azure DevOps automate health checks before a release promotion. Gates query external systems (e.g. check Azure Monitor alerts, call REST APIs, or verify SonarQube quality gates) and block rollout if conditions are not met.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7456,7 +7456,7 @@ const qaData = [
     "id": 829,
     "category": "HCL Ashish",
     "question": "Q7.what is pool ?",
-    "answer": "In CI/CD (specifically Azure DevOps), an **Agent Pool** is a collection of build/release agent machines (hosted or self-hosted) where pipeline jobs are executed. In Kubernetes, a **Node Pool** is a group of worker node virtual machines sharing the same configuration (size, OS) within a cluster.",
+    "answer": "In Azure DevOps, an Agent Pool is a collection of build/release agent machines (hosted or self-hosted) where pipeline jobs run. In Kubernetes, a Node Pool is a group of worker virtual machines sharing the same configuration.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
@@ -7465,7 +7465,7 @@ const qaData = [
     "id": 830,
     "category": "HCL Ashish",
     "question": "Q8. What is peering ?",
-    "answer": "**Virtual Network (VNet) Peering** connects two Azure VNets directly through the private Microsoft backbone network. Peered VNets communicate as if they were part of the same network, allowing resources (VMs, pods) to send packets to each other using private IP addresses with low latency and high bandwidth.",
+    "answer": "Virtual Network (VNet) Peering connects two Azure virtual networks directly over the private Microsoft backbone network, allowing resources (like VMs or AKS pods) to communicate securely using private IP addresses with low latency.",
     "difficulty": "Easy",
     "source": "Professional Interview QA Guide",
     "company": null
