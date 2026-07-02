@@ -1187,6 +1187,29 @@ function showMockQuestion() {
             const input = label.querySelector('input');
             input.addEventListener('change', () => {
                 if (q.multipleSelect) {
+                    const lastOptionIndex = q.options.length - 1;
+                    const hasAllOfTheAbove = q.options[lastOptionIndex] === "All of the above";
+                    
+                    if (hasAllOfTheAbove) {
+                        const inputs = Array.from(document.querySelectorAll(`input[name="${inputName}"]`));
+                        const allAboveInput = inputs[lastOptionIndex];
+                        
+                        if (optIdx === lastOptionIndex) {
+                            // If user clicked "All of the above"
+                            const checked = allAboveInput.checked;
+                            inputs.forEach(inp => {
+                                inp.checked = checked;
+                                inp.parentElement.classList.toggle('selected', checked);
+                            });
+                        } else {
+                            // If user clicked any other option
+                            const otherInputs = inputs.slice(0, lastOptionIndex);
+                            const allOthersChecked = otherInputs.every(inp => inp.checked);
+                            allAboveInput.checked = allOthersChecked;
+                            allAboveInput.parentElement.classList.toggle('selected', allOthersChecked);
+                        }
+                    }
+                    
                     const checkedInputs = Array.from(document.querySelectorAll(`input[name="${inputName}"]:checked`));
                     mockSession.userAnswers[idx] = checkedInputs.map(el => parseInt(el.value, 10));
                 } else {
@@ -1256,16 +1279,40 @@ function finishMockInterview() {
     let correctCount = 0;
     let wrongCount = 0;
     
+    // Helper to evaluate MCQ answer correctness (handling 'All of the above' logic)
+    const checkMcqCorrectness = (userAns, correctAns, options) => {
+        const userSorted = [...userAns].sort();
+        const correctSorted = [...correctAns].sort();
+        
+        let isCorrect = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
+        
+        if (options && options.length > 0) {
+            const lastOptionIndex = options.length - 1;
+            const hasAllOfTheAbove = options[lastOptionIndex] === "All of the above";
+            const isAllCorrect = correctAns.includes(lastOptionIndex);
+            
+            if (hasAllOfTheAbove && isAllCorrect) {
+                // If user selected ONLY the 'All of the above' option
+                if (userAns.length === 1 && userAns[0] === lastOptionIndex) {
+                    isCorrect = true;
+                }
+                // If user checked ALL checkboxes
+                else if (userAns.length === options.length) {
+                    const checkedAll = [...Array(options.length).keys()];
+                    isCorrect = userSorted.length === checkedAll.length && userSorted.every((val, index) => val === checkedAll[index]);
+                }
+            }
+        }
+        return isCorrect;
+    };
+    
     mockSession.list.forEach((q, idx) => {
         let isCorrect = false;
         if (mockSession.type === 'qa') {
             isCorrect = mockSession.userAnswers[idx] === 'correct';
         } else {
             const userAns = mockSession.userAnswers[idx] || [];
-            const correctAns = q.correctAnswer;
-            const userSorted = [...userAns].sort();
-            const correctSorted = [...correctAns].sort();
-            isCorrect = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
+            isCorrect = checkMcqCorrectness(userAns, q.correctAnswer, q.options);
         }
         
         if (isCorrect) {
@@ -1313,10 +1360,7 @@ function finishMockInterview() {
                 isCorrectFinal = mockSession.userAnswers[idx] === 'correct';
             } else {
                 const uAns = mockSession.userAnswers[idx] || [];
-                const correctAns = q.correctAnswer;
-                const userSorted = [...uAns].sort();
-                const correctSorted = [...correctAns].sort();
-                isCorrectFinal = userSorted.length === correctSorted.length && userSorted.every((val, index) => val === correctSorted[index]);
+                isCorrectFinal = checkMcqCorrectness(uAns, q.correctAnswer, q.options);
             }
             
             const item = document.createElement('div');
@@ -1370,8 +1414,24 @@ function finishMockInterview() {
                 optionsHtml += '</div>';
                 
                 const uAns = mockSession.userAnswers[idx] || [];
-                const userLetters = uAns.map(optIdx => String.fromCharCode(65 + optIdx));
-                const correctLetters = q.correctAnswer.map(optIdx => String.fromCharCode(65 + optIdx));
+                const lastOptionIndex = q.options.length - 1;
+                const hasAllOfTheAbove = q.options[lastOptionIndex] === "All of the above";
+                const isAllCorrect = q.correctAnswer.includes(lastOptionIndex);
+                
+                let userLetters, correctLetters;
+                if (hasAllOfTheAbove && isAllCorrect) {
+                    const lastLetter = String.fromCharCode(65 + lastOptionIndex);
+                    correctLetters = [`${lastLetter} (All of the above)`];
+                    
+                    if ((uAns.length === 1 && uAns[0] === lastOptionIndex) || uAns.length === q.options.length) {
+                        userLetters = [`${lastLetter} (All of the above)`];
+                    } else {
+                        userLetters = uAns.map(optIdx => String.fromCharCode(65 + optIdx));
+                    }
+                } else {
+                    userLetters = uAns.map(optIdx => String.fromCharCode(65 + optIdx));
+                    correctLetters = q.correctAnswer.map(optIdx => String.fromCharCode(65 + optIdx));
+                }
                 
                 item.innerHTML = `
                     <div class="mock-breakdown-q-row" style="cursor: pointer;">
