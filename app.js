@@ -1282,6 +1282,20 @@ function finishMockInterview() {
         thirdStat.style.display = 'none';
     }
     
+    // Update Pass/Fail Status Badge (70% passing mark)
+    const statusBadge = document.getElementById('mock-status-badge');
+    if (statusBadge) {
+        if (scorePct >= 70) {
+            statusBadge.innerText = `STATUS: PASSED (Passing Mark: 70%)`;
+            statusBadge.style.backgroundColor = 'var(--accent-success)';
+            statusBadge.style.color = 'white';
+        } else {
+            statusBadge.innerText = `STATUS: FAILED (Passing Mark: 70%)`;
+            statusBadge.style.backgroundColor = 'var(--accent-danger)';
+            statusBadge.style.color = 'white';
+        }
+    }
+    
     const breakdownContainer = document.getElementById('mock-results-breakdown');
     if (breakdownContainer) {
         breakdownContainer.innerHTML = '';
@@ -1300,6 +1314,9 @@ function finishMockInterview() {
             const item = document.createElement('div');
             item.className = `mock-breakdown-item ${isCorrectFinal ? 'correct-border' : 'wrong-border'}`;
             
+            // Auto-expand if the user answered incorrectly so they learn the correct solution immediately
+            const defaultDisplay = isCorrectFinal ? 'none' : 'block';
+            
             if (mockSession.type === 'qa') {
                 item.innerHTML = `
                     <div class="mock-breakdown-q-row" style="cursor: pointer;">
@@ -1309,7 +1326,7 @@ function finishMockInterview() {
                             ${isCorrectFinal ? '<i class="fa-solid fa-check"></i> Correct' : '<i class="fa-solid fa-xmark"></i> Incorrect'}
                         </span>
                     </div>
-                    <div class="mcq-breakdown-expanded-content" style="display: none; padding-top: 16px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
+                    <div class="mcq-breakdown-expanded-content" style="display: ${defaultDisplay}; padding-top: 16px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
                         <div class="mcq-explanation-box" style="margin-top: 8px; padding: 16px; background-color: rgba(0,0,0,0.2); border-radius: 8px; border-left: 4px solid var(--accent-primary);">
                             <strong>Recommended Solution:</strong>
                             <p style="margin-top: 8px; font-size: 0.95rem; color: var(--text-primary); white-space: pre-line; line-height: 1.6;">${q.answer}</p>
@@ -1344,6 +1361,10 @@ function finishMockInterview() {
                 });
                 optionsHtml += '</div>';
                 
+                const uAns = mockSession.userAnswers[idx] || [];
+                const userLetters = uAns.map(optIdx => String.fromCharCode(65 + optIdx));
+                const correctLetters = q.correctAnswer.map(optIdx => String.fromCharCode(65 + optIdx));
+                
                 item.innerHTML = `
                     <div class="mock-breakdown-q-row" style="cursor: pointer;">
                         <span class="mock-breakdown-num ${isCorrectFinal ? 'bg-success' : 'bg-danger'}">${idx + 1}</span>
@@ -1352,9 +1373,13 @@ function finishMockInterview() {
                             ${isCorrectFinal ? '<i class="fa-solid fa-check"></i> Correct' : '<i class="fa-solid fa-xmark"></i> Incorrect'}
                         </span>
                     </div>
-                    <div class="mcq-breakdown-expanded-content" style="display: none; padding-top: 16px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
+                    <div class="mcq-breakdown-expanded-content" style="display: ${defaultDisplay}; padding-top: 16px; margin-top: 12px; border-top: 1px dashed var(--border-color);">
                         ${optionsHtml}
-                        <div class="mcq-explanation-box" style="margin-top: 16px; padding: 16px; background-color: rgba(0,0,0,0.2); border-radius: 8px; border-left: 4px solid var(--accent-primary);">
+                        <div class="mcq-summary-box" style="margin-top: 16px; padding: 12px; border-radius: 6px; font-size: 0.95rem; background-color: rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 8px;">
+                            <div><strong>Your Answer:</strong> <span class="${isCorrectFinal ? 'text-success' : 'text-danger'}" style="font-weight: bold;">${userLetters.join(', ') || 'None (Unanswered)'}</span></div>
+                            <div><strong>Correct Answer:</strong> <span class="text-success" style="font-weight: bold;">${correctLetters.join(', ')}</span></div>
+                        </div>
+                        <div class="mcq-explanation-box" style="margin-top: 12px; padding: 16px; background-color: rgba(0,0,0,0.2); border-radius: 8px; border-left: 4px solid var(--accent-primary);">
                             <strong>Explanation:</strong>
                             <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-secondary);">${q.explanation}</p>
                         </div>

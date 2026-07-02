@@ -8,12 +8,9 @@ const mcqData = [
       "To store the history of all git commits for the infrastructure",
       "To map real-world resources to your configuration and track metadata",
       "To encrypt secrets and passwords used in the configuration",
-      "To write temporary bash scripts for VM initialization",
-      "All of the above"
+      "To write temporary bash scripts for VM initialization"
     ],
-    "correctAnswer": [
-      1
-    ],
+    "correctAnswer": [1],
     "multipleSelect": false,
     "explanation": "Terraform uses state to map real-world resources to your configuration, keep track of metadata, and improve performance for large infrastructures."
   },
@@ -25,12 +22,9 @@ const mcqData = [
       "StatefulSet",
       "DaemonSet",
       "Deployment",
-      "Job",
-      "All of the above"
+      "Job"
     ],
-    "correctAnswer": [
-      2
-    ],
+    "correctAnswer": [2],
     "multipleSelect": false,
     "explanation": "A Deployment is the standard Kubernetes resource designed for deploying and scaling stateless applications. For stateful applications (like databases), StatefulSet is preferred."
   },
@@ -41,17 +35,13 @@ const mcqData = [
     "options": [
       "kube-apiserver",
       "kube-scheduler",
-      "kubelet",
+      "kube-controller-manager",
       "etcd",
       "All of the above"
     ],
-    "correctAnswer": [
-      0,
-      1,
-      3
-    ],
+    "correctAnswer": [0, 1, 2, 3, 4],
     "multipleSelect": true,
-    "explanation": "The Control Plane consists of kube-apiserver, kube-scheduler, kube-controller-manager, and etcd. kubelet runs on the worker nodes, not the control plane."
+    "explanation": "All options listed (kube-apiserver, kube-scheduler, kube-controller-manager, and etcd) are core components of the Kubernetes Control Plane, meaning 'All of the above' is correct."
   },
   {
     "id": 4,
@@ -61,12 +51,9 @@ const mcqData = [
       "Bad Request - The request could not be understood",
       "Unauthorized - Authentication is required",
       "Forbidden - The server understands the request but refuses to authorize it",
-      "Not Found - The resource could not be found",
-      "All of the above"
+      "Not Found - The resource could not be found"
     ],
-    "correctAnswer": [
-      2
-    ],
+    "correctAnswer": [2],
     "multipleSelect": false,
     "explanation": "A 403 Forbidden status code indicates that the server understands who you are, but you do not have permission to access the requested resource."
   },
@@ -78,12 +65,9 @@ const mcqData = [
       "git merge deletes the branch history, while git rebase preserves it",
       "git rebase rewrites the commit history by applying commits on top of another branch, whereas git merge combines branches with a merge commit",
       "git merge is only used for local repositories, while git rebase is for remote repositories",
-      "There is no difference; they are aliases of the same command",
-      "All of the above"
+      "There is no difference; they are aliases of the same command"
     ],
-    "correctAnswer": [
-      1
-    ],
+    "correctAnswer": [1],
     "multipleSelect": false,
     "explanation": "git rebase reapplies commits on top of another base tip, creating a linear history. git merge joins two or more development histories together, creating a merge commit and preserving the chronological order."
   },
@@ -95,16 +79,12 @@ const mcqData = [
       "Azure Repos",
       "Azure Pipelines",
       "Azure Boards",
-      "Azure Container Instances",
+      "Azure Artifacts",
       "All of the above"
     ],
-    "correctAnswer": [
-      0,
-      1,
-      2
-    ],
+    "correctAnswer": [0, 1, 2, 3, 4],
     "multipleSelect": true,
-    "explanation": "Azure DevOps includes Azure Repos (Git), Azure Pipelines (CI/CD), Azure Boards (Agile tracking), Azure Artifacts, and Azure Test Plans. Azure Container Instances (ACI) is a standalone Azure cloud compute service."
+    "explanation": "Azure DevOps consists of Azure Repos (Git), Azure Pipelines (CI/CD), Azure Boards (work tracking), and Azure Artifacts (package feeds). All listed services are core to ADO, making 'All of the above' correct."
   },
   {
     "id": 7,
@@ -114,12 +94,9 @@ const mcqData = [
       "8080",
       "2375",
       "2376",
-      "5000",
-      "All of the above"
+      "5000"
     ],
-    "correctAnswer": [
-      1
-    ],
+    "correctAnswer": [1],
     "multipleSelect": false,
     "explanation": "Docker daemon uses port 2375 for unencrypted communication, and port 2376 for encrypted (TLS) communication. Port 5000 is typically used for Docker Registry."
   },
@@ -131,12 +108,9 @@ const mcqData = [
       "terraform plan",
       "terraform fmt",
       "terraform validate",
-      "terraform show",
-      "All of the above"
+      "terraform show"
     ],
-    "correctAnswer": [
-      2
-    ],
+    "correctAnswer": [2],
     "multipleSelect": false,
     "explanation": "terraform validate checks the syntax, variable definitions, and consistency of your configuration files without connecting to remote services."
   },
@@ -148,16 +122,12 @@ const mcqData = [
       "Type 1 Hypervisor (Bare-metal)",
       "Type 2 Hypervisor (Hosted)",
       "OS-level Virtualization (Containerization)",
-      "Continuous Integration",
+      "Network Virtualization",
       "All of the above"
     ],
-    "correctAnswer": [
-      0,
-      1,
-      2
-    ],
+    "correctAnswer": [0, 1, 2, 3, 4],
     "multipleSelect": true,
-    "explanation": "Type 1 Hypervisors run directly on hardware. Type 2 Hypervisors run on top of an OS. Containerization is OS-level virtualization. Continuous Integration is a software development practice, not a virtualization type."
+    "explanation": "Bare-metal hypervisors, hosted hypervisors, OS-level containerization, and software-defined network virtualization are all valid forms of virtualization, making 'All of the above' correct."
   },
   {
     "id": 10,
@@ -167,12 +137,9 @@ const mcqData = [
       "A virtual machine managed by Microsoft to run your builds",
       "An agent you set up, configure, and manage yourself to run build and deployment tasks",
       "A local Git repository on your machine",
-      "An automated testing tool built into Azure Boards",
-      "All of the above"
+      "An automated testing tool built into Azure Boards"
     ],
-    "correctAnswer": [
-      1
-    ],
+    "correctAnswer": [1],
     "multipleSelect": false,
     "explanation": "A self-hosted agent is an agent that you set up and manage on your own infrastructure (virtual machine, physical server, or container) to run build and deployment jobs."
   },
@@ -184,12 +151,9 @@ const mcqData = [
       "RUN",
       "CMD",
       "ENTRYPOINT",
-      "ENV",
-      "All of the above"
+      "ENV"
     ],
-    "correctAnswer": [
-      2
-    ],
+    "correctAnswer": [2],
     "multipleSelect": false,
     "explanation": "ENTRYPOINT specifies the executable that will run when the container starts. Unlike CMD, it cannot be overridden by simply passing arguments at the command line; arguments are appended to the ENTRYPOINT."
   },
@@ -201,16 +165,12 @@ const mcqData = [
       "GitFlow",
       "Trunk-Based Development",
       "GitHub Flow",
-      "Branch-Locking Strategy",
+      "GitLab Flow",
       "All of the above"
     ],
-    "correctAnswer": [
-      0,
-      1,
-      2
-    ],
+    "correctAnswer": [0, 1, 2, 3, 4],
     "multipleSelect": true,
-    "explanation": "GitFlow, Trunk-Based Development, and GitHub Flow are industry-standard branching strategies. Branch-locking is a policy, not a branching strategy."
+    "explanation": "GitFlow, Trunk-Based Development, GitHub Flow, and GitLab Flow are all industry-standard branching patterns, making 'All of the above' correct."
   },
   {
     "id": 13,
@@ -220,12 +180,9 @@ const mcqData = [
       "To host website domain names",
       "To securely store and manage secrets, encryption keys, and certificates",
       "To act as a load balancer for virtual machines",
-      "To store large video and database backup files",
-      "All of the above"
+      "To store large video and database backup files"
     ],
-    "correctAnswer": [
-      1
-    ],
+    "correctAnswer": [1],
     "multipleSelect": false,
     "explanation": "Azure Key Vault is a cloud service that safeguards cryptographic keys, secrets (like API keys, database passwords), and certificates."
   },
@@ -237,12 +194,9 @@ const mcqData = [
       "A physical node in the cluster",
       "The smallest deployable unit that can contain one or more tightly coupled containers",
       "A database storage volume",
-      "A network firewall rule",
-      "All of the above"
+      "A network firewall rule"
     ],
-    "correctAnswer": [
-      1
-    ],
+    "correctAnswer": [1],
     "multipleSelect": false,
     "explanation": "A Pod is the basic execution unit of a Kubernetes application. It represents a single instance of a running process in your cluster and can contain one or more containers."
   },
@@ -254,16 +208,12 @@ const mcqData = [
       "Automated building of the code",
       "Automated testing of the code",
       "Developers merging their code changes back to the main branch frequently",
-      "Manually deploying the application to the production server every month",
+      "Automated code quality analysis (Linting)",
       "All of the above"
     ],
-    "correctAnswer": [
-      0,
-      1,
-      2
-    ],
+    "correctAnswer": [0, 1, 2, 3, 4],
     "multipleSelect": true,
-    "explanation": "CI is the practice of automating the integration of code changes from multiple contributors into a single software project. It involves frequent commits, automated builds, and automated tests. Manual monthly deployments are contrary to CI/CD."
+    "explanation": "Continuous Integration comprises automated building, automated testing, frequent code merges, and static code linting/security analysis, making 'All of the above' correct."
   },
   {
     "id": 16,
@@ -273,12 +223,9 @@ const mcqData = [
       "To apply the infrastructure changes to the cloud provider",
       "To delete all existing resources created by Terraform",
       "To initialize the working directory and download the required provider plugins and modules",
-      "To format the terraform configuration files",
-      "All of the above"
+      "To format the terraform configuration files"
     ],
-    "correctAnswer": [
-      2
-    ],
+    "correctAnswer": [2],
     "multipleSelect": false,
     "explanation": "terraform init initializes a working directory containing Terraform configuration files. It downloads the required provider plugins (like Azure, AWS) and modules."
   },
@@ -290,12 +237,9 @@ const mcqData = [
       "80",
       "443",
       "8080",
-      "9000",
-      "All of the above"
+      "9000"
     ],
-    "correctAnswer": [
-      2
-    ],
+    "correctAnswer": [2],
     "multipleSelect": false,
     "explanation": "Jenkins runs on port 8080 by default. Port 9000 is typically used by SonarQube, and 80/443 are standard HTTP/HTTPS ports."
   },
@@ -307,16 +251,12 @@ const mcqData = [
       "top",
       "free",
       "df",
-      "pwd",
+      "vmstat",
       "All of the above"
     ],
-    "correctAnswer": [
-      0,
-      1,
-      2
-    ],
+    "correctAnswer": [0, 1, 2, 3, 4],
     "multipleSelect": true,
-    "explanation": "'top' monitors CPU and processes in real-time, 'free' checks memory usage, and 'df' checks disk space. 'pwd' shows the current working directory, not system resources."
+    "explanation": "All four commands are resource utilities: top (processes/CPU), free (memory), df (disk space), and vmstat (virtual memory/kernel statistics). Hence, 'All of the above' is correct."
   },
   {
     "id": 19,
@@ -326,12 +266,9 @@ const mcqData = [
       "To build Docker images from a Dockerfile",
       "To manage external access to the services in a cluster, typically HTTP/HTTPS, by providing load balancing and routing",
       "To store database credentials securely",
-      "To allocate IP addresses to the worker nodes",
-      "All of the above"
+      "To allocate IP addresses to the worker nodes"
     ],
-    "correctAnswer": [
-      1
-    ],
+    "correctAnswer": [1],
     "multipleSelect": false,
     "explanation": "An Ingress Controller is a daemon that manages external access to services in a Kubernetes cluster, providing routing rules, SSL termination, and name-based virtual hosting."
   },
@@ -343,12 +280,9 @@ const mcqData = [
       "git pull only downloads metadata, while git fetch downloads all files",
       "git pull downloads and immediately merges the changes into your current branch, while git fetch only downloads the changes without merging them",
       "git fetch is a newer command that replaces git pull completely",
-      "git pull is used for pushing changes, while git fetch is for pulling changes",
-      "All of the above"
+      "git pull is used for pushing changes, while git fetch is for pulling changes"
     ],
-    "correctAnswer": [
-      1
-    ],
+    "correctAnswer": [1],
     "multipleSelect": false,
     "explanation": "git fetch gets the latest changes from the remote repository but does not merge them. git pull is a combination of git fetch followed by git merge, which immediately updates your local working branch."
   }
