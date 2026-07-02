@@ -480,6 +480,14 @@ function setupEventListeners() {
     if (startMockBtn) {
         startMockBtn.addEventListener('click', startMockInterview);
     }
+    document.querySelectorAll('input[name="mock-type"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            const poolGroup = document.getElementById('mock-pool-group');
+            if (poolGroup) {
+                poolGroup.style.display = e.target.value === 'qa' ? 'block' : 'none';
+            }
+        });
+    });
     document.getElementById('end-mock-early-btn').addEventListener('click', () => {
         if (confirm("Are you sure you want to quit the exam? Your progress will not be saved.")) {
             switchView('mock');
@@ -992,41 +1000,45 @@ function setupMockSelection() {
 }
 
 function startMockInterview() {
-    const poolSelect = document.getElementById('mock-pool-select');
-    if (!poolSelect) return;
+    const typeEl = document.querySelector('input[name="mock-type"]:checked');
+    const mockType = typeEl ? typeEl.value : 'mcq';
     
-    const pool = poolSelect.value;
     const countEl = document.querySelector('input[name="mock-count"]:checked');
     const mockCount = countEl ? parseInt(countEl.value, 10) : 10;
     
-    let questionPool = [];
-    
-    if (pool === 'all') {
-        // All Questions in the database (standard + company)
-        questionPool = [...qaData];
-    } else if (pool === 'standard') {
-        // Only Standard Technical Topics (excluding Company Wise QA)
-        questionPool = qaData.filter(q => q.category !== 'Company Wise QA');
-    } else if (pool === 'company-all') {
-        // Only Company-wise Questions (all companies)
-        questionPool = qaData.filter(q => q.category === 'Company Wise QA');
+    if (mockType === 'mcq') {
+        if (typeof mcqData === 'undefined') {
+            alert("MCQ data is not loaded!");
+            return;
+        }
+        const shuffledMcqs = [...mcqData].sort(() => Math.random() - 0.5);
+        mockSession.list = shuffledMcqs.slice(0, Math.min(mockCount, shuffledMcqs.length));
+        mockSession.type = 'mcq';
     } else {
-        // A specific company selected
-        questionPool = qaData.filter(q => q.category === 'Company Wise QA' && q.company === pool);
+        const poolSelect = document.getElementById('mock-pool-select');
+        const pool = poolSelect ? poolSelect.value : 'all';
+        
+        let questionPool = [];
+        if (pool === 'all') {
+            questionPool = [...qaData];
+        } else if (pool === 'standard') {
+            questionPool = qaData.filter(q => q.category !== 'Company Wise QA');
+        } else if (pool === 'company-all') {
+            questionPool = qaData.filter(q => q.category === 'Company Wise QA');
+        } else {
+            questionPool = qaData.filter(q => q.category === 'Company Wise QA' && q.company === pool);
+        }
+        
+        if (questionPool.length === 0) {
+            alert("Selected pool has no questions!");
+            return;
+        }
+        
+        const shuffled = [...questionPool].sort(() => Math.random() - 0.5);
+        mockSession.list = shuffled.slice(0, Math.min(mockCount, shuffled.length));
+        mockSession.type = 'qa';
     }
     
-    if (questionPool.length === 0) {
-        alert("Selected pool has no questions!");
-        return;
-    }
-    
-    // Shuffle the pool randomly
-    const shuffled = [...questionPool].sort(() => Math.random() - 0.5);
-    
-    // Take the requested count (5, 10, or 20)
-    mockSession.list = shuffled.slice(0, Math.min(mockCount, shuffled.length));
-    
-    mockSession.type = 'qa'; // Merged experience is a Subjective Q&A self-evaluation
     mockSession.currentIndex = 0;
     mockSession.userAnswers = {};
     mockSession.active = true;
@@ -1036,7 +1048,9 @@ function startMockInterview() {
     document.getElementById('mock-results').style.display = 'none';
     
     const thirdStat = document.querySelector('#mock-results .res-stat:nth-child(3)');
-    if (thirdStat) thirdStat.style.display = 'none';
+    if (thirdStat) {
+        thirdStat.style.display = mockSession.type === 'mcq' ? 'flex' : 'none';
+    }
     
     renderMockNav();
     showMockQuestion();
