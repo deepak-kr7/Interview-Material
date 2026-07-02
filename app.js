@@ -31,6 +31,8 @@ let mockSession = {
     usedQuestionIds: []
 };
 
+let renderLimit = 100;
+
 // Helper function to get 12-hour stable shuffled questions
 function get12HourShuffledQuestions() {
     // Return a fresh random shuffle on every load/refresh
@@ -247,6 +249,11 @@ function setupTheme() {
    ========================================================================== */
 function formatAnswerToHTML(text) {
     if (!text) return '';
+    
+    const trimmed = text.trim();
+    if (trimmed.startsWith('<div') || trimmed.startsWith('<h3') || trimmed.startsWith('<p') || trimmed.startsWith('<ul') || trimmed.startsWith('<pre')) {
+        return text;
+    }
     
     // Escape HTML first to prevent XSS
     let escaped = text
@@ -666,7 +673,10 @@ function resetAllFilters() {
     filterAndRenderQuestions();
 }
 
-function filterAndRenderQuestions() {
+function filterAndRenderQuestions(isLoadMore = false) {
+    if (!isLoadMore) {
+        renderLimit = 100;
+    }
     let filtered = [...questions];
     
     // 1. Search Filter (Multi-Field Keyword Matching with Smart Aliases)
@@ -762,10 +772,49 @@ function filterAndRenderQuestions() {
         noResults.style.display = 'none';
         
         grid.innerHTML = '';
-        filtered.forEach(q => {
-            const card = createQuestionCard(q);
+        const limit = Math.min(filtered.length, renderLimit);
+        for (let i = 0; i < limit; i++) {
+            const card = createQuestionCard(filtered[i]);
             grid.appendChild(card);
-        });
+        }
+        
+        // If there are remaining questions, render the Load More button
+        if (filtered.length > limit) {
+            const loadMoreContainer = document.createElement('div');
+            loadMoreContainer.className = 'load-more-container';
+            loadMoreContainer.style.textAlign = 'center';
+            loadMoreContainer.style.gridColumn = '1 / -1';
+            loadMoreContainer.style.padding = '20px 0';
+            
+            const btn = document.createElement('button');
+            btn.className = 'btn btn-primary';
+            btn.innerHTML = `<i class="fa-solid fa-plus"></i> Load More (${filtered.length - limit} remaining)`;
+            btn.style.padding = '12px 28px';
+            btn.style.fontSize = '0.95rem';
+            btn.style.fontWeight = '600';
+            btn.style.borderRadius = '8px';
+            btn.style.cursor = 'pointer';
+            btn.style.background = 'var(--accent-primary)';
+            btn.style.color = '#ffffff';
+            btn.style.border = 'none';
+            btn.style.transition = 'all var(--transition-fast) ease';
+            
+            btn.addEventListener('mouseenter', () => {
+                btn.style.filter = 'brightness(1.15)';
+                btn.style.transform = 'translateY(-1px)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.filter = 'none';
+                btn.style.transform = 'none';
+            });
+            btn.addEventListener('click', () => {
+                renderLimit += 100;
+                filterAndRenderQuestions(true);
+            });
+            
+            loadMoreContainer.appendChild(btn);
+            grid.appendChild(loadMoreContainer);
+        }
     }
 }
 

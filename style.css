@@ -2427,7 +2427,38 @@ body {
 #global-reshuffle-btn:active {
     transform: translateY(0);
 }
+/* Ritesh Atri Guide Rich Answer styling integrations */
+.markdown-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+}
 
+.markdown-content h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-top: 14px;
+    margin-bottom: 8px;
+}
 
+.answer-rich {
+    padding-top: 4px;
+}
 
+.answer-rich p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
 
+.answer-rich ul, .answer-rich ol {
+    margin-top: 6px;
+    margin-bottom: 14px;
+}
